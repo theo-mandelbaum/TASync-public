@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "backend.drf_demo",
     "backend.ninja_demo",
+    "scheduling.apps.SchedulingConfig",
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
 ]
+
+AUTH_USER_MODEL = "scheduling.User"
 
 ROOT_URLCONF = "backend.urls"
 
@@ -125,7 +128,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_HOST = "mail"
 EMAIL_PORT = 1025
 
-AUTHENTICATION_BACKENDS = ("allauth.account.auth_backends.AuthenticationBackend",)
+AUTHENTICATION_BACKENDS = (
+    "allauth.account.auth_backends.AuthenticationBackend",)
 
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_METHODS = {"email"}
