@@ -8,4 +8,5 @@ urlpatterns = [
     path("_allauth/", include("allauth.headless.urls")),
     path("drf/", include("backend.drf_demo.urls")),
     path("ninja/", include("backend.ninja_demo.urls")),
+    path("sched_api/", include("backend.sched_api.urls")),
 ]

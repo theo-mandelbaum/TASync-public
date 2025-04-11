@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "backend.drf_demo",
     "backend.ninja_demo",
+    "backend.sched_api",
     "scheduling.apps.SchedulingConfig",
 ]
 
