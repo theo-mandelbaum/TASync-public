@@ -34,8 +34,8 @@ class User(AbstractUser):
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
-    subjects = models.ManyToManyField(
-        Subject, blank=True, related_name="questions")
+    subjects = models.ForeignKey(
+        Subject, on_delete=models.CASCADE, related_name="questions")
     asker = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="questions_asked")
     date_asked = models.DateTimeField(auto_now_add=True)
