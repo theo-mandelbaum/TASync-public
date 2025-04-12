@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import CharField
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+import uuid
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
@@ -15,6 +16,7 @@ class Subject(models.Model):
 
 
 class School(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -34,7 +36,7 @@ class User(AbstractUser):
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
-    subjects = models.ForeignKey(
+    subject = models.ForeignKey(
         Subject, on_delete=models.CASCADE, related_name="questions")
     asker = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="questions_asked")
@@ -68,11 +70,13 @@ class Schedule(models.Model):
 
 
 class Shift(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     schedule = models.ForeignKey(
         Schedule, on_delete=models.CASCADE, related_name="shifts")
     start_time = models.TimeField()
     end_time = models.TimeField()
     day_of_week = models.CharField(max_length=10)
+    date = models.DateField(null=True, blank=True)
     max_ta = models.IntegerField()
     max_students = models.IntegerField()
     ta = models.ManyToManyField(
