@@ -30,6 +30,7 @@ class UserSchema(Schema):
     username: str
     name: str
     school: SchoolSchema
+    subjects: List[SubjectSchema]
 
 
 class QuestionSchema(Schema):
@@ -41,21 +42,9 @@ class QuestionSchema(Schema):
 
 
 class ScheduleSchema(Schema):
+    is_ta_hours: bool
     educator: UserSchema
-    monday_start: Optional[date]
-    monday_end: Optional[date]
-    tuesday_start: Optional[date]
-    tuesday_end: Optional[date]
-    wednesday_start: Optional[date]
-    wednesday_end: Optional[date]
-    thursday_start: Optional[date]
-    thursday_end: Optional[date]
-    friday_start: Optional[date]
-    friday_end: Optional[date]
-    saturday_start: Optional[date]
-    saturday_end: Optional[date]
-    sunday_start: Optional[date]
-    sunday_end: Optional[date]
+    time_blocks: dict
 
 
 class ShiftSchema(Schema):

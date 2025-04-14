@@ -27,6 +27,8 @@ class User(AbstractUser):
     name = CharField(_("Name of User"), blank=True, max_length=255)
     school = models.ForeignKey(
         School, on_delete=models.SET_NULL, null=True, blank=True, related_name="users")
+    subjects = models.ManyToManyField(
+        Subject, blank=True, related_name="users")
     first_name = None
     last_name = None
 
@@ -48,22 +50,10 @@ class Question(models.Model):
 
 
 class Schedule(models.Model):
+    is_ta_hours = models.BooleanField(default=False)
     educator = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
-    monday_start = models.TimeField(null=True, blank=True)
-    monday_end = models.TimeField(null=True, blank=True)
-    tuesday_start = models.TimeField(null=True, blank=True)
-    tuesday_end = models.TimeField(null=True, blank=True)
-    wednesday_start = models.TimeField(null=True, blank=True)
-    wednesday_end = models.TimeField(null=True, blank=True)
-    thursday_start = models.TimeField(null=True, blank=True)
-    thursday_end = models.TimeField(null=True, blank=True)
-    friday_start = models.TimeField(null=True, blank=True)
-    friday_end = models.TimeField(null=True, blank=True)
-    saturday_start = models.TimeField(null=True, blank=True)
-    saturday_end = models.TimeField(null=True, blank=True)
-    sunday_start = models.TimeField(null=True, blank=True)
-    sunday_end = models.TimeField(null=True, blank=True)
+    time_blocks = models.JSONField(default=dict, blank=True)
 
     def __str__(self):
         return f"Schedule for {self.educator.name}"
