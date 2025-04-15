@@ -18,6 +18,7 @@ class SchoolSchema(Schema):
 
 
 class SubjectSchema(Schema):
+    id: uuid.UUID
     name: str
 
 
@@ -29,6 +30,7 @@ class UserSchema(Schema):
 
 
 class QuestionSchema(Schema):
+    id: uuid.UUID
     question_text: str
     asker: UserSchema
     subject: SubjectSchema
@@ -41,6 +43,7 @@ class QuestionCreateSchema(Schema):
 
 
 class ScheduleSchema(Schema):
+    id: uuid.UUID
     is_ta_hours: bool
     educator: Optional[UserSchema]
     subject: SubjectSchema
@@ -163,9 +166,9 @@ def create_schedule(request, schedule: ScheduleSchemaCreate, subject_name: str):
     user = request.user
     if user.groups.filter(name="Educator").exists():
         try:
-            subject = Subject.objects.get(name=subject_name)
-            if not subject:
-                return 403, {"message": "Subject not found."}
+            subject, _ = Subject.objects.get_or_create(name=subject_name)
+            # if not subject:
+            #     return 403, {"message": "Subject not found."}
 
             if schedule.is_ta_hours == True:
                 prev_schedule = Schedule.objects.filter(

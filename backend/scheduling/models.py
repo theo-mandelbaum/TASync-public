@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Subject(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -37,6 +38,7 @@ class User(AbstractUser):
 
 
 class Question(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     question_text = models.CharField(max_length=200)
     subject = models.ForeignKey(
         Subject, on_delete=models.CASCADE, related_name="questions")
@@ -50,6 +52,7 @@ class Question(models.Model):
 
 
 class Schedule(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     is_ta_hours = models.BooleanField(default=False)
     educator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
