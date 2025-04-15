@@ -2,7 +2,7 @@ from functools import wraps
 from ninja import NinjaAPI, Schema
 import uuid
 from datetime import date, time, datetime
-from scheduling.models import Subject, School, User, Question, Schedule, Shift, Comment
+from backend.scheduling.models import Subject, School, User, Question, Schedule, Shift, Comment
 from typing import List, Optional
 from ninja.errors import HttpError
 
