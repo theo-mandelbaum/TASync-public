@@ -2,9 +2,8 @@ from functools import wraps
 from ninja import NinjaAPI, Schema
 import uuid
 from datetime import date, time, datetime
-from scheduling.models import Subject, School, User, Question, Schedule, Shift
+from scheduling.models import Subject, School, User, Question, Schedule, Shift, Comment
 from typing import List, Optional
-from ninja.security import HttpBearer
 from ninja.errors import HttpError
 
 
@@ -22,6 +21,10 @@ class SubjectSchema(Schema):
     name: str
 
 
+class SubjectCreateSchema(Schema):
+    name: str
+
+
 class UserSchema(Schema):
     username: str
     name: str
@@ -36,6 +39,14 @@ class QuestionSchema(Schema):
     subject: SubjectSchema
     date_asked: date
     is_answered: bool
+
+
+class CommentSchema(Schema):
+    id: uuid.UUID
+    question: QuestionSchema
+    user: UserSchema
+    content: str
+    date_posted: date
 
 
 class QuestionCreateSchema(Schema):
@@ -138,12 +149,45 @@ def create_question(request, question: QuestionCreateSchema, subject_name: str):
     return 403, {"message": "You are not authorized to create a question."}
 
 
+@sched_api.put("/comment/{question_id}", response={200: QuestionSchema, 403: Error})
+@require_auth
+def comment_question(request, question_id: uuid.UUID, content: str):
+    try:
+        question = Question.objects.get(id=question_id)
+        if not question:
+            return 403, {"message": "Question not found."}
+        comments = question.comments.all()
+        new_comment = Comment.objects.create(
+            question=question,
+            user=request.user,
+            content=content,
+        )
+        comments.append(new_comment)
+        question.comments = comments
+        question.save()
+        return 200, question
+    except Exception as e:
+        return 403, {"message": str(e)}
+
+
+@sched_api.put("/answer_question/{question_id}", response={200: QuestionSchema, 403: Error})
+@require_auth
+def answer_question(request, question_id: uuid.UUID):
+    try:
+        question = Question.objects.get(id=question_id)
+        if not question:
+            return 403, {"message": "Question not found."}
+        question.is_answered = True
+        question.save()
+        return 200, question
+    except Exception as e:
+        return 403, {"message": str(e)}
 # SUBJECTS-----------------------------------------------------------------------
 
 
 @sched_api.post("/subject", response={200: SubjectSchema, 403: Error})
 @require_auth
-def create_subject(request, subject: SubjectSchema):
+def create_subject(request, subject: SubjectCreateSchema):
     user = request.user
     print(user.groups.all())
     if user.groups.filter(name="Educator").exists():
