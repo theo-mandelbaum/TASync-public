@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Subject(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -36,7 +37,21 @@ class User(AbstractUser):
         return reverse("users:detail", kwargs={"username": self.username})
 
 
+class Comment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    question = models.ForeignKey(
+        'Question', on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='comments')
+    content = models.TextField()
+    date_posted = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username}: {self.content}"
+
+
 class Question(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     question_text = models.CharField(max_length=200)
     subject = models.ForeignKey(
         Subject, on_delete=models.CASCADE, related_name="questions")
@@ -50,12 +65,12 @@ class Question(models.Model):
 
 
 class Schedule(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     is_ta_hours = models.BooleanField(default=False)
     educator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
     subject = models.ForeignKey(
         Subject, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
-    # time_blocks = models.JSONField(default=dict, blank=True)
 
     def __str__(self):
         return f"Schedule for {self.educator.username}({self.subject.name})"
