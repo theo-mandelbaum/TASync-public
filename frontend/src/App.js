@@ -1,7 +1,7 @@
 import { AuthContextProvider } from './auth'
 import Router from './Router'
 import Home from './Home'
-import { BrowserRouter as Router, Route, Switch } from 'reacti-router-dom';
+import { BrowserRouter as Route, Switch } from 'react-router-dom';
 import Subjects from './Subjects';
 import Signup from './account/Signup';
 import Schedule from './Schedule';
