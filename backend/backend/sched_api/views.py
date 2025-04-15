@@ -2,7 +2,7 @@ from functools import wraps
 from ninja import NinjaAPI, Schema
 import uuid
 from datetime import date, time, datetime
-from backend.scheduling.models import Subject, School, User, Question, Schedule, Shift, Comment
+from backend.scheduling.models import Subject, School, User, Question, Schedule, Shift, Comment, SwapRequest
 from typing import List, Optional
 from ninja.errors import HttpError
 
@@ -84,6 +84,15 @@ class ShiftSchemaCreate(Schema):
     date: Optional[date]
     max_ta: int
     max_students: int
+
+
+class SwapRequestSchema(Schema):
+    id: uuid.UUID
+    from_shift: ShiftSchema
+    to_shift: ShiftSchema
+    from_user: UserSchema
+    to_user: UserSchema
+    date_requested: datetime
 
 
 class Error(Schema):
@@ -173,15 +182,18 @@ def comment_question(request, question_id: uuid.UUID, content: str):
 @sched_api.put("/answer_question/{question_id}", response={200: QuestionSchema, 403: Error})
 @require_auth
 def answer_question(request, question_id: uuid.UUID):
-    try:
-        question = Question.objects.get(id=question_id)
-        if not question:
-            return 403, {"message": "Question not found."}
-        question.is_answered = True
-        question.save()
-        return 200, question
-    except Exception as e:
-        return 403, {"message": str(e)}
+    user = request.user
+    if user.groups.filter(name__in=["Educator", "TA"]).exists():
+        try:
+            question = Question.objects.get(id=question_id)
+            if not question:
+                return 403, {"message": "Question not found."}
+            question.is_answered = True
+            question.save()
+            return 200, question
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to answer a question."}
 # SUBJECTS-----------------------------------------------------------------------
 
 
@@ -301,3 +313,28 @@ def create_ta_shift(request, shift: ShiftSchemaCreate, subject_name: str):
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to create a shift."}
+
+
+@sched_api.post("/create_swap_request", response={200: SwapRequestSchema, 403: Error})
+@require_auth
+def create_swap_request(request, from_shift_id: uuid.UUID, to_shift_id: uuid.UUID, to_user_id: uuid.UUID):
+    from_user = request.user
+    if from_user.groups.filter(name="TA").exists():
+        try:
+            from_shift = Shift.objects.get(id=from_shift_id)
+            to_shift = Shift.objects.get(id=to_shift_id)
+            to_user = User.objects.get(id=to_user_id)
+
+            if not from_shift or not to_shift or not to_user:
+                return 403, {"message": "Shift or user not found."}
+
+            swap_request = SwapRequest.objects.create(
+                from_shift=from_shift,
+                to_shift=to_shift,
+                from_user=from_user,
+                to_user=to_user,
+            )
+            return 200, swap_request
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to create a swap request."}

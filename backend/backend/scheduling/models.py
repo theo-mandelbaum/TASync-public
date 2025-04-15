@@ -25,6 +25,7 @@ class School(models.Model):
 
 
 class User(AbstractUser):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = CharField(_("Name of User"), blank=True, max_length=255)
     school = models.ForeignKey(
         School, on_delete=models.SET_NULL, null=True, blank=True, related_name="users")
@@ -90,3 +91,16 @@ class Shift(models.Model):
         User, blank=True, related_name="ta_shift")
     students = models.ManyToManyField(
         User, blank=True, related_name="student_shift")
+
+
+class SwapRequest(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    requester_shift = models.ForeignKey(
+        Shift, on_delete=models.CASCADE, related_name="swap_requests")
+    requested_shift = models.ForeignKey(
+        Shift, on_delete=models.CASCADE, related_name="requested_swap_requests")
+    requester_user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="swap_users")
+    requested_user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="requested_swap_users")
+    date_requested = models.DateField(auto_now_add=True)
