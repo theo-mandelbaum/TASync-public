@@ -42,6 +42,11 @@ import Reauthenticate from './account/Reauthenticate'
 import Sessions from './usersessions/Sessions'
 import Root from './Root'
 import { useConfig } from './auth/hooks'
+import Subjects from './Subjects'
+import Schedule from './Schedule'
+import ShiftRequests from './ShiftRequests'
+import Questions from './Questions'
+import SwapRequests from './SwapRequests'
 
 function createRouter (config) {
   return createBrowserRouter([
@@ -199,6 +204,26 @@ function createRouter (config) {
         {
           path: '/account/sessions',
           element: <AuthenticatedRoute><Sessions /></AuthenticatedRoute>
+        },
+        {
+          path: '/subjects',
+          element: <Subjects />
+        },
+        {
+          path: '/schedule',
+          element: <Schedule />
+        },
+        {
+          path: '/shift-request',
+          element: <ShiftRequests />
+        },
+        {
+          path: '/questions',
+          element: <Questions />
+        },
+        {
+          path: '/swap-requests',
+          element: <SwapRequests />
         }
       ]
     }

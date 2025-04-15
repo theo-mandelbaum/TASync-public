@@ -12,35 +12,7 @@ import ShiftRequests from './ShiftRequests';
 function App () {
   return (
     <AuthContextProvider>
-      <Router>
-        <div className="schedulingApp">
-          <div className="content">
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/subjects">
-                <Subjects />
-              </Route>
-              <Route path="/signup">
-                <Signup />
-              </Route>
-              <Route path="/schedule">
-                <Schedule />
-              </Route>
-              <Route path="/shift-request">
-                <ShiftRequests />
-              </Route>
-              <Route path="/questions">
-                <Questions />
-              </Route>
-              <Route path="/swap-requests">
-                <SwapRequests />
-              </Route>
-            </Switch>
-          </div>
-        </div>
-      </Router>
+      <Router />
     </AuthContextProvider>
   )
 }
