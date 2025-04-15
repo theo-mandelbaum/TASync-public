@@ -51,12 +51,14 @@ class Question(models.Model):
 
 class Schedule(models.Model):
     is_ta_hours = models.BooleanField(default=False)
-    educator = models.OneToOneField(
+    educator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
-    time_blocks = models.JSONField(default=dict, blank=True)
+    subject = models.ForeignKey(
+        Subject, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
+    # time_blocks = models.JSONField(default=dict, blank=True)
 
     def __str__(self):
-        return f"Schedule for {self.educator.name}"
+        return f"Schedule for {self.educator.username}({self.subject.name})"
 
 
 class Shift(models.Model):
