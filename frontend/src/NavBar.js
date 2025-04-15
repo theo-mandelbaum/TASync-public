@@ -44,13 +44,17 @@ export default function NavBar () {
   return (
     <nav className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
       <div className='container-fluid'>
-        <Link to='/' className='navbar-brand'>React ❤️ django-allauth</Link>
+        <Link to='/' className='navbar-brand'>TASync</Link>
         <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>
           <span className='navbar-toggler-icon' />
         </button>
         <div className='collapse navbar-collapse' id='navbarCollapse'>
           <ul className='navbar-nav me-auto mb-2 mb-md-0'>
-            <NavBarItem to='/calculator' icon='📈' name='Calculator' />
+            <NavBarItem to='/subjects' icon='' name='Subjects' />
+            <NavBarItem to='/schedule' icon='' name='Schedule' />
+            <NavBarItem to='/shift-request' icon='' name='Request Shift' />
+            <NavBarItem to='/questions' icon='' name='Questions' />
+            <NavBarItem to='/swap-requests' icon='' name='Request Shift Swap' />
             {window.DEVELOPMENT ? <NavBarItem href='http://localhost:1080' icon='✉️' name='MailCatcher' /> : null}
             {user ? authNav : anonNav}
           </ul>
