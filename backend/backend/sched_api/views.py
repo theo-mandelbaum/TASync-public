@@ -1,7 +1,7 @@
 from functools import wraps
 from ninja import NinjaAPI, Schema
 import uuid
-from datetime import date, time
+from datetime import date, time, datetime
 from scheduling.models import Subject, School, User, Question, Schedule, Shift
 from typing import List, Optional
 from ninja.security import HttpBearer
@@ -34,6 +34,10 @@ class QuestionSchema(Schema):
     subject: SubjectSchema
     date_asked: date
     is_answered: bool
+
+
+class QuestionCreateSchema(Schema):
+    question_text: str
 
 
 class ScheduleSchema(Schema):
@@ -108,6 +112,27 @@ def list_schools_paginated(request, page: int = 1, page_size: int = 10):
 def list_questions(request, subject_name):
     questions = Question.objects.filter(subject__name=subject_name)
     return 200, questions
+
+
+@sched_api.post("/question", response={200: QuestionSchema, 403: Error})
+@require_auth
+def create_question(request, question: QuestionCreateSchema, subject_name: str):
+    user = request.user
+    if user.groups.filter(name="Student").exists():
+        try:
+            subject = Subject.objects.get(name=subject_name)
+            if not subject:
+                return 403, {"message": "Subject not found."}
+            question_obj = Question.objects.create(
+                question_text=question.question_text,
+                asker=user,
+                subject=subject,
+                is_answered=False,
+            )
+            return 200, question_obj
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to create a question."}
 
 
 # SUBJECTS-----------------------------------------------------------------------

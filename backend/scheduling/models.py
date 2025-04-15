@@ -42,7 +42,7 @@ class Question(models.Model):
         Subject, on_delete=models.CASCADE, related_name="questions")
     asker = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="questions_asked")
-    date_asked = models.DateTimeField(auto_now_add=True)
+    date_asked = models.DateField(auto_now_add=True)
     is_answered = models.BooleanField(default=False)
 
     def __str__(self):
