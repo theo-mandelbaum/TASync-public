@@ -81,6 +81,8 @@ def require_auth(func):
         return func(request, *args, **kwargs)
     return wrapper
 
+# SCHOOLS-----------------------------------------------------------------------
+
 
 @sched_api.get("/schools", response=List[SchoolSchema])
 def list_schools(request):
@@ -98,14 +100,7 @@ def list_schools_paginated(request, page: int = 1, page_size: int = 10):
     else:
         return None
 
-
-@sched_api.get("/ta_shifts", response={200: List[ShiftSchema], 403: Error})
-@require_auth
-def list_ta_shifts(request, subject_name):
-    shifts = Shift.objects.filter(subject__name=subject_name)
-    if shifts != None:
-        return 200, shifts
-    return 403, {"message": "You are not authorized to view this resource."}
+# QUESTIONS-----------------------------------------------------------------------
 
 
 @sched_api.get("/questions", response={200: List[QuestionSchema], 403: Error})
@@ -113,6 +108,9 @@ def list_ta_shifts(request, subject_name):
 def list_questions(request, subject_name):
     questions = Question.objects.filter(subject__name=subject_name)
     return 200, questions
+
+
+# SUBJECTS-----------------------------------------------------------------------
 
 
 @sched_api.post("/subject", response={200: SubjectSchema, 403: Error})
@@ -129,6 +127,9 @@ def create_subject(request, subject: SubjectSchema):
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to create a subject."}
+
+
+# SCHEDULES-----------------------------------------------------------------------
 
 
 @sched_api.post("/schedule", response={200: ScheduleSchema, 403: Error})
@@ -167,6 +168,17 @@ def create_schedule(request, schedule: ScheduleSchemaCreate, subject_name: str):
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to create a schedule."}
 
+# SHIFTS-----------------------------------------------------------------------
+
+
+@sched_api.get("/ta_shifts", response={200: List[ShiftSchema], 403: Error})
+@require_auth
+def list_ta_shifts(request, subject_name):
+    shifts = Shift.objects.filter(subject__name=subject_name)
+    if shifts != None:
+        return 200, shifts
+    return 403, {"message": "You are not authorized to view this resource."}
+
 
 @sched_api.post("/ta_shift", response={200: ShiftSchema, 403: Error})
 @require_auth
@@ -182,6 +194,11 @@ def create_ta_shift(request, shift: ShiftSchemaCreate, subject_name: str):
                 subject__name=subject_name, educator__id=user.id).first()
             if schedule == None:
                 return 403, {"message": "Schedule not found for the given subject and educator."}
+
+            days_of_week = ["Monday", "Tuesday", "Wednesday",
+                            "Thursday", "Friday", "Saturday", "Sunday"]
+            if shift.day_of_week not in days_of_week:
+                return 403, {"message": "Invalid day of the week."}
 
             shifts = schedule.shifts.all()
             for existing_shift in shifts:
