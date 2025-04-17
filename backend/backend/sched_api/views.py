@@ -5,6 +5,7 @@ from datetime import date, time, datetime
 from backend.scheduling.models import Subject, School, User, Question, Schedule, Shift, Comment, SwapRequest
 from typing import List, Optional
 from ninja.errors import HttpError
+from django.http import JsonResponse
 
 
 sched_api = NinjaAPI(urls_namespace="sched_api",
@@ -97,6 +98,11 @@ class SwapRequestSchema(Schema):
 
 class Error(Schema):
     message: str
+
+
+def get_openapi_schema_view(request):
+    openapi_schema = sched_api.get_openapi_schema()
+    return JsonResponse(openapi_schema)
 
 
 def require_auth(func):
