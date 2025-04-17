@@ -108,7 +108,7 @@ def require_auth(func):
         return func(request, *args, **kwargs)
     return wrapper
 
-# SCHOOLS-----------------------------------------------------------------------
+# SCHOOLS------------------------------------------------------------------------
 
 
 @sched_api.get("/schools", response=List[SchoolSchema])
