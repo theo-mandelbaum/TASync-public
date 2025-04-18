@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**backendSchedApiViewsListQuestions**](DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions | List Questions
 [**backendSchedApiViewsListSchools**](DefaultApi.md#backendSchedApiViewsListSchools) | **GET** /sched_api/schools | List Schools
 [**backendSchedApiViewsListSchoolsPaginated**](DefaultApi.md#backendSchedApiViewsListSchoolsPaginated) | **GET** /sched_api/schools_paginated | List Schools Paginated
+[**backendSchedApiViewsListSubjects**](DefaultApi.md#backendSchedApiViewsListSubjects) | **GET** /sched_api/subjects | List Subjects
 [**backendSchedApiViewsListTaShifts**](DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts | List Ta Shifts
 
 
@@ -449,6 +450,45 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[SchoolSchema]**](SchoolSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## backendSchedApiViewsListSubjects
+
+> [SubjectSchema] backendSchedApiViewsListSubjects()
+
+List Subjects
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+apiInstance.backendSchedApiViewsListSubjects((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[SubjectSchema]**](SubjectSchema.md)
 
 ### Authorization
 

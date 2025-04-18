@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListQuestions**](docs/DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions | List Questions
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSchools**](docs/DefaultApi.md#backendSchedApiViewsListSchools) | **GET** /sched_api/schools | List Schools
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSchoolsPaginated**](docs/DefaultApi.md#backendSchedApiViewsListSchoolsPaginated) | **GET** /sched_api/schools_paginated | List Schools Paginated
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListSubjects**](docs/DefaultApi.md#backendSchedApiViewsListSubjects) | **GET** /sched_api/subjects | List Subjects
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTaShifts**](docs/DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts | List Ta Shifts
 
 

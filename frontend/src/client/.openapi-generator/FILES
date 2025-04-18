@@ -1,6 +1,5 @@
 .babelrc
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/DefaultApi.md
@@ -34,16 +33,3 @@ src/model/SubjectCreateSchema.js
 src/model/SubjectSchema.js
 src/model/SwapRequestSchema.js
 src/model/UserSchema.js
-test/api/DefaultApi.spec.js
-test/model/Error.spec.js
-test/model/QuestionCreateSchema.spec.js
-test/model/QuestionSchema.spec.js
-test/model/ScheduleSchema.spec.js
-test/model/ScheduleSchemaCreate.spec.js
-test/model/SchoolSchema.spec.js
-test/model/ShiftSchema.spec.js
-test/model/ShiftSchemaCreate.spec.js
-test/model/SubjectCreateSchema.spec.js
-test/model/SubjectSchema.spec.js
-test/model/SwapRequestSchema.spec.js
-test/model/UserSchema.spec.js

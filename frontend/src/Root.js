@@ -1,23 +1,14 @@
-import NavBar from './NavBar'
-import { Outlet } from 'react-router-dom'
+import NavBar from "./NavBar";
+import { Outlet } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
 
-export default function Root () {
+export default function Root() {
   return (
-    <>
+    <Flex h="100vh" direction="column">
       <NavBar />
-      <main className='flex-shrink-0'>
-
-        <div className='container'>
-          <Outlet />
-        </div>
+      <main className="flex-shrink-0 flex-grow-1">
+        <Outlet />
       </main>
-
-      <footer className='footer mt-auto py-3 bg-body-tertiary'>
-        <div className='container'>
-          <span className='text-body-secondary'>⚠️ This sole purpose of this example React app is to demonstrate the use of headless django-allauth. Please do not mind the looks!</span>
-        </div>
-      </footer>
-
-    </>
-  )
+    </Flex>
+  );
 }

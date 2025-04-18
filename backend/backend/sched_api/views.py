@@ -203,6 +203,13 @@ def answer_question(request, question_id: uuid.UUID):
 # SUBJECTS-----------------------------------------------------------------------
 
 
+@sched_api.get("/subjects", response={200: List[SubjectSchema], 403: Error})
+@require_auth
+def list_subjects(request):
+    subjects = Subject.objects.all()
+    return 200, subjects
+
+
 @sched_api.post("/subject", response={200: SubjectSchema, 403: Error})
 @require_auth
 def create_subject(request, subject: SubjectCreateSchema):

@@ -491,6 +491,42 @@ export default class DefaultApi {
     }
 
     /**
+     * Callback function to receive the result of the backendSchedApiViewsListSubjects operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsListSubjectsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/SubjectSchema>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List Subjects
+     * @param {module:api/DefaultApi~backendSchedApiViewsListSubjectsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/SubjectSchema>}
+     */
+    backendSchedApiViewsListSubjects(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [SubjectSchema];
+      return this.apiClient.callApi(
+        '/sched_api/subjects', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the backendSchedApiViewsListTaShifts operation.
      * @callback module:api/DefaultApi~backendSchedApiViewsListTaShiftsCallback
      * @param {String} error Error message, if any.
