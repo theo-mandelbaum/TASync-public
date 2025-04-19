@@ -136,20 +136,20 @@ def list_schools_paginated(request, page: int = 1, page_size: int = 10):
 # QUESTIONS-----------------------------------------------------------------------
 
 
-@sched_api.get("/questions", response={200: List[QuestionSchema], 403: Error})
+@sched_api.get("/questions/{subject_id}", response={200: List[QuestionSchema], 403: Error})
 @require_auth
-def list_questions(request, subject_name):
-    questions = Question.objects.filter(subject__name=subject_name)
+def list_questions(request, subject_id: uuid.UUID):
+    questions = Question.objects.filter(subject__id=subject_id)
     return 200, questions
 
 
-@sched_api.post("/question", response={200: QuestionSchema, 403: Error})
+@sched_api.post("/question/{subject_id}", response={200: QuestionSchema, 403: Error})
 @require_auth
-def create_question(request, question: QuestionCreateSchema, subject_name: str):
+def create_question(request, question: QuestionCreateSchema, subject_id: uuid.UUID):
     user = request.user
     if user.groups.filter(name="Student").exists():
         try:
-            subject = Subject.objects.get(name=subject_name)
+            subject = Subject.objects.get(id=subject_id)
             if not subject:
                 return 403, {"message": "Subject not found."}
             question_obj = Question.objects.create(
@@ -229,7 +229,7 @@ def create_subject(request, subject: SubjectCreateSchema):
 # SCHEDULES-----------------------------------------------------------------------
 
 
-@sched_api.post("/schedule", response={200: ScheduleSchema, 403: Error})
+@sched_api.post("/schedule{subject_name}", response={200: ScheduleSchema, 403: Error})
 @require_auth
 def create_schedule(request, schedule: ScheduleSchemaCreate, subject_name: str):
     user = request.user
@@ -268,27 +268,27 @@ def create_schedule(request, schedule: ScheduleSchemaCreate, subject_name: str):
 # SHIFTS-----------------------------------------------------------------------
 
 
-@sched_api.get("/ta_shifts", response={200: List[ShiftSchema], 403: Error})
+@sched_api.get("/ta_shifts/{subject_id}", response={200: List[ShiftSchema], 403: Error})
 @require_auth
-def list_ta_shifts(request, subject_name):
-    shifts = Shift.objects.filter(subject__name=subject_name)
+def list_ta_shifts(request, subject_id: uuid.UUID):
+    shifts = Shift.objects.filter(subject__id=subject_id)
     if shifts != None:
         return 200, shifts
     return 403, {"message": "You are not authorized to view this resource."}
 
 
-@sched_api.post("/ta_shift", response={200: ShiftSchema, 403: Error})
+@sched_api.post("/ta_shift/{subject_id}", response={200: ShiftSchema, 403: Error})
 @require_auth
-def create_ta_shift(request, shift: ShiftSchemaCreate, subject_name: str):
+def create_ta_shift(request, shift: ShiftSchemaCreate, subject_id: uuid.UUID):
     user = request.user
     if user.groups.filter(name="Educator").exists():
         try:
-            subject = Subject.objects.get(name=subject_name)
+            subject = Subject.objects.get(id=subject_id)
             if not subject:
                 return 403, {"message": "Subject not found."}
 
             schedule = Schedule.objects.filter(
-                subject__name=subject_name, educator__id=user.id).first()
+                subject__id=subject_id, educator__id=user.id).first()
             if schedule == None:
                 return 403, {"message": "Schedule not found for the given subject and educator."}
 

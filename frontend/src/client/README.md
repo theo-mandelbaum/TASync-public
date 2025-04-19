@@ -123,16 +123,16 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SchedApi.DefaultApi* | [**backendSchedApiViewsAnswerQuestion**](docs/DefaultApi.md#backendSchedApiViewsAnswerQuestion) | **PUT** /sched_api/answer_question/{question_id} | Answer Question
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCommentQuestion**](docs/DefaultApi.md#backendSchedApiViewsCommentQuestion) | **PUT** /sched_api/comment/{question_id} | Comment Question
-*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateQuestion**](docs/DefaultApi.md#backendSchedApiViewsCreateQuestion) | **POST** /sched_api/question | Create Question
-*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSchedule**](docs/DefaultApi.md#backendSchedApiViewsCreateSchedule) | **POST** /sched_api/schedule | Create Schedule
+*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateQuestion**](docs/DefaultApi.md#backendSchedApiViewsCreateQuestion) | **POST** /sched_api/question/{subject_id} | Create Question
+*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSchedule**](docs/DefaultApi.md#backendSchedApiViewsCreateSchedule) | **POST** /sched_api/schedule{subject_name} | Create Schedule
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSubject**](docs/DefaultApi.md#backendSchedApiViewsCreateSubject) | **POST** /sched_api/subject | Create Subject
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsCreateSwapRequest) | **POST** /sched_api/create_swap_request | Create Swap Request
-*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateTaShift**](docs/DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift | Create Ta Shift
-*SchedApi.DefaultApi* | [**backendSchedApiViewsListQuestions**](docs/DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions | List Questions
+*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateTaShift**](docs/DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift/{subject_id} | Create Ta Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListQuestions**](docs/DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions/{subject_id} | List Questions
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSchools**](docs/DefaultApi.md#backendSchedApiViewsListSchools) | **GET** /sched_api/schools | List Schools
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSchoolsPaginated**](docs/DefaultApi.md#backendSchedApiViewsListSchoolsPaginated) | **GET** /sched_api/schools_paginated | List Schools Paginated
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSubjects**](docs/DefaultApi.md#backendSchedApiViewsListSubjects) | **GET** /sched_api/subjects | List Subjects
-*SchedApi.DefaultApi* | [**backendSchedApiViewsListTaShifts**](docs/DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts | List Ta Shifts
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListTaShifts**](docs/DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts/{subject_id} | List Ta Shifts
 
 
 ## Documentation for Models

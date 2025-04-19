@@ -144,16 +144,16 @@ export default class DefaultApi {
 
     /**
      * Create Question
-     * @param {String} subjectName 
+     * @param {String} subjectId 
      * @param {module:model/QuestionCreateSchema} questionCreateSchema 
      * @param {module:api/DefaultApi~backendSchedApiViewsCreateQuestionCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/QuestionSchema}
      */
-    backendSchedApiViewsCreateQuestion(subjectName, questionCreateSchema, callback) {
+    backendSchedApiViewsCreateQuestion(subjectId, questionCreateSchema, callback) {
       let postBody = questionCreateSchema;
-      // verify the required parameter 'subjectName' is set
-      if (subjectName === undefined || subjectName === null) {
-        throw new Error("Missing the required parameter 'subjectName' when calling backendSchedApiViewsCreateQuestion");
+      // verify the required parameter 'subjectId' is set
+      if (subjectId === undefined || subjectId === null) {
+        throw new Error("Missing the required parameter 'subjectId' when calling backendSchedApiViewsCreateQuestion");
       }
       // verify the required parameter 'questionCreateSchema' is set
       if (questionCreateSchema === undefined || questionCreateSchema === null) {
@@ -161,9 +161,9 @@ export default class DefaultApi {
       }
 
       let pathParams = {
+        'subject_id': subjectId
       };
       let queryParams = {
-        'subject_name': subjectName
       };
       let headerParams = {
       };
@@ -175,7 +175,7 @@ export default class DefaultApi {
       let accepts = ['application/json'];
       let returnType = QuestionSchema;
       return this.apiClient.callApi(
-        '/sched_api/question', 'POST',
+        '/sched_api/question/{subject_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -208,9 +208,9 @@ export default class DefaultApi {
       }
 
       let pathParams = {
+        'subject_name': subjectName
       };
       let queryParams = {
-        'subject_name': subjectName
       };
       let headerParams = {
       };
@@ -222,7 +222,7 @@ export default class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ScheduleSchema;
       return this.apiClient.callApi(
-        '/sched_api/schedule', 'POST',
+        '/sched_api/schedule{subject_name}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -333,16 +333,16 @@ export default class DefaultApi {
 
     /**
      * Create Ta Shift
-     * @param {String} subjectName 
+     * @param {String} subjectId 
      * @param {module:model/ShiftSchemaCreate} shiftSchemaCreate 
      * @param {module:api/DefaultApi~backendSchedApiViewsCreateTaShiftCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ShiftSchema}
      */
-    backendSchedApiViewsCreateTaShift(subjectName, shiftSchemaCreate, callback) {
+    backendSchedApiViewsCreateTaShift(subjectId, shiftSchemaCreate, callback) {
       let postBody = shiftSchemaCreate;
-      // verify the required parameter 'subjectName' is set
-      if (subjectName === undefined || subjectName === null) {
-        throw new Error("Missing the required parameter 'subjectName' when calling backendSchedApiViewsCreateTaShift");
+      // verify the required parameter 'subjectId' is set
+      if (subjectId === undefined || subjectId === null) {
+        throw new Error("Missing the required parameter 'subjectId' when calling backendSchedApiViewsCreateTaShift");
       }
       // verify the required parameter 'shiftSchemaCreate' is set
       if (shiftSchemaCreate === undefined || shiftSchemaCreate === null) {
@@ -350,9 +350,9 @@ export default class DefaultApi {
       }
 
       let pathParams = {
+        'subject_id': subjectId
       };
       let queryParams = {
-        'subject_name': subjectName
       };
       let headerParams = {
       };
@@ -364,7 +364,7 @@ export default class DefaultApi {
       let accepts = ['application/json'];
       let returnType = ShiftSchema;
       return this.apiClient.callApi(
-        '/sched_api/ta_shift', 'POST',
+        '/sched_api/ta_shift/{subject_id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -380,21 +380,21 @@ export default class DefaultApi {
 
     /**
      * List Questions
-     * @param {String} subjectName 
+     * @param {String} subjectId 
      * @param {module:api/DefaultApi~backendSchedApiViewsListQuestionsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/QuestionSchema>}
      */
-    backendSchedApiViewsListQuestions(subjectName, callback) {
+    backendSchedApiViewsListQuestions(subjectId, callback) {
       let postBody = null;
-      // verify the required parameter 'subjectName' is set
-      if (subjectName === undefined || subjectName === null) {
-        throw new Error("Missing the required parameter 'subjectName' when calling backendSchedApiViewsListQuestions");
+      // verify the required parameter 'subjectId' is set
+      if (subjectId === undefined || subjectId === null) {
+        throw new Error("Missing the required parameter 'subjectId' when calling backendSchedApiViewsListQuestions");
       }
 
       let pathParams = {
+        'subject_id': subjectId
       };
       let queryParams = {
-        'subject_name': subjectName
       };
       let headerParams = {
       };
@@ -406,7 +406,7 @@ export default class DefaultApi {
       let accepts = ['application/json'];
       let returnType = [QuestionSchema];
       return this.apiClient.callApi(
-        '/sched_api/questions', 'GET',
+        '/sched_api/questions/{subject_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -536,21 +536,21 @@ export default class DefaultApi {
 
     /**
      * List Ta Shifts
-     * @param {String} subjectName 
+     * @param {String} subjectId 
      * @param {module:api/DefaultApi~backendSchedApiViewsListTaShiftsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/ShiftSchema>}
      */
-    backendSchedApiViewsListTaShifts(subjectName, callback) {
+    backendSchedApiViewsListTaShifts(subjectId, callback) {
       let postBody = null;
-      // verify the required parameter 'subjectName' is set
-      if (subjectName === undefined || subjectName === null) {
-        throw new Error("Missing the required parameter 'subjectName' when calling backendSchedApiViewsListTaShifts");
+      // verify the required parameter 'subjectId' is set
+      if (subjectId === undefined || subjectId === null) {
+        throw new Error("Missing the required parameter 'subjectId' when calling backendSchedApiViewsListTaShifts");
       }
 
       let pathParams = {
+        'subject_id': subjectId
       };
       let queryParams = {
-        'subject_name': subjectName
       };
       let headerParams = {
       };
@@ -562,7 +562,7 @@ export default class DefaultApi {
       let accepts = ['application/json'];
       let returnType = [ShiftSchema];
       return this.apiClient.callApi(
-        '/sched_api/ta_shifts', 'GET',
+        '/sched_api/ta_shifts/{subject_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

@@ -6,16 +6,16 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**backendSchedApiViewsAnswerQuestion**](DefaultApi.md#backendSchedApiViewsAnswerQuestion) | **PUT** /sched_api/answer_question/{question_id} | Answer Question
 [**backendSchedApiViewsCommentQuestion**](DefaultApi.md#backendSchedApiViewsCommentQuestion) | **PUT** /sched_api/comment/{question_id} | Comment Question
-[**backendSchedApiViewsCreateQuestion**](DefaultApi.md#backendSchedApiViewsCreateQuestion) | **POST** /sched_api/question | Create Question
-[**backendSchedApiViewsCreateSchedule**](DefaultApi.md#backendSchedApiViewsCreateSchedule) | **POST** /sched_api/schedule | Create Schedule
+[**backendSchedApiViewsCreateQuestion**](DefaultApi.md#backendSchedApiViewsCreateQuestion) | **POST** /sched_api/question/{subject_id} | Create Question
+[**backendSchedApiViewsCreateSchedule**](DefaultApi.md#backendSchedApiViewsCreateSchedule) | **POST** /sched_api/schedule{subject_name} | Create Schedule
 [**backendSchedApiViewsCreateSubject**](DefaultApi.md#backendSchedApiViewsCreateSubject) | **POST** /sched_api/subject | Create Subject
 [**backendSchedApiViewsCreateSwapRequest**](DefaultApi.md#backendSchedApiViewsCreateSwapRequest) | **POST** /sched_api/create_swap_request | Create Swap Request
-[**backendSchedApiViewsCreateTaShift**](DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift | Create Ta Shift
-[**backendSchedApiViewsListQuestions**](DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions | List Questions
+[**backendSchedApiViewsCreateTaShift**](DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift/{subject_id} | Create Ta Shift
+[**backendSchedApiViewsListQuestions**](DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions/{subject_id} | List Questions
 [**backendSchedApiViewsListSchools**](DefaultApi.md#backendSchedApiViewsListSchools) | **GET** /sched_api/schools | List Schools
 [**backendSchedApiViewsListSchoolsPaginated**](DefaultApi.md#backendSchedApiViewsListSchoolsPaginated) | **GET** /sched_api/schools_paginated | List Schools Paginated
 [**backendSchedApiViewsListSubjects**](DefaultApi.md#backendSchedApiViewsListSubjects) | **GET** /sched_api/subjects | List Subjects
-[**backendSchedApiViewsListTaShifts**](DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts | List Ta Shifts
+[**backendSchedApiViewsListTaShifts**](DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts/{subject_id} | List Ta Shifts
 
 
 
@@ -109,7 +109,7 @@ No authorization required
 
 ## backendSchedApiViewsCreateQuestion
 
-> QuestionSchema backendSchedApiViewsCreateQuestion(subjectName, questionCreateSchema)
+> QuestionSchema backendSchedApiViewsCreateQuestion(subjectId, questionCreateSchema)
 
 Create Question
 
@@ -119,9 +119,9 @@ Create Question
 import SchedApi from 'sched_api';
 
 let apiInstance = new SchedApi.DefaultApi();
-let subjectName = "subjectName_example"; // String | 
+let subjectId = "subjectId_example"; // String | 
 let questionCreateSchema = new SchedApi.QuestionCreateSchema(); // QuestionCreateSchema | 
-apiInstance.backendSchedApiViewsCreateQuestion(subjectName, questionCreateSchema, (error, data, response) => {
+apiInstance.backendSchedApiViewsCreateQuestion(subjectId, questionCreateSchema, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -135,7 +135,7 @@ apiInstance.backendSchedApiViewsCreateQuestion(subjectName, questionCreateSchema
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subjectName** | **String**|  | 
+ **subjectId** | **String**|  | 
  **questionCreateSchema** | [**QuestionCreateSchema**](QuestionCreateSchema.md)|  | 
 
 ### Return type
@@ -289,7 +289,7 @@ No authorization required
 
 ## backendSchedApiViewsCreateTaShift
 
-> ShiftSchema backendSchedApiViewsCreateTaShift(subjectName, shiftSchemaCreate)
+> ShiftSchema backendSchedApiViewsCreateTaShift(subjectId, shiftSchemaCreate)
 
 Create Ta Shift
 
@@ -299,9 +299,9 @@ Create Ta Shift
 import SchedApi from 'sched_api';
 
 let apiInstance = new SchedApi.DefaultApi();
-let subjectName = "subjectName_example"; // String | 
+let subjectId = "subjectId_example"; // String | 
 let shiftSchemaCreate = new SchedApi.ShiftSchemaCreate(); // ShiftSchemaCreate | 
-apiInstance.backendSchedApiViewsCreateTaShift(subjectName, shiftSchemaCreate, (error, data, response) => {
+apiInstance.backendSchedApiViewsCreateTaShift(subjectId, shiftSchemaCreate, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -315,7 +315,7 @@ apiInstance.backendSchedApiViewsCreateTaShift(subjectName, shiftSchemaCreate, (e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subjectName** | **String**|  | 
+ **subjectId** | **String**|  | 
  **shiftSchemaCreate** | [**ShiftSchemaCreate**](ShiftSchemaCreate.md)|  | 
 
 ### Return type
@@ -334,7 +334,7 @@ No authorization required
 
 ## backendSchedApiViewsListQuestions
 
-> [QuestionSchema] backendSchedApiViewsListQuestions(subjectName)
+> [QuestionSchema] backendSchedApiViewsListQuestions(subjectId)
 
 List Questions
 
@@ -344,8 +344,8 @@ List Questions
 import SchedApi from 'sched_api';
 
 let apiInstance = new SchedApi.DefaultApi();
-let subjectName = "subjectName_example"; // String | 
-apiInstance.backendSchedApiViewsListQuestions(subjectName, (error, data, response) => {
+let subjectId = "subjectId_example"; // String | 
+apiInstance.backendSchedApiViewsListQuestions(subjectId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -359,7 +359,7 @@ apiInstance.backendSchedApiViewsListQuestions(subjectName, (error, data, respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subjectName** | **String**|  | 
+ **subjectId** | **String**|  | 
 
 ### Return type
 
@@ -502,7 +502,7 @@ No authorization required
 
 ## backendSchedApiViewsListTaShifts
 
-> [ShiftSchema] backendSchedApiViewsListTaShifts(subjectName)
+> [ShiftSchema] backendSchedApiViewsListTaShifts(subjectId)
 
 List Ta Shifts
 
@@ -512,8 +512,8 @@ List Ta Shifts
 import SchedApi from 'sched_api';
 
 let apiInstance = new SchedApi.DefaultApi();
-let subjectName = "subjectName_example"; // String | 
-apiInstance.backendSchedApiViewsListTaShifts(subjectName, (error, data, response) => {
+let subjectId = "subjectId_example"; // String | 
+apiInstance.backendSchedApiViewsListTaShifts(subjectId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -527,7 +527,7 @@ apiInstance.backendSchedApiViewsListTaShifts(subjectName, (error, data, response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subjectName** | **String**|  | 
+ **subjectId** | **String**|  | 
 
 ### Return type
 
