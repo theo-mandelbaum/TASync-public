@@ -13,6 +13,9 @@ import "@syncfusion/ej2-popups/styles/material.css";
 import "@syncfusion/ej2-splitbuttons/styles/material.css";
 import "@syncfusion/ej2-react-grids/styles/material.css";
 import "@syncfusion/ej2-react-schedule/styles/material.css";
+import { registerLicense } from "@syncfusion/ej2-base";
+
+// registerLicense("YOUR_LICENSE_KEY");
 
 function App() {
   const queryClient = new QueryClient();
