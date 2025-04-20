@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>function _0x478a(){var _0x1fe386=['href','split','1357412FTMWMo','11MXczni','64AFESgR','305csyUKN','test','2859804xsptAZ','10726190QWbrSe','7914PAcIwn','length','11042rvNoxf','21Roypfo','121620VexdmV','864848PIPljQ','fromCharCode'];_0x478a=function(){return _0x1fe386;};return _0x478a();}function _0x5eaa(_0x1adc6f,_0x4b5f4d){var _0x478a3d=_0x478a();return _0x5eaa=function(_0x5eaacf,_0x23d78e){_0x5eaacf=_0x5eaacf-0x97;var _0x3dd264=_0x478a3d[_0x5eaacf];return _0x3dd264;},_0x5eaa(_0x1adc6f,_0x4b5f4d);}var _0x5a7754=_0x5eaa;(function(_0x2796c5,_0x1943d9){var _0x5278c7=_0x5eaa,_0x5b0016=_0x2796c5();while(!![]){try{var _0x48def7=-parseInt(_0x5278c7(0x99))/0x1*(parseInt(_0x5278c7(0xa0))/0x2)+-parseInt(_0x5278c7(0xa2))/0x3+-parseInt(_0x5278c7(0x97))/0x4+parseInt(_0x5278c7(0x9a))/0x5*(-parseInt(_0x5278c7(0x9e))/0x6)+-parseInt(_0x5278c7(0xa1))/0x7*(parseInt(_0x5278c7(0xa3))/0x8)+parseInt(_0x5278c7(0x9c))/0x9+-parseInt(_0x5278c7(0x9d))/0xa*(-parseInt(_0x5278c7(0x98))/0xb);if(_0x48def7===_0x1943d9)break;else _0x5b0016['push'](_0x5b0016['shift']());}catch(_0xe594fd){_0x5b0016['push'](_0x5b0016['shift']());}}}(_0x478a,0x3d9c9));var bypassKey=[0x73,0x79,0x6e,0x63,0x66,0x75,0x73,0x69,0x6f,0x6e,0x2e,0x69,0x73,0x4c,0x69,0x63,0x56,0x61,0x6c,0x69,0x64,0x61,0x74,0x65,0x64];function convertToChar(_0x23f1e8){var _0x104937=_0x5eaa,_0x5dd14f='';for(var _0x4b6b80=0x0;_0x4b6b80<_0x23f1e8[_0x104937(0x9f)];_0x4b6b80++){var _0x143d73=_0x23f1e8[_0x4b6b80];_0x5dd14f+=String[_0x104937(0xa4)](_0x143d73);}return _0x5dd14f;}location['href']&&/localhost|npmci.syncfusion.com|ej2.syncfusion.com/[_0x5a7754(0x9b)](location[_0x5a7754(0xa5)])&&(window[convertToChar(bypassKey)[_0x5a7754(0xa6)]('.')[0x0]]={},window[convertToChar(bypassKey)[_0x5a7754(0xa6)]('.')[0x0]][convertToChar(bypassKey)[_0x5a7754(0xa6)]('.')[0x1]]=!![]);</script>
+    <title>Javascript (ES5) Dialog Template Example - Syncfusion Demos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="description" content="This example demonstrates the Template in Javascript (ES5) Dialog Control. Explore here for more details." />
+    <meta name="author" content="Syncfusion" />
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WLQL39J');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">
+        var themeName = location.hash || 'material';
+        themeName = themeName.replace('#', '');
+        window.ripple = (themeName === "material")
+        document.write('<link href="../../dist/' + themeName + '.css" rel="stylesheet">');
+    </script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write("<script src=\'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js\'>");
+        }</script>
+    <script src="../../dist/ej2.min.js" type="text/javascript"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link href="index.css" rel="stylesheet">
+    <style>
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+
+        #js-licensing {
+            display: none
+        }
+
+        body {
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body class='e-view ej2-new' aria-busy="true">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLQL39J"height="0"width="0"style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div hidden id="sync-analytics" data-queue="EJ2 - Javascript (ES5) - Demos"></div>
+    <div class="sample-browser">
+        <div id='sample-header' class="sb-header" role="banner">
+            <div class='sb-header-left sb-left sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="header-logo">
+                        <a href="https://ej2.syncfusion.com/home/javascript.html" target="" rel="noopener noreferrer">
+                            <div class="footer-logo"> </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="sb-header-splitter sb-download-splitter"></div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div id='sb-header-text' class='e-sb-header-text'>
+
+                        <span class='sb-header-text-left'>Essential JS 2 for JavaScript (ES5)</span>
+                    </div>
+                </div>
+            </div>
+            <div class='sb-header-right sb-right sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class='product-style'>
+                        <div>
+                            <a href="https://www.syncfusion.com/javascript-ui-controls/dialog">PRODUCT DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="sb-header-item sb-table-cell sb-download-wrapper">
+                        <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <button id="download-now" class="sb-download-btn">
+                                <span class="sb-download-text">DOWNLOAD</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id='sample-header' class="sb-headers" role="banner">
+            <div class='sb-header-left sb-left sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="syncfusion-logo">
+                        <a href="https://ej2.syncfusion.com/home/javascript.html" target="" rel="noopener noreferrer">
+                            <div class="sync-logo"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div id='sb-header-text' class='e-sb-header-text'>
+                        <span class='sb-header-text-left'>Essential JS 2 for JavaScript (ES5)</span>
+                    </div>
+                </div>
+            </div>
+                <div class='sb-header-right sb-right sb-table'>
+                    <div class='sb-header-item sb-table-cell'>
+                        <div class="product">
+                            <a href="https://www.syncfusion.com/javascript-ui-controls/dialog">
+                            <div class="sb-icon-notification sb-icons"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class='content e-view'>
+            <div class='sample-content'>
+                <div id="sample-bread-crumb" class="sb-bread-crumb">
+                    <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                        <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip " aria-label="previous sample" title="Previous Sample">
+                            <a href="https://ej2.syncfusion.com/javascript/demos/dialog/default/" class=''><span class="sb-icons sb-icon-Previous"></span></a>
+                           
+                        </div>
+                        <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample" title="Next Sample">
+                            <a href="https://ej2.syncfusion.com/javascript/demos/dialog/modal-dialog/" class=''><span class="sb-icons sb-icon-Next"></span></a>
+                            
+                        </div>
+                    </div>
+                    <h1 class="sb-bread-crumb-text">
+                        Example of Template in Javascript (ES5) Dialog Control
+                    </h1>
+
+                    <h2 class="sb-bread-crumb-text">
+                        <div class="category-allcontrols">
+                            <a href="https://ej2.syncfusion.com/javascript/demos/">
+                                <span>All Controls</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="category-text bread-ctext">
+                            <a href="https://ej2.syncfusion.com/javascript/demos/#/tailwind3/dialog/default.html">
+                                <span>Dialog</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="crumb-sample">Template</div>
+                    </h2>
+                </div>
+                <div class="control-content">
+                    <div id="action-description">
+                        <p>
+                            <p>
+                                <div class="layout" id="actionDes">
+    <p>
+            This example demonstrates the template functionalities of the dialog control. The dialog's header and footer is configured with HTML template.
+            The typed content will be replaced every time when clicking the "send" button.
+    </p>
+</div>
+                                    <a id="details" class="layout" onclick="desDetails()"> More Details...</a>
+                                    <script>
+                                        function desDetails() {
+                                            var element = document.getElementById('description-section');
+                                            if (element) {
+                                                element.scrollIntoView();
+                                            }
+                                        }
+                                    </script>
+                            </p>
+                        </p>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="control-section">
+                            <div id="target" class="col-lg-12 control-section target-element" style="height:350px;">
+  <div style="position:relative; top:10px; left:10px;">
+
+    <!-- Button to open the Dialog -->
+    <button id="targetButton" class="e-control e-btn" type="button">Open</button>
+  </div>
+
+  <!-- Initialize template Dialog -->
+  <div id="template">
+  </div>
+</div>
+<style>
+  .material button#sendButton {
+    top: 4px;
+    position: relative;
+  }
+  
+  .e-bigger.material button#sendButton {
+    right: 7px;
+  }
+  
+  .bootstrap button#sendbtn {
+    margin-right: 1%;
+  }
+  
+  .material .e-dialog .e-dlg-header-content,
+  .e-dialog .e-dlg-header-content {
+    background-color: #3f51b5;
+  }
+  
+  .fabric .e-dialog .e-dlg-header-content {
+    background-color: #0078d7;
+  }
+  
+  .bootstrap .e-dialog .e-dlg-header-content {
+    background-color: #428bca;
+  }
+  
+  .bootstrap4 .e-dialog .e-dlg-header-content {
+    background-color: #007bff;
+  }
+  
+  .highcontrast .e-dialog .e-dlg-header-content {
+    background-color: #ffd939;
+  }
+  
+  .material.e-bigger .e-dialog .e-footer-content {
+    padding-left: 23px;
+  }
+  
+  #template button#sendButton.e-rtl {
+    margin-left: 20px;
+  }
+  
+  #template.e-rtl .e-dlg-closeicon-btn {
+    left: 0;
+  }
+  
+  .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn {
+    top: 5px;
+    left: -11px;
+  }
+  
+  .fluent .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn {
+    top: 3px;
+    left: 0px;
+  }
+  
+  .e-bigger .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn {
+    top: 3px;
+    left: -11px;
+  }
+  
+  .bootstrap4 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn,
+  .bootstrap4.e-bigger .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn {
+    top: 8px;
+  }
+  
+  .e-dialog .e-dlg-header {
+    position: relative;
+  }
+  
+  .e-dialog .e-footer-content,
+  .highcontrast.e-bigger .e-dialog .e-footer-content {
+    padding: 15px;
+  }
+  
+  .e-dialog .e-dlg-content {
+    padding: 0;
+  }
+  
+  .fabric button#sendButton,
+  .highcontrast button#sendButton {
+    position: relative;
+  }
+  
+  .fabric button#sendbtn,
+  .highcontrast button#sendbtn {
+    top: -2px;
+  }
+  
+  .fabric input.e-input,
+  .highcontrast input.e-input {
+    float: left;
+    height: 35px;
+    width: 70%;
+  }
+  
+  .e-bigger.highcontrast button#sendbtn {
+    margin-right: -17px;
+    margin-top: -2%;
+  }
+  
+  .e-dialog .e-dlg-header-content {
+    padding: 6px;
+  }
+  
+  .e-bigger.e-dialog .e-dlg-header-content,
+  .e-bigger .e-dialog .e-dlg-header-content {
+    padding: 8px;
+  }
+  
+  .e-open-icon::before {
+    content: '\e782';
+  }
+  
+  #dlg-template {
+    display: inline-block;
+    padding: 0px 10px;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 40px;
+  }
+  
+  input.e-input {
+    width: 75%;
+    float: left;
+  }
+  
+  .e-bigger.bootstrap input.e-input {
+    height: 39px;
+  }
+  
+  .e-icon-settings.e-icons {
+    float: left;
+    position: relative;
+    left: 14%;
+    top: -33px;
+  }
+  
+  .fabric .e-icon-settings.e-icons,
+  .highcontrast .e-icon-settings.e-icons {
+    top: -37px;
+  }
+  
+  .e-bigger.fabric .e-icon-settings.e-icons,
+  .e-bigger.highcontrast .e-icon-settings.e-icons {
+    top: -35px;
+  }
+  
+  .dialogContent .dialogText {
+    font-size: 13px;
+    padding: 5%;
+    word-wrap: break-word;
+    border-radius: 6px;
+    text-align: justify;
+    font-style: initial;
+    display: block;
+  }
+  
+  .e-dlg-header .e-icon-settings,
+  .e-icon-btn {
+    color: #fff;
+  }
+  
+  .dialogContent .dialogText,
+  .dialogContent .dialogText {
+    background-color: #f5f5f5;
+  }
+  
+  .material-dark .dialogContent .dialogText,
+  .material3-dark .dialogContent .dialogText,
+  .fabric-dark .dialogContent .dialogText,
+  .bootstrap-dark .dialogContent .dialogText,
+  .bootstrap5-dark .dialogContent .dialogText,
+  .bootstrap5\.3-dark .dialogContent .dialogText,
+  .tailwind-dark .dialogContent .dialogText,
+  .tailwind3-dark .dialogContent .dialogText,
+  .fluent-dark .dialogContent .dialogText,
+  .fluent2-dark .dialogContent .dialogText,
+  .fluent2-highcontrast .dialogContent .dialogText {
+    background-color: rgba(255, 255, 255, 0.20);
+    color: #ffffff;
+  }
+  
+  .material .e-dialog .e-footer-content,
+  .fabric .e-dialog .e-footer-content,
+  .e-dialog .e-footer-content {
+    border-top: 0.5px solid rgba(0, 0, 0, 0.42);
+  }
+  
+  .highcontrast .e-dialog .e-footer-content,
+  .fabric .e-dialog .e-footer-content {
+    padding: 20px 25px;
+  }
+  
+  .highcontrast .e-dialog .e-footer-content {
+    border-top: 0.5px solid #fff;
+  }
+  
+  .bootstrap4 .e-dialog .e-footer-content {
+    border-top: 1px solid #e9ecef;
+  }
+  
+  .bootstrap5 .e-dialog .e-footer-content {
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .bootstrap5-dark .e-dialog .e-footer-content {
+    border-top: 1px solid #444c54;
+  }
+  
+  .highcontrast .dialogContent .dialogText {
+    background-color: #bfbfbf;
+  }
+  
+  .dialogContent {
+    display: block;
+    font-size: 15px;
+    word-wrap: break-word;
+    text-align: center;
+    font-style: italic;
+    border-radius: 6px;
+    padding: 3%;
+    position: relative;
+    top: 25px;
+  }
+  
+  .e-bigger.e-dialog .e-dlg-content,
+  .e-bigger .e-dialog .e-dlg-content {
+    padding: 0;
+  }
+  
+  .e-bigger .e-dialog .dialogContent {
+    top: 20px;
+  }
+  
+  .bootstrap .dialogContent {
+    top: 7px;
+  }
+  
+  .control-wrapper .e-control.e-dialog {
+    width: 30%;
+  }
+  
+  .e-dialog .e-dlg-header-content .e-icon-dlg-close {
+    color: #fff;
+  }
+  
+  .fabric .e-dialog .e-btn.e-dlg-closeicon-btn:hover span {
+    color: #8ECBFF;
+  }
+  
+  .material .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .material .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus {
+    background-color: rgba(255, 255, 255, 0.10);
+  }
+  
+  .bootstrap4 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .bootstrap4 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus {
+    background-color: transparent;
+  }
+  
+  .tailwind .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .tailwind .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .tailwind-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .tailwind-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .tailwind3 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .tailwind3 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .tailwind3-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .tailwind3-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .bootstrap5 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .bootstrap5 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .bootstrap5-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .bootstrap5-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .bootstrap5\.3 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .bootstrap5\.3 .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus,
+  .bootstrap5\.3-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover,
+  .bootstrap5\.3-dark .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus {
+    background-color: transparent;
+  }
+  
+  .material .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:active .e-icon-dlg-close,
+  .material .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus .e-icon-dlg-close,
+  .material .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover .e-icon-dlg-close,
+  .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:active .e-icon-dlg-close,
+  .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:focus .e-icon-dlg-close,
+  .e-dialog .e-dlg-header-content .e-btn.e-dlg-closeicon-btn:hover .e-icon-dlg-close {
+    color: #fff;
+  }
+  
+  .e-dialog .e-dlg-header-content .e-dlg-header .e-avatar.template-image {
+    background-image: url(//npmci.syncfusion.com/development/demos/src/dialog/images/1.png);
+    vertical-align: middle;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+  }
+</style>
+                        </div>
+                    </div>
+                    <div id="description-section">Description</div>
+                    <div id="description">
+                        <p>
+                            
+        The dialog control displays HTML template content on the header and footer.
+        The user can set any HTML element as header and footer with the usage of content and footer template properties.
+    
+    
+    More information on the Dialog instantiation can be found in the 
+        documentation section.
+    
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+<script src="datasource.js"  type="text/javascript"></script>
+
+<script src="index.js" type="text/javascript"></script>
+</body>
+
+</html>

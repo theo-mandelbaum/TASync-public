@@ -1,0 +1,150 @@
+{
+    "name": "MultiColumn-ComboBox",
+    "description": "MultiColumnComboBox Component",
+    "eventInterfaces": [
+        "SelectEventArgs", "PopupEventArgs", "FilteringEventArgs", "ChangeEventArgs"
+    ],
+    "keywords": {
+        "common": ["ej2", "syncfusion", "multicolumncombobox", "ej2-multicolumncombobox", "ej2 multicolumncombobox"],
+        "angular": ["angular", "ng", "ej2-ng-multicolumncombobox", "ng-multicolumncombobox"],
+        "react": ["react", "reactjs", "ej2-react-multicolumncombobox", "react-multicolumncombobox"],
+        "vue": ["vue", "vuejs", "ej2-vue-multicolumncombobox", "vue-multicolumncombobox"]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syncfusion/ej2-multicolumn-combobox"
+    },
+    "components": [{
+        "baseClass": "MultiColumnComboBox",
+        "directoryName": "multicolumn-combobox",
+        "type": "form",
+        "preferredTag": "input",
+        "twoWays": ["value"],
+        "templateProperties": [
+            "footerTemplate",
+            "itemTemplate",
+            "groupTemplate",
+            {
+                "name": "noRecordsTemplate",
+                "defaultValue": "No records found"
+            },
+            {
+                "name": "actionFailureTemplate",
+                "defaultValue": "Request Failed"
+            }
+        ],
+        "comment": [
+            "/**",
+            " * Represents the Essential JS 2 Angular MultiColumnComboBox Component.",
+            " * ```html",
+            " * <ejs-multicolumncombobox></ejs-multicolumncombobox>",
+            " * ```",
+            " */"
+        ],
+        "reactComment": [
+            "/**",
+            " * Represents the React MultiColumnComboBox Component",
+            " * ```tsx",
+            " * <MultiColumnComboBoxComponent dataSource={data}></MultiColumnComboBoxComponent>",
+            " * ```",
+            " */"
+        ],
+        "vueComment": [
+            "/**",
+            " * Represents the Essential JS 2 VueJS MultiColumnComboBox Component",
+            " * ```vue",
+            " * <ejs-multicolumncombobox :dataSource='data'></ejs-multicolumncombobox>",
+            " * ```",
+            " */"
+        ],
+        "dynamicModules": [],
+        "complexDirective": [
+            {
+                "propertyName": "fields",
+                "baseClass": "FieldSettings",
+                "SelectorName": "e-multicolumncombobox-fields"
+            },{
+                "propertyName": "gridSettings",
+                "baseClass": "GridSettings",
+                "SelectorName": "e-multicolumncombobox-gridSettings"
+            }
+        ],
+        "tagDirective": [{
+                "arrayDirectiveClassName": "columns",
+                "directiveClassName": "column",
+                "directiveSelector": "ejs-multicolumncombobox>e-columns>e-column",
+                "arrayDirectiveSelector": "ejs-multicolumncombobox>e-columns",
+                "aspArrayClassName":"Column",
+                "aspCollectionClassName":"Columns",
+                "aspDirectiveSelector": "e-multicolumncombobox-column",
+                "aspArrayDirectiveSelector":"e-multicolumncombobox-columns",
+                "propertyName": "columns",
+                "directoryName": "multicolumn-combobox",
+                "baseClass": "Column",
+                "comment": [
+                    "/**",
+                    " * `e-column` directive represent a column of the Angular MultiColumnComboBox. ",
+                    " * It must be contained in a MultiColumnComboBox component(`ejs-multicolumncombobox`). ",
+                    " * ```html",
+                    " * <ejs-multicolumncombobox [dataSource]='data'>",
+                    " *   <e-columns>",
+                    " *    <e-column field='ID' width='100'></e-column>",
+                    " *    <e-column field='name' header='Name' width='100'></e-column>",
+                    " *   </e-columns>",
+                    " * </ejs-multicolumncombobox>",
+                    " * ```",
+                    " */"
+                ],
+                "reactComment": [
+                    "/**",
+                    " * `ColumnDirective` represent a column of the React MultiColumnComboBox. ",
+                    " * It must be contained in a MultiColumnComboBox component(`MultiColumnComboBoxComponent`). ",
+                    " * ```tsx",
+                    " * <MultiColumnComboBoxComponent dataSource={data}>",
+                    " *   <ColumnsDirective>",
+                    " *     <ColumnDirective field='ID' width='100'></ColumnDirective>",
+                    " *     <ColumnDirective field='name' header='Name' width='100'></ColumnDirective>",
+                    " *   <ColumnsDirective>",
+                    " * </MultiColumnComboBoxComponent>",
+                    " * ```",
+                    " */"
+                ],
+                "vueComment": [
+                    "/**",
+                    " * `e-column` directive represent a column of the VueJS MultiColumnComboBox. ",
+                    " * It must be contained in a MultiColumnComboBox component(`ejs-multicolumncombobox`). ",
+                    " * ```vue",
+                    " * <ejs-multicolumncombobox :dataSource='data'>",
+                    " *   <e-columns>",
+                    " *    <e-column field='ID' width='100'/>",
+                    " *    <e-column field='name' headerText='Name' width='100'/>",
+                    " *   </e-columns>",
+                    " * </ejs-multicolumncombobox>",
+                    " * ```",
+                    " */"
+                ],
+                "templateProperties": [
+                    "template",
+                    "headerTemplate"
+                ]
+        }],
+        "genericProperties": [
+                {
+                    "type": "TValue",
+                    "name": "value"
+                },
+                {
+                    "type": "TItem",
+                    "name": "dataSource"
+                }
+            ],
+            "isGenericClass": true,
+            "blazorType": "native",
+            "isBlazorDerivedTemplate": true,
+            "blazorDependencies": [
+                "ej2-base",
+                "ej2-popups/popup",
+                "../blazor/sf-multicolumncombobox"
+            ]
+    }]
+}

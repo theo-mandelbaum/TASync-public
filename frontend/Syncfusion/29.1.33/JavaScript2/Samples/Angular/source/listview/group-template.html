@@ -1,0 +1,31 @@
+<div id="action-description">
+    <p>
+        This sample demonstrates the group template functionalities of ListView. Click any list item from the settings option to select and highlight an option.
+    </p>
+</div>
+<div class="col-lg-12 control-section">
+    <!-- ListView element -->
+    <ejs-listview id='groupedList' [dataSource]='dataSource' [cssClass]='cssClass' [fields]='fields'
+        [headerTitle]='headerTitle' [showHeader]='true'>
+        <ng-template #template let-dataSource="">
+            <div class="settings e-list-wrapper e-list-multi-line e-list-avatar">
+                <span class="icon {{dataSource.class}} e-avatar"></span>
+                <span class="e-list-item-header">{{dataSource.Name}}</span>
+                <span class="e-list-content">{{dataSource.content}}</span>
+            </div>
+        </ng-template>
+        <ng-template #groupTemplate let-dataSource="">
+            <div class="e-list-wrapper">
+                <span class="e-list-item-content">{{dataSource.items[0].category}}</span>
+            </div>
+        </ng-template>
+    </ejs-listview>
+</div>
+<div id="description">
+    <p>The ListView component has an option to custom design the group header title with the help of <code><a target='_blank' class='code' href='https://ej2.syncfusion.com/angular/documentation/api/list-view#grouptemplate'>groupTemplate</a></code>
+        property.</p>
+    
+    <p>In this example, both the group header and list items are customized using the <code><a target='_blank' class='code' href='https://ej2.syncfusion.com/angular/documentation/api/list-view#grouptemplate'>groupTemplate</a></code>
+        and <code><a target='_blank' class='code' href='https://ej2.syncfusion.com/angular/documentation/api/list-view#template'>template</a></code>
+        property.</p>
+</div>

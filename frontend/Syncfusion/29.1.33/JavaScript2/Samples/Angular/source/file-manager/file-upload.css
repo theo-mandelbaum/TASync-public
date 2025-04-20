@@ -1,0 +1,56 @@
+.upload-dialog {
+    height: 550px !important;
+}
+.sample-container {
+    margin: 10px 10px 10px 10px;
+}
+
+.fileupload {
+    max-width: 500px;
+    margin: auto;
+}
+
+#openBtn {
+    position: absolute;
+    top: 18px;
+    left: 43%;
+}
+
+#dialog {
+    top: 20px !important;
+    max-height: 500px !important;
+}
+
+#uploadFileManager .e-file-drop, #uploadFileManager .e-css.e-btn {
+    display: none;
+}
+
+.tailwind #openBtn,
+.tailwind-dark #openBtn {
+    top: 18px;
+}
+
+.bootstrap #openBtn,
+.bootstrap-dark #openBtn {
+    top: 20px;
+}
+
+.bootstrap5 #openBtn,
+.bootstrap5-dark #openBtn {
+    top: 16px;
+}
+ 
+ .ej2-new #openBtn {
+   top: 148px;
+ }
+
+  @media (max-width: 768px) {
+    .ej2-new #openBtn {
+     top: 274px !important;
+     left: 35%;
+    }
+  }
+
+.fileupload .e-file-select-wrap {
+    padding: 20px 0 20px 20px;
+}

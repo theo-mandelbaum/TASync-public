@@ -1,0 +1,230 @@
+<style scoped>
+    .diagram-connectors .image-pattern-style {
+        background-color: white;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 45px;
+        width: calc((100% - 12px) / 3);
+        cursor: pointer;
+        border: 1px solid #D5D5D5;
+        background-position: center;
+        float: left;
+    }
+    
+    .diagram-connectors .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    .diagram-connectors .sb-child-row {
+        padding-top: 8px;
+    }
+    
+    .diagram-connectors .row-header {
+        font-size: 13px;
+        font-weight: 500;
+    }
+    
+    .diagram-connectors .e-selected-style {
+        border-color: #006CE6;
+        border-width: 2px;
+    }
+
+    label{
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 400;
+        width: 100%;
+        margin-top: auto;
+    }       
+</style>
+<div id="action-description">
+    <p>
+        This sample visualizes the data flow in a marketing process using predefined shapes and connectors. Different types of connectors and decorators are used to customize the appearance, path, and direction of the data flow. 
+    </p>
+</div>
+<div class="control-section diagram-connectors">
+
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper" style="background: white">
+            <ejs-diagram #diagram id="diagram" [getConnectorDefaults]='getConnectorDefaults' [getNodeDefaults]='getNodeDefaults' [layout]=layout width="100%" height="680px" [setNodeTemplate]='setNodeTemplate' [snapSettings]=snapSettings (selectionChange)="selectionChange()" (created)="created()">
+                <e-nodes>
+                    <e-node id='node1' [shape]='shape'>
+                        <e-node-annotations>
+                            <e-node-annotation content='Promotion'>
+                            </e-node-annotation>
+                        </e-node-annotations>
+                    </e-node>
+                    <e-node id='node2' [shape]='shape'>
+                        <e-node-annotations>
+                            <e-node-annotation content='Lead'>
+                            </e-node-annotation>
+                        </e-node-annotations>
+                    </e-node>
+                    <e-node id='node3' [shape]='shape'>
+                        <e-node-annotations>
+                            <e-node-annotation content='Account'>
+                            </e-node-annotation>
+                        </e-node-annotations>
+                    </e-node>
+                    <e-node id='node4' [shape]='shape'>
+                        <e-node-annotations>
+                            <e-node-annotation content='Information'>
+                            </e-node-annotation>
+                        </e-node-annotations>
+                    </e-node>
+                    <e-node id='node5' [shape]='shape'>
+                        <e-node-annotations>
+                            <e-node-annotation content='Opportunity'>
+                            </e-node-annotation>
+                        </e-node-annotations>
+                    </e-node>
+                    <e-node id='node6' [offsetX]=620 [offsetY]=340 excludeFromLayout=true>
+                    </e-node>
+                </e-nodes>
+                <e-connectors>
+                    <e-connector id='connector' sourceID='node1' targetID='node2'>
+                    </e-connector>
+                    <e-connector id='connector1' sourceID='node2' sourcePortID='port1' targetID='node3' targetPortID='portIn'>
+                    </e-connector>
+                    <e-connector id='connector2' sourceID='node2' sourcePortID='port2' targetID='node4' targetPortID='portIn'>
+                    </e-connector>
+                    <e-connector id='connector3' sourceID='node2' sourcePortID='port3' targetID='node5' targetPortID='portIn'>
+                    </e-connector>
+                    <e-connector id='connector4' sourceID='node6' sourcePortID='port4' targetID='node3' targetPortID='portOut'>
+                    </e-connector>
+                    <e-connector id='connector5' sourceID='node6' sourcePortID='port5' targetID='node4' targetPortID='portOut'>
+                    </e-connector>
+                    <e-connector id='connector7' sourceID='node6' sourcePortID='port6' targetID='node5' targetPortID='portOut'>
+                    </e-connector>
+                </e-connectors>
+            </ejs-diagram>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <div class="property-panel-header">
+            Properties
+        </div>
+        <div class="row property-panel-content" id="appearance">
+            <div class="row row-header sb-child-row">
+                <b>Connector types</b>
+            </div>
+            <div class="row sb-child-row">
+                <div class="image-pattern-style" id="straightConnector" style="background-image: url(./assets/diagram/Images/connector/Connectors_1.png); margin-right: 3px">
+                </div>
+                <div class="image-pattern-style" id="orthogonalConnector" style="background-image: url(./assets/diagram/Images/connector/Connectors_2.png); margin: 0px 3px">
+                </div>
+                <div class="image-pattern-style" id="bezierConnector" style="background-image: url(./assets/diagram/Images/connector/Connectors_3.png);">
+                </div>
+            </div>
+            <div class="row sb-child-row">
+                <div class="image-pattern-style" id="straightConnectorWithStroke" style="background-image: url(./assets/diagram/Images/connector/Connectors_4.png); margin-right: 3px">
+                </div>
+                <div class="image-pattern-style" id="orthogonalConnectorWithStroke" style="background-image: url(./assets/diagram/Images/connector/Connectors_5.png); margin: 0px 3px">
+                </div>
+                <div class="image-pattern-style" id="bezierConnectorWithStroke" style="background-image: url(./assets/diagram/Images/connector/Connectors_6.png);">
+                </div>
+            </div>
+            <div class="row sb-child-row">
+                <div class="image-pattern-style" id="straightConnectorWithDasharray" style="background-image: url(./assets/diagram/Images/connector/Connectors_7.png); margin-right: 3px">
+                </div>
+                <div class="image-pattern-style" id="orthogonalConnectorWithDasharray" style="background-image: url(./assets/diagram/Images/connector/Connectors_8.png); margin: 0px 3px">
+                </div>
+                <div class="image-pattern-style" id="bezierConnectorWithDasharray" style="background-image: url(./assets/diagram/Images/connector/Connectors_9.png);">
+                </div>
+            </div>
+            <div class="row sb-child-row">
+                <div class="image-pattern-style" id="cornerRadius" style="background-image: url(./assets/diagram/Images/connector/Connectors_10.png); margin-right: 3px">
+                </div>
+                <div class="image-pattern-style" id="sourceDecorators" style="background-image: url(./assets/diagram/Images/connector/Connectors_11.png); margin: 0px 3px">
+                </div>
+                <div class="image-pattern-style" id="sourceDecoratorWithDasharray" style="background-image: url(./assets/diagram/Images/connector/Connectors_12.png);">
+                </div>
+            </div>
+        </div>
+        <div class="row property-panel-content" id="decorators" style="padding-top: 10px">
+            <div class="row row-header" style="padding-top: 8px">
+                <b>Decorators</b>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Source Decorators</label>
+                <div>
+                    <ejs-dropdownlist #sourceDecorator id="sourceDecorator" [dataSource]="decoratorShape" value="None" (change)="sourceDecoratorShapeChange($event)"></ejs-dropdownlist>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Target Decorators</label>
+                <div>
+                    <ejs-dropdownlist #targetDecorator id="targetDecorator" [dataSource]="decoratorShape" value="Arrow" (change)="targetDecoratorShapeChange($event)"></ejs-dropdownlist>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Segment Decorators</label>
+                <div>
+                    <ejs-dropdownlist #segmentDecorator id="segmentDecorator" [dataSource]="decoratorShape" value="Circle" (change)="segmentDecoratorShapeChange($event)"></ejs-dropdownlist>
+                </div>
+            </div>
+        </div>
+        <div class="row property-panel-content" id="decorators" style="padding-top: 10px">
+            <div class="row row-header" style="padding-top: 8px">
+                <b>Decorators Size</b>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Source Decorators Size</label>
+                <div>
+                    <ejs-numerictextbox #fontSize id="sourceDecoratorSize" value="12" step="1" min="10" max="20" format='##.##' (change)='sourceDecoratorSizeChange($event)'>
+                    </ejs-numerictextbox>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Target Decorators Size</label>
+                <div>
+                    <ejs-numerictextbox #fontSize id="targetDecoratorSize" value="12" step="1" min="10" max="20" format='##.##' (change)='targetDecoratorSizeChange($event)'>
+                    </ejs-numerictextbox>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Segment Decorators Size</label>
+                <div>
+                    <ejs-numerictextbox #segmentDecoratorSize id="segmentDecoratorSize" [enabled]="false" value="12" step="1" min="10" max="20" format='##.##' (change)='segmentDecoratorSizeChange($event)'>
+                    </ejs-numerictextbox>
+                </div>
+            </div>
+        </div>
+        <div class="row property-panel-content" id="color-tab" style="padding-top: 10px">
+            <div class="row row-header">
+                <b>Appearance</b>
+            </div>
+            <div class="row" style="padding-top: 8px;  display: flex;">
+                <label>Line Color</label>
+                <input ejs-colorpicker #color id="color" value='#6f409f' type='color' (change)='colorChange($event)' />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to add connectors to connect the shapes and how to customize the appearance of the connectors. You can use the
+        <code>style</code> property of the connector to customize its stroke style. You can use the
+        <code>cornerRadius</code> property to add connectors with rounded corners.
+    </p>
+
+    <p>
+        To change the appearance, click on different styles in the property panel to modify the connector type, decorator shapes, and decorator sizes.
+        The <code>type</code> property of the connector defines its segment type. The <code>shape</code> property specifies the shapes for the source, target, and segment decorators. You can adjust the size of the source and target decorators by setting their
+        <code>width</code>and <code>height</code>. Additionally, the<code>segmentThumbSize</code>property allows you to modify the size of the segment decorator when the connector is selected.
+    </p>
+
+    <p>
+        In this example, the shapes are automatically arranged using hierarchical tree layout.
+    </p>
+
+    <p style="font-weight: 500">Injecting Module</p>
+
+    <p>
+        Diagram component's features are segregated into individual feature-wise modules. To automatically arrange the shapes, we need to Inject
+        <code>HierarchicalTree</code> module into
+        <code>&#64;NgModule.providers</code> section.
+    </p>
+    <br>
+</div>

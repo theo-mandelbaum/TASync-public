@@ -1,0 +1,64 @@
+<div class="col-lg-9 control-section">
+    <div class="content-wrapper">
+        <div id="TreeGrid">
+        </div>
+    </div>
+</div>
+<style>
+    @media (min-width: 990px) and (max-width: 1300px) {
+        .property-panel-section{
+            padding-left: 0px;
+        }
+    }
+</style>
+<div class="col-lg-3 property-section">
+    <table id="property" title="Properties" style="width: 100%; table-layout: auto">
+        <tr style="height: 50px">
+            <td>
+                <div style="padding-top: 10px">Column</div>
+            </td>
+            <td style="width: 70%;padding-right: 10px; padding-left:2%">
+                <div>
+                   <input type="text" tabindex="1" id='cellalignment-columns' />
+                </div>
+            </td>
+        </tr>
+        <tr style="height: 50px">
+            <td>
+                <div>Cell Alignment</div>
+            </td>
+            <td style="width: 70%;padding: 10px 10px 10px 2%">
+                <div>
+                    <input type="text" tabindex="1" id='alignment' />
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- custom code start -->
+<div id="action-description">
+    <p>This sample demonstrates the text alignment functionalities of the Tree Grid columns.</p>
+</div>
+
+<div id="description">
+    <p>
+            Align both content and header text of particular column using the <code>textAlign
+            </code> property of columns. There are four possible ways to align content and header text of column, they are.
+        <br>
+    </p>
+    <ul>
+            <li><code>Right</code></li>
+            <li><code>Left</code></li>
+            <li><code>Center</code></li>
+            <li><code>Justify</code></li>
+    </ul>
+    
+    <br/>
+
+    <p>
+            In this sample, we have initially set the <code>textAlign</code> property as “Right” for Duration, Start Date and End Date columns
+            and also we have an option to align the values of content and header text dynamically by select the column and text align value from property panel.        
+    </p>
+</div>
+<!-- custom code end -->
+

@@ -1,0 +1,64 @@
+<div class="control-section" id="sidebarmenu">
+    <!-- header-section  declaration -->
+    <div>
+        <ejs-toolbar id="menuToolbar" (clicked)="toolbarCliked($event)">
+            <e-items>
+                <e-item prefixIcon="icon-menu" tooltipText="Menu"></e-item>
+                <e-item>
+                    <ng-template #template>
+                        <div class="e-folder">
+                            <div class="e-folder-name">Navigation Pane</div>
+                        </div>
+                    </ng-template>
+                </e-item>
+            </e-items>
+        </ejs-toolbar>
+    </div>
+    <!-- main content declaration -->
+    <div class="main-menu-content" id="maintext">
+        <div class="menu-content">
+            <div class="sidebar-heading"> Responsive Sidebar with Menu</div>
+            <p class="paragraph-content">
+                The Blazor Sidebar is an expandable and collapsible component that typically acts as a side
+                container to place primary or secondary content alongside the main content. It provides flexible
+                options that can be shown and hidden based on user interactions. Any type of HTML content or
+                component can be placed in the Blazor Sidebar for quick access and easy navigation, like quick
+                references, menus, lists, and tree views.
+            </p>
+            <div class="sidebar-heading"> HTML side content position</div>
+            <p class="paragraph-content">
+                The Blazor Sidebar component positions its content to the left or right side of the main content
+                area. This option allows the placement of two sidebars on a page, one on the left and one on the
+                right, to show primary and secondary content simultaneously.
+            </p>
+            <div class="sidebar-heading"> Responsive sidebar</div>
+            <p class="paragraph-content">
+                Auto closing the Blazor Sidebar component’s content, makes the main content area more readable.
+            </p>
+        </div>
+    </div>
+    <!-- end of main content declaration sidebar element declaration -->
+    <ejs-sidebar id="menuSidebar" class="sidebar-menu" #sidebarMenuInstance [enableDock]='enableDock'
+        [dockSize]="dockSize" [width]="width" [target]="target" [isOpen]="true" type="Auto">
+        <div class="main-menu">
+            <div>
+                <ejs-menu id="dockMenu" [items]="menuItems" orientation='Vertical' cssClass='dock-menu'></ejs-menu>
+            </div>
+        </div>
+    </ejs-sidebar>
+    <div id="action-description">
+        <p>
+            The <code>Sidebar</code> Menu sample demonstrates customizing the Sidebar with Menu. Click on the hamburger
+            menu icon to expand/collapse the sidebar. Hover the Menu item to see the corresponding child menu items.
+        </p>
+    </div>
+    <div id="description">
+        <p>
+            The <code>Sidebar</code> can allow to render custom components like TreeView, ListView, Menu, etc.
+        </p>
+        <p>
+            In this sample, the Menu component is placed inside the Sidebar. Hover the Menu item to see the
+            corresponding child menu items.
+        </p>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+{
+    "name": "Image-Editor",
+    "description": "Image Editor Component",
+    "keywords": {
+        "common": [
+            "ej2", "Syncfusion", "image editor", "imageeditor", "photo editor", "photo viewer", "javascript image editor", "typescript image editor", "syncfusion image editor", "image manipulation tool", "canvas image editor", "web image editor", "image editing software"
+        ],
+        "angular": [
+            "angular", "ng", "ng image editor", "angular image editor", "angular photo editor"
+        ],
+        "react": [
+            "react", "reactjs", "react image editor", "react photo editor", "react photo viewer"
+        ],
+        "vue": [
+            "vue", "vuejs", "vue es5", "vue image editor", "vue photo editor", "vue photo viewer"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syncfusion/ej2-angular-ui-components"
+    },
+    "components": [
+        {
+            "baseClass": "ImageEditor",
+            "directoryName": "image-editor",
+            "type": "simple",
+            "contentSelect": "div",
+            "twoWays": [],
+            "defaultTag": "<div id='ej2ImageEditor'></div>",
+            "blazorType": "native",
+            "blazorPlaceholder": "imageeditor",
+            "comment": [
+                "/**",
+                " * Represents the EJ2 Angular ImageEditor Component.",
+                " * ```html",
+                " * <ejs-imageeditor></ejs-imageeditor>",
+                " * ```",
+                " */"
+            ],
+            "reactComment": [
+                "/**",
+                " * Represents the React ImageEditor Component",
+                " * ```html",
+                " * <ImageEditorComponent></ImageEditorComponent>",
+                " * ```",
+                " */"
+            ],
+            "vueComment": [
+                "/**",
+                " * Represents the VueJS ImageEditor Component.",
+                " * ```html",
+                " * <ejs-imageeditor></ejs-imageeditor>",
+                " * ```",
+                " */"
+            ],
+            "templateProperties": [
+                "toolbarTemplate"
+            ],
+            "complexDirective": [
+                {
+                    "baseClass": "FinetuneSettings",
+                    "propertyName": "finetuneSettings"
+                },
+                {
+                    "baseClass": "ZoomSettings",
+                    "propertyName": "zoomSettings"
+                },
+                {
+                    "baseClass": "SelectionSettings",
+                    "propertyName": "selectionSettings"
+                },
+                {
+                    "propertyName": "fontFamily",
+                    "baseClass": "FontFamily"
+                },
+                {
+                    "propertyName": "uploadSettings",
+                    "baseClass": "UploadSettings"
+                }
+            ]
+        }
+    ]
+}

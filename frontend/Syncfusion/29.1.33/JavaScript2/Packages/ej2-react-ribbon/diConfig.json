@@ -1,0 +1,731 @@
+{
+    "name": "Ribbon",
+    "description": "Ribbon Component",
+    "eventInterfaces": [ 
+        "ExpandCollapseEventArgs", "LauncherClickEventArgs", "TabSelectedEventArgs", "TabSelectingEventArgs",
+        "FileMenuBeforeOpenCloseEventArgs", "FileMenuEventArgs", "FileMenuOpenCloseEventArgs", "BeforeClickGroupButtonEventArgs",
+        "ClickGroupButtonEventArgs", "BackstageItemClickArgs"
+    ],
+    "keywords": {
+        "common": [ "ej2", "syncfusion", "ribbon", "ej2-ribbon", "ej2 ribbon" ],
+        "angular": ["angular", "ng", "ej2-ng-ribbon", "ng-ribbon"],
+        "react": ["react", "reactjs", "ej2-react-ribbon", "react-ribbon"],
+        "vue": ["vue", "vuejs", "ej2-vue-ribbon", "vue-ribbon"]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syncfusion/ej2-ribbon"
+    },
+    "components": [{
+            "baseClass": "Ribbon",
+            "directoryName": "ribbon",
+            "type": "container",
+            "contentSelect": "div",
+            "defaultTag": "<div id='ribbon'></div>",
+            "twoWays": [],
+            "templateProperties": [
+                "helpPaneTemplate"
+            ],
+            "comment": [
+                "/**",
+                " * Represents the Essential JS 2 Angular Ribbon Component.",
+                " * ```html",
+                " * <ejs-ribbon></ejs-ribbon>",
+                " * ```",
+                " */"
+            ],
+            "reactComment": [
+                "/**",
+                " * Represents the React Ribbon Component",
+                " * ```tsx",
+                " * <RibbonComponent></RibbonComponent>",
+                " * ```",
+                " */"
+            ],
+            "vueComment": [
+                "/**",
+                " * Represents the Essential JS 2 VueJS Ribbon Component",
+                " * ```vue",
+                " * <ejs-ribbon></ejs-ribbon>",
+                " * ```",
+                " */"
+            ],
+            "dynamicModules": [
+                "RibbonButton",
+                "RibbonDropDown",
+                "RibbonSplitButton",
+                "RibbonCheckBox",
+                "RibbonColorPicker",
+                "RibbonComboBox",
+                "RibbonGroupButton",
+                "RibbonFileMenu",
+                "RibbonBackstage",
+                "RibbonKeyTip",
+                "RibbonContextualTab",
+                "RibbonGallery"
+            ],
+            "diModuleFiles": [
+                { "fileName": "ribbon-button" },
+                { "fileName": "ribbon-checkbox" },
+                { "fileName": "ribbon-colorpicker" },
+                { "fileName": "ribbon-combobox" },
+                { "fileName": "ribbon-dropdown" },
+                { "fileName": "ribbon-splitbutton" },
+                { "fileName": "ribbon-groupbutton" },
+                { "fileName": "ribbon-filemenu" },
+                { "fileName": "ribbon-backstage" },
+                { "fileName": "ribbon-keytip" },
+                { "fileName": "ribbon-contextualtab" },
+                { "fileName": "ribbon-gallery" }
+            ],
+            "complexDirective": [
+                {
+                    "propertyName": "backStageMenu",
+                    "baseClass": "BackStageMenu",
+                    "aspClassName":"BackStageMenu",
+                    "SelectorName": "e-ribbon-backstagemenusettings",
+                    "aspSelectorName": "e-ribbon-backstagemenusettings",
+                    "templateProperties": [
+                        "template",
+                        "content"
+                    ]
+                },{
+                    "propertyName": "fileMenu",
+                    "baseClass": "FileMenuSettings",
+                    "aspClassName":"FileMenuSettings",
+                    "SelectorName": "e-ribbon-filemenusettings",
+                    "aspSelectorName": "e-ribbon-filemenusettings",
+                    "templateProperties": [
+                        "itemTemplate",
+                        "popupTemplate"
+                    ]
+                },{
+                    "propertyName": "ribbonTooltipSettings",
+                    "baseClass": "RibbonTooltip",  
+                    "aspClassName":"RibbonTooltipSettings",
+                    "SelectorName": "e-ribbon-tooltipsettings",
+                    "aspSelectorName": "e-ribbon-tooltipsettings"
+                },
+                {
+                    "propertyName": "items",
+                    "baseClass": "RibbonGroupButtonItem",  
+                    "aspClassName":"RibbonGroupButtonItem",
+                    "SelectorName": "e-ribbon-groupbutton-item",
+                    "aspSelectorName": "e-ribbon-groupbutton-item"
+                },
+                {
+                    "propertyName": "items",
+                    "baseClass": "BackstageItem",  
+                    "aspClassName":"BackstageItem",
+                    "SelectorName": "e-ribbon-backstage-item",
+                    "aspSelectorName": "e-ribbon-backstage-item"
+                },
+                {
+                    "propertyName": "backButton",
+                    "baseClass": "BackstageBackButton",  
+                    "aspClassName":"BackstageBackButton",
+                    "SelectorName": "e-ribbon-backstage-back-button",
+                    "aspSelectorName": "e-ribbon-backstage-back-button"
+                }
+            ],
+            "tagDirective": [{
+                    "arrayDirectiveClassName": "RibbonTabs",
+                    "directiveClassName": "RibbonTab",
+                    "directiveSelector": "e-ribbon-tab",
+                    "arrayDirectiveSelector": "e-ribbon-tabs",
+                    "aspArrayClassName":"RibbonTab",
+                    "aspCollectionClassName":"RibbonTabs",
+                    "aspDirectiveSelector": "e-ribbon-tab",
+                    "aspArrayDirectiveSelector":"e-ribbon-tabs",
+                    "propertyName": "tabs",
+                    "removeParent": true,
+                    "directoryName": "ribbon",
+                    "baseClass": "RibbonTab",
+                    "isPartialClass": true,
+                    "comment": [
+                        "/**",
+                        " * `e-ribbon-tab` directive represent a tab of the Angular Ribbon. ",
+                        " * It must be contained in a Ribbon component(`ejs-ribbon`). ",
+                        " * ```html",
+                        " * <ejs-ribbon>",
+                        " *   <e-ribbon-tabs>",
+                        " *    <e-ribbon-tab></e-ribbon-tab>",
+                        " *    <e-ribbon-tab></e-ribbon-tab>",
+                        " *   </e-ribbon-tabs>",
+                        " * </ejs-ribbon>",
+                        " * ```",
+                        " */"
+                    ],
+                    "reactComment": [
+                        "/**",
+                        " * `RibbonTabDirective` represent a tab of the React Ribbon. ",
+                        " * It must be contained in a Ribbon component(`RibbonComponent`). ",
+                        " * ```tsx",
+                        " * <RibbonComponent>",
+                        " *   <RibbonTabsDirective>",
+                        " *     <RibbonTabDirective></RibbonTabDirective>",
+                        " *     <RibbonTabDirective></RibbonTabDirective>",
+                        " *   <RibbonTabsDirective>",
+                        " * </RibbonComponent>",
+                        " * ```",
+                        " */"
+                    ],
+                    "vueComment": [
+                        "/**",
+                        " * `e-ribbon-tab` directive represent a column of the VueJS Ribbon. ",
+                        " * It must be contained in a Ribbon component(`ejs-ribbon`). ",
+                        " * ```vue",
+                        " * <ejs-ribbon>",
+                        " *   <e-ribbon-tabs>",
+                        " *    <e-ribbon-tab></e-ribbon-tab>",
+                        " *    <e-ribbon-tab></e-ribbon-tab>",
+                        " *   </e-ribbon-tabs>",
+                        " * </ejs-ribbon>",
+                        " * ```",
+                        " */"
+                    ],
+                    "tagDirective": [{
+                        "arrayDirectiveClassName": "RibbonGroups",
+                        "directiveClassName": "RibbonGroup",
+                        "directiveSelector": "e-ribbon-group",
+                        "arrayDirectiveSelector": "e-ribbon-groups",
+                        "aspArrayClassName":"RibbonGroup",
+                        "aspCollectionClassName":"RibbonGroups",
+                        "aspDirectiveSelector": "e-ribbon-group",
+                        "aspArrayDirectiveSelector":"e-ribbon-groups",
+                        "propertyName": "groups",
+                        "directoryName": "ribbon",
+                        "baseClass": "RibbonGroup",
+                        "isPartialClass": true,
+                        "comment": [
+                            "/**",
+                            " * `e-ribbon-group` directive represent a group in the Angular Ribbon. ",
+                            " * ```html",
+                            " * <ejs-ribbon>",
+                            " *   <e-ribbon-tabs>",
+                            " *    <e-ribbon-tab></e-ribbon-tab>",
+                            " *    <e-ribbon-tab>",
+                            " *       <e-ribbon-groups>",
+                            " *         <e-ribbon-group></e-ribbon-group>",
+                            " *         <e-ribbon-group></e-ribbon-group>",
+                            " *       </e-ribbon-groups>",
+                            " *    </e-ribbon-tab>",
+                            " *   </e-ribbon-tabs>",
+                            " * </ejs-ribbon>",
+                            " * ```",
+                            " */"
+                        ],
+                        "reactComment": [
+                            "/**",
+                            " * `RibbonGroupDirective` represent a group in the React Ribbon. ",
+                            " * ```tsx",
+                            " * <RibbonComponent>",
+                            " *   <RibbonTabsDirective>",
+                            " *     <RibbonTabDirective></RibbonTabDirective>",
+                            " *     <RibbonTabDirective>",
+                            " *       <RibbonGroupsDirective>",
+                            " *         <RibbonGroupDirective></RibbonGroupDirective>",
+                            " *         <RibbonGroupDirective></RibbonGroupDirective>",
+                            " *       </RibbonGroupsDirective>",
+                            " *     </RibbonTabDirective>",
+                            " *   <RibbonTabsDirective>",
+                            " * </RibbonComponent>",
+                            " * ```",
+                            " */"
+                        ],
+                        "vueComment": [
+                            "/**",
+                            " * `e-ribbon-group` directive represent a group in the VueJS Ribbon. ",
+                            " * ```vue",
+                            " * <ejs-ribbon>",
+                            " *   <e-ribbon-tabs>",
+                            " *    <e-ribbon-tab></e-ribbon-tab>",
+                            " *    <e-ribbon-tab>",
+                            " *       <e-ribbon-groups>",
+                            " *         <e-ribbon-group></e-ribbon-group>",
+                            " *         <e-ribbon-group></e-ribbon-group>",
+                            " *       </e-ribbon-groups>",
+                            " *    </e-ribbon-tab>",
+                            " *   </e-ribbon-tabs>",
+                            " * </ejs-ribbon>",
+                            " * ```",
+                            " */"
+                        ],
+                        "tagDirective": [{
+                            "arrayDirectiveClassName": "RibbonCollections",
+                            "directiveClassName": "RibbonCollection",
+                            "directiveSelector": "e-ribbon-collection",
+                            "arrayDirectiveSelector": "e-ribbon-collections",
+                            "aspArrayClassName":"RibbonCollection",
+                            "aspCollectionClassName":"RibbonCollections",
+                            "aspDirectiveSelector": "e-ribbon-collection",
+                            "aspArrayDirectiveSelector":"e-ribbon-collections",
+                            "propertyName": "collections",
+                            "directoryName": "ribbon",
+                            "baseClass": "RibbonCollection",
+                            "isPartialClass": true,
+                            "comment": [
+                                "/**",
+                                " * `e-ribbon-collection` directive represent a collection in the Angular Ribbon. ",
+                                " * ```html",
+                                " * <ejs-ribbon>",
+                                " *   <e-ribbon-tabs>",
+                                " *    <e-ribbon-tab></e-ribbon-tab>",
+                                " *    <e-ribbon-tab>",
+                                " *       <e-ribbon-groups>",
+                                " *         <e-ribbon-group>",
+                                " *             <e-ribbon-collections>",
+                                " *                 <e-ribbon-collection></e-ribbon-collection>",
+                                " *                 <e-ribbon-collection></e-ribbon-collection>",
+                                " *             </e-ribbon-collections>",
+                                " *         </e-ribbon-group>",
+                                " *       </e-ribbon-groups>",
+                                " *    </e-ribbon-tab>",
+                                " *   </e-ribbon-tabs>",
+                                " * </ejs-ribbon>",
+                                " * ```",
+                                " */"
+                            ],
+                            "reactComment": [
+                                "/**",
+                                " * `RibbonCollectionDirective` represent a collection in the React Ribbon. ",
+                                " * ```tsx",
+                                " * <RibbonComponent>",
+                                " *   <RibbonTabsDirective>",
+                                " *     <RibbonTabDirective></RibbonTabDirective>",
+                                " *     <RibbonTabDirective>",
+                                " *       <RibbonGroupsDirective>",
+                                " *         <RibbonGroupDirective>",
+                                " *             <RibbonCollectionsDirective>",
+                                " *                 <RibbonCollectionDirective></RibbonCollectionDirective>",
+                                " *                 <RibbonCollectionDirective></RibbonCollectionDirective>",
+                                " *             </RibbonCollectionsDirective>",
+                                " *         </RibbonGroupDirective>",
+                                " *       </RibbonGroupsDirective>",
+                                " *     </RibbonTabDirective>",
+                                " *   <RibbonTabsDirective>",
+                                " * </RibbonComponent>",
+                                " * ```",
+                                " */"
+                            ],
+                            "vueComment": [
+                                "/**",
+                                " * `e-ribbon-collection` directive represent a collection in the VueJS Ribbon. ",
+                                " * ```vue",
+                                " * <ejs-ribbon>",
+                                " *   <e-ribbon-tabs>",
+                                " *    <e-ribbon-tab></e-ribbon-tab>",
+                                " *    <e-ribbon-tab>",
+                                " *       <e-ribbon-groups>",
+                                " *         <e-ribbon-group>",
+                                " *             <e-ribbon-collections>",
+                                " *                 <e-ribbon-collection></e-ribbon-collection>",
+                                " *                 <e-ribbon-collection></e-ribbon-collection>",
+                                " *             </e-ribbon-collections>",
+                                " *         </e-ribbon-group>",
+                                " *       </e-ribbon-groups>",
+                                " *    </e-ribbon-tab>",
+                                " *   </e-ribbon-tabs>",
+                                " * </ejs-ribbon>",
+                                " * ```",
+                                " */"
+                            ],
+                            "tagDirective": [{
+                                "arrayDirectiveClassName": "RibbonItems",
+                                "directiveClassName": "RibbonItem",
+                                "directiveSelector": "e-ribbon-item",
+                                "arrayDirectiveSelector": "e-ribbon-items",
+                                "aspArrayClassName":"RibbonItem",
+                                "aspCollectionClassName":"RibbonItems",
+                                "aspDirectiveSelector": "e-ribbon-item",
+                                "aspArrayDirectiveSelector":"e-ribbon-items",
+                                "propertyName": "items",
+                                "directoryName": "ribbon",
+                                "baseClass": "RibbonItem",
+                                "templateProperties": [
+                                    "itemTemplate"
+                                ],
+                                "isPartialClass": true,
+                                "complexDirective": [
+                                    {
+                                        "propertyName": "buttonSettings",
+                                        "baseClass": "RibbonButtonSettings",
+                                        "aspClassName":"RibbonButtonSettings",
+                                        "SelectorName": "e-ribbon-buttonsettings",
+                                        "aspSelectorName": "e-ribbon-buttonsettings"
+                                    },
+                                    {
+                                        "propertyName": "checkBoxSettings",
+                                        "baseClass": "RibbonCheckBoxSettings",
+                                        "aspClassName":"RibbonCheckBoxSettings",
+                                        "SelectorName": "e-ribbon-checkboxsettings",
+                                        "aspSelectorName": "e-ribbon-checkboxsettings"
+                                    },
+                                    {
+                                        "propertyName": "comboBoxSettings",
+                                        "baseClass": "RibbonComboBoxSettings",
+                                        "aspClassName":"RibbonComboBoxSettings",
+                                        "SelectorName": "e-ribbon-comboboxsettings",
+                                        "aspSelectorName": "e-ribbon-comboboxsettings",
+                                        "templateProperties": [
+                                            "itemTemplate",
+                                            "noRecordsTemplate"
+                                        ]
+                                    },
+                                    {
+                                        "propertyName": "dropDownSettings",
+                                        "baseClass": "RibbonDropDownSettings",
+                                        "aspClassName":"RibbonDropDownSettings",
+                                        "SelectorName": "e-ribbon-dropdownsettings",
+                                        "aspSelectorName": "e-ribbon-dropdownsettings"
+                                    },
+                                    {
+                                        "propertyName": "splitButtonSettings",
+                                        "baseClass": "RibbonSplitButtonSettings",
+                                        "aspClassName":"RibbonSplitButtonSettings",
+                                        "SelectorName": "e-ribbon-splitbuttonsettings",
+                                        "aspSelectorName": "e-ribbon-splitbuttonsettings"
+                                    },
+                                    {
+                                        "propertyName": "colorPickerSettings",
+                                        "baseClass": "RibbonColorPickerSettings",
+                                        "aspClassName":"RibbonColorPickerSettings",
+                                        "SelectorName": "e-ribbon-colorpickersettings",
+                                        "aspSelectorName": "e-ribbon-colorpickersettings"
+                                    },
+                                    {
+                                        "propertyName": "groupButtonSettings",
+                                        "baseClass": "RibbonGroupButtonSettings",
+                                        "aspClassName":"RibbonGroupButtonSettings",
+                                        "SelectorName": "e-ribbon-groupbuttonsettings",
+                                        "aspSelectorName": "e-ribbon-groupbuttonsettings"                                                                                
+                                    },
+                                    {
+                                        "propertyName": "gallerySettings",
+                                        "baseClass": "RibbonGallerySettings",
+                                        "aspClassName":"RibbonGallerySettings",
+                                        "SelectorName": "e-ribbon-gallerysettings",
+                                        "aspSelectorName": "e-ribbon-gallerysettings",
+                                        "templateProperties": [
+                                            "template",
+                                            "popupTemplate"
+                                        ],
+                                        "tagDirective": [{
+                                            "arrayDirectiveClassName": "RibbonGalleryGroups",
+                                            "directiveClassName": "RibbonGalleryGroup",
+                                            "directiveSelector": "e-ribbon-gallery-group",
+                                            "arrayDirectiveSelector": "e-ribbon-gallery-groups",
+                                            "aspArrayClassName":"RibbonGalleryGroup",
+                                            "aspCollectionClassName":"RibbonGalleryGroups",
+                                            "aspDirectiveSelector": "e-ribbon-gallery-group",
+                                            "aspArrayDirectiveSelector":"e-ribbon-gallery-groups",
+                                            "propertyName": "groups",
+                                            "directoryName": "ribbon",
+                                            "baseClass": "RibbonGalleryGroup",
+                                            "isPartialClass": true,
+                                            "tagDirective": [{
+                                                "arrayDirectiveClassName": "RibbonGalleryItems",
+                                                "directiveClassName": "RibbonGalleryItem",
+                                                "directiveSelector": "e-ribbon-gallery-item",
+                                                "arrayDirectiveSelector": "e-ribbon-gallery-items",
+                                                "aspArrayClassName":"RibbonGalleryItem",
+                                                "aspCollectionClassName":"RibbonGalleryItems",
+                                                "aspDirectiveSelector": "e-ribbon-gallery-item",
+                                                "aspArrayDirectiveSelector":"e-ribbon-gallery-items",
+                                                "propertyName": "items",
+                                                "directoryName": "ribbon",
+                                                "baseClass": "RibbonGalleryItem",
+                                                "isPartialClass": true
+                                            }]
+                                        }]
+                                    }
+                                ],
+                                "comment": [
+                                    "/**",
+                                    " * `e-ribbon-item` directive represent a item in the Angular Ribbon.",
+                                    " * ```html",
+                                    " * <ejs-ribbon>",
+                                    " *   <e-ribbon-tabs>",
+                                    " *    <e-ribbon-tab></e-ribbon-tab>",
+                                    " *    <e-ribbon-tab>",
+                                    " *       <e-ribbon-groups>",
+                                    " *         <e-ribbon-group>",
+                                    " *             <e-ribbon-collections>",
+                                    " *                 <e-ribbon-collection>",
+                                    " *                     <e-ribbon-items>",
+                                    " *                         <e-ribbon-item></e-ribbon-item>",
+                                    " *                         <e-ribbon-item></e-ribbon-item>",
+                                    " *                     </e-ribbon-items>",
+                                    " *                 </e-ribbon-collection>",
+                                    " *             </e-ribbon-collections>",
+                                    " *         </e-ribbon-group>",
+                                    " *       </e-ribbon-groups>",
+                                    " *    </e-ribbon-tab>",
+                                    " *   </e-ribbon-tabs>",
+                                    " * </ejs-ribbon>",
+                                    " * ```",
+                                    " */"
+                                ],
+                                "reactComment": [
+                                    "/**",
+                                    " * `RibbonItemDirective` represent a item in the React Ribbon. ",
+                                    " * ```tsx",
+                                    " * <RibbonComponent>",
+                                    " *   <RibbonTabsDirective>",
+                                    " *     <RibbonTabDirective></RibbonTabDirective>",
+                                    " *     <RibbonTabDirective>",
+                                    " *       <RibbonGroupsDirective>",
+                                    " *         <RibbonGroupDirective>",
+                                    " *             <RibbonCollectionsDirective>",
+                                    " *                 <RibbonCollectionDirective>",
+                                    " *                     <RibbonItemsDirective>",
+                                    " *                         <RibbonItemDirective></RibbonItemDirective>",
+                                    " *                         <RibbonItemDirective></RibbonItemDirective>",
+                                    " *                     </RibbonItemsDirective>",
+                                    " *                 </RibbonCollectionDirective>",
+                                    " *             </RibbonCollectionsDirective>",
+                                    " *         </RibbonGroupDirective>",
+                                    " *       </RibbonGroupsDirective>",
+                                    " *     </RibbonTabDirective>",
+                                    " *   <RibbonTabsDirective>",
+                                    " * </RibbonComponent>",
+                                    " * ```",
+                                    " */"
+                                ],
+                                "vueComment": [
+                                    "/**",
+                                    " * `e-ribbon-item` directive represent a item in the VueJS Ribbon. ",
+                                    " * ```vue",
+                                    " * <ejs-ribbon>",
+                                    " *   <e-ribbon-tabs>",
+                                    " *    <e-ribbon-tab></e-ribbon-tab>",
+                                    " *    <e-ribbon-tab>",
+                                    " *       <e-ribbon-groups>",
+                                    " *         <e-ribbon-group>",
+                                    " *             <e-ribbon-collections>",
+                                    " *                 <e-ribbon-collection>",
+                                    " *                     <e-ribbon-items>",
+                                    " *                         <e-ribbon-item></e-ribbon-item>",
+                                    " *                         <e-ribbon-item></e-ribbon-item>",
+                                    " *                     </e-ribbon-items>",
+                                    " *                 </e-ribbon-collection>",
+                                    " *             </e-ribbon-collections>",
+                                    " *         </e-ribbon-group>",
+                                    " *       </e-ribbon-groups>",
+                                    " *    </e-ribbon-tab>",
+                                    " *   </e-ribbon-tabs>",
+                                    " * </ejs-ribbon>",
+                                    " * ```",
+                                    " */"
+                                ]
+                            }]
+                        }]
+                    }]
+            },{
+                "arrayDirectiveClassName": "RibbonContextualTabs",
+                "directiveClassName": "RibbonContextualTab",
+                "directiveSelector": "e-ribbon-contextual-tab",
+                "arrayDirectiveSelector": "e-ribbon-contextual-tabs",
+                "aspArrayClassName":"RibbonContextualTab",
+                "aspCollectionClassName":"RibbonContextualTabs",
+                "aspDirectiveSelector": "e-ribbon-contextual-tab",
+                "aspArrayDirectiveSelector":"e-ribbon-contextual-tabs",
+                "propertyName": "contextualTabs",
+                "ignoreTagDirective": true,
+                "directoryName": "ribbon",
+                "baseClass": "RibbonContextualTabSettings",
+                "comment": [
+                    "/**",
+                    " * `e-ribbon-contextual-tab` directive represent a contextual tab of the Angular Ribbon. ",
+                    " * It must be contained in a Ribbon component(`ejs-ribbon`). ",
+                    " * ```html",
+                    " * <ejs-ribbon>",
+                    " *   <e-ribbon-contextual-tabs>",
+                    " *    <e-ribbon-contextual-tab>",
+                    " *    </e-ribbon-contextual-tab>",
+                    " *   </e-ribbon-contextual-tabs>",
+                    " * </ejs-ribbon>",
+                    " * ```",
+                    " */"
+                ],
+                "reactComment": [
+                    "/**",
+                    " * `RibbonContextualTabDirective` represent a contextual tab of the React Ribbon. ",
+                    " * It must be contained in a Ribbon component(`RibbonComponent`). ",
+                    " * ```tsx",
+                    " * <RibbonComponent>",
+                    " *   <RibbonContextualTabsDirective>",
+                    " *     <RibbonContextualTabDirective></RibbonContextualTabDirective>",
+                    " *     <RibbonContextualTabDirective></RibbonContextualTabDirective>",
+                    " *   <RibbonContextualTabsDirective>",
+                    " * </RibbonComponent>",
+                    " * ```",
+                    " */"
+                ],
+                "vueComment": [
+                    "/**",
+                    " * `e-ribbon-contextual-tab` directive represent a contextual tab of the VueJS Ribbon. ",
+                    " * It must be contained in a Ribbon component(`ejs-ribbon`). ",
+                    " * ```vue",
+                    " * <ejs-ribbon>",
+                    " *   <e-ribbon-contextual-tabs>",
+                    " *    <e-ribbon-contextual-tab></e-ribbon-contextual-tab>",
+                    " *    <e-ribbon-contextual-tab></e-ribbon-contextual-tab>",
+                    " *   </e-ribbon-contextual-tabs>",
+                    " * </ejs-ribbon>",
+                    " * ```",
+                    " */"
+                ],
+                "tagDirective": [{
+                    "arrayDirectiveClassName": "RibbonTabs",
+                    "directiveClassName": "RibbonTab",
+                    "directiveSelector": "e-ribbon-tab",
+                    "arrayDirectiveSelector": "e-ribbon-tabs",
+                    "aspArrayClassName":"RibbonTab",
+                    "aspCollectionClassName":"RibbonTabs",
+                    "aspDirectiveSelector": "e-ribbon-tab",
+                    "aspArrayDirectiveSelector":"e-ribbon-tabs",
+                    "propertyName": "tabs",
+                    "directoryName": "ribbon",
+                    "baseClass": "RibbonTab",
+                    "tagDirective": [{
+                        "arrayDirectiveClassName": "RibbonGroups",
+                        "directiveClassName": "RibbonGroup",
+                        "directiveSelector": "e-ribbon-group",
+                        "arrayDirectiveSelector": "e-ribbon-groups",
+                        "aspArrayClassName":"RibbonGroup",
+                        "aspCollectionClassName":"RibbonGroups",
+                        "aspDirectiveSelector": "e-ribbon-group",
+                        "aspArrayDirectiveSelector":"e-ribbon-groups",
+                        "propertyName": "groups",
+                        "directoryName": "ribbon",
+                        "baseClass": "RibbonGroup",
+                        "tagDirective": [{
+                            "arrayDirectiveClassName": "RibbonCollections",
+                            "directiveClassName": "RibbonCollection",
+                            "directiveSelector": "e-ribbon-collection",
+                            "arrayDirectiveSelector": "e-ribbon-collections",
+                            "aspArrayClassName":"RibbonCollection",
+                            "aspCollectionClassName":"RibbonCollections",
+                            "aspDirectiveSelector": "e-ribbon-collection",
+                            "aspArrayDirectiveSelector":"e-ribbon-collections",
+                            "propertyName": "collections",
+                            "directoryName": "ribbon",
+                            "baseClass": "RibbonCollection",
+                            "tagDirective": [{
+                                "arrayDirectiveClassName": "RibbonItems",
+                                "directiveClassName": "RibbonItem",
+                                "directiveSelector": "e-ribbon-item",
+                                "arrayDirectiveSelector": "e-ribbon-items",
+                                "aspArrayClassName":"RibbonItem",
+                                "aspCollectionClassName":"RibbonItems",
+                                "aspDirectiveSelector": "e-ribbon-item",
+                                "aspArrayDirectiveSelector":"e-ribbon-items",
+                                "propertyName": "items",
+                                "directoryName": "ribbon",
+                                "baseClass": "RibbonItem",
+                                "templateProperties": [
+                                    "itemTemplate"
+                                ],
+                                "isPartialClass": true,
+                                "complexDirective": [
+                                    {
+                                        "propertyName": "buttonSettings",
+                                        "baseClass": "RibbonButtonSettings",
+                                        "aspClassName":"RibbonButtonSettings",
+                                        "SelectorName": "e-ribbon-buttonsettings",
+                                        "aspSelectorName": "e-ribbon-buttonsettings"
+                                    },
+                                    {
+                                        "propertyName": "checkBoxSettings",
+                                        "baseClass": "RibbonCheckBoxSettings",
+                                        "aspClassName":"RibbonCheckBoxSettings",
+                                        "SelectorName": "e-ribbon-checkboxsettings",
+                                        "aspSelectorName": "e-ribbon-checkboxsettings"
+                                    },
+                                    {
+                                        "propertyName": "comboBoxSettings",
+                                        "baseClass": "RibbonComboBoxSettings",
+                                        "aspClassName":"RibbonComboBoxSettings",
+                                        "SelectorName": "e-ribbon-comboboxsettings",
+                                        "aspSelectorName": "e-ribbon-comboboxsettings",
+                                        "templateProperties": [
+                                            "itemTemplate",
+                                            "noRecordsTemplate"
+                                        ]
+                                    },
+                                    {
+                                        "propertyName": "dropDownSettings",
+                                        "baseClass": "RibbonDropDownSettings",
+                                        "aspClassName":"RibbonDropDownSettings",
+                                        "SelectorName": "e-ribbon-dropdownsettings",
+                                        "aspSelectorName": "e-ribbon-dropdownsettings"
+                                    },
+                                    {
+                                        "propertyName": "splitButtonSettings",
+                                        "baseClass": "RibbonSplitButtonSettings",
+                                        "aspClassName":"RibbonSplitButtonSettings",
+                                        "SelectorName": "e-ribbon-splitbuttonsettings",
+                                        "aspSelectorName": "e-ribbon-splitbuttonsettings"
+                                    },
+                                    {
+                                        "propertyName": "colorPickerSettings",
+                                        "baseClass": "RibbonColorPickerSettings",
+                                        "aspClassName":"RibbonColorPickerSettings",
+                                        "SelectorName": "e-ribbon-colorpickersettings",
+                                        "aspSelectorName": "e-ribbon-colorpickersettings"
+                                    },
+                                    {
+                                        "propertyName": "groupButtonSettings",
+                                        "baseClass": "RibbonGroupButtonSettings",
+                                        "aspClassName":"RibbonGroupButtonSettings",
+                                        "SelectorName": "e-ribbon-groupbuttonsettings",
+                                        "aspSelectorName": "e-ribbon-groupbuttonsettings"                                                                                
+                                    },
+                                    {
+                                        "propertyName": "gallerySettings",
+                                        "baseClass": "RibbonGallerySettings",
+                                        "aspClassName":"RibbonGallerySettings",
+                                        "SelectorName": "e-ribbon-gallerysettings",
+                                        "aspSelectorName": "e-ribbon-gallerysettings",
+                                        "templateProperties": [
+                                            "template",
+                                            "popupTemplate"
+                                        ],
+                                        "tagDirective": [{
+                                            "arrayDirectiveClassName": "RibbonGalleryGroups",
+                                            "directiveClassName": "RibbonGalleryGroup",
+                                            "directiveSelector": "e-ribbon-gallery-group",
+                                            "arrayDirectiveSelector": "e-ribbon-gallery-groups",
+                                            "aspArrayClassName":"RibbonGalleryGroup",
+                                            "aspCollectionClassName":"RibbonGalleryGroups",
+                                            "aspDirectiveSelector": "e-ribbon-gallery-group",
+                                            "aspArrayDirectiveSelector":"e-ribbon-gallery-groups",
+                                            "propertyName": "groups",
+                                            "directoryName": "ribbon",
+                                            "baseClass": "RibbonGalleryGroup",
+                                            "isPartialClass": true,
+                                            "tagDirective": [{
+                                                "arrayDirectiveClassName": "RibbonGalleryItems",
+                                                "directiveClassName": "RibbonGalleryItem",
+                                                "directiveSelector": "e-ribbon-gallery-item",
+                                                "arrayDirectiveSelector": "e-ribbon-gallery-items",
+                                                "aspArrayClassName":"RibbonGalleryItem",
+                                                "aspCollectionClassName":"RibbonGalleryItems",
+                                                "aspDirectiveSelector": "e-ribbon-gallery-item",
+                                                "aspArrayDirectiveSelector":"e-ribbon-gallery-items",
+                                                "propertyName": "items",
+                                                "directoryName": "ribbon",
+                                                "baseClass": "RibbonGalleryItem",
+                                                "isPartialClass": true
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }]
+                        }]
+                    }]
+                }]
+            }]
+    }]
+}

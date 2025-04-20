@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> MCCB MemoryLeak demo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Typescript UI Controls" />
+    <meta name="author" content="Syncfusion" />
+    <link id="font" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link id="theme" href="../demos/themes/tailwind3.css" rel="stylesheet" />
+    <script>
+        window.require = {
+            config: function (json) {
+                window.rsConfig = json;
+                window.rsConfig.baseUrl = '';
+            }
+        };
+    </script>
+    <script src="../demos/multicolumn-combobox/demo-config.js"></script>
+    <script src="./../../node_modules/requirejs/require.js" data-main="default"></script>
+    <script>
+        require.config(window.rsConfig);
+    </script>
+</head>
+
+<body>
+    <div id="container" style="width: 500px; margin: 0 auto;">
+        <button id="render">renderMCCB</button>
+        <button id="destroy">destroyMCCB</button>
+        <div> Default </div> <br/>
+        <input type="text" tabindex="1" id="list" />
+    </div>
+</body>
+</html>

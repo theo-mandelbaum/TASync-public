@@ -1,0 +1,70 @@
+<div class="col-lg-8 control-section">
+    <div class="content-wrapper">
+        <div id="Grid">
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 property-section">
+    <table id="property" title="Properties">
+        <tbody><tr>
+            <td>
+                <div>Frozen Rows </div>
+            </td>
+            <td>
+                <div id='frozeninput'>
+                    <input id="rows" type="text" aria-label="Frozen rows">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>Frozen Columns </div>
+            </td>
+            <td>
+                <div id='frozeninput'>
+                    <input id="columns" type="text" aria-label="Frozen columns">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div>
+                    <button id="buttonSet">Set</button>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+</div>
+<!-- custom code start -->
+<style>
+    #buttonSet {
+        float: right;
+    }
+    #frozeninput {
+        min-width: 148px;
+    }
+</style> 
+<!-- custom code end -->
+<div id="action-description">
+    <p>This sample demonstrates the frozen rows and columns feature of the Grid. Scroll the movable content vertically/horizontally to view the frozen rows/columns with the content.</p>
+</div>
+<div id="description">
+    <p>
+        The freezing feature enables the user to freeze certain rows/columns to scroll remaining movable content. This can be achieved by setting <b>frozenRows</b> and <b>frozenColumns</b> property.
+    </p>
+    <p>
+        In this demo sample, the first column and two rows are set to frozen by using the  <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/documentation/api/grid/#frozenrows">frozenRows</a></code>  and 
+        <code><a target="_blank" class="code" href="https://ej2.syncfusion.com/documentation/api/grid/#frozencolumns">frozenColumns
+        </a></code>  properties.
+    </p>
+    <p style="font-weight: 500">Injecting Module:</p>
+    <p>
+        Grid features are segregated into individual feature-wise modules. To use frozen rows and columns feature, we need to inject
+        <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/documentation/grid/frozen">
+        Freeze
+        </a></code> module using the <code>Grid.Inject(Freeze)</code> method.
+    </p>
+</div>

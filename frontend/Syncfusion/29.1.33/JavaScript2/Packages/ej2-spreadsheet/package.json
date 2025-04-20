@@ -1,0 +1,56 @@
+{
+  "name": "@syncfusion/ej2-spreadsheet",
+  "version": "29.1.33",
+  "description": "Feature-rich JavaScript Spreadsheet (Excel) control with built-in support for selection, editing, formatting, importing and exporting to Excel",
+  "author": "Syncfusion Inc.",
+  "license": "SEE LICENSE IN license",
+  "main": "./dist/ej2-spreadsheet.umd.min.js",
+  "module": "./index.js",
+  "es2015": "./dist/es6/ej2-spreadsheet.es5.js",
+  "dependencies": {
+    "@syncfusion/ej2-base": "*",
+    "@syncfusion/ej2-charts": "*",
+    "@syncfusion/ej2-dropdowns": "*",
+    "@syncfusion/ej2-grids": "*",
+    "@syncfusion/ej2-navigations": "*"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.28",
+    "@types/jasmine": "2.8.9",
+    "@types/jasmine-ajax": "^3.1.27",
+    "@types/requirejs": "^2.1.26"
+  },
+  "keywords": [
+    "ej2",
+    "syncfusion",
+    "spreadsheet",
+    "excel",
+    "workbook",
+    "worksheet",
+    "xlsx",
+    "xlsb",
+    "csv",
+    "grid",
+    "data",
+    "excel-like",
+    "excel-style",
+    "editor",
+    "excel-editor",
+    "excel-viewer",
+    "sheets",
+    "formulas",
+    "sorting",
+    "filtering",
+    "formatting",
+    "virtual-scrolling",
+    "edit-cell",
+    "editable-table",
+    "javascript",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syncfusion/ej2-javascript-ui-controls/tree/master/controls/spreadsheet"
+  },
+  "typings": "index.d.ts"
+}

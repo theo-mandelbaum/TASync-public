@@ -1,0 +1,64 @@
+<div class="control-section">
+    <div class="content-wrapper">
+        <div class="freezeprop">
+            <div class="freezecol">
+                <div class="freezecol">
+                    <span>
+                        Column Name
+                    </span>
+                </div>
+                <div class="freezecol"><input type="text" tabindex="0" id="column"></div>
+            </div>
+            <div class="freezecol">
+                <div class="freezecol">
+                    <span>
+                        Freeze Direction
+                    </span>
+                </div>
+                <div class="freezecol"><input type="text" tabindex="0" id="FreezeDirection"></div>
+            </div>
+        </div>
+        <div id="Grid">
+        </div>
+        <div id="alertDialog"></div>
+    </div>
+</div>
+
+<!-- custom code start -->
+<style>
+    .freezeprop {
+        padding-bottom: 5px;
+    }
+
+    .freezecol {
+        display: inline-block;
+        padding-right: 10px;
+    }
+</style>
+<!-- custom code end -->
+
+<div id="action-description">
+    <p>This sample demonstrates the frozen rows and columns feature of the Grid. Scroll the movable content
+        horizontally to view the frozen and fixed columns, vertically to view the frozen rows with the content.
+    </p>
+</div>
+<div id="description">
+    <p>
+        This feature enables users to freeze certain columns at specific positions. This can be achieved by
+        setting the<code><a target="_blank" class="code" href="https://helpej2.syncfusion.com/documentation/api/grid/column/#freeze">freeze</a></code> 
+        property of column settings. The various modes are:
+    </p>
+    <ul>
+        <li><code>Left</code> : Freezes the column at the left.</li>
+        <li><code>Right</code> : Freezes the column at the right.</li>
+        <li><code>Center</code> : Freezes the column at the center.</li>
+        <li><code>Fixed</code> : Freezes the column at a fixed position. This will ensure its visibility while scrolling horizontally.</li>
+    </ul>
+    <p> In this demo sample, the <b>Order ID</b> column is frozen at the left, the <b>Customer ID</b> column is
+        frozen at the right and the <b>Ship Address</b> column at a fixed position using <code>column->freeze</code> property.
+    </p>
+    <p>
+        More information on the frozen rows and columns can be found in this
+        <a target="_blank" href="https://helpej2.syncfusion.com/documentation/grid/frozen"> documentation section</a>.
+    </p>
+</div>

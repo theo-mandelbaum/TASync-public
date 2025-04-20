@@ -1,0 +1,93 @@
+<div>
+    <div class="col-lg-8 control-section">
+        <div id="container"></div>
+        <div style="float: right; margin-right: 10px;">Source:
+            <a href="http://www.yr.no/place/USA/Alaska/Hatcher_Pass/statistics.html" target="_blank" aria-label="Navigate to the documentation for yr">www.yr.no</a>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr style="height: 50px">
+                <td style="width: 50%">
+                    <div>Series Type:
+                    </div>
+                </td>
+                <td style="width: 50%;">
+                    <div>
+                        <select id="SelectSeriesType">
+                            <option>Polar</option>
+                            <option>Radar</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 50%">
+                    <div id="closed">Closed: </div>
+                </td>
+                <td style="width: 50%;">
+                    <div>
+                        <input type="checkbox" id="isClosed" checked aria-labelledby="Checkbox checked">
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 30%">
+                    <div id="startAngle">Start Angle:
+                        <p id="startAngleValue" style="font-weight: normal;">0</p>
+                    </div>
+                </td>
+                <td style="width: 70%;">
+                    <div data-role="rangeslider">
+                        <input type="range" name="range-min" id="startangle" value="0" min="0" max="360" style="width:90%" aria-labelledby="Slider">
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 50%">
+                    <div id="inversed">Inversed: </div>
+                </td>
+                <td style="width: 50%;">
+                    <div>
+                        <input type="checkbox" id="isinversed" aria-labelledby="Checkbox unchecked">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="action-description">
+    <p>This <a target="_blank" href="https://www.syncfusion.com/javascript-ui-controls/js-charts/chart-types/radar-chart" aria-label="Navigate to explore the Syncfusion TypeScript Polar Radar Line Chart">Polar Radar Line</a> Chart example visualizes data about Alaska Weather Statistics - 2016 with a default polar line series.</p>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure polar and radar charts with a line series. The type of series can be changed using the Series Type dropdown list in the properties panel. Also, the angle can be changed and the series can be inversed using <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/axis/#startangle" aria-label="Navigate to the Start Angle property reference for TypeScript Chart Axis">Start Angle</a> and <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/axis/#isinversed" aria-label="Navigate to the inversed property reference for TypeScript Chart Axis">inversed</a> properties.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p style="font-weight: 500"><b>Injecting Module</b></p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use Line drawtype in Polar series and Radar
+        series, we need to inject
+        <code>PolarSeries</code>,
+        <code>RadarSeries</code> and
+        <code>LineSeries</code> module using
+        <code>Chart.Inject(PolarSeries, RadarSeries, LineSeries)</code> method.
+    </p>
+    <p>
+        More information on the polar and radar series with a line type chart series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/documentation/chart/Chart-types/polar/#line" aria-label="Navigate to the documentation for Polar Line in TypeScript Chart control">documentation section</a>.
+    </p>
+</div>
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+    #isinversed:hover {
+        cursor: pointer !important;
+    }
+    #isClosed:hover {
+        cursor: pointer !important;
+    }
+</style>

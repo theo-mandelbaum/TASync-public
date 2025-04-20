@@ -1,0 +1,58 @@
+<div class="control-section">
+    <ejs-grid [dataSource]='data' locale='en-US' allowPaging='true' [allowSorting]='true' [allowFiltering]='true' [filterSettings]='filterSettings' [editSettings]='editSettings' [toolbar]='toolbar' height=365 [pageSettings]='initialPage'>
+        <e-columns>
+            <e-column field='OrderID' headerText='Order ID' width='120' textAlign='Right' isPrimaryKey='true' [validationRules]='orderidrules'></e-column>
+            <e-column field='CustomerName' headerText='Customer Name' width='150' [validationRules]='customeridrules'></e-column>
+            <e-column field='OrderDate' headerText='Order Date' width='130' format="yMd" textAlign='Right' editType='datepickeredit'></e-column>
+            <e-column field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' [validationRules]='freightrules'></e-column>
+            <e-column field='ShipCountry' headerText='Ship Country' width='170' editType='dropdownedit'></e-column>
+        </e-columns>
+    </ejs-grid>
+
+    <div id="action-description">
+        <p>
+            This sample demonstrates the Grid paging feature. In this sample, click the numeric items to navigate to particular page.
+            You can also change the page size using the dropdown.
+        </p>
+    </div>
+
+    <div id="description">
+        <p>Paging allows you to display the contents of the Grid in page segments. By default, paging is disabled. To enable
+            paging, set <code><a target="_blank" class="code"
+            href="https://ej2.syncfusion.com/angular/documentation/api/grid#allowpaging">
+            allowPaging
+            </a></code> property to true.
+            <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/angular/documentation/api/grid/pageSettings/#pagesizes">
+        pageSettings->pageSizes
+        </a></code> property enables a dropdown in pager which allows you to change the number of records in the
+                    Grid dynamically.
+        </p>
+        <p>
+            In this demo, the Grid is rendered with
+            <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/angular/documentation/api/grid/pageSettings/#pagesizes">
+        pageSettings->pageSizes
+        </a></code>set to true, and
+            <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/angular/documentation/api/grid/pageSettings/#pagecount">
+        pageSettings->pageCount
+        </a></code>set to 4.
+        </p>
+        <p>Changed default pager details information using the <code>totalItemsInfo</code> locale property.</p>
+        <br>
+        <p style="font-weight: 500">Injecting Module:</p>
+        <p>
+            Grid component features are segregated into individual feature-wise modules. To use paging feature, we need to inject
+            <code>PageService</code> into the <code>&#64;NgModule.providers</code> section.
+        </p>
+        <p>
+            The Pager component has been enhanced to be more responsive.
+            It now includes the ability to automatically resize itself and dynamically show or hide pager items based on the width of the Grid
+        </p>
+        <p>
+            More information on the paging feature configuration can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/grid/pageSettingsModel/">documentation section</a>.
+        </p>
+    </div>
+</div>

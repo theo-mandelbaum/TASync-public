@@ -1,0 +1,46 @@
+{
+  "name": "@syncfusion/ej2-angular-interactive-chat",
+  "version": "29.1.27",
+  "description": "Essential JS 2 Component for Angular",
+  "author": "Syncfusion Inc.",
+  "license": "SEE LICENSE IN license",
+  "schematics": "./schematics/collection.json",
+  "dependencies": {
+    "@syncfusion/ej2-base": "*",
+    "@syncfusion/ej2-angular-base": "*",
+    "@syncfusion/ej2-interactive-chat": "*",
+    "tslib": "^2.3.0"
+  },
+  "keywords": [
+    "angular",
+    "ng",
+    "ej2-ng-aiassistview",
+    "ng-aiassistview",
+    "ej2-ng-interactive-chat",
+    "ng-interactive-chat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syncfusion/ej2-angular-ui-components.git"
+  },
+  "sideEffects": true,
+  "module": "fesm2015/syncfusion-ej2-angular-interactive-chat.mjs",
+  "es2020": "fesm2020/syncfusion-ej2-angular-interactive-chat.mjs",
+  "esm2020": "esm2020/syncfusion-ej2-angular-interactive-chat.mjs",
+  "fesm2020": "fesm2020/syncfusion-ej2-angular-interactive-chat.mjs",
+  "fesm2015": "fesm2015/syncfusion-ej2-angular-interactive-chat.mjs",
+  "typings": "syncfusion-ej2-angular-interactive-chat.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./syncfusion-ej2-angular-interactive-chat.d.ts",
+      "esm2020": "./esm2020/syncfusion-ej2-angular-interactive-chat.mjs",
+      "es2020": "./fesm2020/syncfusion-ej2-angular-interactive-chat.mjs",
+      "es2015": "./fesm2015/syncfusion-ej2-angular-interactive-chat.mjs",
+      "node": "./fesm2015/syncfusion-ej2-angular-interactive-chat.mjs",
+      "default": "./fesm2020/syncfusion-ej2-angular-interactive-chat.mjs"
+    }
+  }
+}

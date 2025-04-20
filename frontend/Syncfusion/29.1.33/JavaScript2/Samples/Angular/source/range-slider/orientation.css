@@ -1,0 +1,15 @@
+#sliderOrientation.content-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    min-width: 185px;
+}
+#sliderOrientation .sliderwrap {
+    height: 375px;
+    margin-top: 10px;
+    width: 60%;
+    margin: auto;
+}
+#sliderOrientation .slider_table {
+    border: 0;
+    width: 100%
+}

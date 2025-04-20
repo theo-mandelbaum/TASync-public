@@ -1,0 +1,30 @@
+#control_wrapper {
+    max-width: 246px;
+    margin: 30px auto;
+    padding-top: 50px;
+}
+.control-section {
+    margin: 25px auto;
+}
+#selected {
+    height: 50px;
+    width: 248px;
+    display: block;
+    font-weight: inherit;
+    line-height: 50px;
+    color: rgba(0, 0, 0, 0.58);
+}
+body.fluent-dark #selected,
+body.fluent2-dark #selected,
+body.fluent2-highcontrast #selected,
+body.bootstrap5-dark #selected,
+body.bootstrap5.3-dark #selected,
+body.tailwind-dark #selected,
+body.tailwind3-dark #selected,
+body.material-dark #selected,
+body.material3-dark #selected,
+body.fabric-dark #selected,
+body.bootstrap-dark #selected,
+body.highcontrast #selected {
+    color: white;
+} 

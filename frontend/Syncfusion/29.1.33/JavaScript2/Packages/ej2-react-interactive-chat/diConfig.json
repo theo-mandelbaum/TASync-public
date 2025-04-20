@@ -1,0 +1,227 @@
+{
+    "name": "Interactive-Chat",
+    "description": "AIAssitView Component",
+    "eventInterfaces": [
+        "AIAssitOutputItemClickEventArgs", "AIAssistViewPromptEventArgs", "AIAssistViewCommandEventArgs"
+    ],
+    "keywords": {
+        "common": ["ej2", "syncfusion", "aiassistview", "ej2-aiassistview", "ej2 aiassistview", "ej2-interactive-chat"],
+        "angular": ["angular", "ng", "ej2-ng-aiassistview", "ng-aiassistview", "ej2-ng-interactive-chat", "ng-interactive-chat"],
+        "react": ["react", "reactjs", "ej2-react-aiassistview", "react-aissitview", "ej2-react-interactive-chat", "react-interactive-chat" ],
+        "vue": ["vue", "vuejs", "ej2-vue-aiassistview", "vue-aiassistview", "ej2-vue-interactive-chat", "vue-interactive-chat"]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syncfusion/ej2-interactive-chat"
+    },
+    "components": [{
+        "baseClass": "AIAssistView",
+        "directoryName": "ai-assistview",
+        "type": "container",
+        "selector": "[ejs-aiassistview]",
+        "preferredTag": "div",
+        "defaultTag": "<div id='aiassist'></div>",
+        "blazorType": "native",
+        "twoWays": ["prompt"],
+        "templateProperties": [
+            "footerTemplate",
+            "promptItemTemplate",
+            "responseItemTemplate",
+            "promptSuggestionItemTemplate",
+            "bannerTemplate"
+        ],
+        "comment": [
+            "/**",
+            " * Represents the Essential JS 2 Angular AIAssistView Component.",
+            " * ```html",
+            " * <ejs-aiassistview></ejs-aiassistview>",
+            " * ```",
+            " */"
+        ],
+        "reactComment": [
+            "/**",
+            " * Represents the React AIAssistView Component",
+            " * ```tsx",
+            " * <AIAssistViewComponent></AIAssistViewComponent>",
+            " * ```",
+            " */"
+        ],
+        "vueComment": [
+            "/**",
+            " * Represents the Essential JS 2 VueJS AIAssistView Component",
+            " * ```vue",
+            " * <ejs-aiassistview ></ejs-aiassistview>",
+            " * ```",
+            " */"
+        ],
+        "complexDirective": [
+            {
+                "propertyName": "toolbarSettings",
+                "baseClass": "ToolbarSettings",
+                "SelectorName": "e-aiassistview-toolbarSettings"
+            },{
+                "propertyName": "promptToolbarSettings",
+                "baseClass": "PromptToolbarSettings",
+                "SelectorName": "e-aiassistview-promptToolbarSettings"
+            },
+            {
+                "propertyName": "responseToolbarSettings",
+                "baseClass": "ResponseToolbarSettings",
+                "SelectorName": "e-aiassistview-responseToolbarSettings"
+            }
+        ],
+        "tagDirective": [
+          {
+            "arrayDirectiveClassName": "views",
+            "directiveClassName": "view",
+            "arrayDirectiveSelector": "ejs-aiassistview>e-views",
+            "directiveSelector": "ejs-aiassistview>e-views>e-view",
+            "directoryName": "ai-assistview",
+            "propertyName": "views",
+            "baseClass": "AssistView",
+            "comment": [
+                "/**",
+                " * Represents the Essential JS 2 Angular AIAssistView Component.",
+                " * ```html",
+                " * <ejs-aiassistview> ",
+                " *   <e-views>",
+                " *     <e-view>",
+                " *      </e-view>",
+                " *    </e-views>",
+                " * </ejs-aiassistview>",
+                " * ```",
+                " */"
+            ],
+            "reactComment": [
+                "/**",
+                " * Represents the React AIAssistView Component",
+                " * ```tsx",
+                " * <AIAssistViewComponent> ",
+                " *    <ViewsDirective>",
+                " *      <ViewDirective>",
+                "*      </ViewDirective>",
+                " *    </ViewsDirective>",
+                " * </AIAssistViewComponent>",
+                " * ```",
+                " */"
+            ],
+            "vueComment": [
+                "/**",
+                " * Represents the Essential JS 2 VueJS AIAssistView Component",
+                " * ```vue",
+                " * <ejs-aiassistview>",
+                " *   <e-views>",
+                " *     <e-view>",
+                " *     </e-view>",
+                " *    </e-views>",
+                " * </ejs-aiassistview>",
+                " * ```",
+                " */"
+            ]
+          }
+        ]
+    }, {
+        "baseClass": "ChatUI",
+        "directoryName": "chat-ui",
+        "type": "container",
+        "selector": "[ejs-chatui]",
+        "preferredTag": "div",
+        "defaultTag": "<div id='chatui'></div>",
+        "blazorType": "native",
+        "twoWays": [],
+        "templateProperties": [
+            "suggestionTemplate",
+            "footerTemplate",
+            "emptyChatTemplate",
+            "messageTemplate",
+            "typingUsersTemplate",
+            "timeBreakTemplate"
+        ],
+        "comment": [
+            "/**",
+            " * Represents the Essential JS 2 Angular ChatUI Component.",
+            " * ```html",
+            " * <ejs-chatui></ejs-chatui>",
+            " * ```",
+            " */"
+        ],
+        "reactComment": [
+            "/**",
+            " * Represents the React ChatUI Component",
+            " * ```tsx",
+            " * <ChatUIComponent></ChatUIComponent>",
+            " * ```",
+            " */"
+        ],
+        "vueComment": [
+            "/**",
+            " * Represents the Essential JS 2 VueJS ChatUI Component",
+            " * ```vue",
+            " * <ejs-chatui ></ejs-chatui>",
+            " * ```",
+            " */"
+        ],
+        "complexDirective": [
+            {
+                "propertyName": "headerToolbar",
+                "baseClass": "ToolbarSettings",
+                "SelectorName": "e-chatui-toolbarSettings"
+            },
+            {
+                "propertyName": "user",
+                "baseClass": "User",
+                "SelectorName": "e-chatui-user"
+            }
+        ],
+        "tagDirective": [
+          {
+            "arrayDirectiveClassName": "messages",
+            "directiveClassName": "message",
+            "arrayDirectiveSelector": "ejs-chatui>e-messages",
+            "directiveSelector": "ejs-chatui>e-messages>e-message",
+            "directoryName": "chat-ui",
+            "propertyName": "messages",
+            "baseClass": "Message",
+            "comment": [
+                "/**",
+                " * Represents the Essential JS 2 Angular ChatUI Component.",
+                " * ```html",
+                " * <ejs-chatui> ",
+                " *   <e-messages>",
+                " *     <e-message>",
+                " *     </e-message>",
+                " *    </e-messages>",
+                " * </ejs-chatui>",
+                " * ```",
+                " */"
+            ],
+            "reactComment": [
+                "/**",
+                " * Represents the React ChatUI Component",
+                " * ```tsx",
+                " * <ChatUIComponent> ",
+                " *    <MessagesDirective>",
+                " *      <MessageDirective>",
+                "*      </MessageDirective>",
+                " *    </MessagesDirective>",
+                " * </ChatUIComponent>",
+                " * ```",
+                " */"
+            ],
+            "vueComment": [
+                "/**",
+                " * Represents the Essential JS 2 VueJS ChatUI Component",
+                " * ```vue",
+                " * <ejs-chatui>",
+                " *   <e-messages>",
+                " *     <e-message>",
+                " *     </e-message>",
+                " *    </e-messages>",
+                " * </ejs-chatui>",
+                " * ```",
+                " */"
+            ]
+          }
+        ]
+    }]
+}

@@ -1,0 +1,98 @@
+<div class="control-section">
+  <ejs-schedule #scheduleObj width='100%' height='550px' [selectedDate]="selectedDate" [eventSettings]="eventSettings"
+    (actionBegin)="onActionBegin($event)" (eventRendered)="onEventRendered($event)" (popupClose)="onPopupClose()" (popupOpen)="onPopupOpen($event)"
+    [showQuickInfo]="showQuickInfo">
+    <e-views>
+      <e-view option="Day"></e-view>
+      <e-view option="Week"></e-view>
+      <e-view option="WorkWeek"></e-view>
+      <e-view option="Month"></e-view>
+    </e-views>
+    <ng-template #editorHeaderTemplate let-data>
+      <div *ngIf="data.Subject; else createNewEvent">
+        {{ data.Subject }}
+      </div>
+      <ng-template #createNewEvent>
+        Create New Event
+      </ng-template>
+    </ng-template>
+    <ng-template #editorTemplate let-data>
+      <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">
+        <tbody>
+          <tr>
+            <td class="e-textlabel">Summary</td>
+            <td colspan="4">
+              <input id="Subject" class="e-field e-input" type="text" value="{{data.Subject}}" name="Subject"
+                style="width: 100%" />
+            </td>
+          </tr>
+          <tr>
+            <td class="e-textlabel">Status</td>
+            <td colspan="4">
+              <ejs-dropdownlist id='EventType' class="e-field" data-name="EventType" placeholder='Choose Status'
+                [dataSource]='statusData' value="{{data.EventType}}">
+              </ejs-dropdownlist>
+            </td>
+          </tr>
+          <tr>
+            <td class="e-textlabel">From</td>
+            <td colspan="4">
+              <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime" format="M/dd/yy h:mm a"
+                (change)="onDateChange($event)" [showClearButton]="false" [(ngModel)]="startDate">
+              </ejs-datetimepicker>
+            </td>
+          </tr>
+          <tr>
+            <td class="e-textlabel">To</td>
+            <td colspan="4">
+              <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                (change)="onDateChange($event)" [showClearButton]="false" [(ngModel)]="endDate">
+              </ejs-datetimepicker>
+            </td>
+          </tr>
+          <tr>
+            <td class="e-textlabel">Reason</td>
+            <td colspan="4">
+              <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50"
+                value="{{data.Description}}" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </ejs-schedule>
+
+</div>
+
+<div id="action-description">
+  <p>This demo illustrates the way of customizing the default editor window with custom template option and the
+    customized design is automatically replaced onto the usual event editor. Here, a doctor's daily appointment with his
+    patients is listed out and shaded with specific color based on its status.
+  </p>
+</div>
+
+<div id="description">
+  <p>
+    In this demo, the event window is customized based on the specific appointment-related fields required for doctors which can 
+    be achieved by making use of the <code>editorTemplate</code> API and its type should be <code>ng-template</code>.
+  </p>
+  <p>
+    In this demo, the editor window header is customized based on the appointment subject field which can be achieved by
+    the <code>editorHeaderTemplate</code>.
+  </p>
+  <p>
+    Each field defined through it should contain the <code>e-field</code> class, and <code>data-name</code> attribute, 
+    so as to allow the processing of those fields in the default event object from internal source
+  </p>
+  <p>
+    Within the <code>eventRendered</code> event that triggers before every appointment getting rendered on the Scheduler
+    user interface, the colors for the appointments are set based on its status which is retrieved from the appointment
+    data.
+  </p>
+  <p>
+    The additional restriction has been added to the Scheduler cells such that if a cell already contains an
+    appointment – then it should be prevented to book with multiple appointments on the same time for which the
+    <code>isSlotAvailable</code> method is used. This method returns true, if the underlying cell is available for
+    adding new events by checking whether it already has any events in it.
+  </p>
+</div>

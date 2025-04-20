@@ -1,0 +1,15 @@
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import { HashRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
+{{imports}}
+
+export const routes = (
+    <HashRouter>
+        <Routes>
+{{routerCollection}}
+            <Route path= '/' element={<Navigate replace to="tailwind3/grid/overview" />} />
+        </Routes>
+    </HashRouter>
+)
+
+export const category: any = {{category}}

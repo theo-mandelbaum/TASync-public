@@ -1,0 +1,44 @@
+<div id="action-description">
+    <p>
+        This Angular Area Chart example visualizes the music sales data by format in US by using default area series in the chart. 
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' [chartArea]='chartArea' [width]='width' align='center' [title]='title' [primaryXAxis]='primaryXAxis' 
+            [primaryYAxis]='primaryYAxis' [annotations]='annotations' (load)='load($event)' >
+       
+            <e-series-collection>
+                <e-series [dataSource]='Compact' type='Area' xName='Period' yName='USD' [marker]='marker' [border]='border'>
+                </e-series>
+                <e-series [dataSource]='Download' type='Area' xName='Period' yName='USD' [marker]='marker' [border]='border'>
+                </e-series>
+                <e-series [dataSource]='Streaming' type='Area' xName='Period' yName='USD' [marker]='marker' [border]='border'>
+                </e-series>
+                <e-series [dataSource]='Casette' type='Area' xName='Period' yName='USD' [marker]='marker' [border]='border'>
+                </e-series>
+                <e-series [dataSource]='Vinyl' type='Area' xName='Period' yName='USD' [marker]='marker' [border]='border'>
+                </e-series>
+                <e-series [dataSource]='Track' type='Area' xName='Period' yName='USD' [marker]='marker' [border]='border'>
+                </e-series>
+                <e-series [dataSource]='Other' type='Area' xName='Period' yName='USD' [marker]='marker' [border]='border'>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how the area type chart can be rendered and configured. It is like the line chart, which represents time-dependent data and shows trends at equal intervals, but the area is closed and filled with the color of the series.
+    </p>
+    <br>
+    <p style="font-weight: 500"><b>Injecting Module</b></p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use area series feature, we need to inject
+        <code>AreaService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the area series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/area" aria-label="Navigate to the documentation for Area Chart in Angular Chart component">documentation section</a>.
+    </p>
+</div>

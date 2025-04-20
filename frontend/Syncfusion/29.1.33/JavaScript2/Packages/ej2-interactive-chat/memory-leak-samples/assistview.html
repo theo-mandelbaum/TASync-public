@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AI AssistView MemoryLeak demo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Typescript UI Controls" />
+    <meta name="author" content="Syncfusion" />
+    <link id="font" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link id="theme" href="../demos/themes/fluent2.css" rel="stylesheet" />
+    <script>
+        window.require = {
+            config: function (json) {
+                window.rsConfig = json;
+                window.rsConfig.baseUrl = '';
+            }
+        };
+    </script>
+    <script src="../demos/ai-assistview/demo-config.js"></script>
+    <script src="./../../node_modules/requirejs/require.js" data-main="default"></script>
+    <script>
+        require.config(window.rsConfig);
+    </script>
+
+    <style>
+
+        .e-ai-assist:before {
+            content: "\e79b";
+            font-size: 25px;
+        }
+
+        .ai-assist-banner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 400px;
+            font-size: 18px;
+            align-items: center;
+            text-align: center;
+        }
+        .ai-assist-banner h2 {
+            margin: 0;
+        }
+
+        .ai-assist-banner .e-icons:before {
+            font-size: 40px;
+        }
+
+        .e-treeview .e-icon-collapsible, .e-treeview .e-icon-expandable {
+            float: right;
+            margin: 8px 10px 0 0;
+        }
+
+        .e-treeview.e-fullrow-wrap .e-text-content {
+            padding: 0;
+        }
+
+        .e-dropdown-popup ul {
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="height: 700px;">
+        <button id="render">renderAssist</button>
+        <button id="destroy">destroyAssist</button>
+        <div id="defaultAIAssistView"></div>
+    </div>
+</body>
+</html>

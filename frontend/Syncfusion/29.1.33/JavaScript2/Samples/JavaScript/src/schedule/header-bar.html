@@ -1,0 +1,180 @@
+<div class="col-lg-9 control-section">
+    <div class="content-wrapper">
+        <div id="Schedule"></div>
+    </div>
+</div>
+<div class="col-lg-3 property-section">
+    <table id="property" title="Properties" style="width: 100%">
+        <tbody>
+            <tr style="height: 50px">
+                <td style="width: 90%">
+                    <div>
+                        <input id="headerbar" type="checkbox">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    .e-schedule .e-schedule-toolbar .user-icon {
+        background-image: url('./src/schedule/images/nancy.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        height: 24px;
+        min-width: 24px !important;
+        width: 24px !important;
+    }
+
+    .e-schedule .e-schedule-toolbar .e-toolbar-items .e-schedule-user-icon .e-tbar-btn:hover {
+        background-color: inherit;
+    }
+
+    .e-schedule .e-schedule-toolbar .e-toolbar-items .e-schedule-user-icon .e-tbar-btn-text {
+        display: none;
+    }
+
+    .e-schedule .e-schedule-toolbar .e-toolbar-pop .e-schedule-user-icon .e-tbar-btn-text {
+        padding-left: 8px !important;
+    }
+
+    .e-profile-wrapper {
+        width: 210px;
+        height: 80px;
+        background-color: #fafafa;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+
+    .e-profile-wrapper .profile-container {
+        display: flex;
+        padding: 10px;
+    }
+
+    .e-profile-wrapper .profile-image {
+        background-image: url('./src/schedule/images/nancy.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        box-shadow: inset 0 0 1px #e0e0e0, inset 0 0 14px rgba(0, 0, 0, 0.2);
+        width: 60px;
+        height: 60px;
+    }
+
+    .e-profile-wrapper .content-wrap {
+        padding-left: 10px;
+    }
+
+    .e-profile-wrapper .name {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+        margin-top: 2px;
+    }
+
+    .e-profile-wrapper .destination {
+        font-size: 12px;
+    }
+
+    .e-profile-wrapper .status-icon {
+        height: 6px;
+        width: 6px;
+        background: green;
+        border-radius: 100%;
+        float: left;
+        margin-right: 4px;
+        margin-top: 4px;
+    }
+
+    .e-profile-wrapper .status {
+        font-size: 11px;
+        line-height: normal;
+    }
+
+    .highcontrast .e-profile-wrapper {
+        border: 1px solid #969696
+    }
+
+    .highcontrast .e-profile-wrapper .profile-container {
+        background-color: #000;
+    }
+
+    .tailwind-dark .e-profile-wrapper,
+    .tailwind3-dark .e-profile-wrapper {
+        background-color: #374151;
+        border: 0.5px solid #4b5563;
+    }
+
+    .bootstrap5-dark .e-profile-wrapper,
+    .bootstrap5\.3-dark .e-profile-wrapper {
+        background-color: rgb(40, 45, 49);
+        border: 0.5px solid #4b5563;
+    }
+
+    .tailwind .e-profile-wrapper .destination,
+    .tailwind3 .e-profile-wrapper .destination,
+    .tailwind-dark .e-profile-wrapper .destination,
+    .tailwind3-dark .e-profile-wrapper .destination {
+        font-size: 11px;
+    }
+
+    .bootstrap-dark .e-profile-wrapper {
+        background-color: #1a1a1a;
+    }
+
+    .fluent-dark .e-profile-wrapper {
+        background-color: #201f1e;
+    }
+
+    .fabric-dark .e-profile-wrapper {
+        background-color: #333232;
+    }
+
+    .material-dark .property-panel-header {
+        color: #fff;
+    }
+
+    .material-dark .e-profile-wrapper {
+        color: #fff;
+        border: 0.5px solid #616161;
+        background-color: #212121;
+    }
+
+    .material3-dark .e-profile-wrapper {
+        border: 0.5px solid #444746;
+        background-color: #302c38;
+    }
+
+    .fluent2-dark .e-profile-wrapper {
+        border: 0.5px solid #525252;
+        background-color: #1F1F1F;
+    }
+
+    .fluent2-highcontrast .e-profile-wrapper {
+        border: 0.5px solid #FFFFFF;
+        background-color: #000000;
+    }
+</style>
+<div id="action-description">
+    <p>
+        This demo shows the way of adding custom items into the Scheduler header bar. Here, an employee image is added
+        to the header bar, clicking on which will open the popup showing that person's short profile information.
+    </p>
+</div>
+
+<div id="description">
+    <p>
+        In this demo, a popup has been designed separately with a person’s profile info and kept in a hidden state
+        initially. A custom item has been added to the Scheduler header bar by using the
+        <code><a aria-label="Toolbar items" href="https://ej2.syncfusion.com/javascript/documentation/api/schedule/#toolbaritems">toolbarItems</a></code>
+        property. Here, the default items such as previous, next, date range text, and today have been used along with
+        external icon as custom items.
+    </p>
+    <p>
+        In case, if the header bar of Scheduler needs to be hidden, it can be done by setting false to
+        <code>showHeaderBar</code> property.
+    </p>
+</div>

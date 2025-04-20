@@ -1,0 +1,149 @@
+<style>
+
+  /* Symbol palette alignment CSS */
+  .diagram-events-control-section .sb-mobile-palette {
+    width: 200px;
+    height: 100%;
+    float: left;
+  }
+
+  .diagram-events-control-section .sb-mobile-palette-bar {
+    display: none;
+  }
+  /* Diagram alignment CSS */
+  .diagram-events-control-section .sb-mobile-diagram {
+    width: calc(100% - 200px);
+    height: 100%;
+    float: left;
+    border: 1px solid #d9dedd;
+  }
+
+  @media (max-width: 550px) {
+    .diagram-events-control-section .sb-mobile-palette {
+      z-index: 19;
+      position: absolute;
+      display: none;
+      transition: transform 300ms linear, visibility 0s linear 300ms;
+      width: 39%;
+      height: 100%;
+    }
+
+    .diagram-events-control-section .sb-mobile-palette-bar {
+      display: block;
+      width: 100%;
+      background: #fafafa;
+      padding: 10px 10px;
+      border: 0.5px solid #e0e0e0;
+      min-height: 40px;
+    }
+
+    .diagram-events-control-section .sb-mobile-diagram {
+        width: 100%;
+        height: 100%;
+        float: left;
+        left: 0px;
+      }
+  }
+
+  .diagram-events-control-section .sb-mobile-palette-open {
+    position: absolute;
+    display: block;
+    right: 15px;
+  }
+  /* Event property panel CSS */
+  .diagram-events-property-section .event-tracer {
+    width: 240px;
+    height: 700px;
+    min-height: 700px;
+    float: left;
+  }
+
+  .diagram-events-property-section .diagramEvents-heading {
+    color: #807f7f;
+    font-size: 15px;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #d9dedd;
+    padding: 10px;
+  }
+  /* This color is to indicate the event name in specific color */
+  #EventLog b {
+   color: #388e3c;
+  }
+
+  hr {
+    margin: 1px 10px 1px 0px;
+    border-top: 1px solid #eee;
+  }
+  /* Property panel CSS */
+  .property-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 740px;
+    padding-right: 0px;
+  }
+
+  .diagram-events-property-section .evtbtn { 
+    float: right; 
+  }
+
+  .diagram-events-property-section .diagramEvents-listbox {
+    width: 100%;
+    height: 50%;
+  }
+
+  .diagram-events-property-section .event-tracer .prop-grid {
+    width: 100%;
+    height: 50%;
+  }
+
+  .diagram-events-property-section #EventLog {
+    height: calc(100% - 50px);
+    padding: 15px;
+    overflow: auto;
+    width: 100%;
+  }
+  .diagram-events-control-section{
+    display: flex;
+  }
+</style>
+<div class="col-lg-8 control-section">
+    <div id="diagramEventsControlSection" class="content-wrapper diagram-events-control-section" style="width:100%;background: white">
+      <div id="palette-space" class="sb-mobile-palette">
+        <div id="symbolpalette" style="width:90%;"></div>
+      </div>
+      <div id="diagram-space" class="sb-mobile-diagram">
+        <div id="diagram"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 property-section">
+    <div id="diagramEventsPropertySection" class="diagram-events-property-section" style="height:100%;border: 1px solid #e0e0e0">
+      <div class="diagramEvents-listbox">
+        <div class="diagramEvents-heading" style="height:40px"><span>Client-side events</span></div>
+        <div id="listview-def" tabindex="1"></div>
+      </div>
+      <div class="prop-grid content" style="height:50%; border-top: 1px solid #e0e0e0">
+        <div class="diagramEvents-heading">
+          <span style="display: inline-block;margin-top: 5px;">Event arguments</span>
+          <div class="evtbtn"><button id="clearButton">Clear</button></div>
+        </div>
+        <div id="EventLog">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="action-description">
+    <p>
+      This sample visualize what are the client side events are available in the diagram.
+    </p>
+  </div>
+  <div id="description">
+    <p>
+      Diagram events are the actions that can be detected by <code>JavaScript</code> and the event argument are the information
+      about the event that has occurred. Some time we want to execute some JavaScript when and event occurs, such as when the
+      user clicks on the node. We can achieve this scenario using <code>click</code> event of the diagram. So, in this shows
+      how to hook all the diagram events and how to handle its <code>arguments</code>.
+    </p>
+  </div>
+  

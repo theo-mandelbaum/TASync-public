@@ -1,0 +1,15 @@
+<div id="action-description">
+    <p>This sample demonstrates the resize operation of the Rich Text Editor control. To resize the Rich Text Editor, select and resize the editor using its handle (grip) at the bottom right corner of the content panel.</p>
+</div>
+<div class="control-section">
+    <ejs-richtexteditor id='defaultRTE' [enableResize]="true" height='250px' [value]=editorValue>
+    </ejs-richtexteditor>
+</div>
+<div id='rteContent' style='display: none'>
+
+</div>
+<div id="description">
+    <p>Users can create resizable Rich Text Editor by setting the enableResize property to true, which is used to change the size of the Rich Text Editor dynamically.</p>
+    <p><b>Injecting Module</b></p>
+    <p>Rich Text Editor features are segregated into individual feature-wise modules. In this demo we have used following injectable services <code>ToolbarService, LinkService, ResizeService, ImageService, HtmlEditorService, QuickToolbarService, PasteCleanupService</code> into the <code>&#64;NgModule.providers section</code>.</p>
+</div>

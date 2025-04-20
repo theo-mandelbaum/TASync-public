@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BreadcrumbSampleOrder = void 0;
+exports.BreadcrumbSampleOrder = [
+    { 'path': 'breadcrumb/default', 'component': 'Default', 'name': 'Default Functionalities', 'description': 'This sample demonstrates the basic rendering and overflow feature of the Breadcrumb component with icon and navigation support.', 'order': '01', 'category': 'Breadcrumb', 'api': '{ "BreadcrumbComponent": ["items"] }' },
+    { 'path': 'breadcrumb/bind-to-location', 'component': 'BindToLocation', 'name': 'Bind to Location', 'description': 'This sample demonstrates the basic rendering and overflow feature of the Breadcrumb component with icon and navigation support.', 'order': '01', 'category': 'Breadcrumb' },
+    { 'path': 'breadcrumb/template-and-customization', 'component': 'TemplateAndCustomization', 'name': 'Template and Customization', 'description': 'This sample demonstrates the basic rendering and overflow feature of the Breadcrumb component with icon and navigation support.', 'order': '01', 'category': 'Breadcrumb', 'api': '{ "BreadcrumbComponent": ["items"] }' },
+    { 'path': 'breadcrumb/overflow-modes', 'component': 'OverflowModes', 'name': 'Overflow Modes', 'description': 'This sample demonstrates the basic rendering and overflow feature of the Breadcrumb component with icon and navigation support.', 'order': '01', 'category': 'Breadcrumb' },
+    { 'path': 'breadcrumb/events', 'component': 'Events', 'name': 'Events', 'description': 'This example demonstrates Syncfusion<sup>®</sup> React Breadcrumb component shows the events that have been triggered during the breadcrumb actions.', 'order': '01', 'category': 'Breadcrumb', 'api': '{ "BreadcrumbComponent": ["items"] }' },
+    { 'path': 'breadcrumb/keyboard-navigation', 'component': 'KeyboardNavigation', 'name': 'Keyboard Navigation', 'description': 'This sample demonstrates the basic rendering and overflow feature of the Breadcrumb component with icon and navigation support.', 'order': '01', 'category': 'Breadcrumb' },
+    { 'path': 'breadcrumb/address-bar', 'component': 'AddressBar', 'name': 'Address Bar', 'description': 'This example demonstrates the real use case of the Syncfusion<sup>®</sup> React Breadcrumb in web application. It is integrated with menu component.', 'order': '02', 'category': 'Use Case', 'api': '{ "BreadcrumbComponent": ["items"] }' }
+];

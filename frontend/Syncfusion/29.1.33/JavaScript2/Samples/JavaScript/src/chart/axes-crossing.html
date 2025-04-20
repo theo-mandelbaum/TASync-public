@@ -1,0 +1,74 @@
+<div>
+    <div class="col-md-8 control-section">
+        <div class="content-wrapper">
+            <div id="container" style="width:92%"></div>
+        </div>
+    </div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 60%">
+                        <div>Axis:</div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="selectAxis" style="width:60%;">
+                                <option value="xaxis">X</option>
+                                <option value="yaxis">Y</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 60%">
+                        <div id="crossValue">Crosses Value:</div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div style="margin-top: 0px;">
+                            <input type="text" id="crossingValue" aria-labelledby="Text">
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 60%">
+                        <div id="axis">Placing Label Near to Axis Line:</div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div style="margin-top: 0px;">
+                            <input type="checkbox" id="axisElements" name="PlaceNextToAxisLine" checked aria-labelledby="Checkbox checked">
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="action-description">
+    <p>
+        This sample illustrates the interpolation of data points between linear and cubic using the spline and line series.
+    </p>
+</div>
+<div id="description">
+    <p>
+        This sample demonstrates the axis-crossing behavior in a chart. The axis can be positioned anywhere in the chart area using the <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/chart/axisModel/#crossesat" aria-label="Navigate to the CrossesAt property reference for JavaScript Chart axis">crossesAt</a> property of the axis, which specifies where the horizontal axis should intersect the vertical axis and vice-versa.
+    </p>
+    <p>
+        You can use the <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/chart/axisModel/#placenexttoaxisline" aria-label="Navigate to the PlaceNextToAxisLine property reference for JavaScript Chart Axis">placeNextToAxisLine</a> property to place the axis labels and ticks next to the axis line. If there are multiple axes, the cross-axis can be selected using the <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/axisModel/#crossesinaxis" aria-label="Navigate to the CrossesInAxis property reference for JavaScript Chart axis">crossesInAxis</a> property.
+    </p>
+    <p><code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices. </p>
+    <br>
+    <p>
+        More information on the axis crossing can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/chart/axis.customization/#axis-crossing" aria-label="Navigate to the documentation for Axis Crossing in JavaScript Chart control">documentation section</a>.
+    </p>
+</div>
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+    #axisElements:hover{
+        cursor: pointer !important;
+    }
+</style>

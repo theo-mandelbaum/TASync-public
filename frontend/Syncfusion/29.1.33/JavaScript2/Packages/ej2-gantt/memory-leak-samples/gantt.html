@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        EJ2 Gantt
+    </title>
+    <meta charset="utf-8" />
+    <meta name="description" content="EJ2 Gantt Preview" />
+    <meta name="author" content="Syncfusion" />
+    <link href="../demos/css/material.css" rel="stylesheet" id="themelink" />
+    
+    <link href="../node_modules/@syncfusion/ej2-richtexteditor/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-treegrid/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-grids/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-buttons/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-inputs/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-navigations/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-calendars/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-dropdowns/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-base/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-lists/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-popups/styles/material.css" rel="stylesheet" />
+    <link href="../node_modules/@syncfusion/ej2-layouts/styles/material.css" rel="stylesheet" />
+    <script>
+        window.__karma__ = { files: {} };
+        window.require = {
+            config: function (json) {
+                window.rsConfig = json;
+                window.rsConfig.baseUrl = '';
+            }
+        };
+    </script>
+    <script data-main="gantt" src="../node_modules/requirejs/require.js"></script>
+    <script src='../demos/require.config.js'></script>
+    <script>
+        require.config(window.rsConfig);
+    </script>
+</head>
+
+<body>
+    <button id='render'>renderGantt</button>
+    <button id='destroy'>destroyGantt</button>
+    
+    <span id="performanceTime">Initial Load Time Taken: 0 ms</span>
+    </br>
+    <span id="performanceTime1"> Gantt Action Taken Time : 0 ms</span>
+
+    <div id="Gantt" style="width:100%;"></div>
+</body>
+
+</html>

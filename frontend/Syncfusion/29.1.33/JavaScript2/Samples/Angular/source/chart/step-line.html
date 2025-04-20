@@ -1,0 +1,32 @@
+<div id="action-description">
+    <p>
+        This Angular StepLine Chart visualizes the global best-selling albums by year from 2001 to 2024.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' align='center' [chartArea]='chartArea' [width]='width' id='chartcontainer' [primaryXAxis]='primaryXAxis'
+            [primaryYAxis]='primaryYAxis' [title]='title' [subTitle]='subTitle' [tooltip]='tooltip' (load)='load($event)' (tooltipRender)='tooltipRender($event)' [legendSettings]='legend'>
+            <e-series-collection>
+                <e-series [dataSource]='data' type='StepLine' xName='x' yName='y' width='3' [marker]='marker' > </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure a step line type chart. This chart forms a step-like progression by connecting points using vertical and horizontal lines. <code>Markers</code> are used to represent individual data points and their values.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+    </p>
+    <p style="font-weight: 500"><b>Injecting Module</b></p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use step line series, we need to inject
+        <code>StepLineSeriesService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the step line series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/step-line" aria-label="Navigate to the documentation for Step Line Chart in Angular Chart component">documentation section</a>.
+    </p>
+</div>

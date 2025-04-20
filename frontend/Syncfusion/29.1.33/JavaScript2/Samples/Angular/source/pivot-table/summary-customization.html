@@ -1,0 +1,274 @@
+<div id="action-description">
+  <p>This sample demonstrates showing and hiding grand totals and sub-totals, as well as change their position in
+    rows, columns, or both at runtime. Also, end users can specify and hide sub-totals of specific fields.</p>
+</div>
+<div id="description">
+  <p>
+    In this sample, you can control the position and visibility of the grand totals and sub-totals by selecting
+    options from the Totals drop-down list. The following options will be displayed based on the drop-down
+    selection:
+  </p>
+  <table>
+    <tbody>
+      <tr>
+        <td style="vertical-align: top;padding: 4px 0;width:180px"><code>Grand totals position</code></td>
+        <td style="padding: 4px 0;">: Allows to display the grand totals either at top or bottom of the row and
+          column axes by selecting the appropriate radio button options.
+          To display the grand totals at top, set the property <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#grandtotalsposition">
+            grandTotalsPosition</a> as <b>Top</b>. And, to display the grand
+          totals at bottom, set the property <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#grandtotalsposition">
+            grandTotalsPosition</a> as <b>Bottom</b>.</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;padding: 4px 0;"><code>Hide grand totals</code></td>
+        <td style="padding: 4px 0;">: Allows to hide grand totals in row, column, or both by selecting the
+          appropriate radio button options. To hide grand totals in both row and column, set the property<a
+            target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#showgrandtotals">
+            showGrandTotals</a> as <b>false</b>. To hide the row and column
+          grand totals separately,
+          set the property <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#showrowgrandtotals">
+            showRowGrandTotals</a> and <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#showcolumngrandtotals">
+            showColumnGrandTotals</a> as <b>false</b>.</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;padding: 4px 0;"><code>Sub-totals position</code></td>
+        <td style="padding: 4px 0;">: Allows to display the sub-totals at top, bottom, or default position of
+          the row and column axes by selecting the appropriate radio button options.
+          To display the sub-totals at top, set the property <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#subtotalsposition">
+            subTotalsPosition</a> as <b>Top</b>. And, to display the
+          sub-totals at bottom, set the property <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#subtotalsposition">
+            subTotalsPosition</a> as <b>Bottom</b>.</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;padding: 4px 0;"><code>Hide sub-totals</code></td>
+        <td style="padding: 4px 0;">: Allows to hide sub-totals in row, column, or both by selecting the
+          appropriate radio button options. To hide sub-totals in both row and column, set the property<a
+            target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#showsubtotals">
+            showSubTotals</a> as <b>false</b>. To hide the row and column
+          sub-totals separately,
+          set the property <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#showrowsubtotals">
+            showRowSubTotals</a> and <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/dataSourceSettingsModel/#showcolumnsubtotals">
+            showColumnSubTotals</a> as <b>false</b>.</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;padding: 4px 0;"><code>Hide sub-totals for specific field(s)</code></td>
+        <td style="padding: 4px 0;">: Allows to hide sub-totals for specific fields in row and column by
+          selecting appropriate fields from the multi-select drop-down.
+          To hide sub-totals for a specific field, set the <a target="_blank"
+            href="https://ej2.syncfusion.com/angular/documentation/api/pivotview/fieldOptionsModel/#showsubtotals">
+            showSubTotals</a> property as <b>false</b> inside the field definition.</td>
+      </tr>
+    </tbody>
+  </table><br />
+  <p>
+    More information on the show/hide totals can be found in this <a target="_blank"
+      href="https://ej2.syncfusion.com/angular/documentation/pivotview/summary-customization">
+    documentation section</a>.
+  </p>
+</div>
+
+<div style="overflow:auto;">
+  <div class="col-lg-9 control-section sb-property-border">
+    <ejs-pivotview #pivotview id='PivotView' [dataSourceSettings]=dataSourceSettings width='100%' height='500'
+      [gridSettings]='gridSettings'>
+    </ejs-pivotview>
+  </div>
+
+  <div class="col-lg-3 property-section pivottable-property-section">
+    <div class="property-panel-section">
+      <div class="property-panel-header">Properties</div>
+      <div class="property-panel-content">
+        <div>
+          <table id="property" class="property-panel-table" title="Properties" style="width: 100%;height:100%;">
+            <tbody>
+              <tr style="height: 50px">
+                <td style="width: auto">
+                  <div class="total-options" style="padding-left: 0; margin-right: 10px;">Totals:
+                  </div>
+                </td>
+                <td style="width: auto">
+                  <div style="padding-left: 0;">
+                    <ejs-dropdownlist id='options' #options [dataSource]='optionsData' (change)='changeOptionsdll($event)' value='grandTotals' [fields]='fieldsOptionsdll'></ejs-dropdownlist>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="grandsum">
+          <table class="property-panel-table">
+            <tbody>
+              <tr>
+                <td>
+                  <div style="font-weight: 600; font-size: 13px; white-space: nowrap; padding-left: 0">
+                    Grand totals position
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio5 id="radio5" label="Top" name="position" value="Top"
+                      (change)="onChange1($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio6 id="radio6" label="Bottom" name="position" value="Bottom" checked="true"
+                      (change)="onChange1($event)">
+                    </ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight: 600; font-size: 13px; white-space: nowrap; padding-left: 0">
+                    Hide grand totals
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio1 id="radio1" label="Row" name="total" value="Row"
+                      (change)="onChange($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio2 id="radio2" label="Column" name="total" value="Column"
+                      (change)="onChange($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio3 id="radio3" label="Both" name="total" value="Both"
+                      (change)="onChange($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio4 id="radio4" label="None" name="total" value="None" checked="true"
+                      (change)="onChange($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="subsum" style="display: none;">
+          <table class="property-panel-table">
+            <tbody>
+              <tr>
+                <td>
+                  <div style="font-weight: 600; font-size: 13px; white-space: nowrap; padding-left: 0">
+                    Sub-totals position
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio7 id="radio7" label="Top" name="position1" value="Top"
+                      (change)="onChange3($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio8 id="radio8" label="Bottom" name="position1" value="Bottom"
+                      (change)="onChange3($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio9 id="radio9" label="Auto" name="position1" value="Auto" checked="true"
+                      (change)="onChange3($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight: 600; font-size: 13px; white-space: nowrap; padding-left: 0px;">
+                    Hide sub-totals
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio10 id="radio10" label="Row" name="total1" value="Row"
+                      (change)="onChange2($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio11 id="radio11" label="Column" name="total1" value="Column"
+                      (change)="onChange2($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio12 id="radio12" label="Both" name="total1" value="Both"
+                      (change)="onChange2($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="padding-left: 0">
+                    <ejs-radiobutton #radio13 id="radio13" label="None" name="total1" value="None" checked="true"
+                      (change)="onChange2($event)"></ejs-radiobutton>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight: 600; font-size: 13px; white-space: nowrap; padding-left: 0px;">
+                    Hide specific sub-totals
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div style="padding-left: 0">
+                    <ejs-multiselect id='summary-values' #summaryValues [dataSource]='data' [mode]='mode' [fields]='fields' [showDropDownIcon]='true' [placeholder]='waterMark'
+                          [showClearButton]="false" [enableSelectionOrder]="false" (select)='select($event)' (removed)='removed($event)' 
+                          (open)='open($event)'></ejs-multiselect>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

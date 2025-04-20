@@ -1,0 +1,40 @@
+<div id="action-description">
+    <p>
+        This Angular Spline Area Chart example visualizes the inflation rate comparision for two countries by using spline area series.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' [chartArea]='chartArea' [width]='width' align='center' [title]='title' [primaryXAxis]='primaryXAxis'
+            [primaryYAxis]='primaryYAxis' (load)='load($event)' [tooltip]='tooltip' [legendSettings]='legend'>
+            <e-series-collection>
+                <e-series [dataSource]='data' type='SplineArea' xName='Period' yName='US_InflationRate' [marker]='circleMarker' name='US' opacity=0.5 width='2' [border]='border'>
+                </e-series>
+                <e-series [dataSource]='data' type='SplineArea' xName='Period' yName='FR_InflationRate' [marker]='diamondMarker' name='France' opacity=0.5 width='2' [border]='border'>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure the spline area chart. This chart plots a fitted curve
+        through each data point in a series. It is used to represent time-dependent data and show trends in data at
+        equal intervals.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+    </p>
+    <p style="font-weight: 500"><b>Injecting Module</b></p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use spline area series feature,
+        we need to inject
+        <code>SplineAreaService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the spline area series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/spline-area"
+            aria-label="Navigate to the documentation for Spline Area Chart in Angular Chart component">documentation
+            section</a>.
+    </p>
+</div>

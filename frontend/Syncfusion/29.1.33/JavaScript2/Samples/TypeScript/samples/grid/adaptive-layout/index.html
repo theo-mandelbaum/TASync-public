@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Javascript Data Grid Adaptive Layout Example - Syncfusion Demos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="description" content="This example demonstrates the Adaptive Layout in Javascript Data Grid Control. Explore here for more details." />
+    <meta name="author" content="Syncfusion" />
+    <link rel="canonical" href="https://ej2.syncfusion.com/demos/{{:canonical}}" />
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico" />
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLQL39J');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">
+        var themeName = location.hash || 'material';
+        themeName = themeName.replace('#', '');
+        window.ripple = (themeName === "material")
+        document.write('<link href="//npmci.syncfusion.com/packages/development/' + themeName + '.css" rel="stylesheet">');
+    </script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write("<script src=\'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js\'><\/script>");
+        }</script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet">
+    <style>
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+
+        body {
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body class='e-view ej2-new' aria-busy="true">
+     <!-- Google Tag Manager (noscript) -->
+     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLQL39J"height="0"width="0"style="display:none;visibility:hidden"></iframe></noscript>
+     <!-- End Google Tag Manager (noscript) -->
+     <div hidden id="sync-analytics" data-queue="EJ2 - JavaScript - Demos"></div>
+    <div class="sample-browser">
+        <div id='sample-header' class="sb-header" role="banner">
+            <div class='sb-header-left sb-left sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="header-logo">
+                        <a href="#" target="" rel="noopener noreferrer">
+                            <a href="https://ej2.syncfusion.com/home/" target="" rel="noopener noreferrer">
+                                <div class="footer-logo"> </div>
+                            </a>
+                    </div>
+
+                </div>
+                <div class="sb-header-splitter sb-download-splitter"></div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div id='sb-header-text' class='e-sb-header-text'>
+
+                        <span class='sb-header-text-left'>Essential JS 2 for JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class='sb-header-right sb-right sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class='product-style'>
+                        <div>
+                            <a href="https://www.syncfusion.com/javascript-ui-controls/grid">PRODUCT DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="sb-header-item sb-table-cell sb-download-wrapper">
+                        <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <button id="download-now" class="sb-download-btn">
+                                <span class="sb-download-text">Download Now</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class='content e-view'>
+            <div class='sample-content'>
+                <div id="sample-bread-crumb" class="sb-bread-crumb">
+                    <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                        <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip "
+                            aria-label="previous sample" title="Previous Sample">
+                            <a {{:anchor-prev}} class='{{:disabled-prev}}'><span
+                                    class="sb-icons sb-icon-Previous"></span></a>
+
+                        </div>
+                        <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample"
+                            title="Next Sample">
+                            <a {{:anchor-next}} class='{{:disabled-next}}'><span
+                                    class="sb-icons sb-icon-Next"></span></a>
+
+                        </div>
+                    </div>
+                    <h1 class="sb-bread-crumb-text">
+                        <div class="category-allcontrols">
+                            <a href="https://ej2.syncfusion.com/demos/">
+                                <span>All Controls</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="category-text bread-ctext">
+                            <a href="https://ej2.syncfusion.com/demos/#/material/grid/default.html">
+                                <span>Data Grid</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="crumb-sample">Adaptive Layout</div>
+                    </h1>
+                </div>
+                <div class="control-content">
+                    <div id="action-description">
+                        <p>
+                            <div class="layout" id="actionDes">
+    <p>This sample demonstrates optimal viewing experience and improve usability on small screens.</p>
+</div>
+                            <a id="details" class="layout" onclick="desDetails()"> More Details...</a>
+                            <script>
+                                function desDetails() {
+                                    var element = document.getElementById('description-section');
+                                    if (element) {
+                                        element.scrollIntoView();
+                                    }
+                                }
+                            </script>
+                        </p>
+                    </div>
+                    <div class='container-fluid'>
+                        <div class="control-section">
+                            <div class="col-lg-9 control-section">
+  <div class="content-wrapper e-bigger e-adaptive-demo">
+    <div class="e-mobile-layout">
+      <div class="e-mobile-content">
+        <div id="adaptivebrowser"></div>
+      </div>
+    </div>
+    <div id="adaptivedevice"></div>
+  </div>
+</div>
+<div class="col-lg-3 property-section">
+  <table id="property" title="Properties" style="width: 100%">
+    <tbody>
+      <tr>
+        <td style="width: 70%">
+          <div>Enable horizontal row mode</div>
+        </td>
+        <td style="width: 30%;padding:0px 10px 10px 0px">
+          <div style="padding-top: 0px;">
+            <input type="checkbox" id="fullscreen" aria-label="Enable horizontal row mode">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<style>
+  /* The device with borders */
+  
+  .e-mobile-layout {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    margin: auto;
+    border: 16px #f4f4f4 solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+    box-shadow: 0 0px 2px rgb(144 144 144), 0 0px 10px rgb(0 0 0 / 16%);
+  }
+  
+  .tailwind-dark .e-mobile-layout,
+  .material-dark .e-mobile-layout,
+  .fabric-dark .e-mobile-layout,
+  .bootstrap-dark .e-mobile-layout,
+  .bootstrap5-dark .e-mobile-layout {
+    border: 16px rgb(255 255 255 / 10%) solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+  }
+  /* The horizontal line on the top of the device */
+  
+  .e-mobile-layout:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ebebeb;
+    border-radius: 10px;
+  }
+  
+  .tailwind-dark .e-mobile-layout::before,
+  .tailwind-dark .e-mobile-layout::after,
+  .material-dark .e-mobile-layout::before,
+  .material-dark .e-mobile-layout::after,
+  .fabric-dark .e-mobile-layout::before,
+  .fabric-dark .e-mobile-layout::after,
+  .bootstrap-dark .e-mobile-layout::before,
+  .bootstrap-dark .e-mobile-layout::after,
+  .bootstrap5-dark .e-mobile-layout::before,
+  .bootstrap5-dark .e-mobile-layout::after {
+    background: rgb(255 255 255 / 20%);
+  }
+  /* The circle on the bottom of the device */
+  
+  .e-mobile-layout:after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translate(-50%, -50%);
+    background: #e8e8e8;
+    border-radius: 50%;
+  }
+  /* The screen (or content) of the device */
+  
+  .e-mobile-layout .e-mobile-content {
+    overflow: hidden;
+    width: 328px;
+    height: 100%;
+    background: transparent;
+    border: 0px solid #dddddd;
+  }
+  
+  .highcontrast .e-mobile-layout {
+    border: 16px #000000 solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    box-shadow: -1px 2px white, -2px -2px white, 2px -2px white, 2px 1px white;
+  }
+  
+  .e-responsive-dialog {
+    box-shadow: none;
+    border-radius: 1px;
+  }
+  
+  .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager {
+    padding-top: 0;
+  }
+  
+  .material .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .material-dark .e-adaptive-demo.e-pager-pagesizes .e-pager {
+    padding-top: 2px;
+  }
+  
+  .fluent .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .fluent-dark .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .bootstrap5 .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .bootstrap5-dark .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .tailwind .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .tailwind-dark .e-adaptive-demo.e-pager-pagesizes .e-pager {
+    padding-top: 10px;
+  }
+  
+  .bootstrap .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .bootstrap-dark .e-adaptive-demo.e-pager-pagesizes .e-pager,
+  .bootstrap4 .e-adaptive-demo.e-pager-pagesizes .e-pager {
+    padding-top: 8px;
+  }
+  /* Render the mobile pager by default */
+  
+  @media (max-width: 3840px) {
+    .e-adaptive-demo .e-pager {
+      padding: 13px 0;
+    }
+    .e-adaptive-demo .e-rtl.e-pager div.e-parentmsgbar {
+      margin-top: 0;
+    }
+    .material3 .e-adaptive-demo .e-pager div.e-parentmsgbar,
+    .material3-dark .e-adaptive-demo .e-pager div.e-parentmsgbar {
+      padding-top: 3px;
+    }
+    .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager div.e-parentmsgbar,
+    .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager div.e-parentmsgbar {
+      padding-top: 0;
+    }
+    .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mprev,
+    .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mnext,
+    .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mprev,
+    .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mnext {
+      width: 7%;
+    }
+    .e-adaptive-demo.e-pager-pagesizes .e-pager {
+      padding: 6px 0;
+      .e-mfirst,
+      .e-mprev,
+      .e-mnext,
+      .e-mlast {
+        padding: 1% 2%;
+      }
+      .e-mfirst,
+      .e-mlast {
+        width: calc(5% + 11px);
+      }
+      .e-mprev,
+      .e-mnext {
+        width: 5%;
+      }
+    }
+    .fluent2,
+    .fluent2-dark,
+    .fluent2-highcontrast {
+      .e-adaptive-demo.e-pager-pagesizes .e-pager {
+        .e-mfirst,
+        .e-mprev,
+        .e-mnext,
+        .e-mlast {
+          padding: 1% 1.4%;
+        }
+      }
+      .e-pager.e-adaptive div.e-parentmsgbar {
+        margin: 0;
+        overflow: hidden;
+      }
+    }
+    .e-adaptive-demo .e-pager div.e-parentmsgbar {
+      box-sizing: border-box;
+      display: inline-block;
+      float: initial;
+      padding-bottom: 0;
+      padding-right: 0;
+      padding-top: 0;
+      text-align: center;
+      vertical-align: top;
+      width: calc(60% - 48px);
+    }
+    .e-adaptive-demo .e-pager .e-pagecountmsg {
+      display: none;
+    }
+    .e-adaptive-demo .e-pager .e-pagercontainer {
+      display: none;
+    }
+    .e-adaptive-demo .e-pager .e-icons {
+      font-size: 11px;
+    }
+    .e-adaptive-demo .e-pager .e-mfirst,
+    .e-adaptive-demo .e-pager .e-mprev,
+    .e-adaptive-demo .e-pager .e-mnext,
+    .e-adaptive-demo .e-pager .e-mlast {
+      border: 0;
+      box-sizing: border-box;
+      display: inline-block;
+      padding: 1% 5%;
+    }
+    /* The screen of the mac os */
+    .e-adaptive-demo .e-mac-safari .e-pager .e-mfirst,
+    .e-adaptive-demo .e-mac-safari .e-pager .e-mprev,
+    .e-adaptive-demo .e-mac-safari .e-pager .e-mnext,
+    .e-adaptive-demo .e-mac-safari .e-pager .e-mlast {
+      padding: 3px !important;
+    }
+    .e-adaptive-demo .e-mac-safari .e-pager .e-mprev,
+    .e-adaptive-demo .e-mac-safari .e-pager .e-mnext {
+      margin: 0 2px !important;
+    }
+    .e-adaptive-demo .e-mac-safari .e-pager .e-mlast {
+      margin-left: 0 !important;
+    }
+    .e-adaptive-demo .e-pager .e-mfirst {
+      margin-right: 4px;
+      text-align: right;
+      width: calc(10% + 11px);
+    }
+    .e-adaptive-demo .e-pager .e-mprev {
+      margin: 0 4px;
+      text-align: right;
+      width: 10%;
+    }
+    .e-adaptive-demo .e-pager .e-mnext {
+      margin: 0 4px;
+      text-align: left;
+      width: 10%;
+    }
+    .e-adaptive-demo .e-rtl.e-pager .e-mnext {
+      margin: 0;
+    }
+    .e-adaptive-demo .e-pager .e-mlast {
+      margin-left: 4px;
+      text-align: left;
+      width: calc(10% + 11px);
+    }
+    .e-adaptive-demo .e-bigger .e-pager,
+    .e-adaptive-demo .e-pager.e-bigger {
+      padding: 6px 0;
+    }
+    .e-adaptive-demo .e-bigger .e-pager.e-rtl div.e-parentmsgbar,
+    .e-adaptive-demo .e-pager.e-bigger.e-rtl div.e-parentmsgbar {
+      margin-right: 0;
+    }
+    .e-adaptive-demo .e-bigger .e-pager div.e-parentmsgbar,
+    .e-adaptive-demo .e-pager.e-bigger div.e-parentmsgbar {
+      padding: 0;
+    }
+    .e-adaptive-demo .e-pager .e-pager-default:hover {
+      background: transparent;
+    }
+  }
+</style>
+
+<!-- custom code end -->
+                        </div>
+                    </div>
+                    <div id="description-section">Description</div>
+                    <div id="description">
+                        <p>
+                            
+        The 
+            enableAdaptiveUI property is used to render the grid filter, sort, edit , pager and toolbars like column chooser, pdf export, excel export, etc... dialogs adaptively
+        and
+         rowRenderingMode
+        property is used to render the grid row elements in the following directions,
+    
+    
+        Horizontal - Renders the grid row elements in the horizontal direction.
+        Vertical - Renders the grid row elements in the vertical direction.
+    
+     In this sample, you can change the row elements rendering direction by using the properties panel checkbox
+    
+     In this demo, the column menu feature is only supported for the Grid rowRenderingMode mode as Vertical.
+        This feature includes grouping, sorting, autofit, filter, and column chooser feature.
+    
+    
+        More information on the rowRenderingMode configuration can be found in this
+        
+            documentation section.
+    
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="index.min.js"></script>
+    <script src="../../samples.min.js"></script>
+</body>
+
+</html>

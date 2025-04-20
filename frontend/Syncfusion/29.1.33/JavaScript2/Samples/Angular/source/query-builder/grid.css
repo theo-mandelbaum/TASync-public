@@ -1,0 +1,14 @@
+/* custom code start*/
+.e-query-builder {
+    margin: 0 auto;
+    display: block;
+}
+
+ejs-querybuilder {
+    display: block;
+  }
+
+#Grid {
+    margin: 0 auto;
+}
+/* custom code end*/

@@ -1,0 +1,70 @@
+{
+    "name": "Chat UI",
+    "directory": "chat-ui",
+    "category": "Interactive Chat",
+    "ftName": "chat-ui",
+    "type": "preview",
+    "dataSourcePath": "src/chat-ui/messageData.ts",
+    "samples": [
+        {
+            "url": "default",
+            "name": "Default Functionalities",
+            "category": "Chat UI",
+            "api":{ "ChatUI": ["suggestions", "headerText", "headerIconCss", "messages", "user"] },
+            "description": "Showcases the default combinations of the Chat UI control.",
+            "sourceFiles": [
+                { "displayName": "default.ts", "path":"src/chat-ui/default.ts" },
+                { "displayName": "default.html", "path":"src/chat-ui/default.html" },
+                { "displayName": "messageData.ts", "path":"src/chat-ui/messageData.ts" }
+            ]
+        },
+        {
+            "url": "loadOn-demand",
+            "name": "Load On-demand",
+            "category": "Chat UI",
+            "type": "new",
+            "api":{ "ChatUI": ["headerText", "headerIconCss","messages", "user", "loadOnDemand"] },
+            "description": "Showcases the load on demand features in the Chat UI control",
+            "sourceFiles": [
+                { "displayName": "loadOn-demand.ts", "path":"src/chat-ui/loadOn-demand.ts" },
+                { "displayName": "loadOn-demand.html", "path":"src/chat-ui/loadOn-demand.html" }
+            ]
+        },
+        {
+            "url": "template",
+            "name": "Template",
+            "category": "Chat UI",
+            "api":{ "ChatUI": ["messages", "user", "emptyChatTemplate", "messageTemplate", "timeBreakTemplate", "showTimeBreak", "headerText", "headerIconCss", "messageSend"] },
+            "description": "Showcases the template UI's of the Chat UI control.",
+            "sourceFiles": [
+                { "displayName": "template.ts", "path":"src/chat-ui/template.ts" },
+                { "displayName": "template.html", "path":"src/chat-ui/template.html" },
+                { "displayName": "messageData.ts", "path":"src/chat-ui/messageData.ts" }
+            ]
+        },
+        {
+            "url": "api",
+            "name": "API",
+            "category": "Chat UI",
+            "api":{ "ChatUI": ["messages", "user", "timeStampFormat", "showTimeStamp", "headerText", "headerIconCss"] },
+            "description": "Showcases the API combinations of the Chat UI control.",
+            "sourceFiles": [
+                { "displayName": "api.ts", "path":"src/chat-ui/api.ts" },
+                { "displayName": "api.html", "path":"src/chat-ui/api.html" },
+                { "displayName": "messageData.ts", "path":"src/chat-ui/messageData.ts" }
+            ]
+        },
+        {
+            "url": "chat-integration",
+            "name": "Use Case",
+            "category": "Integration",
+            "api":{ "ChatUI": ["messages", "user", "timeStampFormat", "showTimeStamp", "headerText", "headerIconCss"] },
+            "description": "Showcases the chat component integration with other Chat UI control",
+            "sourceFiles": [
+                { "displayName": "chat-integration.ts", "path":"src/chat-ui/chat-integration.ts" },
+                { "displayName": "chat-integration.html", "path":"src/chat-ui/chat-integration.html" },
+                { "displayName": "messageData.ts", "path":"src/chat-ui/messageData.ts" }
+            ]
+        }
+    ]
+}

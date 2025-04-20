@@ -1,0 +1,126 @@
+<div id="action-description">
+    <p>This sample explains the way of rendering tooltip template for taskbar and baseline by mapping template
+        elements to the property of taskbar and baseline in <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/tooltipSettings/">tooltipSettings</a>.</p>
+</div>
+
+<div class="control-section">
+    <ejs-gantt id="TooltipTemplate" height="430px" [dataSource]="data" [taskFields]="taskSettings"
+        [allowSelection]="true" [labelSettings]="labelSettings" [projectStartDate]="projectStartDate"
+        [projectEndDate]="projectEndDate" [allowSorting]="true" [labelSettings]="labelSettings" [treeColumnIndex]="1"
+        [columns]="columns" [splitterSettings]="splitterSettings" [projectStartDate]="projectStartDate"
+        [projectEndDate]="projectEndDate" [highlightWeekends]="true" [renderBaseline]="true"
+        [tooltipSettings]="tooltipSettings" [resourceFields] = "resourceFields"
+        [resources]="resources">
+
+        <ng-template #tooltipSettingsTaskbar let-data>
+
+                <div>
+                    <table>
+                <ng-container *ngIf="data.ganttProperties.resourceNames">
+                    <tr>
+                        <td rowspan="3" style="padding:3px"><img src="assets/gantt/images/{{data.ganttProperties.resourceNames}}.png" height="40px" /></td>
+                        <td style="padding:3px">Task done By:</td>
+                        <td style="padding:3px">{{data.ganttProperties.resourceNames}}</td>
+                    </tr>
+                </ng-container>
+                <ng-container>
+                        <tr>
+                            <td style="padding:3px">Starts On:</td>
+                            <td style="padding:3px">{{format(data.StartDate)}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:3px">Ends On:</td>
+                            <td style="padding:3px">{{format(data.EndDate)}}</td>
+                        </tr>
+                    </ng-container>
+                </table>   
+                    </div>
+        </ng-template>
+
+        <ng-template #tooltipSettingsBaseline let-data>
+            <div>
+                <ng-container>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Planned Start Date: </td>
+                                <td>{{format(data.BaselineStartDate)}}</td>
+                            </tr>
+                            <tr>
+                                <td>Planned End Date: </td>
+                                <td>{{format(data.BaselineEndDate)}}</td>
+                            </tr>
+                            <tr>
+                                <td>Current Start Date: </td>
+                                <td>{{format(data.StartDate)}}</td>
+                            </tr>
+                            <tr>
+                                <td>Current End Date: </td>
+                                <td>{{format(data.EndDate)}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-container>
+            </div>
+        </ng-template>
+        <ng-template #tooltipSettingsTimeline let-data>
+            <ng-container *ngIf="data.tier === 'topTier'; else bottomTierTemplate">
+                <div *ngIf="executeTopTierTooltip(data.value, data.date, data.tier)">
+                    <div [style.border-bottom]=" '2px solid ' + themeClass " [style.padding-bottom]="'5px'" [style.text-align]="'center'">
+                        <span style="font-weight: bold; font-size: 14px;">{{data.date}}</span>
+                    </div>
+                    <div style="display: flex; padding-bottom: 5px; padding-top: 5px;">
+                        <span style="font-weight: bold;">Active Tasks:</span>
+                        <span style="padding-left: 2px;">{{ topTierData.activeTasks }}</span>
+                    </div>
+                    <div style="display: flex; padding-bottom: 5px;">
+                        <span style="font-weight: bold;">Milestones:</span>
+                        <span style="padding-left: 2px;">{{ topTierData.milestones }}</span>
+                    </div>
+                    <div style="display: flex; padding-bottom: 5px;">
+                        <span style="font-weight: bold;">Overall Progress:</span>
+                        <span style="padding-left: 2px;">{{ topTierData.overallProgress }}</span>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #bottomTierTemplate>
+                <div *ngIf="executeBottomTierTooltip(data.date, data.tier)">
+                    <div [style.border-bottom]=" '2px solid ' + themeClass " [style.padding-bottom]="'5px'" [style.text-align]="'center'">
+                        <span style="font-weight: bold; font-size: 14px;">{{data.date}}</span>
+                    </div>
+                    <div style="display: flex; padding-bottom: 5px;padding-top: 5px;">
+                        <span style="font-weight: bold;">Active Tasks:</span>
+                        <span style="padding-left: 2px;">{{ bottomTierData.activeTasks }}</span>
+                    </div>
+                    <div style="display: flex; padding-bottom: 5px;">
+                        <span style="font-weight: bold;">Milestones:</span>
+                        <span style="padding-left: 2px;">{{ bottomTierData.milestones }}</span>
+                    </div>
+                    <div style="display: flex; padding-bottom: 5px;">
+                        <span style="font-weight: bold;">Overall Progress:</span>
+                        <span style="padding-left: 2px;">{{ bottomTierData.overallProgress }}</span>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-template>
+    </ejs-gantt>
+</div>
+
+<div id="description">
+    <p>Tooltip can be enabled or disabled using <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/tooltipSettings/#showtooltip">tooltipSettings.showTooltip</a> property.In this demo, the
+        tooltip template is rendered for <code>taskbar</code> <code>timeline</code> and <code>baseline</code> using the
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/tooltipSettings/#taskbar">tooltipSettings.taskbar</a>, <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/tooltipSettings/#timeline">tooltipSettings.timeline</a> and <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/tooltipSettings/#baseline">tooltipSettings.baseline</a> properties.
+    </p>
+    <p>
+        The baseline feature enables the user to view the deviation between the planned dates and the actual dates of
+        the tasks in a project. Baselines can be enabled in Gantt chart by enabling the <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt#renderbaseline">renderBaseline</a>
+        property along
+        with mapping the data source values for <code>baselineStartDate</code> and <code>baselineEndDate</code>
+        properties.
+    </p>
+
+    <p>
+        Gantt control features are segregated into individual feature-wise modules.To use a selection and markers, inject the
+        <code>SelectionService</code> and <code>DayMarkersService</code> into the <code>&#64;NgModule.providers</code> section respectively.
+    </p>
+</div>

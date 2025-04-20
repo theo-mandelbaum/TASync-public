@@ -1,0 +1,112 @@
+<div id="action-description">
+    <p>
+        This sample demonstrates how to add the extra information to the nodes and connectors and how to show the information through
+        the common graphical user interface element.
+    </p>
+</div>
+<div class="col-lg-8 control-section" style="border-right: 1px solid #D7D7D7">
+    <style>
+
+        #tooltipPropertySection .property-panel-header {
+            margin-left: 10px;
+        }
+        #tooltipPropertySection td{
+            width: 50%;
+            padding-top: 5px;
+        }
+        .content-wrapper {
+            border: 1px solid #D7D7D7;
+        }
+    </style>
+    <div id="tooltipDiagramSection" class="content-wrapper" style="width: 100%">
+        <ejs-diagram #diagram id="diagram" width="100%" height="645px" [nodes]='nodes' [connectors]='connectors' [snapSettings]='snapSettings' (created)="created()"
+            [tooltip]='tooltip' [getNodeDefaults]='getNodeDefaults' [getConnectorDefaults]='getConnectorDefaults'>
+        </ejs-diagram>
+    </div>
+</div>
+<div id="tooltipPropertySection" class="col-lg-4 property-section">
+    <div class="property-panel-header" style="margin-left:0px">
+        Properties
+    </div>
+    <div class="property-panel-content">
+    <table id="property" title="Properties">
+        <tr>
+            <td>
+                <div>
+                    Relative mode
+                </div>
+            </td>
+            <td>
+                <div style="margin-left:15px">
+                    <ejs-dropdownlist id="mode" #mode [index]="dropdownIndex" [dataSource]="modeValue" [fields]="fields" popupWidth='150' width='85%'
+                        (change)="relativeModeChange($event)">
+                    </ejs-dropdownlist>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    Position
+                </div>
+            </td>
+            <td>
+                <div style="margin-left:15px">
+                    <ejs-dropdownlist id="position" #position [index]="dropdownIndex" [dataSource]="PositionValue" [fields]="fields" popupWidth='150' width='85%'
+                        (change)="positionChange($event)">
+                    </ejs-dropdownlist>
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div>
+                    Animation
+                </div>
+            </td>
+            <td>
+                <div style="margin-left:15px">
+                    <ejs-numerictextbox id="duration" value="100" min="100" max="2000" step="100" width="85%" (change)="animationChange($event)"></ejs-numerictextbox>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    Effect
+                </div>
+            </td>
+            <td>
+                <div style="margin-left:15px">
+                    <ejs-dropdownlist id="effect" #effect [dataSource]="EffectValue" [index]="dropdownIndex" [fields]="fields"  popupWidth='150' width='85%'
+                        (change)="effectChange($event)">
+                    </ejs-dropdownlist>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    Sticky Mode
+                </div>
+            </td>
+            <td>
+                <div style="margin-left:15px">                   
+                    <ejs-checkbox id="isSticky" #isSticky [checked]="false" (change)="isStickyChange($event)" ></ejs-checkbox>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+
+<div id="description">
+    <p>
+        Using diagram’s <code>tooltip</code> we can define the tooltip for the diagram nodes as well as connector. We can control the <code>animation</code>,
+        <code>position</code>, <code>effects</code> of the tooltip using <code>tooltip</code> property of the diagram. Also, we can define the custom tooltip
+        as either text or HTML element using <code>content</code> property of the tooltip. We can control the different tooltip settings
+        to each connector and node.
+    </p>
+    <br>
+</div>

@@ -1,0 +1,36 @@
+<div id="action-description">
+    <p>
+        This sample depicts the trackball behavior in the chart. To view the trackball and its tooltip, hover over the chart or tap on it in touch-enabled devices.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' [chartArea]='chartArea' [width]='width' align='center' id='chartcontainer' [primaryXAxis]='primaryXAxis'
+            [primaryYAxis]='primaryYAxis' [title]='title' [tooltip]='tooltip'  [legendSettings]='legendSettings' [crosshair]='crosshair' (load)='load($event)'>
+            <e-series-collection>
+                <e-series [dataSource]='john' type='Line' xName='x' yName='y' name='John' width=2 [marker]='marker'> </e-series>
+                <e-series [dataSource]='andrew' type='Line' xName='x' yName='y' name='Andrew' width=2 [marker]='marker'>
+                </e-series>
+                <e-series [dataSource]='thomas' type='Line' xName='x' yName='y' name='Thomas' width=2 [marker]='marker'>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        The trackball is used to track a data point close to the mouse or touch position. The trackball can be enabled by setting the Enable property of the crosshair to true and the shared property of the tooltip to true in the chart.
+    </p>
+    <p>
+        Hover the chart area to view trackball and its tooltip. Touch and hold to enable trackball in touch enabled devices.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use trackball, we need to inject
+        <code>TooltipService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information on the trackball can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/cross-hair-and-track-ball/#trackball" aria-label="Navigate to the documentation for Trackball in Angular Chart component">documentation section</a>.
+    </p>
+</div>

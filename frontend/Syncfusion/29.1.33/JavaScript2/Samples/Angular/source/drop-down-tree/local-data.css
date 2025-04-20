@@ -1,0 +1,11 @@
+.dropdowntree-local.control-section,
+.dropdowntree-local .content-wrapper {
+    min-height: 350px;
+}
+.displayText {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

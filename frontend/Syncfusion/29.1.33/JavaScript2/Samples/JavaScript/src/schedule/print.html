@@ -1,0 +1,69 @@
+<div class="col-lg-9 control-section">
+    <div class="content-wrapper">
+        <div id="Schedule"></div>
+    </div>
+</div>
+
+<div class="col-lg-3 property-section">
+    <table id="property" title="Properties">
+        <tbody>
+            <tr>
+                <td style="height: 50px;">
+                    <input id="checked" type="checkbox" />
+                </td>
+            </tr>
+            <tr class="e-height-row e-hide-row">
+                <td>
+                    <input type="text" id="heightElement" />
+                </td>
+            </tr>
+            <tr class="e-width-row e-hide-row">
+                <td>
+                    <input type="text" id="widthElement" />
+                </td>
+            </tr>
+            <tr class="e-selected-date-row e-hide-row">
+                <td>
+                    <input type="text" id="selectedDateElement" />
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 15px; text-align: center;">
+                    <button id="print-btn">Print</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .property-panel-table td {
+        padding-bottom: 1rem;
+    }
+    .e-schedule-toolbar .e-toolbar-item.e-today,
+    .e-hide-row {
+        display: none;
+    }
+
+    .e-schedule-toolbar .e-toolbar-items .e-toolbar-item.e-separator {
+       display: none;
+    }
+</style>
+
+<div id="action-description">
+    <p>This example demonstrates how to print the Scheduler element at client-side.
+    </p>
+</div>
+<div id="description">
+    <p>In this example, the Scheduler element is Printed by making use of the public method <code>print</code>.</p>
+    <p>
+        Also, we can print the schedule based on the custom rendering by passing the <code>ScheduleModel</code> in the
+        <code>print</code> method. In the above demo, we have demonstrated the <code>print</code> method with the
+        below properties of the <code>ScheduleModel</code>.
+    </p>
+    <ul>
+        <li>height</li>
+        <li>width</li>
+        <li>selectedDate</li>
+    </ul>
+</div>

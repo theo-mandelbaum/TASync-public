@@ -1,0 +1,127 @@
+<div class="control-section">
+    <div class="sample-container">
+        <div class="default-section">
+            <table class='api'>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <select id="enterOption">
+                                    <option value="P">Create a new &lt;p&gt;</option>
+                                    <option value="DIV">Create a new &lt;div&gt;</option>
+                                    <option value="BR">Create a new &lt;br&gt;</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select id="shiftEnterOption">
+                                    <option value="BR">Create a new &lt;br&gt;</option>
+                                    <option value="P">Create a new &lt;p&gt;</option>
+                                    <option value="DIV">Create a new &lt;div&gt;</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div id="defaultRTE">
+            </div>
+            <br>
+            <label>Code View </label>
+            <div id="codeView" class="codeView"></div>
+        </div>
+    </div>
+</div>
+<div id="action-description">
+    <p>This sample demonstrates the API usage to customize the enter key and shift + enter key actions in the Rich Text Editor content. Code view represents the current rich text editor value when pressing typing any content or pressing enter key or shift + enter keys.</p>
+</div>
+
+<div id="description">
+    <p>In this demo, ensure the API's behaviors by</p>
+    <ul>
+        <li>Changing the value of <code>enterKey</code> dropdown to customize the enter key action when it is pressed.</li>
+        <li>Changing the value of <code>shiftEnterKey</code> dropdown to customize the shift + enter key action when it is pressed.</li>
+    </ul>
+</div>
+
+<style>
+    .api {
+        width: 75%;
+    }
+    .api td {
+        padding-right: 100px;
+        margin-top: 3px;
+    }
+    @media only screen and (max-width: 600px) {
+        .api {
+            width: 100%;
+        }
+        .api td {
+            display: block;
+        }
+    }
+    @media only screen and (min-width: 600px) and (max-width: 1000px) {
+        .api {
+            width: 100%;
+        }
+    }
+    .default-section {
+        padding: 20px;
+    }
+    .codeView {
+        border: 1px solid rgba(0,0,0,0.12);
+        height: 200px;
+        width: 100%;
+    }
+    .bootstrap-dark .codeView{
+        border:1px solid rgb(80,80,80);
+    }
+    .highcontrast #codeView {
+        border:1px solid rgb(255,255,255);
+    }
+    .CodeMirror {
+        height: 190px;
+    }
+    .codeViewContent {
+        padding-left: 16px;
+    }
+    .bootstrap-dark .CodeMirror-scroll, .bootstrap5-dark .CodeMirror-scroll,.bootstrap5\.3-dark .CodeMirror-scroll, .fluent-dark .CodeMirror-scroll, .fluent2-dark .CodeMirror-scroll, .fluent2-highcontrast .CodeMirror-scroll, .material3-dark .CodeMirror-scroll,.fabric-dark .CodeMirror-scroll, .material-dark .CodeMirror-scroll, .tailwind-dark .CodeMirror-scroll, .tailwind3-dark .CodeMirror-scroll, .highcontrast .CodeMirror-scroll{
+        color: #fff;
+    }
+    .bootstrap-dark .CodeMirror-scroll{
+    background-color: #1b1b1b;
+    }
+    .bootstrap5-dark .CodeMirror-scroll,
+    .bootstrap5\.3-dark .CodeMirror-scroll {
+    background-color: #212529;
+    }
+    .fluent-dark .CodeMirror-scroll{
+    background-color: #1b1a19;
+    }
+    .fluent2-dark .CodeMirror-scroll{
+    background-color: #1b1a19;
+    } 
+    .material3-dark .CodeMirror-scroll{
+    background-color: #1C1B1F;
+    }
+    .fabric-dark .CodeMirror-scroll{
+    background-color: #242424;
+    }
+    .material-dark .CodeMirror-scroll{
+    background-color: #383838;
+    }
+    .tailwind-dark .CodeMirror-scroll,
+    .tailwind3-dark .CodeMirror-scroll{
+    background-color:#1f2937;
+    }
+    .highcontrast .CodeMirror-scroll,
+    .fluent2-highcontrast .CodeMirror-scroll{
+    background-color:#000000;
+    }
+    .bootstrap5\.3-dark .codeView .CodeMirror {
+        background: rgb(40, 45, 49);
+        color:#fff
+    }
+</style>

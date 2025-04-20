@@ -1,0 +1,33 @@
+<div id="action-description">
+    <p>
+        This Angular Step Area Chart example visualizes electricity generation data using renewable and non-renewable resources  in a step area chart. 
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' [chartArea]='chartArea' [width]='width' align='center' id='chartcontainer' [primaryXAxis]='primaryXAxis'
+            [primaryYAxis]='primaryYAxis' [title]='title' (load)='load($event)' [tooltip]='tooltip' [legendSettings]='legend'>
+            <e-series-collection>
+                <e-series [dataSource]='data' type='StepArea' [marker]='marker' xName='x' yName='y' name='Renewable' width=2  opacity='0.6' [border]='border'> </e-series>
+                <e-series [dataSource]='data1' type='StepArea' [marker]='marker' xName='x' yName='y' name='Non-Renewable' width=2 opacity='0.6' [border]='border'> </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure the step area chart. This series forms a step progress by connecting points through vertical and horizontal lines with the area being filled.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+    </p>
+    <p style="font-weight: 500"><b>Injecting Module</b></p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use step area series, we need to inject
+        <code>StepAreaSeriesService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the step area series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/step-area" aria-label="Navigate to the documentation for Step Area Chart in Angular Chart component">documentation section</a>.
+    </p>
+</div>

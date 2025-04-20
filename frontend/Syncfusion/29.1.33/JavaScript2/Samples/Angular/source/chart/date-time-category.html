@@ -1,0 +1,42 @@
+<div id="action-description">
+    <p>
+        This sample shows the date-time category axis with sample data about the sales of a product on different business days.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' [chartArea]='chartArea'id='chartcontainer' [width]='width' align='center' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'
+            [title]='title' (load)='load($event)' [legendSettings]='legendSettings'[tooltip]='tooltip'>
+            <e-annotations>
+                <e-annotation content='<div style="color:#FF0000;font-family: bold; font-weight: 600">Christmas Offer<br> Dec 2017</div>'
+                    [x]=x [y]=y coordinateUnits='Point'>
+                </e-annotation>
+                <e-annotation content='<div style="color:#FF0000;font-family: bold; font-weight: 800">New Year Offer<br> Jan 2018</div>'
+                    [x]=x1 [y]=y coordinateUnits='Point'>
+                </e-annotation>
+            </e-annotations>
+            <e-series-collection>
+                <e-series [dataSource]='data1' type='Column' xName='x' yName='y' [marker]='marker' name='Product'> </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        The date-time category axis is used to display date-time values with nonlinear intervals. For example, business days alone can be depicted here in a week. To use a date-time category axis, set the ValueType in axis to DateTimeCategory.
+    </p>
+   
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap a point in touch enabled devices.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. For datetime category axis, you should inject
+        <code>DateTimeCategory</code> into the
+        <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information on the DateTime category axis can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/date-time-axis/#datetimecategory-axis" aria-label="Navigate to the documentation for DateTimeCategory Axis in Angular Chart component">documentation section</a>.
+    </p>
+</div>

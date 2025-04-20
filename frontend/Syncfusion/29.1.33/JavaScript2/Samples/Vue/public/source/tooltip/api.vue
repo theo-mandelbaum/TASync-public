@@ -1,0 +1,194 @@
+<template>
+<div class="tooltip-api">
+    <div class="col-lg-8 control-section">
+        <ejs-tooltip ref='tooltip' target='#default' opensOn='Click' :content='tContent' :created='created' :windowCollision='true' position="TopCenter">
+            <!-- Tooltip element -->
+            <ejs-button ref='button' id="default">Show Tooltip</ejs-button>
+        </ejs-tooltip>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Content</div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div>
+                            <input v-on:keyup="keymonitor" id="tooltipContentValue" ref="textbox" class="e-input"  type="text" placeholder="Tooltip content">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Height</div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div>
+                            <ejs-numerictextbox id="height" cssClass="e-input" value="45" :change='hChange' aria-label="height value"></ejs-numerictextbox>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Width</div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div>
+                            <ejs-numerictextbox id="width" cssClass="e-input" value="100" :change='wChange' aria-label="width value"></ejs-numerictextbox>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Open Mode</div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div>
+                             <ejs-dropdownlist id='ddlelement' :change='ddlChange' :dataSource='dataDDL' :placeholder='waterMark'></ejs-dropdownlist>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Sticky Mode</div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div>
+                            <ejs-checkbox :change='cChange' id="sticky" aria-label="sticky"></ejs-checkbox>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="action-description">
+        <p>This sample demonstrates how to customize the tooltip component by using its properties from
+            the property pane. Select any combination of properties from the property pane to customize
+            tooltips.</p>
+    </div>
+    <div id="description">
+        <p>In this demo, the default tooltip is rendered with minimal configuration. This sample can be
+            customized further with the combination of tooltip properties from the property pane. For
+            example,</p>
+        <ul>
+            <li>Any change made to a textbox in the property pane will be reflected in the tooltip <a href="https://ej2.syncfusion.com/vue/documentation/api/tooltip/#content">content</a></li>
+            <li><a href="https://ej2.syncfusion.com/vue/documentation/api/tooltip/#issticky">StickyMode</a> can
+                be enabled by checking the sticky mode option in the property pane.</li>
+            <li><a href="https://ej2.syncfusion.com/vue/documentation/api/tooltip/#height">Height</a>                and
+                <a href="https://ej2.syncfusion.com/vue/documentation/api/tooltip/#width">width</a>                can be changed from the property pane.</li>
+            <li><a href="https://ej2.syncfusion.com/vue/documentation/api/tooltip/#openson">OpenMode</a>                can be changed from the property pane.</li>
+        </ul>
+    </div>
+</div>
+</template>
+<script>
+import { TooltipComponent } from "@syncfusion/ej2-vue-popups";
+import { ButtonComponent, CheckBoxComponent } from "@syncfusion/ej2-vue-buttons";
+import { DropDownListComponent } from "@syncfusion/ej2-vue-dropdowns";
+import { NumericTextBoxComponent } from "@syncfusion/ej2-vue-inputs";
+
+export default {
+  components: {
+    'ejs-tooltip': TooltipComponent,
+    'ejs-button': ButtonComponent,
+    'ejs-checkbox': CheckBoxComponent,
+    'ejs-dropdownlist': DropDownListComponent,
+    'ejs-numerictextbox': NumericTextBoxComponent
+  },
+  data: function() {
+    return {
+      waterMark: "Open Mode",
+      dataDDL: ["Hover", "Click", "Auto"],
+      tContent: "Tooltip Content"
+    };
+  },
+  methods: {
+    created: function() {
+      if (document.getElementById("right-pane")) {
+        document
+          .getElementById("right-pane")
+          .addEventListener("click", this.onClick);
+        document
+          .getElementById("right-pane")
+          .addEventListener("scroll", this.onScroll);
+      }
+    },
+    onClick: function(args) {
+      if (args && !args.target.classList.contains("e-btn")) {
+        if (
+          this.$refs.tooltip &&
+          document.getElementsByClassName("e-tooltip-wrap").length > 0
+        ) {
+          this.$refs.tooltip.ej2Instances.close();
+        }
+      }
+    },
+    onScroll: function() {
+      if (
+        this.$refs.tooltip &&
+        document.getElementsByClassName("e-tooltip-wrap").length > 0
+      ) {
+        this.$refs.tooltip.ej2Instances.close();
+      }
+    },
+    wChange: function(args) {
+      this.$refs.tooltip.ej2Instances.width = args.value;
+    },
+    hChange: function(args) {
+      this.$refs.tooltip.ej2Instances.height = args.value;
+    },
+    textboxValue: function() {
+      this.$refs.tooltip.ej2Instances.content = this.$ref.textbox.ej2Instances.value;
+      this.$refs.tooltip.ej2Instances.refresh(this.$refs.tooltip.$el);
+    },
+    ddlChange: function(args) {
+      this.$refs.tooltip.ej2Instances.opensOn = args.value;
+      this.$refs.tooltip.ej2Instances.refresh(this.$refs.button);
+    },
+    cChange: function(args) {
+      this.$refs.tooltip.ej2Instances.isSticky = args.checked;
+    },
+    keymonitor: function(args) {
+      this.$refs.tooltip.ej2Instances.close();
+      this.$refs.tooltip.ej2Instances.content = args.currentTarget.value;
+      this.$refs.tooltip.ej2Instances.refresh(this.$refs.button);
+    }
+  }
+}
+</script>
+<style>
+.tooltip-api .userselect {
+  -webkit-user-select: none;
+  /* Safari 3.1+ */
+  -moz-user-select: none;
+  /* Firefox 2+ */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Standard syntax */
+}
+
+.tooltip-api #property {
+  padding-top: 200px;
+}
+
+.tooltip-api #default {
+  position: absolute;
+  left: calc(50% - 60px);
+  top: 35%;
+}
+
+.tooltip-api #tooltipContentValue {
+  height: 34px;
+  width: 136px;
+  padding-left: 10px;
+}
+
+.highcontrast .tooltip-api #tooltipContentValue {
+  border: 1px solid;
+  border-width: 1px;
+  color: #fff;
+  background: #000;
+}
+</style>

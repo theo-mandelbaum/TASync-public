@@ -1,0 +1,32 @@
+<div id="action-description">
+    <p>
+        This sample illustrates a stock chart with candle series and an average true range indicator. 
+        Trackball shows the information about the stock and signal value of a day.
+   </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart id='chartcontainer' [chartArea]='chartArea' [width]='width' align='center' style="display:block;" [title]='title' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [tooltip]='tooltip' [crosshair] = 'crosshair' [zoomSettings] = 'zoomSettings'
+        [axes] = 'axes' [rows]='rows' [legendSettings]='legendSettings' [chartArea]= 'chartArea' (load)='load($event)' [indicators]='indicators'>
+            <e-series-collection>
+                <e-series [dataSource]='data1' type='Candle' xName='period' high='high' low='low' open='open' close='close' volume='volume' name='Apple Inc'> </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id='description'>
+    <p>
+        This sample illustrates a chart with candle series and an average true range indicator. The trackball shows information about the stock rates and signal values of a day.
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use Average True Range Indicator, we need to inject
+        <code>AtrIndicatorService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information on the Average True Range Indicator can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/technical-indicators/#average-true-range-atr" aria-label="Navigate to the documentation for Average True Range in technical indicator of Angular Chart component">documentation section</a>.
+    </p>
+</div>

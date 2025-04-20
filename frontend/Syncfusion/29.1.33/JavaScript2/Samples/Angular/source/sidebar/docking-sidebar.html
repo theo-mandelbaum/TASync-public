@@ -1,0 +1,53 @@
+<div class="control-section" id="wrapper">
+    <!-- main content declaration -->
+    <div>
+        <ejs-toolbar cssClass="dockToolbar" id="dockToolbar" (clicked)="toolbarCliked($event)">
+            <e-items>
+                <e-item prefixIcon="e-tbar-menu-icon tb-icons" tooltipText="Menu"></e-item>
+                <e-item>
+                    <ng-template #template>
+                        <div class="e-folder">
+                            <div class="e-folder-name">Blazor Documentation</div>
+                        </div>
+                    </ng-template>
+                </e-item>
+            </e-items>
+        </ejs-toolbar>
+    </div>
+    <div id="main-content container-fluid col-md-12" class="dockmaincontent">
+        <div>
+            <div id="dockContent" class="dockcontent">
+                The Blazor DataGrid is a feature-rich component useful for displaying data in a tabular format.
+                Its wide range of functionalities includes data binding, editing, Excel-like
+                filtering, custom sorting, aggregating rows, selection, and support for Excel, CSV, and
+                PDF formats. It loads millions of records in just a second. It has flexible editing and
+                intuitive record selection modes. Also, it has seamless data exporting options like PDF,
+                CSV, and Excel.
+            </div>
+        </div>
+    </div>
+    <!-- sidebar component -->
+    <ejs-sidebar id="dockSidebar" #dockBar class="dockSidebar" width="220px" dockSize="60px" target=".dockmaincontent"
+        [enableDock]='enableDock' type="Auto">
+        <ejs-listview id="dockList" [dataSource]='ListData' cssClass="e-template-list" [showIcon]='showIcon'
+            [fields]='listFields' (select)="onSelect($event)">
+        </ejs-listview>
+    </ejs-sidebar>
+    <div id="action-description">
+        <p>
+            The <code>Sidebar</code> dock sample demonstrates the dock functionalities of the <code>Sidebar</code>.
+            Click on the hamburger menu icon to expand/collapse the sidebar with dock state.
+        </p>
+    </div>
+    <div id="description">
+        <p>
+            Dock state of the Sidebar reserves some space on the page that always remains in a visible state when the
+            Sidebar is collapsed. It is used to show the short term of a content like icons alone instead of lengthy
+            text.
+        </p>
+        <p>
+            In this demo, the list item has an icon with text representation. On dock state, only the icon listed out to
+            interact. It can be achieved by using the <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/sidebar/#enabledock">EnableDock</a> property.
+        </p>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="col-lg-9 control-section">
+    <div class="content-wrapper">
+        <div id="TreeGrid" role="grid" aria-label="Tree Grid">
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 property-section">
+    <table id="property" title="Properties" style="width: 100%;table-layout: auto;">
+        <tr style="height: 50px">
+            <td>
+                <div style="padding-top: 10px">Column</div>
+            </td>
+            <td style="width: 70%;padding-right: 10px">
+                <div>
+                   <input type="text" tabindex="0" id='columns' aria-label="input text"/>
+                </div>
+            </td>
+        </tr>
+        <tr style="height: 50px">
+            <td>
+                <div>Format</div>
+            </td>
+            <td style="width: 70%;padding: 10px 10px 10px 0px">
+                <div>
+                    <input type="text" tabindex="0" id='format' aria-label="input text"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- custom code start -->
+<div id="action-description">
+    <p>This sample demonstrates the way of displaying the content of Tree Grid columns based on the specified format. In this sample, format of columns can be changed dynamically through property panel.
+    </p>
+</div>
+<div id="description">
+    <p>Format is the process of customizing the particular column data/values based on specific culture. The Tree Grid uses Internalization library to format number and date values. 
+            The format can be specified by using <code>
+            format</code> property of columns.</p>
+            <p>In this demo, select the column and format from the property panel to format the corresponding column values.</p>
+            <p>
+				More information on the Column formatting can be found in
+				<a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/treegrid/columns/#format">
+					documentation</a> section
+			</p>
+</div>
+<!-- custom code end -->

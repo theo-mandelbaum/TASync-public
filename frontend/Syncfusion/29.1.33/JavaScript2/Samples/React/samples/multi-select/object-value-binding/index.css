@@ -1,0 +1,14 @@
+.control-pane #multisection.control-section, .control-section #custom-filtering {
+    width: 80%;
+    margin: 0 auto;
+    min-width: 185px;
+}
+.e-bigger .control-pane #multisection.control-section,
+.e-bigger .control-section #custom-filtering {
+    width: 100%;
+}
+.control-styles .h4 {
+    font-size: 16px;
+    margin: 20px 0 10px;
+    font-weight: bold;
+}

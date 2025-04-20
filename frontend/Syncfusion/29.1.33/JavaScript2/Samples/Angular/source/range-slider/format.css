@@ -1,0 +1,27 @@
+.content-wrapper {
+    width: 40%;
+    margin: 0 auto;
+    min-width: 185px;
+}
+
+.sliderwrap {
+    margin-top: 40px;
+}
+.e-bigger .content-wrapper {
+    width: 80%;
+}
+.sliderwrap label {
+    padding-bottom: 26px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+body.tailwind3 .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick,
+body.tailwind3-dark .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick,
+body.tailwind3.e-bigger .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick
+body.tailwind3-dark.e-bigger .sliderwrap .e-tick-after.e-scale.e-h-scale .e-tick {
+    top: 0px;
+}

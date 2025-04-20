@@ -1,0 +1,30 @@
+<div id="action-description">
+  <p>
+    This sample shows the behavior of the data editing in the chart. Drag and drop the points to change the data values dynamically.
+  </p>
+</div>
+<div class="control-section">
+  <div align='center'>
+      <ejs-chart style='display:block' align='center' id='chartcontainer' [title]='title' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'
+          (load)='load($event)' [chartArea]='chartArea' [width]='width'>
+          <e-series-collection>
+              <e-series [dataSource]='data' [dragSettings]='dragSettings' type='Column' xName='x' yName='y' name='Renewable' width=2 [marker]='marker'> </e-series>
+              <e-series [dataSource]='data1' [dragSettings]='dragSettings' type='Line' xName='x' yName='y' name='Non-Renewable' width=2 [marker]='marker1'> </e-series>
+          </e-series-collection>
+      </ejs-chart>
+  </div>
+</div>
+<div id="description">
+  <p>
+    In this example, you can see how to drag and drop the data points in the chart by setting <code>Enable</code> property in <code>ChartDataEditSettings</code> to true. Also, you can set data editing’s minimum and maximum range using the <code>MinY</code> and <code>MaxY</code> properties.
+  </p>
+  <p style="font-weight: 500">Injecting Module</p>
+  <p>
+      Chart component features are segregated into individual feature-wise modules. To use line series, we need to inject
+      <code>LineSeriesService</code> into the <code>&#64;NgModule.providers</code> section.
+  </p>
+  <p>
+      More information on the Data Editing can be found in this
+      <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/data-editing/" aria-label="Navigate to the documentation for Data Editing in Angular Chart component">documentation section</a>.
+  </p>
+</div>

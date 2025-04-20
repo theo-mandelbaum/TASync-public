@@ -1,0 +1,179 @@
+{
+    "name": "Query Builder",
+    "directory": "query-builder",
+    "category": "Forms",
+    "ftName": "query-builder",
+    "dataSourcePath": "src/query-builder/data-source.js",
+    "samples": [
+        {
+            "url": "default",
+            "name": "Default Functionalities",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule",
+		    "created"
+                ]
+            },
+            "description": "This sample demonstrates the default functionalities of the Query Builder component with importing and exporting the filter as JSON. Click the plus button to add a group or conditions."
+        },
+        {
+            "url": "complex-databinding",
+            "name": "Complex Databinding",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule",
+                    "fieldMode"
+                ]
+            },
+            "description": "This sample demonstrates the Complex Databinding with integration of DropdownTree functionalities of the Query Builder component. This can be specified by using fieldMode property."
+        },
+        {
+            "url": "mongo-sql",
+            "name": "Mongo and SQL Query",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule"
+                ]
+            },
+            "description": "This sample demonstrates the Query Builder component by showing different types of queries such as SQL and MongoDB. The query preview can be changed using the tab component. Queries can be imported to the Query Builder using the import dropdown button."
+        },
+        {
+            "url": "lock-group",
+            "name": "Lock Group/Rule",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule",
+                    "fieldMode"
+                ]
+            },
+            "description": "This sample demonstrates the lock support of the Query Builder component. Click the lock button to lock the group or rule."
+        },
+        {
+            "url": "clone-group",
+            "name": "Clone Group/Rule",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule",
+                    "fieldMode"
+                ]
+            },
+            "description": "This sample demonstrates the clone support of the Query Builder component. Click the clone button to clone the group or rule."
+        },
+        {
+            "url": "drag-drop",
+            "name": "Drag and Drop",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule",
+                    "fieldMode"
+                ]
+            },
+            "description": "This sample demonstrates the drag and drop support of the Query Builder component."
+        },
+        {
+            "url": "separate-connector",
+            "name": "Separate Connector",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule",
+                    "fieldMode"
+                ]
+            },
+            "description": "This sample demonstrates the Separate Connector support of the Query Builder component."
+        },
+        {
+            "url": "template",
+            "name": "Value Template",
+            "category": "Template",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "columns",
+                    "rule",
+                    "ruleChange"
+                ]
+            },
+            "description": "This sample demonstrates the integration of the Dropdown List and Slider components as templates in the Query Builder component and also showing the different types of queries such as CEL and SpEL. The query preview can be changed using the tab component."
+        },
+        {
+            "url": "rule-template",
+            "name": "Rule Template",
+            "category": "Template",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "columns",
+                    "rule",
+                    "ruleChange",
+                    "headerTemplate"
+                ]
+            },
+            "description": "This sample demonstrates the integration of DropdownList, ruleTemplate in the Query Builder component."
+        },
+        {
+            "url": "header-template",
+            "name": "Header Template",
+            "category": "Template",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "columns",
+                    "rule",
+                    "ruleChange"
+                ]
+            },
+            "description": "This sample demonstrates the integration of DropdownList, headerTemplate in the Query Builder component."
+        },
+        {
+            "url": "grid",
+            "name": "Integration with Data Grid",
+            "category": "Query Builder",
+            "ftName": "query-builder",
+            "api": {
+                "QueryBuilder": [
+                    "width",
+                    "dataSource",
+                    "columns",
+                    "rule",
+                    "ruleChange"
+                ]
+            },
+            "description": "This sample demonstrates the integration of Grid component to showcase the data population based on the created filters using Query Builder component."
+        }
+    ]
+}

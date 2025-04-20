@@ -1,0 +1,37 @@
+#PivotView {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.pivot-table-property-section {
+    overflow: auto;
+}
+
+.pivot-table-property-section .property-panel-header {
+    padding-bottom: 10px;
+}
+
+.pivot-table-property-section .e-multiselect {
+    padding: 0;
+}
+
+.pivot-table-property-section  .property-panel-table td {
+    width: auto;
+}
+
+.pivot-table-property-section  .property-panel-table div {
+    padding-left: unset;
+}
+
+.sb-sample-content-area {
+    min-height: 255px !important;
+}
+.control-section {
+    min-height: 255px !important;
+}
+
+.e-multiselect.e-input-group.e-control-wrapper {
+    padding-left: 0px;
+    padding-top: 0px;
+}

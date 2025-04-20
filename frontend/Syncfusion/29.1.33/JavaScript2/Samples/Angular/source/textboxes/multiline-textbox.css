@@ -1,0 +1,10 @@
+.content-wrapper div.multiline-row {
+    max-width: 250px;
+    margin: 0 auto;
+    padding: 40px 0px 0px;
+}
+.multiline-property .left-side{
+    font-size: 14px;
+    padding: 8px;
+    width: 50%;
+}

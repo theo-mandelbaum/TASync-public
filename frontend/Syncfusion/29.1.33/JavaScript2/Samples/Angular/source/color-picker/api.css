@@ -1,0 +1,41 @@
+/* custom code start*/
+#api-control {
+    width: 45%;
+    margin: 30px auto;
+    padding-top: 50px;
+    text-align: center;
+}
+
+#api-control h4 {
+    margin-bottom: 20px;
+}
+
+.highcontrast #api-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.material-dark #api-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.fabric-dark #api-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.bootstrap-dark #api-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.tailwind-dark #api-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.e-bigger #api-control h4 {
+    font-size: 20px;
+}
+
+.property-panel-content {
+    padding: 0 10px 10px 0;
+    overflow: auto;
+}
+/* custom code end*/

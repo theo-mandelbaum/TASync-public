@@ -1,0 +1,44 @@
+<div class="control-section">
+    <div class="content-wrapper">
+        <div id="Grid"></div>
+    </div>
+</div>
+
+<div id="action-description">
+    <p>This sample demonstrates CRUD operations in Grid. You can perform CRUD operations as follows,</p>
+         <ul>
+                <li><code>Add</code> -  To add a new record, click the add toolbar button. </li>
+                <li><code>Edit</code> - To edit record, double-click a cell. </li>
+                <li><code>Delete</code> - To delete record, click the toolbar delete button after selecting a row. </li>
+                <li><code>Update</code> and <code>Cancel</code> - Save or discard changes by clicking the toolbar update and cancel button respectively.</li>
+            </ul>
+        </div>
+        <div id="description">
+            <p> Grid supports CRUD operations and they can be configured using
+              <code><a aria-label="API link for documentation" target="_blank" className="code" href="https://ej2.syncfusion.com/javascript/documentation/api/grid/editSettings/">
+              editSettings</a></code>. It has the following modes to manipulate the datasource.
+            </p>
+            <ul>
+              <li><code>Normal</code></li>
+              <li><code>Dialog</code></li>
+              <li><code>Batch</code></li>
+            </ul>
+            <p>
+              In this demo, the Batch mode is enabled for editing by defining the <code><a aria-label="API link for documentation" target="_blank" className="code"
+                href="https://ej2.syncfusion.com/javascript/documentation/api/grid/editSettings/#mode">
+                editSettings.mode
+              </a></code> as <code>batch</code>. You can start editing by double clicking a cell and changing the cell value.
+              The edited cell will be highlighted while navigating to a new cell.
+              You can bulk save the edited data to the datasource by clicking the toolbar's <code>update</code> button or by externally
+              invoking the <code><a aria-label="API link for documentation" target="_blank" className="code"
+                href="https://ej2.syncfusion.com/javascript/documentation/api/grid/edit/#batchsave">
+                batchSave
+              </a></code> method.
+            </p>
+    <p>
+        More information on the batch editing can be found in this 
+        <a aria-label="API link for documentation" target="_blank"
+          href="https://ej2.syncfusion.com/javascript/documentation/grid/editing/batch-editing">
+          documentation section</a>.
+      </p>
+</div>

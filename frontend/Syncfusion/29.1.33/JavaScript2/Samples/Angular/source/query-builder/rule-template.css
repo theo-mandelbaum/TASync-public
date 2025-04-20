@@ -1,0 +1,18 @@
+/* custom code start*/
+ejs-querybuilder {
+  display: block;
+}
+
+.e-query-builder {
+    margin: 0 auto;
+}
+
+.e-radio-wrapper:nth-child(1) {
+  margin-right: 5px !important;
+} 
+
+.e-radio-wrapper:nth-child(2) {
+  margin-right: 0px !important;
+}
+
+/* custom code end*/

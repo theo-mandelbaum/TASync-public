@@ -1,0 +1,31 @@
+.e-gantt-single-timeline .e-gantt-tree-grid-pane .e-columnheader{
+    height: 70px !important;
+}
+.gantt-single-timeline .e-gantt-tree-grid-pane .e-headercell{
+    height: 70px !important;
+}
+.e-gantt .e-gantt-chart .e-timeline-header-container {
+    height: 70px !important;
+}
+.e-gantt .e-gantt-chart .e-timeline-single-header-cell {
+    height: 70px !important;
+}  
+.e-header-cell-label.e-gantt-top-cell-text{
+    background-color: #fff
+}
+.fluent2-highcontrast .e-header-cell-label.e-gantt-top-cell-text {
+    background-color: #000
+}
+.fluent2-dark .e-header-cell-label.e-gantt-top-cell-text {
+    background-color: #000
+}
+.highcontrast .e-header-cell-label.e-gantt-top-cell-text {
+    background-color: #000
+}
+.tailwind3-dark .e-header-cell-label.e-gantt-top-cell-text {
+    background-color: #000
+}
+.material3-dark .e-header-cell-label.e-gantt-top-cell-text,
+.bootstrap5\.3-dark .e-header-cell-label.e-gantt-top-cell-text{
+    background-color: #000
+}

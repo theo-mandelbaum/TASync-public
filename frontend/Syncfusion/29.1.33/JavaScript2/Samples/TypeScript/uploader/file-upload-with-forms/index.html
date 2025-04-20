@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W8WD8WN');</script>
+    <!-- End Google Tag Manager -->   
+    <title>Javascript File Upload Form Support Example - Syncfusion Demos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="This example demonstrates the Form Support in Javascript File Upload Control. Explore here for more details.">
+    <meta name="author" content="Syncfusion">
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico">
+    <script type="text/javascript">
+        var themeName = location.hash || 'material';
+        themeName = themeName.replace('#', '');
+        window.ripple = (themeName === "material")
+        document.write('<link href="../../styles/' + themeName + '.css" rel="stylesheet">');
+    </script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write("<script src=\'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js\'>");
+        }</script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <style>
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+
+        body {
+            touch-action: none;
+        }
+    </style>
+    
+</head>
+<body class="ej2-new">
+        
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8WD8WN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div hidden id="sync-analytics" data-queue="EJ2 - Javascript - Demos"></div>
+    
+    <div class="sample-browser">
+        <div id="sample-header" class="sb-header" role="banner">
+            <div class="sb-header-left sb-left sb-table">
+                <div class="sb-header-item sb-table-cell">
+                    <div class="header-logo">
+                        <a href="#" target="" rel="noopener noreferrer">
+                                </a><a href="https://ej2.syncfusion.com/home" target="" rel="noopener noreferrer">
+                            <div class="footer-logo"> </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="sb-header-splitter sb-download-splitter"></div>
+                <div class="sb-header-item sb-table-cell">
+                    <div id="sb-header-text" class="e-sb-header-text">
+
+                        <span class="sb-header-text-left">Essential JS 2 for Javascript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sb-header-right sb-right sb-table">
+                <div class="sb-header-item sb-table-cell">
+                    <div class="product-style">
+                        <div><a href="https://www.syncfusion.com/javascript-ui-controls/uploader">PRODUCT DETAILS</a></div>
+                    </div>
+                </div>
+                <div class="sb-header-item sb-table-cell">
+                    <div class="sb-header-item sb-table-cell sb-download-wrapper">
+                        <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <button id="download-now" class="sb-download-btn">
+                                <span class="sb-download-text">Download Now</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content e-view">
+        <div class="sample-content">
+            <div id="sample-bread-crumb" class="sb-bread-crumb">
+                <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                    <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip " aria-label="previous sample" title="Previous Sample">
+                        <a href="https://ej2.syncfusion.com/demos/uploader/image-preview/"="" class=""><span class="sb-icons sb-icon-Previous"></span></a>
+                       
+                    </div>
+                    <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample" title="Next Sample">
+                        <a href="https://ej2.syncfusion.com/demos/uploader/custom-drop-area/"="" class=""><span class="sb-icons sb-icon-Next"></span></a>
+                        
+                    </div>
+                </div>
+                <h1 class="sb-bread-crumb-text">
+                    Example of Form Support in Javascript File Upload Control
+                </h1>
+
+                <h2 class="sb-bread-crumb-text">
+                    <div class="category-allcontrols"><a href="https://ej2.syncfusion.com/demos"><span>All Controls</span></a></div>
+                    <div class="category-seperator sb-icons"> / </div>
+                    <div class="category-text bread-ctext"><a href="https://ej2.syncfusion.com/demos/#/tailwind3/uploader/default.html"><span>File Upload</span></a></div>
+                    <div class="category-seperator sb-icons"> / </div>
+                    <div class="crumb-sample">Form Support</div>
+                </h2>
+            </div>
+            <div class="control-content">
+            <div id="action-description">
+                    <p>
+                        </p><div class="layout" id="actionDes">
+    <p>This <a href="https://www.syncfusion.com/javascript-ui-controls/js-file-upload" target="_blank">JavaScript File Upload</a> example demonstrates the Uploader control supported with HTML form upload. Fill the mandatory details in a form and click the submit button.</p>
+</div>
+                        <a id="details" class="layout" onclick="desDetails()"> More Details...</a>
+                        <script>
+                            function desDetails() {
+                                var element = document.getElementById('description-section');
+                                if (element) {
+                                    element.scrollIntoView();
+                                }
+                            }
+                        </script>
+                    <p></p>
+                </div>
+                <div class="container-fluid">
+                <div class="control-section">
+                        <div class="col-lg-12 control-section">
+  <h4 class="form-title">Photo contest</h4>
+  <div class="control_wrapper" id="control_wrapper">
+
+    <!-- Initialize Uploader -->
+    <form id="form1" action="saveFiles.ashx" method="post">
+      <div class="form-group" style="padding-top: 11px;">
+        <div class="e-float-input">
+          <input type="text" id="name" name="Name" data-required-message="* Enter your name" required="" data-msg-containerid="nameError">
+          <span class="e-float-line"></span> 
+          <label class="e-float-text e-label-top" for="name">Name</label>
+        </div>
+        <div id="nameError"></div>
+      </div>
+      <div class="form-group" style="padding-top: 11px;">
+        <div class="e-float-input">
+          <input type="email" id="email" name="Email" data-validation="email" data-required-message="* Please enter valid email" required="" data-msg-containerid="mailError">
+          <span class="e-float-line"></span> 
+          <label class="e-float-text e-label-top" for="email">Email</label>
+        </div>
+        <div id="mailError"></div>
+      </div>
+      <div class="form-group" style="padding-top: 11px;">
+        <div class="e-float-input" id="mobile-no">
+          <input type="tel" maxlength="10" id="mobileno" name="MobileNo" data-required-message="* Enter your mobile number" required="" data-msg-containerid="noError">
+          <span class="e-float-line"></span> 
+          <label class="e-float-text e-label-top" for="mobileno">Mobile No</label>
+        </div>
+        <div id="noError"></div>
+      </div>
+      <div class="form-group" style="padding-top: 11px;">
+        <div class="e-float-input upload-area">
+          <input type="text" id="upload" name="upload" readonly="" data-required-message="* Select any file" required="" data-msg-containerid="uploadError">
+          <button id="browse" class="e-control e-btn e-info">Browse...</button>
+          <span class="e-float-line"></span> 
+          <label class="e-float-text e-label-top" for="upload">Choose a file</label>
+        </div>
+        <div id="uploadError"></div>
+        <input type="file" name="UploadFiles" id="fileupload">
+      </div>
+      <div class="form-group" style="padding-top: 11px;">
+        <div class="e-float-input">
+          <textarea class="address-field" rows="4" id="Address" name="Address"></textarea>
+          <span class="e-float-line"></span> 
+          <label class="e-float-text e-label-top" for="address">Address</label>
+        </div>
+      </div>
+      <div class="submitBtn">
+        <button class="submit-btn e-btn" id="submit-btn">Submit</button>
+        <div class="desc"><span>*This button is not a submit type and the form submit handled from externally.</span> </div>
+      </div>
+    </form>
+    <div id="confirmationDialog"></div>
+  </div>
+</div>
+<style>
+  .control_wrapper {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .address-field {
+    max-height: 50px;
+    resize: none;
+  }
+  
+  #control_wrapper {
+    max-width: 500px;
+    margin: auto;
+    border: 0.5px solid #BEBEBE;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    padding: 1% 4% 2%;
+    background: #f9f9f9;
+  }
+  
+  .highcontrast #control_wrapper,
+  .material-dark #control_wrapper,
+  .material3-dark #control_wrapper,
+  .fabric-dark #control_wrapper,
+  .bootstrap-dark #control_wrapper,
+  .bootstrap5-dark #control_wrapper {
+    background: #393939;
+  }
+  
+  .tailwind-dark #control_wrapper,
+  .tailwind3-dark #control_wrapper {
+    background: #6c757d;
+  }
+  
+  .fluent-dark #control_wrapper,
+  .fluent2-dark #control_wrapper,
+  .fluent2-highcontrast #control_wrapper {
+    background: #212529;
+  }
+  
+  .upload-area,
+  .e-bigger .upload-area {
+    width: 73%;
+  }
+  
+  .e-error {
+    padding-top: 3px;
+  }
+  
+  .e-upload {
+    width: 100%;
+    position: relative;
+    margin-top: 15px;
+  }
+  
+  .control_wrapper .e-upload .e-upload-drag-hover {
+    margin: 0;
+  }
+  
+  .submit-btn {
+    margin-top: 15px;
+    position: relative;
+  }
+  
+  .bootstrap .submit-btn {
+    margin-left: 8px;
+  }
+  
+  .e-bigger.material .submit-btn {
+    margin-left: -7px;
+  }
+  
+  .fabric .submit-btn,
+  .highcontrast .submit-btn {
+    margin-left: -11px;
+  }
+  
+  .e-bigger.fabric .submit-btn,
+  .e-bigger.highcontrast .submit-btn {
+    margin-left: -25px;
+  }
+  
+  .e-bigger.bootstrap .submit-btn {
+    margin-left: -8px;
+  }
+  
+  .submitBtn .desc {
+    margin: 2% 23% 0% 18%;
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .submitBtn .desc {
+      margin: 12px;
+    }
+    .upload-area,
+    .e-bigger .upload-area {
+      width: 60%;
+    }
+  }
+  
+  .submitBtn {
+    position: relative;
+    text-align: center;
+  }
+  
+  .form-support {
+    width: 100%;
+  }
+  
+  .success .form-support {
+    display: none;
+  }
+  
+  .success .successmsg {
+    border: 0.5px solid green;
+    padding: 10%;
+    color: green;
+  }
+  
+  form#form1 {
+    position: relative;
+    top: 14%;
+  }
+  
+  .form-support td {
+    width: 100%;
+    padding-top: 4%;
+  }
+  
+  .e-upload {
+    display: none;
+  }
+  
+  input.choose-file {
+    width: 60%;
+  }
+  
+  button#browse {
+    float: right;
+    margin-right: -113px;
+    margin-top: -33px;
+  }
+  
+  .bootstrap4 button#browse {
+    margin-top: -33px;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .submitBtn {
+      margin-top: -22px;
+    }
+  }
+  
+  .e-bigger.fabric button#browse,
+  .e-bigger.fabric-dark button#browse,
+  .e-bigger.highcontrast button#browse,
+  .e-bigger.bootstrap button#browse {
+    margin-top: -41px;
+    margin-right: -120px;
+  }
+  
+  .e-bigger.material button#browse {
+    margin-top: -34px;
+  }
+  
+  .fabric #browse,
+  .highcontrast #browse {
+    margin-top: -33px;
+  }
+  
+  .bootstrap #browse {
+    margin-top: -35px;
+    margin-right: -109px;
+  }
+  
+  .form-title {
+    text-align: center;
+  }
+  
+  #mobile-no input[type=number]::-webkit-inner-spin-button,
+  #mobile-no input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .e-bigger.fluent button#browse,
+  .e-bigger.fluent-dark button#browse,
+  .e-bigger.bootstrap5 button#browse,
+  .e-bigger.bootstrap4 button#browse,
+  .e-bigger.bootstrap5-dark button#browse,
+  .e-bigger.tailwind button#browse,
+  .e-bigger.tailwind3 button#browse,
+  .e-bigger.tailwind-dark button#browse,
+  .e-bigger.tailwind3-dark button#browse {
+    margin-top: -41px;
+  }
+  
+  .fluent .e-bigger .e-dialog .e-dlg-header-content,
+  .fluent-dark .e-bigger .e-dialog .e-dlg-header-content,
+  .tailwind .e-bigger .e-dialog .e-dlg-header-content,
+  .tailwind3 .e-bigger .e-dialog .e-dlg-header-content,
+  .tailwind-dark .e-bigger .e-dialog .e-dlg-header-content,
+  .tailwind3-dark .e-bigger .e-dialog .e-dlg-header-content,
+  .tailwind-dark .e-bigger .e-dialog .e-dlg-header-content,
+  .tailwind3-dark .e-bigger .e-dialog .e-dlg-header-content {
+    padding-bottom: 2%;
+  }
+  
+  .material3-dark .e-bigger .e-dialog .e-dlg-header-content,
+  .material3 .e-bigger .e-dialog .e-dlg-header-content,
+  .material-dark .e-bigger .e-dialog .e-dlg-header-content,
+  .material .e-bigger .e-dialog .e-dlg-header-content {
+    padding-bottom: 3%;
+  }
+</style>
+                    </div>
+                    </div>
+                <div id="description-section">Description</div>    
+                <div id="description">
+                    <p>
+                       The Uploader control works in synchronous mode using HTML form. When the end-user submits the form, the selected files are submitted to server with
+       the name attribute of input element.
+    
+    More information on the form support can be found in this  documentation section.
+                     </p>     
+                </div>    
+            </div>             
+        </div>
+            
+        </div>
+    </div>
+    <script src="index.min.js"></script>
+    <script src="../../inputs.min.js"></script>
+
+
+
+
+</body>
+</html>

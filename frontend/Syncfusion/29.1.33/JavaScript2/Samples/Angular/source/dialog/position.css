@@ -1,0 +1,64 @@
+#container {
+    height: 365px;
+    overflow: hidden;
+    width: 100%;
+}
+.control-section{            
+    min-height: 370px;
+    margin-bottom: 15px;
+    margin-top: 10px;    
+}
+
+#poschange {
+  width: 405px;
+}
+
+.fluent.e-bigger #poschange,
+.fluent-dark.e-bigger #poschange {
+  width: 455px;
+}
+#defaultDialog table,
+#defaultDialog th,
+#defaultDialog td {
+    border: 1px solid #D8D8D8;
+    border-collapse: collapse;
+}
+
+.bootstrap5 #defaultDialog.e-dialog .e-footer-content,
+.bootstrap5-dark #defaultDialog.e-dialog .e-footer-content,
+.bootstrap5\.3 #defaultDialog.e-dialog .e-footer-content,
+.bootstrap5\.3-dark #defaultDialog.e-dialog .e-footer-content,
+.tailwind #defaultDialog.e-dialog .e-footer-content,
+.tailwind3 #defaultDialog.e-dialog .e-footer-content,
+.tailwind-dark #defaultDialog.e-dialog .e-footer-content,
+.tailwind3-dark #defaultDialog.e-dialog .e-footer-content,
+.bootstrap4 #defaultDialog.e-dialog .e-footer-content,
+.bootstrap #defaultDialog.e-dialog .e-footer-content
+ {
+     padding: 8px 5px 10px;
+ }
+
+#defaultDialog.e-dialog .e-footer-content {
+    padding: 0px 10px 10px;
+}
+
+#loader {
+    color: #008cff;
+    height: 40px;
+    left: 45%;
+    position: absolute;
+    top: 45%;
+    width: 30%;
+}
+
+.e-dialog .e-dlgcontent{
+    padding: 10px 16px 10px;
+}     
+
+.e-radio +label .e-label {
+  line-height:18px;
+}
+
+ td {
+  padding: 6px;
+}

@@ -1,0 +1,200 @@
+<main>
+    <!-- style for slider-->
+<style>
+    .slider-content-wrapper {
+        width: 40%;
+        margin: 0 auto;
+        min-width: 185px;
+    }
+
+    .slider-userselect {
+        -webkit-user-select: none;
+        /* Safari 3.1+ */
+        -moz-user-select: none;
+        /* Firefox 2+ */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+        /* Standard syntax */
+    }
+
+    .slider-labeltext {
+        text-align: -webkit-left;
+        font-weight: 500;
+        font-size: 13px;
+        padding-bottom: 10px;
+    }
+
+    .slider_container {
+        margin-top: 40px;
+    }
+
+    .e-bigger .slider-content-wrapper {
+        width: 80%;
+    }
+
+    #height_slider .e-tab-handle::after {
+        background-color: #f9920b;
+    }
+
+    #height_slider.e-control.e-slider .e-slider-track {
+        height: 8px;
+        top: calc(50% - 4px);
+        border-radius: 0;
+    }
+    .highcontrast #height_slider.e-control.e-slider .e-slider-track {
+        height: 10px;
+        top: calc(50% - 5px);
+        border-radius: 0;
+    }
+    .fabric .slider_container .e-slider-hover .e-slider-track, .fabric .slider_container .e-slider-container:active .e-slider-track,
+    .fabric .slider_container .e-slider-container .e-slider .e-tab-track{
+        background-color: #c8c8c8;
+    }
+
+    #gradient_slider.e-control.e-slider .e-range {
+        height: 6px;
+        top: calc(50% - 3px);
+        border-radius: 5px;
+        background: linear-gradient(to top left, #f9f9f9 25%, #f9920b 90%);
+    }
+
+    .fabric .slider_container .e-slider-hover .e-slider-track,
+    .fabric .slider_container .e-slider-container:active .e-slider-track,
+    .fabric .slider_container .e-slider-container .e-slider .e-tab-track {
+        background-color: #c8c8c8;
+    }
+
+    #gradient_slider.e-control.e-slider .e-slider-track {
+        height: 8px;
+        top: calc(50% - 4px);
+        border-radius: 5px;
+    }
+</style>
+<div class="col-lg-8 control-section">
+        <div id="mapszooming"></div>
+    <div id="height_slider"></div>        
+    </div>
+    <!-- property panel-->
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%;" role="none">
+            <colgroup>
+                <col span="1" style="width: 50%;">
+                <col span="1" style="width: 50%;">
+           </colgroup>  
+           <tbody>  
+           <tr style="height: 50px">
+                    <td>
+                        <div class="property-text">Zooming</div>
+                    </td>
+                    <td>
+                        <div class="checkbox">
+                        <input type="checkbox" checked id="zoom"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text">Panning</div>
+                    </td>
+                    <td>
+                        <div class="checkbox">
+                        <input type="checkbox" checked id="pan"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="width: 93%;">Mouse wheel zoom</div>
+                    </td>
+                    <td>
+                        <div class="checkbox">
+                        <input type="checkbox" checked id="mousewheel"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text">Pinch zoom</div>
+                    </td>
+                    <td>
+                        <div  class="checkbox">
+                        <input type="checkbox" checked id="pinch" />
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="width: 83%;">Single click zoom</div>
+                    </td>
+                    <td>
+                        <div class="checkbox">
+                        <input type="checkbox" id="singletap" />
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="width: 88%;">Double click zoom</div>
+                    </td>
+                    <td>
+                        <div class="checkbox">
+                        <input type="checkbox" id="doubletap" />
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="width: 93%; padding-left: 0px;">Animation duration</div>
+                    </td>
+                    <td>
+                        <div class="property-text">
+                        <input type="range" id="range" value="500" min="0" max="1000" style="width:55%; margin-left: -10px" />
+                        </div>
+                    </td>
+                    <td align="center" style="width: 10%;padding-top: 10px;text-align: center;">
+                        <span id='dur' style="margin-left: -55px;">500ms</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+    </div>
+    <section id="action-description" aria-label="Description of Maps sample">
+            <p>
+                This sample depicts the zooming and panning options in the maps. You can customize these options by changing the Zooming, Mouse wheel zoom, Pinch zoom, Single-click zoom, and Double-click zoom in the Properties panel.
+           </p>
+        </section>
+        <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
+            <p>
+                In this example, you can see how to zoom and pan the map. The support has been provided for zooming with the toolbar, rectangle zoom, pinch zoom, mouse wheel zoom, single-click, and double-click zoom.Panning can be enabled or disabled using
+                the Panning option. When it is disabled, the map will switch to zooming mode.
+            </p>
+        <br/>
+            <p style="font-weight: 500">Injecting Module</p>
+            <p>
+              Maps component features are segregated into individual feature-wise modules. To use the zooming feature, inject the <code>Zoom</code> module using the <code>Maps.Inject(Zoom)</code> method.
+            </p>
+            <p>
+                More information on zooming can be found in this
+                <a target="_blank" href="https://ej2.syncfusion.com/documentation/maps/user-interactions/#zooming">documentation section</a>.
+            </p>
+        </section>
+<!-- custom code start -->
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        #range > * {
+            padding: 0px !important;
+        }
+        div.property-text {
+            padding-left: 0px; padding-top: 0px;
+        }
+        div.checkbox {
+            margin-top: -5px;  margin-left: 20px;
+            padding-left: 0px; padding-top: 0px; 
+           
+        }
+    </style>
+    <!-- custom code end -->
+</main>

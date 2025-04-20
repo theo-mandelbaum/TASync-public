@@ -1,0 +1,84 @@
+<div class="control-section">
+    <style>
+        .sb-mobile-palette {
+            width: 210px;
+            height: 100%;
+            float: left;
+        }
+
+        .sb-mobile-palette-bar {
+            display: none;
+        }
+
+        .sb-mobile-diagram {
+            width: calc(100% - 212px);
+            height: 100%;
+            float: left;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-left: none;
+        }
+
+        @media (max-width: 550px) {
+
+            .sb-mobile-palette {
+                z-index: 19;
+                position: absolute;
+                display: none;
+                transition: transform 300ms linear, visibility 0s linear 300ms;
+                width: 39%;
+                height: 100%;
+            }
+
+            .sb-mobile-palette-bar {
+                display: block;
+                width: 100%;
+                background: #fafafa;
+                padding: 10px 10px;
+                border: 0.5px solid #e0e0e0;
+                min-height: 40px;
+            }
+
+            .sb-mobile-diagram {
+                width: 100%;
+                height: 100%;
+                float: left;
+                left: 0px;
+            }
+
+            #palette-icon {
+                font-size: 20px;
+            }
+        }
+
+        .sb-mobile-palette-open {
+            position: absolute;
+            display: block;
+            right: 15px;
+        }
+    </style>
+    <div id="umlActivityDiagram" style="width: 100%; height: 521px">
+        <div class="sb-mobile-palette-bar">
+            <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
+        </div>
+        <div id="palette-space" class="sb-mobile-palette">
+            <div id="symbolPalette" style="width:90%;"></div>
+        </div>
+        <div id="diagram-space" class="sb-mobile-diagram">
+            <div id="diagram"></div>
+        </div>
+    </div>
+</div>
+
+<div id="action-description">
+    <p>
+        This sample represents the message flow from one activity to another in customer service using built-in UML activity shapes.
+    </p>
+</div>
+<div id="description">
+    <p>
+        This example shows how to create activity shapes using diagram <code>UMLActivity</code> shapes. The <code>type</code> property of the
+        <code>shape</code> can be used to create <code>UMLActivity</code> nodes. The <code>shape</code> property of the shape allows you to create UML
+        activity shapes.
+    </p>
+    <br>
+</div>
