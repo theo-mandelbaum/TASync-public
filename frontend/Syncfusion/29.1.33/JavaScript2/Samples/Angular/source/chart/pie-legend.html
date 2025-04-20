@@ -1,0 +1,31 @@
+<div id="action-description">
+    <p>
+        This sample demonstrates a donut chart showcasing mobile browser usage statistics, with legends displayed at the bottom of the chart.
+    </p>
+</div>
+<div class="control-section" >
+    <div>
+        <ejs-accumulationchart id="donut-container" [title]="title"  align='center'[legendSettings]="legendSettings" [tooltip]="tooltip" [annotations]='annotations' (load)='load($event)' [enableBorderOnMouseMove]='false' (pointRender)='pointRender($event)'>
+            <e-accumulation-series-collection>
+                <e-accumulation-series name='Revenue' [dataSource]='data' xName='x' [startAngle]="startAngle" yName='y' [radius]="radius" [innerRadius]="innerRadius" [dataLabel]="dataLabel"> </e-accumulation-series>
+            </e-accumulation-series-collection>
+        </ejs-accumulationchart>
+    </div>
+</div>
+<div id="description">
+    <p> This example demonstrates how to render a donut chart with legends positioned at the bottom. The legend can be arranged in horizontal, vertical, or auto layout modes. Using the <code>maximumColumns</code> property, you can define the maximum number of columns in auto layout. Additionally, a fixed width option ensures uniform legend sizes for a polished appearance.</p>
+    <p style="font-weight: 500"><b>Injecting Module</b></p>
+    <p>
+        AccumulationChart component features are segregated into individual feature-wise modules. To use legend, we need to Inject
+        <code>AccumulationLegend</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the legend feature can be found in this 
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/accumulation-chart/legend/" aria-label="Navigate to the documentation for Legend in Angular Accumulation Chart component">documentation section</a>.
+    </p>
+</div>
+<style>
+    .control-section {
+        min-height: 450px;
+    }
+</style>

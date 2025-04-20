@@ -1,0 +1,191 @@
+{
+    "name": "HeatMap Chart",
+    "directory": "heatmap",
+    "category": "Data Visualization",
+    "ftName": "heatmap",
+    "samples": [
+        {
+            "url": "default-functionalities",
+            "name": "Default Functionalities",
+            "category": "HeatMap Chart",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows the heat map control displayed with minimum configuration",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "default-functionalities.vue", "path": "./src/heatmap/default-functionalities.vue"}
+            ]
+        },
+        {
+            "url": "calendar-heatmap",
+            "name": "Calendar Heatmap",
+            "category": "HeatMap Chart",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control for displays the time series data and displays the axis labels at specific time interval.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "calendar-heatmap.vue", "path": "./src/heatmap/calendar-heatmap.vue"},
+                {"displayName": "calendar-data-source.json", "path": "./src/heatmap/calendar-data-source.json"}
+
+            ]
+         },
+         {
+            "url": "bubble-types",
+            "name": "Bubble Types",
+            "category": "Bubble HeatMap",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows  Size, Color and SizeAndColor bubble heat map type.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "bubble-types.vue", "path": "./src/heatmap/bubble-types.vue"},
+                {"displayName": "table-bubble-data.json", "path": "./src/heatmap/table-bubble-data.json"}
+
+            ]
+        },
+        {
+            "url": "color-and-size-attributes",
+            "name": "Color and Size Attributes",
+            "category": "Bubble HeatMap",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows how to bind the multiple data to bubble heat map.",
+            "api": {}
+        },
+        {
+            "url": "row",
+            "name": "Row",
+            "category": "Data Binding",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control demonstrates how to bind the data to heat map with series of array for each columns.",
+            "api": {}
+        },
+        {
+            "url": "cell",
+            "name": "Cell",
+            "category": "Data Binding",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control demonstrates how to bind the array data with values for each cell to heatmap.",
+            "api": {}
+        },
+        {
+            "url": "json-row",
+            "name": "JSON Row",
+            "category": "Data Binding",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control demonstrates how to bind the JSON object with data for each columns to heatmap.",
+            "api": {}
+        },
+        {
+            "url": "json-cell",
+            "name": "JSON Cell",
+            "category": "Data Binding",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control demonstrates how to bind the JSON object with data for each cell to heat map.",
+            "api": {}
+        },
+        {
+            "url": "empty-points",
+            "name": "Empty Points",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows the usage of empty points or null points in heat map.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "empty-points.vue", "path": "./src/heatmap/empty-points.vue"},
+                {"displayName": "empty-point-data-source.json", "path": "./src/heatmap/empty-point-data-source.json"}
+            ]
+        },
+        {
+            "url": "inversed-axis",
+            "name": "Inversed Axis",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows how to inverse the axis in heat map.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "inversed-axis.vue", "path": "./src/heatmap/inversed-axis.vue"}
+            ]
+        },
+        {
+            "url": "opposed-axis",
+            "name": "Opposed Axis",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows how to place the axis opposite to the default position in heatmap.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "opposed-axis.vue", "path": "./src/heatmap/opposed-axis.vue"},
+                {"displayName": "opposed-axis-data.json", "path": "./src/heatmap/opposed-axis-data.json"}
+            ]
+        },
+        {
+            "url": "label-template",
+            "name": "Label Template",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 HeatMap control shows how to set label template for the HeatMap cells.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "multi-level-labels.vue", "path": "./src/heatmap/label-template.vue"}
+            ]
+        },
+        {
+            "url": "multi-level-labels",
+            "name": "Multi Level Labels",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows how to group the axis labels",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "multi-level-labels.vue", "path": "./src/heatmap/multi-level-labels.vue"}
+            ]
+        },
+        {
+            "url": "cell-selection",
+            "name": "Selection",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows how to select the cell",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "cell-selection.vue", "path": "./src/heatmap/cell-selection.vue"},
+                {"displayName": "cell-seletion-data.json", "path": "./src/heatmap/cell-seletion-data.json"}
+            ]
+        },
+        {
+            "url": "legend-placement",
+            "name": "Legend Placement",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows how to place the heatmap legend in different positions.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "legend-placement.vue", "path": "./src/heatmap/legend-placement.vue"}
+            ]
+        },
+        {
+            "url": "large-data",
+            "name": "Large Data",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows how to bind the large data in heat map using canvas rendering mode.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "large-data.vue", "path": "./src/heatmap/large-data.vue"},
+                {"displayName": "large-data.json", "path": "./src/heatmap/large-data.json"}
+            ]
+        },
+        {
+            "url": "palette-mode",
+            "name": "Palette Mode",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control demonstrates applying gradient colors or solid colors for the heatmap cells.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "palette-mode.vue", "path": "./src/heatmap/palette-mode.vue"}
+            ]
+        },
+        {
+            "url": "rendering-mode",
+            "name": "Rendering Mode",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap shows switching the rendering mode of the heatmap cells between SVG and canvas rendering logics.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "rendering-mode.vue", "path": "./src/heatmap/rendering-mode.vue"}
+            ]
+        },
+        {
+            "url": "tooltip-template",
+            "name": "Tooltip Template",
+            "category": "Features",
+            "description": "This demo for Essential<sup>®</sup> JS2 Heatmap control shows the usage of tooltip template in heat map.",
+            "api": {},
+            "sourceFiles": [
+                {"displayName": "tooltip-template.vue", "path": "./src/heatmap/tooltip-template.vue"}
+            ]
+        }
+    ]
+}

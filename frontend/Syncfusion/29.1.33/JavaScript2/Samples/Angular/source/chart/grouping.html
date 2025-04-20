@@ -1,0 +1,71 @@
+<div id="action-description">
+    <p>
+        This sample shows the gold medal count scored by each country at the Rio Olympic Games, along with the pie series grouping functionality.
+    </p>
+</div>
+<div class="control-section">
+    <div class="col-md-8">
+        <ejs-accumulationchart id="container" #pie style='display:block; width: 92%' [legendSettings]="legendSettings" [tooltip]="tooltip" [title]="title" (textRender)="onTextRender($event)" (pointRender)="onPointRender($event)" (load)='load($event)' [enableBorderOnMouseMove]='false'>
+            <e-accumulation-series-collection>
+                <e-accumulation-series name='RIO' [dataSource]='data' xName='x' yName='y' [startAngle]="startAngle" [endAngle]="endAngle" [radius]="radius" innerRadius="0%" [explode]="explode" [dataLabel]="dataLabel" [groupTo]='clubvalue' groupMode='Point'>
+                </e-accumulation-series>
+            </e-accumulation-series-collection>
+        </ejs-accumulationchart>
+    </div>
+    <div class="col-md-4 property-section">
+        <div class="property-panel-section">
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+            <table id="property" class="property-panel-table" title="Properties" style="width: 100%">
+                <tr>
+                 <td style="width: 50%">
+                       <div>GroupModes:
+                       </div>
+                </td>
+                <td style="width: 50%;">
+                    <div>
+                        <select id="mode">				 
+                            <option value="Point">Point</option>        
+                            <option value="Value">Value</option>
+                        </select>
+                    </div>
+                  </td>
+                  </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 60%">
+                            <div id="groupValue">Group To
+                            </div>
+                        </td>
+                        <td style="width: 40%;">
+                            <div data-role="rangeslider">
+                                <input type="range" name="clubvalue" value="9" min="0" max="27" (touchmove)='onClubvalue($event)' (change)='onClubvalue($event)' autocomplete="off" id="clubvalue" style="width:90%" aria-labelledby="Slider">
+                            </div>
+                        </td>
+                        <td style="width: 60%;">
+                            <p id="clubtext" style="font-weight: normal; padding-top: 15px">9</p>
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="description">
+    <p> In this example, you can see how to group points based on count and values. 
+        The slice can be grouped based on the number of points by specifying the <code>GroupMode</code> to <code>Point</code>. 
+        For example, if the <code>GroupTo</code> property is set to 10, the chart will display the first 10 points and the remaining entries from the collection will be grouped as a single point. 
+        The slice can also be grouped based on values by specifying the <code>GroupMode</code> to <code>Value</code>. 
+        For example, if the GroupTo is set to 10, the first 10 points with a lower value will be grouped together and shown as a single point while the others as a slice.</p>
+        <p>
+            <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch-enabled devices.
+        </p>
+    <p>
+        More information about the grouping in accumulation chart can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/accumulation-chart/grouping/" aria-label="Navigate to the documentation for Grouping in Angular Accumulation Chart component">documentation section</a>.
+    </p>
+</div>
+<style>
+    .control-section {
+        min-height: 450px;
+    }
+</style>

@@ -1,0 +1,39 @@
+ <div id="action-description">
+    <p>
+        This sample showcases a bar chart with rounded corners, illustrating the anticipated growth rates across various sectors in 2024.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart #roundcol style='display:block;' [chartArea]='chartArea' [width]='width' height='500px' align='center' id='column-container' [primaryXAxis]='primaryXAxis'
+            [primaryYAxis]='primaryYAxis' [title]='title' [subTitle]='subTitle' [titleStyle]='titleStyle' [tooltip]='tooltip' (load)='load($event)' [legendSettings]='legend'>
+            <e-series-collection>
+                <e-series [dataSource]='data' type='Bar' xName='x' yName='y' [cornerRadius]='radius' columnWidth=0.5 [marker]='marker'>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure the bar chart. The bar chart is similar to the column chart, but the orientation of the y-axis is horizontal rather than vertical. You can use the <code>cornerRadius</code> option to customize the horizontal rectangle, resulting in a rounded bar.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use column feature, we need to inject
+        <code>ColumnSeriesService</code> into the
+        <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the column series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for Column Chart in Angular Chart component">documentation section</a>.
+    </p>
+</div>
+<style>
+    .control-section {
+        min-height: 450px;
+    }
+</style>

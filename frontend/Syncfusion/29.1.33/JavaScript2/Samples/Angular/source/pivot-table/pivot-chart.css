@@ -1,0 +1,16 @@
+#PivotView {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#PivotViewcontainerwrapper {
+    height: auto !important;
+}
+.e-bigger .e-float-input.e-control-wrapper {
+    width: 100% !important;
+}
+
+.sb-mobile-overlay {
+    z-index: 1001 !important;
+}

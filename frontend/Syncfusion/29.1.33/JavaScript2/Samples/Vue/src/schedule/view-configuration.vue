@@ -1,0 +1,116 @@
+<template>
+    <div class="schedule-vue-sample">
+        <div class="col-md-12 control-section">
+            <div class="content-wrapper">
+                <ejs-schedule id='Schedule' ref="ScheduleObj" height="650px" :currentView='currentView' :selectedDate='selectedDate' :eventSettings='eventSettings'>
+                    <e-views>
+                        <e-view option="Day" startHour="07:00" endHour="18:00"></e-view>
+                        <e-view option="Week" startHour="09:00" endHour="19:00" :timeScale='timeScale' :showWeekend="showWeekend"></e-view>
+                        <e-view option="Month" :group="group" :eventTemplate="'monthEventTemplate'"></e-view>
+                        <template v-slot:monthEventTemplate="{data}">
+                            <div class="e-subject">{{data.Subject}}</div>
+                        </template>
+                        <e-view option="Agenda" :eventTemplate="'agendaEventTemplate'"></e-view>
+                        <template v-slot:agendaEventTemplate="{data}">
+                            <div><div class="subject">{{data.Subject}}</div>
+                                <div v-if="data.Description !== null && data.Description !== undefined" class="group">{{data.Description}}</div>
+                                    <div class="location">{{getTimeString(data.StartTime)}}, <span v-if="data.City!== null && data.City!==undefined">{{data.City}}</span>
+                                </div>
+                            </div>
+                        </template>
+                    </e-views>
+                    <e-resources>
+                        <e-resource field='GroupId' title='Owner' name='Owners' :dataSource='resourceData' textField='GroupText' idField='GroupId'
+                            colorField='GroupColor'>
+                        </e-resource>
+                    </e-resources>
+                </ejs-schedule>
+            </div>
+        </div>
+        <div id="action-description">
+            <p>
+                This demo illustrates how to customize each view with specific configurations like applying event template on agenda view,
+                setting different start/end hour to day and week views and enabling grouping in month view. It also shows
+                how to hide the weekend days and to set different time intervals on week view.
+            </p>
+        </div>
+
+        <div id="description">
+            <p>
+                In this demo, the
+                <code>views</code> property is defined to accept the array of view options and therefore for each view, it
+                is possible to set different configurations. In day view, the
+                <code>startHour</code> is set to 7 and
+                <code>endHour</code> set to 18 whereas in week view, the same is set as 9 and 19 respectively. Also, the
+                <code>showWeekend</code> property is set to false only on week view along with different timescale interval.
+                The customized template is applied to the events on Agenda view and on month view, the grouping functionality
+                is enabled by setting
+                <code>group</code> property.
+            </p>
+        </div>
+    </div>
+</template>
+<style>
+    .schedule-vue-sample .e-schedule .e-agenda-view .e-appointment .subject {
+        font-size: 14px;
+    }
+
+    .schedule-vue-sample .e-schedule .e-agenda-view .e-appointment .group {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .schedule-vue-sample .e-schedule .e-agenda-view .e-appointment .location {
+        font-size: 12px;
+    }
+
+    .schedule-vue-sample .e-schedule .e-date-header-wrap .e-resource-cells {
+        font-weight: 500;
+    }
+
+    .schedule-vue-sample .e-schedule .e-month-view .e-appointment .e-appointment-details {
+        padding: 1px;
+        padding-left: 3px;
+    }
+</style>
+<script>
+    import { fifaEventsData } from './datasource';
+    import { Internationalization, extend } from '@syncfusion/ej2-base';
+    import { ScheduleComponent, ViewDirective, ViewsDirective, ResourceDirective, ResourcesDirective, Day, Week, Month, Agenda, Resize, DragAndDrop } from "@syncfusion/ej2-vue-schedule";
+
+    var instance = new Internationalization();
+ 
+
+    export default {
+        components: {
+          'ejs-schedule': ScheduleComponent,
+          'e-view': ViewDirective,
+          'e-views': ViewsDirective,
+          'e-resource': ResourceDirective,
+          'e-resources': ResourcesDirective
+        },
+        data: function () {
+            return {
+                eventSettings: { dataSource: extend([], fifaEventsData, null, true) },
+                selectedDate: new Date(2021, 5, 20),
+                showWeekend: false,
+                currentView: 'Month',
+                timeScale: { interval: 60, slotCount: 4 },
+                group: { resources: ['Owners'] },
+                resourceData: [
+                    { GroupText: 'Group A', GroupId: 1, GroupColor: '#1aaa55' },
+                    { GroupText: 'Group B', GroupId: 2, GroupColor: '#357cd2' }
+                ],
+            }
+        },
+        provide: {
+            schedule: [Day, Week, Month, Agenda, Resize, DragAndDrop]
+        },
+        methods: {
+            getTimeString: function (value) {
+                return instance.formatDate(value, { skeleton: 'Hm' });
+            }
+        }
+    };
+
+</script>

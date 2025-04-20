@@ -1,0 +1,66 @@
+<div class="col-lg-8 control-section">
+    <div id="wrapper">
+        <input id="datepicker" type="text" />
+        <br/>
+        <br/>
+    </div>
+</div>
+
+<div class="col-lg-4 property-section">
+        <PropertyPane title='Properties'>
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+                <label class="example-label">Choose a display format</label>
+                <input id="displayFormatDatePicker" placeholder="Select a format">
+            </div>
+            <div class="property-panel-content">
+                <label class="multi-label">Choose a input formats</label>
+                <input id="inputFormatsDatePicker" placeholder="e.g. MM/dd/yyyy">
+            </div>
+        </PropertyPane>
+</div>
+<div id="action-description">
+    <p>
+        In this sample, the DatePicker has been configured with the <code>dd-MMM-yy</code> date format.
+        To change this current date format, go to the properties panel at the right side and select a date format from the dropdown options.
+        For mobile mode touch the icon at the right side and select a date format from the dropdown options.
+    </p>
+</div>
+<div id="description">
+    <p>
+        Format sample illustrates the support of custom date format in the DatePicker component by using the
+        <code>format</code> property. You can also change the date format by selecting it from the format options in the properties panel.
+    </p>
+    <p>
+        Furthermore, this example showcases the flexible date value parsing functionality available in DatePicker component.
+        By utilizing the <code>inputFormats</code> property, users can enter dates in various formats, which will be
+        automatically parsed and formatted according to the chosen date format.
+    </p>
+    <p> More information on the date format configuration can be found in the
+        <a href="https://ej2.syncfusion.com/documentation/datepicker/dateformat.html" target="_blank"> documentation section</a>.</p>
+    </p>
+</div>
+<!-- custom code start -->
+<style>
+    #wrapper {
+        max-width: 246px;
+        margin: 30px auto;
+        padding-top: 50px;
+    }
+
+    .property-section {
+        top: 55px;
+        width: 200px;
+        margin-left: 80px;
+    }
+    .property-panel-content {
+        padding: 0px 0px 15px 0px;
+    }
+    .property-panel-content:last-child {
+        padding: 0px 0px 40px 0px;
+    }
+    .multi-label {
+        margin-top: 30px;
+    }
+</style>
+<!-- custom code end-->

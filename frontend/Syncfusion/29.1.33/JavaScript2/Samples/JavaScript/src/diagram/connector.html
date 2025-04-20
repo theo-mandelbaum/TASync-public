@@ -1,0 +1,177 @@
+<style>
+    /* Css for images in property panel  */
+    .diagram-connectors .image-pattern-style {
+        background-color: white;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 45px;
+        width: calc((100% - 13px) / 3);
+        cursor: pointer;
+        border: 1px solid #D5D5D5;
+        background-position: center;
+        float: left;
+    }
+
+    .diagram-connectors .image-pattern-style:hover {
+        border-color: gray;
+        border-width: 2px;
+    }
+
+    .diagram-connectors .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .diagram-connectors .row-header {
+        font-size: 13px;
+        font-weight: 500;
+    }
+            
+    /* Selection indicator */
+    .diagram-connectors .e-selected-style {
+        border-color: #006CE6;
+        border-width: 2px;
+    }
+    /* Align the names in property panel */
+    .diagram-connectors label{
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 400;
+        width: 100%;
+        margin-top: auto;
+    }
+</style>
+<div class="diagram-connectors">
+<div class="col-lg-8 control-section">
+    <div class="content-wrapper" style="width:100%;background: white">
+        <div id="diagram"></div>
+    </div>
+</div>
+<div class="col-lg-4 property-section">
+    <div class="property-panel-header">
+        Properties
+    </div>
+    <div class="row property-panel-content" id="appearance">
+        <div class="row row-header">
+            <b>Connector types</b>
+        </div>
+        <div class="row" style="padding-top: 8px">
+            <div class="image-pattern-style" id="straightConnector" style="background-image: url(./src/diagram/Images/connector/Connectors_1.png); margin-right: 3px">
+            </div>
+            <div class="image-pattern-style" id="orthogonalConnector" style="background-image: url(./src/diagram/Images/connector/Connectors_2.png); margin: 0px 3px">
+            </div>
+            <div class="image-pattern-style" id="bezierConnector" style="background-image: url(./src/diagram/Images/connector/Connectors_3.png); margin-left: 3px">
+            </div>
+        </div>
+        <div class="row" style="padding-top: 8px">
+            <div class="image-pattern-style" id="straightConnectorWithStroke" style="background-image: url(./src/diagram/Images/connector/Connectors_4.png); margin-right: 3px">
+            </div>
+            <div class="image-pattern-style" id="orthogonalConnectorWithStroke" style="background-image: url(./src/diagram/Images/connector/Connectors_5.png); margin: 0px 3px">
+            </div>
+            <div class="image-pattern-style" id="bezierConnectorWithStroke" style="background-image: url(./src/diagram/Images/connector/Connectors_6.png); margin-left: 3px">
+            </div>
+        </div>
+        <div class="row" style="padding-top: 8px">
+            <div class="image-pattern-style" id="straightConnectorWithDasharray" style="background-image: url(./src/diagram/Images/connector/Connectors_7.png); margin-right: 3px">
+            </div>
+            <div class="image-pattern-style" id="orthogonalConnectorWithDasharray" style="background-image: url(./src/diagram/Images/connector/Connectors_8.png); margin: 0px 3px">
+            </div>
+            <div class="image-pattern-style" id="bezierConnectorWithDasharray" style="background-image: url(./src/diagram/Images/connector/Connectors_9.png); margin-left: 3px">
+            </div>
+        </div>
+        <div class="row" style="padding-top: 8px">
+            <div class="image-pattern-style" id="cornerRadious" style="background-image: url(./src/diagram/Images/connector/Connectors_10.png); margin-right: 3px">
+            </div>
+            <div class="image-pattern-style" id="sourceDecorator" style="background-image: url(./src/diagram/Images/connector/Connectors_11.png); margin: 0px 3px">
+            </div>
+            <div class="image-pattern-style" id="sourceDecoratorWithDasharray" style="background-image: url(./src/diagram/Images/connector/Connectors_12.png); margin-left: 3px">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row property-panel-content" id="decorators"  style="padding-top: 10px">
+        <div class="row row-header" style="padding-top: 8px">
+           <b>Decorators</b>
+        </div>
+        <div class="row" style="padding-top: 8px; display: flex;">
+            <label>Source Decorators</label>
+            <div>
+                <input type="text" id='sourceDecorator2' />
+            </div>
+        </div>
+        <div class="row" style="padding-top: 8px; display: flex;">
+            <label>Target Decorators</label>
+            <div>
+                <input type="text" id='targetDecorator' />
+            </div>
+        </div>
+        <div class="row" style="padding-top: 8px; display: flex;">
+            <label>Segment Decorators</label>
+            <div>
+                <input type="text" id='segmentDecorator' />
+            </div>
+        </div>
+    </div>
+     <div class="row property-panel-content" id="decoratorsSize"  style="padding-top: 10px">
+        <div class="row row-header" style="padding-top: 8px">
+           <b>Decorators Size</b>
+        </div>
+        <div class="row" style="padding-top: 8px; display: flex;">
+            <label>Source Decorators Size</label>
+            <div>
+                <input type="text" id='sourceDecoratorSize' />
+            </div>
+        </div>
+        <div class="row" style="padding-top: 8px; display: flex;">
+            <label>Target Decorators Size</label>
+            <div>
+                <input type="text" id='targetDecoratorSize' />
+            </div>
+        </div>
+        <div class="row" style="padding-top: 8px; display: flex;">
+            <label>Segment Decorators Size</label>
+            <div>
+                <input type="text" id='segmentDecoratorSize' />
+            </div>
+        </div>
+    </div>
+    <div class="row property-panel-content" id="color-tab" style="padding-top: 10px">
+        <div class="row row-header">
+           <b> Appearance</b>
+        </div>
+        <div class="row" style="padding-top: 8px; display: flex;">
+            <label>Line Color</label>
+            <input  id="color" type="color"/>
+        </div>
+    </div>
+</div>
+</div>
+<div id="action-description">
+    <p>
+        This sample visualizes the data flow in a marketing process using predefined shapes and connectors. Different types of connectors and decorators are used to customize the appearance, path, and direction of the data flow.
+    </p>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to add connectors to connect the shapes and how to customize the appearance of the connectors.
+        You can use the <code>style</code> property of the connector to customize its stroke style. You can use the
+        <code>cornerRadius</code> property to add connectors with rounded corners.
+    </p>
+
+    <p>
+        To change the appearance, click on different styles in the property panel to modify the connector type, decorator shapes, and decorator sizes.
+        The <code>type</code> property of the connector defines its segment type. The <code>shape</code> property specifies the shapes for the source, target, and segment decorators. You can adjust the size of the source and target decorators by setting their
+        <code>width</code>and <code>height</code>. Additionally, the<code>segmentThumbSize</code>property allows you to modify the size of the segment decorator when the connector is selected.
+    </p>
+
+    <p>
+        In this example, the shapes are automatically arranged using hierarchical tree layout.
+    </p>
+
+    <p style="font-weight: 500">Injecting Module</p>
+
+    <p>
+        Diagram component's features are segregated into individual feature-wise modules. To automatically arrange the shapes, we need to Inject <code>HierarchicalTree</code> module using <code>Diagram.Inject(HierarchicalTree)</code> method.
+    </p>
+    <br>
+</div>

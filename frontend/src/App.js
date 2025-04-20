@@ -2,6 +2,7 @@ import { AuthContextProvider } from "./auth";
 import Router from "./Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "./components/ui/provider";
+import './css/global.css'
 
 function App() {
   const queryClient = new QueryClient();

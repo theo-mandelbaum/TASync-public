@@ -1,0 +1,93 @@
+<template>
+<div class="col-lg-12 control-section">
+    <div id="action-description">
+        <p>This sample demonstrates the default functionality of the Selection in Grid, which allows you to select row or cell or column through simple mouse down or keyboard interaction.</p>
+    </div>
+    <div>
+        <ejs-grid :dataSource="data" :allowPaging='true' :allowSelection='true' :selectionSettings='selectOptions' :allowSorting='true' :allowFiltering='true' :filterSettings='filterSettings' :editSettings='editSettings' :toolbar='toolbar' :pageSettings='pageSettings'>
+            <e-columns>
+                <e-column field='OrderID' headerText='Order ID' width='120' textAlign='Right' :isPrimaryKey='true' :validationRules='orderidrules'></e-column>
+                <e-column field='CustomerName' headerText='Customer Name' width='150' :validationRules='customeridrules'></e-column>
+                <e-column field='OrderDate' headerText='Order Date' width='130' format="yMd" textAlign='Right' editType='datepickeredit'></e-column>
+                <e-column field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' :validationRules='freightrules'></e-column>
+                <e-column field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign='Right' editType='datepickeredit' type="date"></e-column>
+            </e-columns>
+        </ejs-grid>
+    </div>
+
+     <div id="description">
+        <p>
+            Selection provides an interactive support to highlight the row or cell or column that you select. Selection can be done through a simple
+            Mouse down or Keyboard interaction. To enable selection, set <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/vue/documentation/api/grid/#allowselection">
+        allowSelection
+        </a></code> as true.
+        </p>
+        <p>Grid component supports two types of selection which can be set using <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/vue/documentation/api/grid/selectionSettings/#type">
+        selectionSettings->type
+        </a></code> property.
+            They are,</p>
+        <ul>
+            <li><code>Single</code> - Enabled by default. Allows the user to select single row/cell at a time.</li>
+            <li><code>Multiple</code> - Allows the user to select more than one row/cell/column at a time.</li>
+        </ul>
+        <p>Also, supports three modes of selection which can be set using <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/vue/documentation/api/grid/selectionSettings/#mode">
+        selectionSettings->mode
+        </a></code> property. They
+            are,
+        </p>
+        <ul>
+            <li><code>Row</code> - Enabled by default. Enables the row selection in Grid.</li>
+            <li><code>Cell</code> - Enables the cell selection in Grid.</li>
+            <li><code>Both</code> - Enables both the row and cell selection in Grid. Clicking any cell will select both the row and cell
+                simultaneously
+            </li>
+        </ul>
+        <p>To perform the column selection, enable the <code><a target="_blank" class="code"
+        href="https://ej2.syncfusion.com/vue/documentation/api/grid/selectionSettings/#allowcolumnselection">
+        selectionSettings->allowColumnSelection
+        </a></code> property.</p>
+        <p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells/columns. To select range of rows/cells/columns,
+            hold <strong>SHIFT</strong> key and click the rows/cells/columns.</p>
+        <p>While using the Grid in a touch device environment, there is an option for multi-selection through a single tap on the
+            row and it will show a popup with the multi-selection symbol. Tap the icon to enable multi-selection in a single
+            tap.
+        </p>
+        <p>In this demo, multiple row selection is enabled, click any row to select.</p>
+        <p>
+            More information on the selection configuration can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/vue/documentation/grid/selection.html#selection">documentation section</a>.
+        </p>
+    </div>
+</div>
+</template>
+<script lang="ts">
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Sort, Toolbar, Edit, Filter } from "@syncfusion/ej2-vue-grids";
+import { data } from "./data-source";
+
+export default {
+  components: {
+    'ejs-grid': GridComponent,
+    'e-column': ColumnDirective,
+    'e-columns': ColumnsDirective
+  },
+  data: () => {
+    return {
+      data: data,
+      selectOptions: { type: 'Multiple' },
+      pageSettings: { pageCount: 5 },
+      filterSettings: { type: 'Excel' },
+      editSettings: { allowEditing: true, allowAdding: true, allowDeleting: true },
+      orderidrules: { required: true, number: true },
+      customeridrules: { required: true, minLength: 5 },
+      freightrules:  { required: true, min: 0 },
+      toolbar: ['Add', 'Edit', 'Delete', 'Update', 'Cancel'],
+    };
+  },
+  provide: {
+      grid: [Page, Sort, Toolbar, Edit, Filter]
+  }
+}
+</script>

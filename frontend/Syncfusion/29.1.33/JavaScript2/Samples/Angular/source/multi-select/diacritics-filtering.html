@@ -1,0 +1,31 @@
+<div id="action-description">
+    <p>This sample demonstrates the diacritics filter functionality of the MultiSelect. Type the characters ‘gul’ in the MultiSelect
+        element and it displays the suggestion list ignoring the diacritics lists.</p>
+</div>
+
+<div id="multiselect-diacritics" class="control-section">
+    <div id='content' class="control-styles">
+        <label class="h4"> Diacritics Filtering</label>
+        <ejs-multiselect id='diacritics' [dataSource]='data' [allowFiltering]='true' [ignoreAccent]='true' placeholder='e.g. gul'>
+        </ejs-multiselect>
+    </div>
+</div>
+
+<div id="description">
+    <p>The MultiSelect filtering will ignore the <a href="https://en.wikipedia.org/wiki/Diacritic" target="_blank"> diacritics </a> which makes it easier to filter the results in international characters
+        lists when the <code>ignoreAccent</code> is enabled.</p>
+
+    <p>This sample illustrates using the international characters data.</p>
+</div>
+<style>
+    .control-styles {
+        padding-top: 30px;
+    }
+    
+    .control-styles .h4 {
+        font-size: 16px;
+        margin: 0 0 10px;
+        font-weight: bold;
+    }
+
+</style>

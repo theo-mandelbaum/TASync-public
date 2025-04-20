@@ -1,0 +1,30 @@
+{
+    "lang": "en",
+    "name": "Essential JS 2 Controls",
+    "description": "Explore and learn Syncfusion Essential JS2 UI controls using large collection of demos, example applications and tutorial samples.",
+    "short_name": "EJ2 Controls",
+    "icons": [{
+        "src": "images/syncfusion-logo-64.png",
+        "sizes": "64x64"
+    }, {
+        "src": "images/syncfusion-logo-128.png",
+        "sizes": "128x128"
+    }, {
+        "src": "images/syncfusion-logo.png",
+        "sizes": "256x256"
+    }],
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "​​orientation": "portrait-primary",
+    "theme_color": "#FFFFFF",
+    "background_color": "#F8F8F8",
+    "serviceworker": {
+        "src": "/src/service-worker.js",
+        "update_via_cache": "none"
+    },
+    "related_applications": [{
+        "platform": "play",
+        "url": "https://play.google.com/store/apps/details?id=com.Syncfusion.ej2",
+        "id": "com.Syncfusion.ej2"
+    }]
+}

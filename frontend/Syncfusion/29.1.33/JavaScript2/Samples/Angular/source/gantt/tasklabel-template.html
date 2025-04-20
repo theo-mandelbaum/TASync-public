@@ -1,0 +1,44 @@
+<div id="action-description">
+    <p>This sample explains the way of rendering label template for left, right, and task labels by mapping template
+        elements to the leftLabel, rightLabel and taskLabel properties in
+        labelSettings.</p>
+</div>
+
+<div class="control-section">
+   <ejs-gantt
+    id="TasklabelTemplate"
+    height="430px"
+    [dataSource]="data"
+    [taskFields]="taskSettings"
+    [allowSelection]="true"
+    [labelSettings]="labelSettings"
+    [treeColumnIndex]="1"
+    [columns]="columns"
+    [rowHeight]="43"
+    [splitterSettings]="splitterSettings"
+    [projectStartDate]="projectStartDate"
+    [projectEndDate]="projectEndDate"
+    [highlightWeekends]="true"
+    [resourceFields]="resourceFields"
+    [resources]="resources">
+    <ng-template #labelSettingsLeftLabel let-data>
+        <span>{{ data.TaskName }} [ {{ data.Progress }}% ]</span>
+    </ng-template>
+
+    <ng-template #labelSettingsRightLabel let-data>
+    <div
+        style="display:inline-flex"
+        innerHtml="{{ customFunction(data) }}"></div>
+    </ng-template>
+    </ejs-gantt>
+    </div>
+
+<div id="description">
+    <p>
+        In this demo, the label template is rendered using the <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/labelSettingsModel/#leftlabel">leftLabel</a>, <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/labelSettingsModel/#rightlabel">rightLabel</a> and <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt/labelSettingsModel/#tasklabel">taskLabel</a> properties in <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/gantt#labelsettings">labelSettings</a>.
+    </p>
+
+    <p>Gantt control features are segregated into individual feature-wise modules.To use a selection and markers, inject the
+        <code>SelectionService</code> and <code>DayMarkersService</code> into the <code>&#64;NgModule.providers</code> section respectively.
+    </p>
+</div>

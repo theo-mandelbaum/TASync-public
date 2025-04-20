@@ -1,0 +1,210 @@
+<div class="control-section">
+    <div align="center">
+        <h1 id="default" style="font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px; margin-top: 10px;">Bitcoin (USD) Price Range</h1>
+        <div id="container"></div>
+    </div>
+</div>
+<div id="action-description">
+    <p>
+        This sample visualizes the bitcoin price range with area series in the range navigator. Selected range values are enhanced
+        with tooltip.
+    </p>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure the range navigator with area type series.
+        <code>tooltip</code> is used to represent selected data value. You can also use
+        <code>selectedRegionColor</code> and
+        <code>unselectedRegionColor</code> properties to customize selected and unselected area in range navigator.
+    </p>
+    <br>
+</div>
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+
+    #container {
+        transform: translate(0, 25%);
+    }
+
+    #material-gradient-chart stop {
+        stop-color: #00bdae;
+    }
+
+    #fabric-gradient-chart stop {
+        stop-color: #4472c4;
+    }
+
+    #bootstrap-gradient-chart stop {
+        stop-color: #a16ee5;
+    }
+
+    #bootstrap4-gradient-chart stop {
+        stop-color: #a16ee5;
+    }
+
+    #highcontrast-gradient-chart stop {
+        stop-color: #79ECE4;
+    }
+
+	#tailwind-gradient-chart stop {
+        stop-color: #5A61F6;
+    }
+
+	#tailwind3-gradient-chart stop {
+        stop-color: #2F4074;
+    }
+
+    #bootstrap5-gradient-chart stop {
+        stop-color: #FD7E14;
+    }
+
+    #fluent-gradient-chart stop {
+        stop-color: #1AC9E6;
+    }
+        
+    #fluent-dark-gradient-chart stop {
+        stop-color: #1AC9E6;
+    }
+
+    #material-dark-gradient-chart stop {
+        stop-color: #00bdae;
+    }
+
+    #fabric-dark-gradient-chart stop {
+        stop-color: #4472c4;
+    }
+
+    #bootstrap-dark-gradient-chart stop {
+        stop-color: #5ECB9B;
+    }
+    
+    #tailwinddark-gradient-chart stop {
+        stop-color: #8B5CF6;
+    }
+
+    #tailwind3-dark-gradient-chart stop {
+        stop-color: #8029F1;
+    }
+
+    #bootstrap5-dark-gradient-chart stop {
+        stop-color: #FD7E14;
+    }
+
+    #material3-gradient-chart stop {
+        stop-color: #6355C7;
+    }
+
+    #material3-dark-gradient-chart stop {
+        stop-color: #4EAAFF;
+    }
+
+    #fluent2-gradient-chart stop {
+        stop-color: #6200EE;
+    }
+
+    #fluent2-highcontrast-gradient-chart stop {
+        stop-color: #9BB449;
+    }
+
+    #fluent2-dark-gradient-chart stop {
+        stop-color: #9BB449;
+    }
+
+    .chart-gradient stop[offset="0"] {
+        stop-opacity: 0.9;
+    }
+
+    .chart-gradient stop[offset="1"] {
+        stop-opacity: 0.3;
+    }
+</style>
+<svg style="height: 0">
+    <defs>
+        <linearGradient id="material-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fabric-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="bootstrap-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="bootstrap4-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="highcontrast-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+		<linearGradient id="tailwind-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="bootstrap5-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="material-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fabric-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="bootstrap-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="tailwind-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="tailwind3-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="tailwind3-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="bootstrap5-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="fluent-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluent-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="material3-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="material3-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluent2-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluent2-highcontrast-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluent2-dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+    </defs>
+</svg>

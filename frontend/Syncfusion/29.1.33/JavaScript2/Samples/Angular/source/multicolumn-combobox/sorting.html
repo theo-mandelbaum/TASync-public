@@ -1,0 +1,24 @@
+<div id="action-description">
+    <p>This example demonstrates the sorting support of the MultiColumn ComboBox.</p>
+</div>
+
+<div class="control-section">
+    <div class='control-wrapper'>
+        <div style='padding-top:60px;'>
+            <label>Select a product</label>
+            <ejs-multicolumncombobox id='sorting' #sorting [dataSource]='datasource' [fields]='fields' [allowSorting]='true' [sortOrder]='sortOrder' [sortType]='sortType' [placeholder]='waterMark' popupHeight='210px' popupWidth='600px'>
+                <e-columns>
+                    <e-column field='Name' header='Name ID' width="110"/>
+                    <e-column field='Price' header='Price' width="70"/>
+                    <e-column field='Availability' header='Availability' width="98"/>
+                    <e-column field='Category' header='Category' width="95"/>
+                    <e-column field='Rating' header='Rating' width="70"/>
+                </e-columns>
+            </ejs-multicolumncombobox>
+        </div>
+    </div>
+</div>
+
+<div id="description">
+    <p>In this sample, you can click the column header to sort/unsort the column any field can be selected from the Fields dropdown list and its order can be changed to display headers either in ascending or descending order. It can be enabled using the <code>allowSorting</code> property and it can be configured using order options inside the <code>sortOrder</code> in the MultiColumn combobox.</p>
+</div>

@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ContextMenuSampleOrder = void 0;
+exports.ContextMenuSampleOrder = [
+    { 'path': 'context-menu/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'Context Menu', 'api': '{"ContextMenuComponent":["target", "items", "beforeItemRender", "animationSettings"], "MenuItemModel":["text", "iconCss", "items", "separator"] }', 'description': 'This example demonstrates the Syncfusion<sup>®</sup> React ContextMenu component items with icons, text and separator.' },
+    { 'path': 'context-menu/template', 'component': 'Template', 'name': 'Template', 'order': '01', 'category': 'Context Menu', 'api': '{"ContextMenuComponent":["target", "items", "beforeItemRender", "animationSettings"], "MenuItemModel":["text", "iconCss", "items", "separator"] }', 'description': 'This sample demonstrates the template support functionalities of Syncfusion<sup>®</sup> React ContextMenu component items' }
+];

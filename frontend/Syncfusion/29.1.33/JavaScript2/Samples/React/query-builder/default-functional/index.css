@@ -1,0 +1,66 @@
+.e-query-builder {
+    margin: 0 auto;
+}
+
+.top-right-button {
+    height: 32px;
+    float: right;
+}
+
+#json-btn {
+    margin-left: 15px;
+}
+
+.json-content-area {
+    height: 260px !important;
+    width: 100% !important;
+    overflow-x: hidden;
+    padding: 10px !important;
+}
+
+#dlgSpan.error {
+    color: red;
+    padding-left: 0px;
+}
+
+@media only screen and (max-width: 700px) {
+    .e-query-json-preview .e-json-content {
+        width: 95%;
+    }
+}
+
+.bootstrap5\.3-dark .json-content-area,
+.tailwind-dark .json-content-area,
+.material3-dark .json-content-area,
+.bootstrap5-dark .json-content-area,
+.highcontrast .json-content-area,
+.material-dark .json-content-area,
+.fabric-dark .json-content-area,
+.bootstrap-dark .json-content-area,
+.fluent-dark .json-content-area,
+.fluent2-dark .json-content-area,
+.fluent2-highcontrast .json-content-area {
+    background: black;
+}
+
+.material-dark  .e-query-preview .e-icons.copycode,
+.material3-dark .e-query-preview .e-icons.copycode,
+.bootstrap5\.3-dark .e-query-preview .e-icons.copycode,
+.bootstrap5-dark .e-query-preview .e-icons.copycode,
+.bootstrap-dark .e-query-preview .e-icons.copycode,
+.highcontrast .e-query-preview .e-icons.copycode,
+.fluent-dark .e-query-preview .e-icons.copycode,
+.tailwind-dark .e-query-preview .e-icons.copycode,
+.fluent2-dark .e-query-preview .e-icons.copycode,
+.fluent2-highcontrast .e-query-preview .e-icons.copycode {
+    color: white;
+}
+
+.tailwind3-dark #json-content-area {
+    background: #090c1b;
+    border-color: #374151;
+}
+
+.tailwind3 #json-content-area {
+    border-color: #D1D5DB;
+}

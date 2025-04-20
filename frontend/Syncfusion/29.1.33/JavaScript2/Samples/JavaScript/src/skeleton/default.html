@@ -1,0 +1,63 @@
+<div class="control-section">
+    <div class="row skeleton-default">
+        <div class="col-sm-6">
+            <p class="displayText">Circle</p>
+            <div id="skeletonCircleSmall"></div>
+            <div id="skeletonCircleMedium"></div>
+            <div id="skeletonCircleLarge"></div>
+            <div id="skeletonCircleLarger"></div>
+        </div>
+        <div class="col-sm-6">
+            <p class="displayText">Square</p>
+            <div id="skeletonSquareSmall"></div>
+            <div id="skeletonSquareMedium"></div>
+            <div id="skeletonSquareLarge"></div>
+            <div id="skeletonSquareLarger"></div>
+        </div>
+    </div>
+    <div class="row skeleton-default">
+        <div class="col-sm-6">
+            <p class="displayText">Text</p>
+            <div id="skeletonText"></div>
+            <div id="skeletonTextMedium"></div>
+            <br />
+            <div id="skeletonTextSmall"></div>
+            <br />
+            <div id="skeletonTextMedium1"></div>
+            <br />
+            <div id="skeletonTextSmall1"></div>
+        </div>
+        <div class="col-sm-6">
+            <p class="displayText">Rectangle</p>
+            <div id="skeletonRectangle"></div>
+            <div id="skeletonRectangleMedium"></div>
+            <div id="skeletonRectangleMediumRight" style="float:right;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="action-description">
+    <p>
+        This sample demonstrates the different shapes supported by the skeleton component. The skeleton is an animating
+        placeholder which shows the expected layout before the actual content is loaded.
+    </p>
+</div>
+<div id="description">
+    <p>
+        The shape of skeleton can be changed using the <code>shape</code> property. It supports <b>Circle</b>, 
+        <b>Square</b>, <b>Text</b> and <b>Rectangle</b>. By default, the wave animation effect is applied.
+    </p>
+</div>
+
+<style>
+    .skeleton-default .col-sm-6 {
+        padding: 20px;
+        min-height: 150px;
+        position: relative;
+    }
+
+    p.displayText {
+        margin: 10px 0px;
+        font-weight: 500;
+    }
+</style>

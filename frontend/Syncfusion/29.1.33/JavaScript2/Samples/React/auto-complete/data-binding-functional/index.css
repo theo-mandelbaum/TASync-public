@@ -1,0 +1,13 @@
+#local,#remote {
+    margin: 0 auto;
+    width: 250px !important;
+    padding-top: 15px;
+}
+#autodata .control-section {
+    overflow:auto;
+}
+.drop-down-list-content .h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}

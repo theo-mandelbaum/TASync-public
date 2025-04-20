@@ -1,0 +1,40 @@
+<div class="control-section">
+    <div class="col-lg-8">
+        <div class="control_wrapper">
+            <ejs-uploader #chunkupload id='chunkfileupload' [maxFileSize]=104857600 [autoUpload]=false [asyncSettings]='path' [dropArea]='dropElement' (pausing)='onPausing($event)' (resuming)='onResuming($event)' (removing)='onFileRemove($event)'(chunkFailure)='onBeforefailure($event)'></ejs-uploader>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <div class="property-panel-section">
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+                <ejs-dropdownlist id='chunksizes' #sample [dataSource]='chunkData' (change)='onChange($event)' [value]='value' [fields]='fields' [placeholder]='waterMark'></ejs-dropdownlist>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="action-description">
+    <p>This <a href="https://www.syncfusion.com/angular-ui-components/angular-file-upload"
+        target="_blank">Angular File Upload</a> example demonstrates the chunk upload functionalities of the Uploader component.
+        Browse or drag-and-drop a large file to upload with pause, resume, and retry options. </p>
+    <p>Also, configured property panel to change the chunk size dynamically.</p>
+</div>
+
+<div id="description">
+    <p>When the file size is large or transfer the file with slow network connection, the chunk upload feature slices the files and upload the sliced chunks to server in sequential order
+    using the <a href="https://ej2.syncfusion.com/angular/documentation/api/uploader/asyncSettingsModel/#chunksize"
+        target="_blank">chunkSize</a> API.
+    </p>
+    <p>The example is configured with the following options:</p>
+    <ul>
+        <li>While uploading, you can pause the upload and resume it later.</li>
+        <li> If the upload fails, retry option will be enabled.</li>
+        <li> The example is configured with maximum file size as `100 MB` to upload.</li>
+    </ul>
+    <h4>Automatic pause and resume</h4>
+    <p>
+        If the application lost its connection (<code>offline</code>), the upload component pauses the process automatically. After the connection is up (<code>online</code>), the upload component will resume its process.
+    </p>
+    <p>More information on the Uploader instantiation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/uploader/chunk-upload/">documentation section</a>.</p>
+</div>

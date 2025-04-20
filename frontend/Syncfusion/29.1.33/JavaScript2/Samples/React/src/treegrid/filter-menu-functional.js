@@ -1,0 +1,124 @@
+"use strict";
+var _this = this;
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var react_1 = require("react");
+var ej2_react_dropdowns_1 = require("@syncfusion/ej2-react-dropdowns");
+var ej2_react_treegrid_1 = require("@syncfusion/ej2-react-treegrid");
+var data_1 = require("./data");
+var sample_base_1 = require("../common/sample-base");
+var property_pane_1 = require("../common/property-pane");
+var FilterMenu = function () {
+    (0, react_1.useEffect)(function () {
+        (0, sample_base_1.updateSampleSection)();
+    }, []);
+    var treegridInstance = (0, react_1.useRef)(null);
+    var filterType = [
+        { text: "Menu", value: "Menu" },
+        { text: "Excel", value: "Excel" },
+    ];
+    var modes = [
+        { text: "Parent", value: "Parent" },
+        { text: "Child", value: "Child" },
+        { text: "Both", value: "Both" },
+        { text: "None", value: "None" },
+    ];
+    var onChange = function (sel) {
+        var type = sel.value.toString();
+        treegridInstance.current.filterSettings.type = type;
+        treegridInstance.current.clearFiltering();
+    };
+    var onChange2 = function (sel) {
+        var mode = sel.value.toString();
+        treegridInstance.current.filterSettings.hierarchyMode = mode;
+        treegridInstance.current.clearFiltering();
+    };
+    return (React.createElement("div", { className: "control-pane" },
+        React.createElement("div", { className: "control-section" },
+            React.createElement("div", { className: "col-md-9" },
+                React.createElement(ej2_react_treegrid_1.TreeGridComponent, { dataSource: data_1.sampleData, ref: treegridInstance, treeColumnIndex: 1, childMapping: "subtasks", height: "350", allowPaging: true, allowFiltering: true, filterSettings: { type: "Menu", hierarchyMode: "Parent" } },
+                    React.createElement(ej2_react_treegrid_1.ColumnsDirective, null,
+                        React.createElement(ej2_react_treegrid_1.ColumnDirective, { field: "taskID", headerText: "Task ID", width: "90", textAlign: "Right" }),
+                        React.createElement(ej2_react_treegrid_1.ColumnDirective, { field: "taskName", headerText: "Task Name", width: "180" }),
+                        React.createElement(ej2_react_treegrid_1.ColumnDirective, { field: "startDate", headerText: "Start Date", width: "90", format: "yMd", textAlign: "Right" }),
+                        React.createElement(ej2_react_treegrid_1.ColumnDirective, { field: "duration", headerText: "Duration", width: "90", textAlign: "Right" })),
+                    React.createElement(ej2_react_treegrid_1.Inject, { services: [ej2_react_treegrid_1.Filter, ej2_react_treegrid_1.Page] }))),
+            React.createElement("div", { className: "col-md-3 property-section" },
+                React.createElement(property_pane_1.PropertyPane, { title: "Properties" },
+                    React.createElement("table", { id: "property", title: "Properties", className: "property-panel-table", style: { width: "100%" } },
+                        React.createElement("tbody", null,
+                            React.createElement("tr", null,
+                                React.createElement("td", null,
+                                    React.createElement("div", { style: { paddingTop: "10px" } }, " Filter Type ")),
+                                React.createElement("td", { style: { width: "70%" } },
+                                    React.createElement("div", null,
+                                        React.createElement(ej2_react_dropdowns_1.DropDownListComponent, { width: "110px", id: "seltype", change: onChange.bind(_this), dataSource: filterType, value: "Menu" })))),
+                            React.createElement("tr", null,
+                                React.createElement("td", null,
+                                    React.createElement("div", { style: { paddingTop: "10px" } }, " Hierarchy Mode ")),
+                                React.createElement("td", { style: { width: "70%" } },
+                                    React.createElement("div", null,
+                                        React.createElement(ej2_react_dropdowns_1.DropDownListComponent, { width: "110px", id: "selmode", change: onChange2.bind(_this), dataSource: modes, value: "Parent" }))))))))),
+        React.createElement("div", { id: "action-description" },
+            React.createElement("p", null,
+                " ",
+                "This sample demonstrates the way of filtering Tree Grid columns using menu and excel filter UI. In this sample, click the filtering icon from column header to show filter UI for a particular column. You can change the filter type from the properties panel.")),
+        React.createElement("div", { id: "description" },
+            React.createElement("p", null,
+                "The filtering feature enables the user to view the reduced amount of records based on filter criteria. It can be enabled by setting",
+                " ",
+                React.createElement("code", null, "allowFiltering"),
+                " property as true."),
+            React.createElement("p", null, "Tree Grid supports the following filter types. They are "),
+            React.createElement("ul", null,
+                React.createElement("li", null,
+                    React.createElement("code", null, "FilterBar")),
+                React.createElement("li", null,
+                    React.createElement("code", null, "Menu")),
+                React.createElement("li", null,
+                    React.createElement("code", null, "Excel"))),
+            "you can change the filter type by setting",
+            " ",
+            React.createElement("code", null, "filterSettings->type"),
+            React.createElement("p", null,
+                "Tree Grid provides support for a set of filtering modes with hierarchyMode property. The below are the type of filter mode available in Tree Grid.",
+                " "),
+            React.createElement("ul", null,
+                React.createElement("li", null,
+                    React.createElement("code", null, "Parent"),
+                    " - This is the default filter hierarchy mode in Tree Grid.The filtered records are displayed with its parent records, if the filtered records not have any parent record then the filtered record only displayed."),
+                React.createElement("li", null,
+                    React.createElement("code", null, "Child"),
+                    " - The filtered records are displayed with its child record, if the filtered records do not have any child record then only the filtered records are displayed."),
+                React.createElement("li", null,
+                    React.createElement("code", null, "Both"),
+                    " - The filtered records are displayed with its both parent and child record. If the filtered records do not have any parent and child record then only the filtered records are displayed."),
+                React.createElement("li", null,
+                    React.createElement("code", null, "None"),
+                    " - Only the filtered records are displayed.")),
+            React.createElement("p", null,
+                "The Tree Grid now supports improved ",
+                React.createElement("code", null, "in"),
+                " and ",
+                React.createElement("code", null, "not in"),
+                " filter operators, allowing users to filter multiple values within the same column. When the menu filter is enabled, a Syncfusion DropDownList component with checkboxes appears to select the ",
+                React.createElement("code", null, "in"),
+                " or ",
+                React.createElement("code", null, "not in"),
+                " operators."),
+            React.createElement("p", null,
+                " ",
+                "In this demo, filter menu enabled by default, you can switch to other hierarchy mode of filtering by using dropdown."),
+            React.createElement("p", null, "Injecting Module:"),
+            React.createElement("p", null,
+                "Tree Grid features are segregated into individual feature-wise modules. To use filtering feature, we need to inject",
+                React.createElement("code", null, "Filter"),
+                " module into the ",
+                React.createElement("code", null, "services"),
+                "."),
+            React.createElement("p", null,
+                "More information filter configuration can be found in this ",
+                React.createElement("a", { target: "_blank", href: "https://ej2.syncfusion.com/react/documentation/treegrid/filtering/filter-menu" }, "documentation section"),
+                "."))));
+};
+exports.default = FilterMenu;

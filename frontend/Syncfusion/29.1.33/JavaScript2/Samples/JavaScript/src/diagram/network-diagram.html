@@ -1,0 +1,94 @@
+<link href="https://ej2.syncfusion.com/demos/src/diagram/styles/diagram-common.css" rel="stylesheet">
+
+<div class="control-section">
+<style>
+    /* These styles are used for aligning palette and diagram */
+    .diagram-property-tab .sb-mobile-palette {
+        width: 215px;
+        height: 559px;
+        float: left;
+    }
+    
+    .diagram-property-tab .sb-mobile-palette-bar {
+        display: none;
+    }
+
+    .diagram-property-tab .sb-mobile-diagram {
+        width: calc(100% - 217px);
+        height: 559px;
+        float: left;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-left: none;
+    }
+
+    @media (max-width: 550px) {
+        .diagram-property-tab .sb-mobile-palette {
+            z-index: 19;
+            position: absolute;
+            display: none;
+            transition: transform 300ms linear, visibility 0s linear 300ms;
+            width: 39%;
+            height: 100%;
+        }
+
+        .diagram-property-tab .sb-mobile-diagram {
+            width: 100%;
+            height: 100%;
+            float: left;
+            left: 0px;
+        }
+
+        .diagram-property-tab .sb-mobile-palette-bar {
+            display: block;
+            width: 100%;
+            background: #fafafa;
+            padding: 10px 10px;
+            border: 0.5px solid #e0e0e0;
+            min-height: 40px;
+        }
+
+        #palette-icon {
+            font-size: 20px;
+        }
+    }
+
+    .diagram-property-tab .sb-mobile-palette-open {
+        position: absolute;
+        display: block;
+        right: 15px;
+    }
+
+    .diagram-property-tab .e-file-select-wrap {
+        display: none;
+    }
+</style>
+    <div id="networkDiagram" class="diagram-property-tab" style="width: 100%; height: 600px">
+        <div class="sb-mobile-palette-bar">
+            <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
+        </div>
+        <div id="palette-space" class="sb-mobile-palette">
+            <div id="symbolpalette" style="width:90%;"></div>
+            <div id='dropArea'>
+                <button id="browse">Import SVG files</button>
+                <input style="display: none; height: 0px;width: 0px;" type='file' name="UploadFiles" id='fileupload' />
+            </div>
+        </div>
+        <div id="diagram-space" class="sb-mobile-diagram">
+            <div id="diagram"></div>
+        </div>
+    </div>
+</div>
+<div id="action-description">
+    <p>
+        This sample visualizes graphical layout of a network diagram using diagram <code>Native (SVG)</code> shapes.
+    </p>
+</div>
+<div id="description">
+    <p>
+        This example shows how to host a <code>Native (SVG)</code> content inside a node. The <code>shape</code>
+        property of the node can be
+        used to host SVG content inside a node. The <code>content</code> property of the shape allows you to define the
+        content to
+        be hosted.
+    </p>
+</div>

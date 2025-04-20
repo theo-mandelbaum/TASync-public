@@ -1,0 +1,85 @@
+<div class="col-lg-8 control-section">
+    <div id="tooltipDiagramSection" class="content-wrapper" style="width: 100%">
+        <div id="diagram"></div>
+    </div>
+</div>
+<div id="tooltipPropertySection" class="col-lg-4 property-section" style="padding-left: 0px">
+    <table id="property" title="Tooltip settings">
+        <tr>
+            <td>
+                <div>
+                    Relative mode
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input id="mode" type="text">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    Position
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input id="position" type="text">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    Animation
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" id="duration" style="width: 85%" min="100" max="2000" step="100" value="100" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    Effect
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input id="effect" type="text">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    Sticky Mode
+                </div>
+            </td>
+            <td>
+                <div style="padding-top:0px;padding-left: 0px;">
+                    <input type="checkbox" id="checked" unchecked="false">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="action-description">
+    <p>
+        This sample demonstrates how to add the extra information to the nodes and connectors and how to show the information through
+        the common graphical user interface element.
+    </p>
+</div>
+<div id="description">
+    <p>
+        Using diagram’s <code>tooltip</code> we can define the tooltip for the diagram nodes as well as connector. We can control the <code>animation</code>,
+        <code>position</code>, <code>effects</code> of the tooltip using <code>tooltip</code> property of the diagram. Also, we can define the custom tooltip
+        as either text or HTML element using <code>content</code> property of the tooltip. We can control the different tooltip settings
+        to each connector and node.
+    </p>
+    <br>
+</div>

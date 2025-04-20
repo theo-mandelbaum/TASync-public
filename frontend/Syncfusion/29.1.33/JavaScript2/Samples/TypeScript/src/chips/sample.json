@@ -1,0 +1,30 @@
+{
+    "name": "Chips",
+    "directory": "chips",
+    "category": "Buttons",
+    "type": "update",
+    "samples": [
+        {
+            "url": "default",
+            "name": "Default Functionalities",
+            "category": "Chips",
+            "description": "This sample demonstrates functionalities of Chips with different types. Click and interact the chip, to select single or multiple chips from collection.",
+            "sourceFiles": [{"displayName": "default.ts", "path": "./src/chips/default.ts"},
+                {"displayName": "default.html", "path": "./src/chips/default.html"},
+                {"displayName": "data.json", "path": "./src/chips/data.json"}]
+        },
+        {
+            "url": "api",
+            "name": "API",
+            "category": "Chips",
+            "description": "This sample demonstrates common API of chip control. Select any combination of properties from the property pane to customize the appearance of chip."
+        },
+        {
+            "url": "draganddrop",
+            "name": "Draggable Chips",
+            "category": "Chips",
+            "type": "new",
+            "description": "This sample demonstrates the drag and drop functionalities of chips control."
+        }
+    ]
+}

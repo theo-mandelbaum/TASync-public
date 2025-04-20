@@ -1,0 +1,138 @@
+.material .ganttresource, .fabric .ganttresource, .bootstrap .ganttresource,
+.tailwind .ganttresource,.tailwind3 .ganttresource, .bootstrap5 .ganttresource, .bootstrap4 .ganttresource,
+.fluent .ganttresource,.fluent2 .ganttresource,.material3 .ganttresource,
+.bootstrap5_3 .ganttresource,
+.bootstrap5_3-lite .ganttresource{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/Resources.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material-dark .ganttresource, .fabric-dark .ganttresource, .bootstrap-dark .ganttresource,
+.tailwind-dark .ganttresource,.tailwind3-dark .ganttresource, .bootstrap5-dark .ganttresource, .highcontrast .ganttresource,
+.fluent-dark .ganttresource,.fluent2-dark .ganttresource,.fluent2-highcontrast .ganttresource,.material3-dark .ganttresource,
+.bootstrap5_3-dark-lite .ganttresource,
+.bootstrap5_3-dark .ganttresource{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/ResourcesDark.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material .gantttaskName, .fabric .gantttaskName, .bootstrap .gantttaskName,
+.tailwind .gantttaskName,.tailwind3 .gantttaskName, .bootstrap5 .gantttaskName, .bootstrap4 .gantttaskName,
+.fluent .gantttaskName,.fluent2 .gantttaskName,.material3 .gantttaskName,.material3 .gantttaskName,
+.bootstrap5_3 .gantttaskName,
+.bootstrap5_3-lite .gantttaskName{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/Task name.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material-dark .gantttaskName, .fabric-dark .gantttaskName, .bootstrap-dark .gantttaskName,
+.tailwind-dark .gantttaskName,.tailwind3-dark .gantttaskName, .bootstrap5-dark .gantttaskName, .highcontrast .gantttaskName,
+.fluent-dark .gantttaskName,.fluent2-dark .gantttaskName,.fluent2-highcontrast .gantttaskName,.material3-dark .gantttaskName,
+.bootstrap5_3-dark-lite .gantttaskName,
+.bootstrap5_3-dark .gantttaskName{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/Task name.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material .ganttstartDate, .fabric .ganttstartDate, .bootstrap .ganttstartDate,
+.tailwind .ganttstartDate,.tailwind3 .ganttstartDate, .bootstrap5 .ganttstartDate, .bootstrap4 .ganttstartDate,
+.fluent .ganttstartDate,.fluent2 .ganttstartDate,.material3 .ganttstartDate,
+.bootstrap5_3 .ganttstartDate,
+.bootstrap5_3-lite .ganttstartDate{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/Start date.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material-dark .ganttstartDate, .fabric-dark .ganttstartDate, .bootstrap-dark .ganttstartDate,
+.tailwind-dark .ganttstartDate,.tailwind3-dark .ganttstartDate, .bootstrap5-dark .ganttstartDate, .highcontrast .ganttstartDate,
+.fluent-dark .ganttstartDate,.fluent2-dark .ganttstartDate,.fluent2-highcontrast .ganttstartDate,.material3-dark .ganttstartDate,
+.bootstrap5_3-dark-lite .ganttstartDate,
+.bootstrap5_3-dark .ganttstartDate{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/StartDateDark.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material .ganttduration, .fabric .ganttduration, .bootstrap .ganttduration,
+.tailwind .ganttduration,.tailwind3 .ganttduration, .bootstrap5 .ganttduration, .bootstrap4 .ganttduration,
+.fluent .ganttduration,.fluent2 .ganttduration,.material3 .ganttduration,
+.bootstrap5_3 .ganttduration,
+.bootstrap5_3-lite .ganttduration{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/Duration.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material-dark .ganttduration, .fabric-dark .ganttduration, .bootstrap-dark .ganttduration,
+.tailwind-dark .ganttduration,.tailwind3-dark .ganttduration, .bootstrap5-dark .ganttduration, .highcontrast .ganttduration,
+.fluent-dark .ganttduration,.fluent2-dark .ganttduration,.fluent2-highcontrast .ganttduration, .material3-dark .ganttduration,
+.bootstrap5_3-dark-lite .ganttduration,
+.bootstrap5_3-dark .ganttduration{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/DurationDark.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material .ganttprogressTemplate, .fabric .ganttprogressTemplate, .bootstrap .ganttprogressTemplate,
+.tailwind .ganttprogressTemplate,.tailwind3 .ganttprogressTemplate, .bootstrap5 .ganttprogressTemplate, .bootstrap4 .ganttprogressTemplate,
+.fluent .ganttprogressTemplate,.fluent2 .ganttprogressTemplate,.material3 .ganttprogressTemplate,
+.bootstrap5_3 .ganttprogressTemplate,
+.bootstrap5_3-lite .ganttprogressTemplate{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/Progress.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+.material-dark .ganttprogressTemplate, .fabric-dark .ganttprogressTemplate, .bootstrap-dark .ganttprogressTemplate,
+.tailwind-dark .ganttprogressTemplate,.tailwind3-dark .ganttprogressTemplate, .bootstrap5-dark .ganttprogressTemplate, .highcontrast .ganttprogressTemplate,
+.fluent-dark .ganttprogressTemplate,.fluent2-dark .ganttprogressTemplate,.fluent2-highcontrast .ganttprogressTemplate,.material3-dark .ganttprogressTemplate,
+.bootstrap5_3-dark-lite .ganttprogressTemplate,
+.bootstrap5_3-dark .ganttprogressTemplate{
+    background-image: url("https://ej2.syncfusion.com/react/demos/src/gantt/images/ProgressDark.png");
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: unset;
+}
+#ColumnMenu .ganttresource,
+#ColumnMenu .ganttprogressTemplate,
+#ColumnMenu .ganttduration,
+#ColumnMenu .ganttstartDate,
+#ColumnMenu .gantttaskName {
+    margin-right: 8px;
+    display: inline-block;
+}

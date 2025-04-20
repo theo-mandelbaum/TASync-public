@@ -1,0 +1,563 @@
+<template>
+<div>
+<div class="control-section">
+    <div class="control-wrapper">
+        <div class="default-section">
+             <div class="forum">
+                <div class="questionSection">
+                    <div class="raiser">
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <div class="questionar blog-avatar"> </div>
+                                </td>
+                                <td>
+                                    <div class="Questionarname"> Kimberly </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="questionHeader">
+                        <div class="header">
+                            How to add a custom item to the toolbar of RichTextEditor
+                        </div>
+                        <div class="detailsQuestion">Posted on May 7, 2018 6.10 PM</div>
+                        <div class="explain">
+                            I want to add a custom icon, “code-mirror” to the toolbar of RichTextEditor and display the RichTextEditor content in code-mirror format.
+                        </div>
+                        <div class="tags">
+                            <div class="tagSection">
+                                <table>
+                                    <tbody><tr>
+                                        <td>
+                                            <div class="tag"> HTML </div>
+                                        </td>
+                                        <td>
+                                            <div class="tag"> JavaScript </div>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <div class="questionLikes">
+                                <table>
+                                    <tbody><tr>
+                                        <td>
+                                            <span class="e-icon e-like questionSide">
+                                                <img class="e-icon" src="./images/like.svg" alt="like">
+                                                <span>Like</span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="e-icon e-dislike">
+                                                <img class="e-icon" src="./images/dislike.svg" alt="dislike">
+                                                <span>Dislike</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                </div>
+                <div class="answerSection">
+                    <div class="answerCount">1 Answer</div>
+                    <div class="answer">
+                        <table>
+                            <tbody><tr>
+                                <td rowspan="2">
+                                    <div class="logos blog-avatar"> </div>
+                                </td>
+                                <td>
+                                    <div class="authorname">Mabel Weber</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="detailsAnswer">Answered on May 7, 2018 6.30 PM</div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        <div class="posting">
+                            To add a custom icon
+                            <b>code-mirror</b> to the Toolbar, you have to use template option of the
+                            <b>toolbarSettings</b>. To know more about adding custom icons, refer to
+                            <a href='https://ej2.syncfusion.com/home/' target='_blank'>custom tool</a> sample of RTE.
+                        </div>
+                        <div class="likeAnswer">
+                            <table>
+                                <tbody><tr>
+                                    <td>
+                                        <span class="e-icon e-like">
+                                            <img class="e-icon" src="./images/like.svg">
+                                            <span>Like</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="e-icon e-dislike">
+                                            <img class="e-icon" src="./images/dislike.svg">
+                                            <span>Dislike</span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                        <div class="separator"></div>
+                    </div>
+                </div>
+
+                <div id="createpostholder">
+                    <form novalidate="novalidate">
+                        <ejs-richtexteditor ref="rteInstance" v-model="value" v-bind:value="value" placeholder="Write a reply"></ejs-richtexteditor>
+                        <div id="buttonSection">
+                            <table>
+                                <tbody><tr>
+                                    <td>
+                        <ejs-button v-on:click="clickSubmit" :isPrimary="isPrimary" id="rteSubmit" type="button" value="Reply">Reply</ejs-button>
+                                    </td>
+                                    <td>
+                        <ejs-button v-on:click="clickCancel" id="rteCancel" value="Cancel" type="button">Cancel</ejs-button>
+                                    </td>
+
+                                </tr>
+                            </tbody></table>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="action-description">
+    <p>This sample demonstrates how to design forum application using Rich Text Editor. You can type the content and click reply
+        button to post it. </p>
+</div>
+
+<div id="description">
+    <p>RichTextEditor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting
+        word content as HTML or Markdown format. So, RichTextEditor can easily customized to use for blog posting, forums
+        as an editor for response.</p>
+    <p><b>Injecting Module</b></p>
+    <p>The above features built as modules have to be included in your application. For example, to use image and link, we need to inject <code>Toolbar, Link, Image, HtmlEditor, QuickToolbar, PasteCleanup</code> into the <code>provide</code> section.</p>
+</div>
+
+</div>
+</template>
+<style scoped>
+    .control-section {
+        overflow: auto;
+        padding-bottom: 50px;
+    }
+    
+    .tagSection {
+        float: left;
+    }
+
+    .likeAnswer span.e-icon {
+        float: left;
+    }
+
+    img.e-icon {
+        width: 13px;
+        height: 25px;
+    }
+
+    span.questionSide {
+        margin-left: 24px;
+        float: left;
+    }
+
+    .e-dislike {
+        margin-left: 16px;
+        float: left;
+    }
+
+    .questionHeader {
+        margin-top: 12px;
+        margin-bottom: 5px;
+    }
+
+    .header {
+        font-size: 16px;
+        font-family: roboto-Semibold, SegoeUI-Semibold;
+        color: #000000;
+        font-weight: bold;
+        clear: both;
+    }
+
+    .bootstrap-dark .header, .bootstrap5-dark .header,.bootstrap5\.3-dark .header, .fluent-dark .header, .fluent2-dark .header, .material3-dark .header, 
+    .fabric-dark .header, .material-dark .header, .tailwind-dark .header, .tailwind3-dark .header, .highcontrast .header, .fluent2-highcontrast .header {
+        color: #fff;
+    }
+
+    @media (max-width: 550px) {
+        .forum {
+            padding: 20px 20px 60px 20px;
+        }
+    }
+
+    @media (min-width: 550px) {
+        .forum {
+            margin: 0 auto;
+            width: 80%;
+            border: 1px solid #d8d8c0;
+            padding: 10px 90px 60px 90px;
+            box-shadow: 2px 2px 2px 2px #f5f5ef;
+        }
+        .highcontrast .forum {
+            border: 1px solid #fff;
+        }
+    }
+
+    .e-like span {
+        font-family: Helvetica, Times New Roman;
+        color: #E3175A;
+        font-size: 12px;
+    }
+
+     .bootstrap-dark .e-like span, .bootstrap5-dark .e-like span,.bootstrap5\.3-dark .e-like span, .fluent-dark .e-like span,.material3-dark .e-like span,
+	.fabric-dark .e-like span, .material-dark .e-like span, .tailwind-dark .e-like span, .tailwind3-dark .e-like span, .highcontrast .e-like span {
+        color: #ff4b86;
+    }
+
+    .e-dislike span {
+        font-family: Helvetica, Times New Roman;
+        color: #717171;
+        font-size: 12px;
+
+    }
+
+     .bootstrap-dark .e-dislike span, .bootstrap5-dark .e-dislike span,.bootstrap5\.3-dark .e-dislike span, .fluent-dark .e-dislike span,.material3-dark .e-dislike span,
+	.fabric-dark .e-dislike span, .material-dark .e-dislike span, .tailwind-dark .e-dislike span, .tailwind3-dark .e-dislike span,.highcontrast .e-dislike span {
+        color: #BFBFBF;
+    }
+
+    .detailsQuestion {
+        font-size: 12px;
+        font-family: roboto, SegoeUI;
+        color: #575757;
+        margin-top: 8px;
+    }
+
+    .explain {
+        margin-top: 16px;
+        font-size: 13px;
+        font-family: roboto, SegoeUI;
+        color: #000000;
+    }
+
+    .bootstrap-dark .explain, .bootstrap5-dark .explain,.bootstrap5\.3-dark .explain, .fluent-dark .explain, .fluent2-dark .explain, .fluent2-dark .explain, .material3-dark .explain,
+    .fabric-dark .explain, .material-dark .explain, .tailwind-dark .explain, .tailwind3-dark .explain, .highcontrast .explain, .fluent2-highcontrast .explain {
+        color: #fff;
+    }
+
+     .bootstrap-dark .detailsQuestion, .bootstrap5-dark .detailsQuestion,.bootstrap5\.3-dark .detailsQuestion, .fluent-dark .detailsQuestion,.material3-dark .detailsQuestion,
+	.fabric-dark .detailsQuestion, .material-dark .detailsQuestion, .tailwind-dark .detailsQuestion, .tailwind3-dark .detailsQuestion, .highcontrast .detailsQuestion {
+        color: #BFBFBF;
+    }
+
+    .separator {
+        margin-top: 5px;
+        border-bottom: 1px solid #DADADA;
+        margin-bottom: 5px;
+    }
+
+    .tags td:first-child div {
+        margin-left: 0px;
+    }
+
+    .tag {
+        color: #000000;
+        padding: 3px 14px;
+        background-color: #DDDDDD;
+        font-size: 13px;
+        margin-left: 8px;
+        border-radius: 6px;
+        float: left;
+        text-transform: lowercase;
+        font-family: roboto, SegoeUI;
+    }
+
+    .answerCount {
+        color: #575757;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        font-family: roboto-Semibold, SegoeUI-Semibold;
+        width: 63px;
+    }
+
+     .bootstrap-dark .answerCount, .bootstrap5-dark .answerCount,.bootstrap5\.3-dark .answerCount, .fluent-dark .answerCount,.material3-dark .answerCount,
+	.fabric-dark .answerCount, .material-dark .answerCount, .tailwind-dark .answerCount, .tailwind3-dark .answerCount, .highcontrast .answerCount {
+        color: #BFBFBF;
+    }
+
+    .likeAnswer {
+        margin-top: 13px;
+    }
+
+    .tags {
+        margin-top: 10px;
+        margin-bottom: 24px;
+    }
+
+    .questionar {
+        background: url(./images/emp1.png);
+    }
+
+    .raiser {
+        height: 34px;
+    }
+
+    .Questionarname {
+        margin-top: 13px;
+        float: left;
+        font-weight: 500;
+        margin-left: 10px;
+    }
+
+    .your-answer {
+        color: #3b3b3b;
+        font-weight: 300;
+    }
+
+    .rating {
+        padding-left: 10px;
+        margin-top: -95px;
+    }
+
+    .logos {
+        background: url(./images/emp2.png);
+    }
+
+    .logo {
+        background: url(./images/author.png) no-repeat scroll 0 0 transparent;
+    }
+
+    .emp1 {
+        background: url(./images/1.png) no-repeat scroll 0 0 transparent;
+    }
+
+    .emp2 {
+        background: url(./images/2.png) no-repeat scroll 0 0 transparent;
+    }
+
+    .emp3 {
+        background: url(./images/3.png) no-repeat scroll 0 0 transparent;
+    }
+
+    .blog-avatar {
+            height: 32px;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background-color: #bcbcbc;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            color: #fff;
+            width: 32px;
+        }
+
+    .author {
+        margin-bottom: 5px;
+        height: 50px;
+        margin-top: 5px;
+    }
+
+    .name {
+        margin: 5px;
+        float: left;
+        color: blue;
+    }
+
+    .posting {
+        clear: both;
+        color: #000;
+        line-height: 24px;
+        margin-top: 12px;
+        font-family: roboto, SegoeUI;
+        font-size: 13px;
+         overflow-wrap: break-word;
+    }
+
+    .bootstrap-dark .posting, .bootstrap5-dark .posting,.bootstrap5\.3-dark .posting, .fluent-dark .posting, .fluent2-dark .posting, .fluent2-dark .posting, .material3-dark .posting,
+    .fabric-dark .posting, .material-dark .posting, .tailwind-dark .posting, .tailwind3-dark .posting, .highcontrast .posting, .fluent2-highcontrast .posting {
+        color: #fff;
+    }
+
+    .authorname {
+        font-family: SegoeUI-Semibold;
+        color: #000000;
+        font-size: 13px;
+    }
+
+    .bootstrap-dark .authorname, .bootstrap5-dark .authorname,.bootstrap5\.3-dark .authorname, .fluent-dark .authorname,.fluent2-dark .authorname, .material3-dark .authorname,
+    .fabric-dark .authorname, .material-dark .authorname, .tailwind-dark .authorname, .tailwind3-dark .authorname, .highcontrast .authorname, .fluent2-highcontrast .authorname  {
+        color: #fff;
+    }
+
+    .detailsAnswer {
+        color: #575757;
+        font-size: 12px;
+        font-family: roboto, SegoeUI;
+        margin-top: 7px;
+    }
+
+    .bootstrap-dark .detailsAnswer, .bootstrap5-dark .detailsAnswer,.bootstrap5\.3-dark .detailsAnswer, .fluent-dark .detailsAnswer,.material3-dark .detailsAnswer,
+	.fabric-dark .detailsAnswer, .material-dark .detailsAnswer, .tailwind-dark .detailsAnswer, .tailwind3-dark .detailsAnswer, .highcontrast .detailsAnswer {
+        color: #BFBFBF;
+    }
+    
+    button {
+        margin-left: 10px;
+    }
+
+    #buttonSection {
+        float: right;
+        margin-top: 11px;
+    }
+
+    #buttonSection input {
+        margin-right: 11px;
+    }
+
+    .authorname,
+    .detailsAnswer {
+        margin-left: 11px;
+    }
+
+    .answerCount {
+        color: #76766f;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    .questDesc {
+        min-height: 120px;
+        width: 100%;
+    }
+
+    .answerHeader {
+        border-bottom: 1px solid #ced1d1;
+        margin-bottom: 20px;
+        margin-top: -40px;
+    }
+
+    .answer {
+        margin-top: 15px;
+    }
+
+    .editorholder h4 {
+        padding: 15px 0;
+    }
+
+    #createpostholder {
+        margin-top: 25px;
+    }
+    .bootstrap-dark .tag, 
+    .bootstrap5-dark .tag, 
+    .bootstrap5\.3-dark .tag, 
+    .fluent-dark .tag,
+    .fluent2-dark .tag,
+    .fabric-dark .tag, 
+    .material-dark .tag, 
+    .tailwind-dark .tag,
+    .tailwind3-dark .tag, 
+    .highcontrast .tag {
+        color: #fff;
+        background: #484644;
+    } 
+</style>
+<script>
+import { isNullOrUndefined as isNOU } from "@syncfusion/ej2-base";
+import { RichTextEditorComponent, Link, Image, QuickToolbar, HtmlEditor, Toolbar, PasteCleanup, Table, Video, Audio } from "@syncfusion/ej2-vue-richtexteditor";
+import { ButtonComponent } from '@syncfusion/ej2-vue-buttons';
+
+export default {
+    components: {
+      'ejs-richtexteditor': RichTextEditorComponent,
+      'ejs-button': ButtonComponent
+    },
+    data: function() {
+        return {
+        isPrimary: true,
+        value: ''
+        };
+    },
+    methods: {
+        clickCancel: function() {
+            var answerElement = this.$refs.rteInstance.$el.parentNode.querySelector('.e-content');
+            answerElement.innerHTML = '';
+            this.value = '';
+            setTimeout(() => { this.$refs.rteInstance.ej2Instances.refresh(); } );
+            },
+            clickSubmit: function() {
+                var empCount = 0
+                var answerElement = this.$refs.rteInstance.$el.parentNode.querySelector('.e-content');
+                var comment = answerElement.innerHTML;
+                var empList = ['emp1','emp2','emp3'];
+                var nameList = ['Anne Dodsworth', 'Janet Leverling', 'Laura Callahan'];
+                if (comment !== null && comment.trim() !== '' && (answerElement.innerText.trim() !== '' ||
+                !isNOU(answerElement.querySelector('img')) || !isNOU(answerElement.querySelector('table')))) {
+                    var answer = document.querySelector('.answer');
+                    var cloneAnswer = answer.cloneNode(true);
+                     var authorName = cloneAnswer.querySelector('.authorname');
+                    var logo =  cloneAnswer.querySelector('.logos');
+                     logo.classList.remove('logos');
+                     if (empCount < 3) {
+                logo.classList.add(empList[empCount]);
+                logo.classList.add('blog-avatar');
+                authorName.innerHTML = nameList[empCount];
+                empCount++;
+            } else {
+                logo.classList.add('logo');
+                logo.classList.add('blog-avatar');
+                authorName.innerHTML = 'User';
+            }
+            var timeZone = cloneAnswer.querySelector('.detailsAnswer');
+             var day = this.getMonthName(new Date().getMonth()) + ' ' + new Date().getDate();
+             var hr = new Date().getHours() + ':' + new Date().getMinutes();
+             if (new Date().getHours() > 12) {
+                hr = hr + ' PM';
+            } else {
+                hr = hr + ' AM';
+            }
+            timeZone.innerHTML = 'Answered on ' + day + ', ' + new Date().getFullYear() + ' ' + hr;
+            var postContent = cloneAnswer.querySelector('.posting');
+            postContent.innerHTML = comment;
+            var postElement = document.querySelector('.answerSection');
+            postElement.appendChild(cloneAnswer);
+            var countEle = document.querySelector('.answerCount');
+            var count = parseInt(countEle.innerHTML, null);
+            count = count + 1;
+            countEle.innerHTML = count.toString() + ' Answers';
+            answerElement.innerHTML = '';
+            this.value = '';
+            setTimeout(() => { this.$refs.rteInstance.ej2Instances.refresh(); } );
+                }
+            },
+            getMonthName: function(index) {
+        var month = [];
+        month[0] = 'January';
+        month[1] = 'February';
+        month[2] = 'March';
+        month[3] = 'April';
+        month[4] = 'May';
+        month[5] = 'June';
+        month[6] = 'July';
+        month[7] = 'August';
+        month[8] = 'September';
+        month[9] = 'October';
+        month[10] = 'November';
+        month[11] = 'December';
+        return month[index];
+    }
+    },
+    provide:{
+        richtexteditor:[Link, Image, QuickToolbar, HtmlEditor, Toolbar, PasteCleanup, Table, Video, Audio]
+    }
+}
+</script>

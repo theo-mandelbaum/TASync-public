@@ -1,0 +1,30 @@
+<div id="action-description">
+    <p>
+        The following sample demonstrates the multiple date selection functionalities of the Calendar. Click /Touch the desired date from the Calendar and the selected date will be added to the values property of the calendar.
+    </p>
+</div>
+<div class="col-lg-12 control-section">
+    <div class="col-lg-7">
+        <div id="control_wrapper" class="col-lg-6 col-sm-8 col-md-8 multiselectWrapper">
+            <div id="container">
+                <ejs-calendar #calendar [isMultiSelection]="multiSelection" [values]="dates" (change)="onValueChange()" (created)="onValueChange()"></ejs-calendar>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <label>Selected values</label>
+        <div class="content-value">    
+            <div id="multiselect"></div>
+        </div>
+    </div>
+</div>
+<div id="description">
+    <p>
+        Multi selection sample demonstrates, how to enable and select the multiple date in a calendar by using
+        <code>isMultiSelection</code> and
+        <code>values</code> properties. Here 10, 15 and 25 date's are selected.
+    </p>
+    <p>More information on the calendar instantiation can be found in this
+        <a href="https://ej2.syncfusion.com/angular/documentation/calendar/getting-started.html" target="_blank">
+            documentation section</a>.</p>
+</div>

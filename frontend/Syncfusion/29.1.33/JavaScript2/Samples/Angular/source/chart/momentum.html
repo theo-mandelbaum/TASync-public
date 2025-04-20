@@ -1,0 +1,34 @@
+<div id="action-description">
+    <p>
+        This sample illustrates a chart with candle series and a momentum indicator. The trackball shows information about each day’s stock, signal line, and upper line values.
+   </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart id='chartcontainer' [chartArea]='chartArea' [width]='width' align='center' style="display:block;" [title]='title'
+            [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [tooltip]='tooltip' [crosshair]='crosshair' [zoomSettings]='zoomSettings'
+            [axes]='axes' [rows]='rows' [indicators]='indicators' [legendSettings]='legendSettings' [chartArea]='chartArea' (load)='load($event)'>
+            <e-series-collection>
+                <e-series [dataSource]='data1' type='Candle' xName='period' high='high' low='low' open='open' close='close' volume='volume' name='Apple Inc'>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id='description'>
+    <p>
+        In this example, you can see how to render and configure a momentum indicator. This indicator shows the speed at which the price of the stock is changing. It also identifies when the price is moving upwards or downwards. 
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use Momentum Indicator, we need to inject
+        <code>MomentumIndicator</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information on the Momentum Indicator can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/technical-indicators/#momentum" aria-label="Navigate to the documentation for Momentum in Technical Indicators of Angular Chart component">documentation section</a>.
+    </p>
+</div>

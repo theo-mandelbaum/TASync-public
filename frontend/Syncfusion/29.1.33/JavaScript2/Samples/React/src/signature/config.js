@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignatureSampleOrder = void 0;
+exports.SignatureSampleOrder = [
+    { 'path': 'signature/default', 'component': 'Default', 'name': 'Default Functionalities', 'order': '01', 'category': 'Signature', 'api': '', 'description': 'This example demonstrates the supported APIs and its functionalities of the Syncfusion React ColorPicker.' },
+    { 'path': 'signature/toolbar', 'component': 'Toolbar', 'name': 'Toolbar', 'order': '01', 'category': 'Signature', 'api': '', 'description': 'This example demonstrates the supported APIs and its functionalities of the Syncfusion React ColorPicker.' }
+];

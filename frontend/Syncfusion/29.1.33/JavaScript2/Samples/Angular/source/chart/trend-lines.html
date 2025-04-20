@@ -1,0 +1,50 @@
+<div id="action-description">
+    <p>
+        This sample shows the trend of Indian rupees and US dollar variations in the chart.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart #chart id='chartcontainer' style='display:block;' [primaryXAxis]='primaryXAxis'  [width]='width' [primaryYAxis]='primaryYAxis' [tooltip]='tooltip' [chartArea]='chartArea' [title]='title' [legendSettings]='legendSettings' (load)='load($event)'>
+            <e-series-collection>
+                <e-series [dataSource]='series' type='Spline' xName='Period' yName='Rupees' name='Rupees' [marker]='marker'>
+                    <e-trendlines>
+                        <e-trendline type='Linear' width=3  name='Trends' fill='#C64A75'>
+                        </e-trendline>
+                    </e-trendlines>
+                </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure the trendlines. The trendline is a line drawn over the chart to display the overall direction of the results.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use Trend Lines, we need to inject
+        <code>TrendlinesService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the trendlines can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/trend-lines" aria-label="Navigate to the documentation for Trendlines in Angular Chart component">documentation section</a>.
+    </p>
+</div>
+<style>
+    .control-section {
+        min-height: 450px;
+    }
+    
+    #chartcontainer_Series_0_TrendLine_0 {
+        stroke-dasharray: 10;
+        -webkit-animation: dash 1s linear infinite;
+        animation: dash 1s linear infinite;
+    }
+    
+    @keyframes dash {
+        to {
+            stroke-dashoffset: -20;
+        }
+    }
+</style>

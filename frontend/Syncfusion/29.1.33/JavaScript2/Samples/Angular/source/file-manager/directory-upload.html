@@ -1,0 +1,39 @@
+<div class="sample-container">
+    <ejs-filemanager id='file' #fileObj [ajaxSettings]='ajaxSettings' [contextMenuSettings]="contextMenuSettings" (success)="onSuccess($event)" >
+      <e-toolbaritems>
+        <e-toolbaritem name="NewFolder"></e-toolbaritem>
+        <e-toolbaritem name="Upload">
+          <ng-template #template>
+            <button ejs-dropdownbutton id="dropButton" #dropButtonObj [items]='items' cssClass="e-tbar-btn e-tbtn-txt" iconCss="e-icons e-fe-upload" (select)="onSelect($event)"><span class="e-tbar-btn-text">Upload</span></button>
+          </ng-template>
+        </e-toolbaritem>
+        <e-toolbaritem name="SortBy"></e-toolbaritem>
+        <e-toolbaritem name="Refresh"></e-toolbaritem>
+        <e-toolbaritem name="Cut"></e-toolbaritem>
+        <e-toolbaritem name="Copy"></e-toolbaritem>
+        <e-toolbaritem name="Paste"></e-toolbaritem>
+        <e-toolbaritem name="Delete"></e-toolbaritem>
+        <e-toolbaritem name="Download"></e-toolbaritem>
+        <e-toolbaritem name="Rename"></e-toolbaritem>
+        <e-toolbaritem name="Selection"></e-toolbaritem>
+        <e-toolbaritem name="View"></e-toolbaritem>
+        <e-toolbaritem name="Details"></e-toolbaritem>
+      </e-toolbaritems>        
+    </ejs-filemanager>
+</div>
+<div id="action-description">
+  <p>This sample demonstrates the folder (directory) upload feature. Select <code>Folder</code> from the <code>Upload</code> toolbar item to select and upload a folder in the File Manager component.</p>
+</div>
+<div id="description">
+  <p>In this demo, a folder upload is enabled by setting <a href="https://ej2.syncfusion.com/angular/documentation/api/file-manager/uploadSettingsModel/#directoryupload" target="_blank"> directoryUpload </a> to <code>true</code>. It allows users to select or drag and drop a folder to upload its contents including hierarchy folders and files in the File Manager component.</p>
+  <p>The folder (directory) upload is supported for the following file system providers,</p>
+  <ul>
+    <li> Physical provider</li>
+    <li> NodeJS provider</li>
+    <li> Azure provider</li>
+    <li> Amazon S3 provider</li>
+  </ul>
+  <p>To efficiently upload large files and folders to the server in manageable chunks, use the <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/file-manager/uploadsettingsmodel/#chunksize">chunkSize</a> property to specify the desired chunk size.</p>
+  <p><b>Note: </b>File Manager’s upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install
+  <a target="_blank" href="https://www.syncfusion.com/downloads"> Syncfusion Essential Studio </a>on your machine and run the demo.</p>
+</div>

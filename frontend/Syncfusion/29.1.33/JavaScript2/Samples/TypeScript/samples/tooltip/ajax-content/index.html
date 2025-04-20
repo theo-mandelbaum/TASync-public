@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Javascript Tooltip Ajax Content Example - Syncfusion Demos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="description" content="This example demonstrates the Ajax Content in Javascript Tooltip Control. Explore here for more details." />
+    <meta name="author" content="Syncfusion" />
+    <link rel="canonical" href="https://ej2.syncfusion.com/demos/{{:canonical}}" />
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico" />
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLQL39J');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">
+        var themeName = location.hash || 'material';
+        themeName = themeName.replace('#', '');
+        window.ripple = (themeName === "material")
+        document.write('<link href="//npmci.syncfusion.com/packages/development/' + themeName + '.css" rel="stylesheet">');
+    </script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write("<script src=\'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js\'><\/script>");
+        }</script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet">
+    <style>
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+
+        body {
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body class='e-view ej2-new' aria-busy="true">
+     <!-- Google Tag Manager (noscript) -->
+     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLQL39J"height="0"width="0"style="display:none;visibility:hidden"></iframe></noscript>
+     <!-- End Google Tag Manager (noscript) -->
+     <div hidden id="sync-analytics" data-queue="EJ2 - JavaScript - Demos"></div>
+    <div class="sample-browser">
+        <div id='sample-header' class="sb-header" role="banner">
+            <div class='sb-header-left sb-left sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="header-logo">
+                        <a href="#" target="" rel="noopener noreferrer">
+                            <a href="https://ej2.syncfusion.com/home/" target="" rel="noopener noreferrer">
+                                <div class="footer-logo"> </div>
+                            </a>
+                    </div>
+
+                </div>
+                <div class="sb-header-splitter sb-download-splitter"></div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div id='sb-header-text' class='e-sb-header-text'>
+
+                        <span class='sb-header-text-left'>Essential JS 2 for JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class='sb-header-right sb-right sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class='product-style'>
+                        <div>
+                            <a href="https://www.syncfusion.com/javascript-ui-controls/tooltip">PRODUCT DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="sb-header-item sb-table-cell sb-download-wrapper">
+                        <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <button id="download-now" class="sb-download-btn">
+                                <span class="sb-download-text">Download Now</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class='content e-view'>
+            <div class='sample-content'>
+                <div id="sample-bread-crumb" class="sb-bread-crumb">
+                    <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                        <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip "
+                            aria-label="previous sample" title="Previous Sample">
+                            <a {{:anchor-prev}} class='{{:disabled-prev}}'><span
+                                    class="sb-icons sb-icon-Previous"></span></a>
+
+                        </div>
+                        <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample"
+                            title="Next Sample">
+                            <a {{:anchor-next}} class='{{:disabled-next}}'><span
+                                    class="sb-icons sb-icon-Next"></span></a>
+
+                        </div>
+                    </div>
+                    <h1 class="sb-bread-crumb-text">
+                        <div class="category-allcontrols">
+                            <a href="https://ej2.syncfusion.com/demos/">
+                                <span>All Controls</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="category-text bread-ctext">
+                            <a href="https://ej2.syncfusion.com/demos/#/material/tooltip/default.html">
+                                <span>Tooltip</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="crumb-sample">Ajax Content</div>
+                    </h1>
+                </div>
+                <div class="control-content">
+                    <div id="action-description">
+                        <p>
+                            <div class="layout" id="actionDes">
+    <p>This sample demonstrates the AJAX functionalities of the Tooltip which will open by <b>hover</b> or <b>touch-hold</b> action on list-item.
+    </p>
+</div>
+                            <a id="details" class="layout" onclick="desDetails()"> More Details...</a>
+                            <script>
+                                function desDetails() {
+                                    var element = document.getElementById('description-section');
+                                    if (element) {
+                                        element.scrollIntoView();
+                                    }
+                                }
+                            </script>
+                        </p>
+                    </div>
+                    <div class='container-fluid'>
+                        <div class="control-section">
+                            <style type="text/css">
+  .contentWrap {
+    padding: 3px 0;
+    line-height: 16px;
+  }
+  
+  @font-face {
+    font-family: 'sportsicons';
+    src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .e-bigger [class^="sports-icon-"],
+  .e-bigger [class*=" sports-icon-"] {
+    font-size: 18px;
+  }
+  
+  [class^="sports-icon-"],
+  [class*=" sports-icon-"] {
+    font-family: 'sportsicons';
+    speak: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    padding-right: 6px;
+    vertical-align: middle;
+  }
+  
+  .sports-icon-cricket:before {
+    content: "\e703";
+  }
+  
+  .sports-icon-archery:before {
+    content: "\e705";
+  }
+  
+  .sports-icon-table-tennis:before {
+    content: "\e702";
+  }
+  
+  .sports-icon-baseball:before {
+    content: "\e706";
+  }
+  
+  .sports-icon-hockey:before {
+    content: "\e701";
+  }
+  
+  .sports-icon-shooting:before {
+    content: "\e700";
+  }
+  
+  .def {
+    float: right;
+  }
+  
+  #countrylist {
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    max-width: 170px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .list-header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 481px) {
+    #countrylist {
+      margin: 0;
+    }
+    .list-header {
+      text-align: left;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .e-bigger [class^="sports-icon-"],
+    .e-bigger [class*=" sports-icon-"] {
+      font-size: 13px;
+      position: relative;
+      top: 1px;
+    }
+  }
+  
+  .bootstrap4 .e-tooltip-wrap.e-ajax-content .contentWrap {
+    padding: 0;
+    line-height: 18px;
+  }
+  
+  .bootstrap4 .e-tooltip-wrap.e-ajax-content .def {
+    display: inline-block;
+  }
+</style>
+<div class="col-lg-12 control-section">
+  <p class="list-header">National Sports</p>
+
+  <!-- Tooltip element -->
+  <div id="Tooltip" class="e-prevent-select">
+
+    <!-- ListView element -->
+    <div id="countrylist" tabindex="1">
+    </div>
+  </div>
+</div>
+                        </div>
+                    </div>
+                    <div id="description-section">Description</div>
+                    <div id="description">
+                        <p>
+                            This sample illustrates the way to load the content of a tooltip dynamically using AJAX request. Here, when the user
+        hovers/tap on the country names, its respective data (national game of each country and its related game icon) will
+        be retrieved dynamically and then assigned to the tooltip’s content.
+    The AJAX request should be made within the beforeRender event of the tooltip, and on every success, the corresponding
+        retrieved data will be set to the content property of the tooltip.
+    More information on loading dynamic tooltip content can be found in the
+         documentation section.
+    
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="index.min.js"></script>
+    <script src="../../samples.min.js"></script>
+</body>
+
+</html>

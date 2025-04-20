@@ -1,0 +1,95 @@
+<template>
+<div class="col-lg-12 control-section">
+    <div id="action-description">
+        <p>This sample demonstrates the Grid component with the row drag and drop feature within same grid. You can rearrange the grid rows by using drag icon in left side of grid column.Here you can drag and drop the grid rows between the decided rows.
+        </p>
+    </div>
+    <div>
+        <div class="control-section">
+        <ejs-grid ref="grid" :dataSource="data" :height="400" :allowRowDragAndDrop="true" :allowSorting='true' :allowFiltering='true' :filterSettings='filterSettings' :editSettings='editSettings' :toolbar='toolbar' :allowGrouping='true' :selectionSettings="selection" :created='created'>
+            <e-columns>
+                <e-column field='OrderID' headerText='Order ID' width='120' textAlign='Right' :isPrimaryKey='true' :validationRules='orderidrules'></e-column>
+                <e-column field='CustomerName' headerText='Customer Name' width='150' :validationRules='customeridrules'></e-column>
+                <e-column field='OrderDate' headerText='Order Date' width='130' format="yMd" textAlign='Right' editType='datepickeredit'></e-column>
+                <e-column field='Freight' headerText='Freight' width='120' format='C2' textAlign='Right' editType='numericedit' :validationRules='freightrules'></e-column>
+                <e-column field='ShippedDate' headerText='Shipped Date' width='130' format="yMd" textAlign='Right' editType='datepickeredit'></e-column>
+                <e-column field='ShipCountry' headerText='Ship Country' width='150' :allowGrouping='false' editType='dropdownedit'></e-column>
+            </e-columns>
+        </ejs-grid>
+        </div>
+        <ejs-dialog :buttons='alertDlgButtons' ref="alertDialog" v-bind:visible="false" :header='alertHeader' :animationSettings='animationSettings' :content='alertContent' :showCloseIcon='showCloseIcon' :target='target'
+            :width='alertWidth'>
+        </ejs-dialog>
+    </div>
+
+     <div id="description">
+        <p>Row drag and drop enabled by setting
+            <code><a target="_blank" class="code" href="https://ej2.syncfusion.com/vue/documentation/api/grid/#allowrowdraganddrop">allowRowDragAndDrop</a></code> property as true.
+        </p>           
+        <p>Grouping can be enabled by setting  
+            <code><a target="_blank" class="code" href="https://ej2.syncfusion.com/vue/documentation/api/grid/#allowgrouping">allowGrouping</a></code> property as true.
+        </p>  
+        <p>
+        Grid features are segregated into individual feature-wise modules.
+              To use row drag and drop and grouping features, 
+              we need to inject 
+              <code><a target="_blank" class="code" href="https://ej2.syncfusion.com/vue/documentation/api/grid/#rowdraganddropmodule">RowDD</a></code>, 
+              <code><a target="_blank" class="code" href="https://ej2.syncfusion.com/vue/documentation/api/grid/group">Group</a></code> modules into the <code>provide</code>.
+        </p> 
+        <p>
+            The row drag and drop functionality is enabled with grouped records in the grid.
+            Now, you can drag and drop the records from one group to another group of your choice.
+        </p>     
+    </div>
+
+</div>
+</template>
+<script lang="ts">
+import { GridComponent, ColumnDirective, ColumnsDirective, Selection, RowDD, Group, Sort, Toolbar, Edit, Filter } from "@syncfusion/ej2-vue-grids";
+import { orderDetails } from "./data-source";
+import { DialogComponent } from '@syncfusion/ej2-vue-popups';
+
+export default {
+  components: {
+    'ejs-grid': GridComponent,
+    'e-column': ColumnDirective,
+    'e-columns': ColumnsDirective,
+    'ejs-dialog': DialogComponent
+  },
+  data: function() {
+    return {
+      alertHeader: 'Grouping',
+      alertContent: 'Grouping is disabled for this column',
+      showCloseIcon: false,
+      target: '.control-section',  
+      alertWidth: '300px',
+      animationSettings: { effect: 'None' },
+      alertDlgButtons: [{ click: ((<any>this).alertDlgBtnClick as any), buttonModel: { content: 'OK', isPrimary: true } }],
+      data: orderDetails,
+      selection: { type: 'Multiple' },
+      filterSettings: { type: 'Excel' },
+      editSettings: { allowEditing: true, allowAdding: true, allowDeleting: true },
+      orderidrules: { required: true, number: true },
+      customeridrules: { required: true, minLength: 5 },
+      freightrules:  { required: true, min: 0 },
+      toolbar: ['Add', 'Edit', 'Delete', 'Update', 'Cancel'],
+    };
+  },
+  methods: {
+    created: function() {
+        ((<any>this).$refs.grid.ej2Instances as any).on("columnDragStart", this.columnDragStart, this);
+    },
+    columnDragStart: function(args: any) {
+        if(args.column.field === "ShipCountry"){
+             ((this as any).$refs.alertDialog).show();
+        }
+    },
+    alertDlgBtnClick: function() {
+        ((<any>this).$refs.alertDialog as any).hide();
+    },
+  },
+  provide: {
+      grid: [Selection, RowDD, Group, Sort, Toolbar, Edit, Filter]
+  }
+}
+</script>

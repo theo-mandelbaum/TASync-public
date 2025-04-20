@@ -1,0 +1,65 @@
+"use strict";
+/**
+ * Annotation sample
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var react_1 = require("react");
+var ej2_react_maps_1 = require("@syncfusion/ej2-react-maps");
+var africaContinent = require("./map-data/africa-continent.json");
+var sample_base_1 = require("../common/sample-base");
+var SAMPLE_CSS = "\n    .control-fluid {\n\t\tpadding: 0px !important;\n    }\n    #annotation {\n        color: #DDDDDD;\n\t\tfont-size: 12px;\n\t\tfont-family: Roboto;\n        background: #3E464C;\n        margin: 20px;\n        padding: 10px;\n        -webkit-border-radius: 2px;\n        -moz-border-radius: 2px;\n        border-radius: 2px;\n        width: 300px;\n        -moz-box-shadow: 0px 2px 5px #666;\n        -webkit-box-shadow: 0px 2px 5px #666;\n        box-shadow: 0px 2px 5px #666;\n    }\n    .country-label {\n        color: white;\n        font-size: 25px;\n    }";
+var AnnotationMaps = function () {
+    (0, react_1.useEffect)(function () {
+        (0, sample_base_1.updateSampleSection)();
+    }, []);
+    var onMapsLoad = function () {
+        var maps = document.getElementById('maps');
+        maps.setAttribute('title', '');
+    };
+    var load = function (args) {
+        // custom code start 
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.maps.theme = ((selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5'));
+        // custom code end
+    };
+    return (React.createElement("main", null,
+        React.createElement("div", { className: 'control-pane' },
+            React.createElement("style", null, SAMPLE_CSS),
+            React.createElement("div", { className: 'control-section row' },
+                React.createElement(ej2_react_maps_1.MapsComponent, { id: "maps", loaded: onMapsLoad, load: load, zoomSettings: { enable: false }, annotations: [{ content: '#maps-annotation', x: '0%', y: '70%' }, { content: '#compass-maps', x: '85%', y: '5%' }] },
+                    React.createElement(ej2_react_maps_1.Inject, { services: [ej2_react_maps_1.Annotations, ej2_react_maps_1.Marker] }),
+                    React.createElement(ej2_react_maps_1.LayersDirective, null,
+                        React.createElement(ej2_react_maps_1.LayerDirective, { shapeData: africaContinent, shapePropertyPath: 'name', shapeDataPath: 'name', shapeSettings: { fill: 'url(#grad1)' } },
+                            React.createElement(ej2_react_maps_1.MarkersDirective, null,
+                                React.createElement(ej2_react_maps_1.MarkerDirective, { visible: true, animationDuration: 1, template: '<h3 style="color:white">{{:name}}</h3>', dataSource: [{ name: 'Africa', latitude: 13.97274101999902, longitude: 20.390625 }] })))))),
+            React.createElement("svg", { height: "70", width: "400" },
+                React.createElement("defs", null,
+                    React.createElement("linearGradient", { id: "grad1", x1: "0%", y1: "0%", x2: "0%", y2: "100%" },
+                        React.createElement("stop", { offset: "0%", style: { stopColor: '#C5494B', stopOpacity: '1' } }),
+                        React.createElement("stop", { offset: "100%", style: { stopColor: '#4C134F', stopOpacity: '1' } })))),
+            React.createElement("div", { id: "maps-annotation", style: { display: 'none' } },
+                React.createElement("div", { id: "annotation" },
+                    React.createElement("div", { style: { marginLeft: '10px', fontSize: '13px', fontWeight: 500 } },
+                        React.createElement("h5", { style: { marginLeft: '40px' } }, "Facts about Africa")),
+                    React.createElement("hr", null),
+                    React.createElement("div", null,
+                        React.createElement("ul", { style: { listStyleType: 'disc' } },
+                            React.createElement("li", null, "Africa is the second largest and second most populated continent in the world."),
+                            React.createElement("li", { style: { paddingTop: '5px' } }, "Africa has 54 sovereign states and 10 non-sovereign territories."),
+                            React.createElement("li", { style: { paddingTop: '5px' } }, "Algeria is the largest country in Africa, where as Mayotte is the smallest."))))),
+            React.createElement("div", { id: "compass-maps", style: { display: 'none' } },
+                React.createElement("img", { src: "src/maps/images/compass.svg", alt: "Direction compass", height: "75px", width: "75px" })),
+            React.createElement("div", { style: { float: 'right', marginRight: '10px' } },
+                "Source: ",
+                React.createElement("a", { href: "https://en.wikipedia.org/wiki/Africa", target: "_blank" }, "en.wikipedia.org"))),
+        React.createElement("section", { id: "action-description", "aria-label": "Description of Maps sample" },
+            React.createElement("p", null, "This sample depicts the facts about Africa in an annotation. The shape of Africa is filled with gradient color.")),
+        React.createElement("section", { id: "description", "aria-label": "Description of the Maps features demonstrated in this sample" },
+            React.createElement("p", null, "In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker template is used to display the names for shapes. Legend is enabled in this example to represent each continent."),
+            React.createElement("br", null),
+            React.createElement("p", { style: { fontWeight: 500 } }, "Injecting Module"),
+            React.createElement("p", null, "Maps component features are segregated into individual feature-wise modules. To use an annotation, inject the Annotations module using the Maps.Inject(Annotations) method."))));
+};
+exports.default = AnnotationMaps;

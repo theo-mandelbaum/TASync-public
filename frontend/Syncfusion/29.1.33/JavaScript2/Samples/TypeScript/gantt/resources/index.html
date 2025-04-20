@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W8WD8WN');</script>
+    <!-- End Google Tag Manager -->   
+    <title>Javascript Gantt Chart Resource Allocation Example - Syncfusion Demos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="This example demonstrates the Resource Allocation in Javascript Gantt Chart Control. Explore here for more details.">
+    <meta name="author" content="Syncfusion">
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico">
+    <script type="text/javascript">
+        var themeName = location.hash || 'material';
+        themeName = themeName.replace('#', '');
+        window.ripple = (themeName === "material")
+        document.write('<link href="../../styles/' + themeName + '.css" rel="stylesheet">');
+    </script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write("<script src=\'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js\'>");
+        }</script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <style>
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+
+        body {
+            touch-action: none;
+        }
+    </style>
+    
+</head>
+<body class="ej2-new">
+        
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8WD8WN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div hidden id="sync-analytics" data-queue="EJ2 - Javascript - Demos"></div>
+    
+    <div class="sample-browser">
+        <div id="sample-header" class="sb-header" role="banner">
+            <div class="sb-header-left sb-left sb-table">
+                <div class="sb-header-item sb-table-cell">
+                    <div class="header-logo">
+                        <a href="#" target="" rel="noopener noreferrer">
+                                </a><a href="https://ej2.syncfusion.com/home" target="" rel="noopener noreferrer">
+                            <div class="footer-logo"> </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="sb-header-splitter sb-download-splitter"></div>
+                <div class="sb-header-item sb-table-cell">
+                    <div id="sb-header-text" class="e-sb-header-text">
+
+                        <span class="sb-header-text-left">Essential JS 2 for Javascript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sb-header-right sb-right sb-table">
+                <div class="sb-header-item sb-table-cell">
+                    <div class="product-style">
+                        <div><a href="https://www.syncfusion.com/javascript-ui-controls/gantt">PRODUCT DETAILS</a></div>
+                    </div>
+                </div>
+                <div class="sb-header-item sb-table-cell">
+                    <div class="sb-header-item sb-table-cell sb-download-wrapper">
+                        <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <button id="download-now" class="sb-download-btn">
+                                <span class="sb-download-text">Download Now</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content e-view">
+        <div class="sample-content">
+            <div id="sample-bread-crumb" class="sb-bread-crumb">
+                <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                    <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip " aria-label="previous sample" title="Previous Sample">
+                        <a href="https://ej2.syncfusion.com/demos/gantt/show-hide-column/"="" class=""><span class="sb-icons sb-icon-Previous"></span></a>
+                       
+                    </div>
+                    <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample" title="Next Sample">
+                        <a href="https://ej2.syncfusion.com/demos/gantt/resource-view/"="" class=""><span class="sb-icons sb-icon-Next"></span></a>
+                        
+                    </div>
+                </div>
+                <h1 class="sb-bread-crumb-text">
+                    Example of Resource Allocation in Javascript Gantt Chart Control
+                </h1>
+
+                <h2 class="sb-bread-crumb-text">
+                    <div class="category-allcontrols"><a href="https://ej2.syncfusion.com/demos"><span>All Controls</span></a></div>
+                    <div class="category-seperator sb-icons"> / </div>
+                    <div class="category-text bread-ctext"><a href="https://ej2.syncfusion.com/demos/#/tailwind3/gantt/default.html"><span>Gantt Chart</span></a></div>
+                    <div class="category-seperator sb-icons"> / </div>
+                    <div class="crumb-sample">Resource Allocation</div>
+                </h2>
+            </div>
+            <div class="control-content">
+            <div id="action-description">
+                    <p>
+                        </p><div class="layout" id="actionDes">
+    <p>This sample demonstrates the options to allocate one or more resources to tasks based on the task requirement. 
+        The Work is the total labor hours necessary to complete a task. 
+        Work can be mapped from the data source field using the property <code>work</code> and when the work value is mapped from the data source, 
+        the end date and duration of the task will be calculated automatically based on the work and resource unit values from the data source.
+        Work can be measured in hours, days and minutes. It is measured in ‘hours’ scale by default and this can be changed by using the <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/gantt#workunit">workUnit</a> property.</p>
+</div>
+                        <a id="details" class="layout" onclick="desDetails()"> More Details...</a>
+                        <script>
+                            function desDetails() {
+                                var element = document.getElementById('description-section');
+                                if (element) {
+                                    element.scrollIntoView();
+                                }
+                            }
+                        </script>
+                    <p></p>
+                </div>
+                <div class="container-fluid">
+                <div class="control-section">
+                        <div class="control-section">
+  <div class="content-wrapper">
+    <div id="resource">
+    </div>
+  </div>
+</div>
+<script type="text/x-template" id="resColumnTemplate">
+  ${if(ganttProperties.resourceNames)} ${if(ganttProperties.resourceNames.split('[')[0].includes('Rose Fuller'))}
+  <div class="text" style="width:150px; height:24px; border-radius:100px; background-color:#1c5d8e; display: flex; align-items: center; justify-content: center;">
+    <span style="color:white; font-weight:500;">${ganttProperties.resourceNames}</span> 
+  </div>
+  ${/if} ${if(ganttProperties.resourceNames.split('[')[0].includes('Fuller King'))}
+  <div class="text" style="width:150px; height:24px; border-radius:100px; background-color:#4a7537; display: flex; align-items: center; justify-content: center;">
+    <span style="color:white; font-weight:500;">${ganttProperties.resourceNames}</span> 
+  </div>
+  ${/if} ${if(ganttProperties.resourceNames.split('[')[0].includes('Van Jack'))}
+  <div class="text" style="width:150px; height:24px; border-radius:100px; background-color:#b24531; display: flex; align-items: center; justify-content: center;">
+    <span style="color:white; font-weight:500;">${ganttProperties.resourceNames}</span> 
+  </div>
+  ${/if} ${if(ganttProperties.resourceNames.split('[')[0].includes('Bergs Anton'))}
+  <div class="text" style="width:150px; height:24px; border-radius:100px; background-color:#a53576; display: flex; align-items: center; justify-content: center;">
+    <span style="color:white; font-weight:500;">${ganttProperties.resourceNames}</span> 
+  </div>
+  ${/if} ${if(ganttProperties.resourceNames.split('[')[0].includes('Tamer Vinet'))}
+  <div class="text" style="width:150px; height:24px; border-radius:100px; background-color:#635688; display: flex; align-items: center; justify-content: center;">
+    <span style="color:white; font-weight:500;">${ganttProperties.resourceNames}</span> 
+  </div>
+  ${/if} ${/if}
+</script>
+                    </div>
+                    </div>
+                <div id="description-section">Description</div>    
+                <div id="description">
+                    <p>
+                       
+        In this example, you can see how to allocate single or multiple resources for the task. Based on the task complexity and the resource availability, you can plan and allocate the resources to task in the project. In this demo, there is a set of predefined resources and those IDs are assigned to the task. Resource information can be shown in Gantt chart by using the labelSetting property.
+        Resources can be mapped using resourceFields:. 
+        id: To map resource ID
+        name: To map resource name
+        unit: To map resource unit
+        The work, duration and resource unit fields of a task depends upon each other values and will change automatically on editing any one of these fields. But we can also set these field’s values as constant using the taskType property. The following values can be set to the type property:
+        
+        FixedDuration: Duration task field will remain constant while updating resource unit or work field.
+
+        FixedWork: Work field will remain constant while updating resource unit or duration fields.
+
+        FixedUnit: Resource units will remain constant while updating duration or work field.
+       
+    Injecting Module:
+    
+        Gantt control features are segregated into individual feature-wise modules. To use a selection, inject the
+        Selection module using the Gantt.Inject(Selection) method. To use markers, inject the
+        DayMarkers module using the Gantt.Inject(DayMarkers) method.
+        To edit resource unit, task type and duration, inject the Toolbar and Edit module.
+    
+                     </p>     
+                </div>    
+            </div>             
+        </div>
+            
+        </div>
+    </div>
+    <script src="index.min.js"></script>
+    <script src="../../gantt.min.js"></script>
+
+
+
+
+</body>
+</html>

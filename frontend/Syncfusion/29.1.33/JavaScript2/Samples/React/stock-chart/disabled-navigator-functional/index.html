@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W8WD8WN');</script>
+    <!-- End Google Tag Manager -->   
+            <script>function _0xde02(){var _0x5f2ba3=['9TYJyPJ','8519130vccODC','length','indexOf','642676nYqdEN','split','1588446jBtanR','1207348wihLFo','204856gJKXOd','1996386mrrBRO','7202905WqbCdL','href','ej2.syncfusion.com','36VGEwVI'];_0xde02=function(){return _0x5f2ba3;};return _0xde02();}var _0x5c03ce=_0x2e99;(function(_0x4610ba,_0x2edf38){var _0x2bab05=_0x2e99,_0x295339=_0x4610ba();while(!![]){try{var _0x258b1a=parseInt(_0x2bab05(0xd5))/0x1+-parseInt(_0x2bab05(0xd7))/0x2+parseInt(_0x2bab05(0xd1))/0x3*(parseInt(_0x2bab05(0xd8))/0x4)+-parseInt(_0x2bab05(0xdb))/0x5+parseInt(_0x2bab05(0xd2))/0x6+parseInt(_0x2bab05(0xda))/0x7+-parseInt(_0x2bab05(0xd9))/0x8*(parseInt(_0x2bab05(0xd0))/0x9);if(_0x258b1a===_0x2edf38)break;else _0x295339['push'](_0x295339['shift']());}catch(_0x5cb54d){_0x295339['push'](_0x295339['shift']());}}}(_0xde02,0xdfa28));var bypassKey=[0x73,0x79,0x6e,0x63,0x66,0x75,0x73,0x69,0x6f,0x6e,0x2e,0x69,0x73,0x4c,0x69,0x63,0x56,0x61,0x6c,0x69,0x64,0x61,0x74,0x65,0x64];function _0x2e99(_0x50a339,_0x56f268){var _0xde0271=_0xde02();return _0x2e99=function(_0x2e9975,_0x55ee02){_0x2e9975=_0x2e9975-0xce;var _0x32119=_0xde0271[_0x2e9975];return _0x32119;},_0x2e99(_0x50a339,_0x56f268);}function convertToChar(_0x3e5688){var _0x37d95d=_0x2e99,_0x30ade7='';for(var _0x30d200=0x0,_0x532558=_0x3e5688;_0x30d200<_0x532558[_0x37d95d(0xd3)];_0x30d200++){var _0xc98512=_0x532558[_0x30d200];_0x30ade7+=String['fromCharCode'](_0xc98512);}return _0x30ade7;}location[_0x5c03ce(0xce)]&&location['href'][_0x5c03ce(0xd4)](_0x5c03ce(0xcf))!==-0x1&&(window[convertToChar(bypassKey)['split']('.')[0x0]]={},window[convertToChar(bypassKey)[_0x5c03ce(0xd6)]('.')[0x0]][convertToChar(bypassKey)[_0x5c03ce(0xd6)]('.')[0x1]]=!![]);</script>
+    <title>React Stock Chart undefined Example - Syncfusion Demos</title>
+	<meta name="description" content="This example demonstrates the undefined in React Stock Chart Component. Explore here for more details.">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <meta name="author" content="Syncfusion">
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico">
+    <script type="text/javascript">
+        var themeName = location.hash || 'material3';
+        themeName = themeName.replace('#','');
+        window.ripple = (themeName === "material3")
+        document.write('<link href="../../styles/' + themeName + '.css" rel="stylesheet">');
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.38/system.js"></script>
+    <link href="index.css" rel="stylesheet">
+     <style>
+.sb-bread-crumb-text {
+  font-size: 22px;
+  padding-left: 20px;
+  padding-top: 24px;
+  /* padding-bottom: 10px; */
+  margin: 0;
+}
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+        body {
+            touch-action:none;
+        }
+        .body {
+            font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
+        }
+
+        .e-view {
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .sb-left {
+            float: left;
+        }
+
+        .sb-right {
+            float: right;
+        }
+
+        .sb-block {
+            display: block;
+        }
+
+        .sb-table {
+            display: table;
+        }
+
+        .sb-table-cell {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        /*sample header*/
+
+
+        .sb-header {
+            height: 48px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
+            z-index: 1001;
+            opacity: 100;
+        }
+
+
+        .sb-header-left, .sb-header-right {
+            height: 100%;
+        }
+
+        #sb-header-text {
+            padding-left: 22px;
+            opacity: 0.87;
+            font-family: Roboto;
+            font-weight: 500;
+            font-size: 15px;
+            color: #000000;
+            text-align: left;
+        }
+
+        .header-logo {
+            float: left;
+            padding-left: 8px;
+            padding-right: 22px;
+        }
+
+        .footer-logo {
+            background: url(https://ej2.syncfusion.com/home/images/footer-logo.svg) no-repeat right;
+            height: 40px;
+            width: 140px;
+        }
+
+        .sb-header-splitter {
+            float: left;
+            border-left: 1px solid rgb(196, 196, 196);
+            height: 32px;
+            margin-top: 8px;
+            padding-left: 22 px;
+        }
+
+        .sb-header-settings {
+            display: none;
+        }
+
+        .product-style a{
+        padding-right: 15px;
+        font-family:Roboto;
+        font-weight: 500;
+        font-size: 13px;
+        color: #363636;
+        text-align: center;
+        text-decoration: none;
+        }
+        .product-style a:hover {
+            color:#3C78EF;
+        }
+
+        .sb-download-btn a {
+            text-decoration: none;
+        }
+
+        .sb-download-text {
+            color: #FFFFFF;
+        }
+
+        .sb-download-wrapper {
+            padding-right: 27px;
+        }
+
+        .sb-download-btn:hover .sb-download-btn:focus .sb-download-btn.active {
+            border-radius: 2px;
+            font-family: "Roboto";
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .sb-download-btn:hover {
+            background: #006CE6;
+        }
+
+        .sb-download-btn:focus {
+            background: #0051CB;
+        }
+
+        .sb-download-btn.active {
+            background: #0036B1;
+        }
+
+        .sb-download-btn {
+            background-color: #3C78EF;
+            opacity: 100;
+            border-radius: 2px;
+            font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
+            font-weight: 500;
+            line-height: 18px;
+            height: 32px;
+            border-color: transparent;
+        }
+
+        .sb-bread-crumb  h1{
+            padding-left: 20px;
+            padding-top: 24px;
+            padding-bottom: 10px;
+            margin: 0;
+        }
+
+        .category-allcontrols a, .category-text a, .crumb-sample {
+            display: table;
+            opacity: 0.87;
+            font-family: Roboto;
+            font-weight: 500;
+            font-size: 15px;
+            color: #3C78EF;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .sb-bread-crumb .sb-bread-crumb-text>div {
+            font-size: 15px;
+            font-weight: 500;
+            padding-right: 8px;
+            cursor: default;
+            display: table-cell;
+        }
+
+        .sb-bread-crumb-text>div.seperator {
+            font-weight: 700;
+            font-size: 15px;
+            vertical-align: bottom;
+        } 
+
+        .content {
+        overflow: auto;
+        height: calc(100% - 50px);
+        top: 50px;
+        }
+
+
+        .sample-content {
+            top: 48px;
+            background: #FFFFFF;
+        }
+
+        .div {
+        display: block;
+        }
+
+        .control-section {
+            padding-left: 4px;
+        }
+
+        .crumb-sample {
+            color: #000000;
+            line-height: 18px;
+        }
+
+        #description {
+            padding-bottom: 16px;
+            padding-left: 20px;
+            opacity: 0.75;
+            font-family: Roboto;
+            font-size: 13px;
+            color: #000000;
+            text-align: left;
+            padding-top: 14px;
+        }
+
+        #action-description {
+            padding-left: 20px;
+            padding-bottom: 15px;
+            font-family: Roboto;
+            font-size: 13px;
+            color: #000000;
+            text-align: left;
+        }
+
+        #description-section {
+            padding-left: 20px;
+            padding-top: 30px;
+            opacity: 0.87;
+            font-family:Roboto;
+            font-weight: 700;
+            font-size: 15px;
+            color: #000000;
+            text-align: left;
+        }
+        .layout {
+            display:inline-block;
+            cursor: pointer;
+        }
+        #actionDes {
+            opacity: 0.75;
+        }
+/*sb-icons declaration*/
+
+@font-face {
+    font-family: 'sbicons';
+      src: url(data:font/truetype;charset=utf-8;base64,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) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.sb-icons {
+    font-family: 'sbicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sb-icon-Next:before {
+    content: '\e91b';
+}
+
+.sb-icon-Previous:before {
+    content: '\e91f';
+}
+
+#next-sample,
+#prev-sample {
+    font-size: 18px;
+    border: 0.5px solid#E5E5E5;
+    background: #FFFFFF;
+    display: inline-table;
+    padding: 2px 5px 0px 5px;
+}
+
+.sb-navigation-next a, .sb-navigation-prev a{
+    color: #636363;
+    text-decoration: none;
+}
+
+#prev-sample {
+    border-radius: 4px 0px 0px 4px;
+}
+
+#next-sample {
+    border-radius: 0px 4px 4px 0px;
+    float: right;
+}
+
+#next-sample:hover,
+#prev-sample:hover{
+background-color: #D8D8D8;
+text-decoration: none; 
+}
+
+.sb-sample-navigation {
+    font-size: 18px;
+    color: #5a5a5a;
+    cursor: pointer;
+}
+
+.sb-custom-item {
+    padding-right: 15px;
+    padding-left: 30px;
+    display: inline-table;
+    padding-top: 20px;
+}
+
+a.e-disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+
+@media (max-width: 550px) {
+        
+        .sb-headers {
+            height: 48px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
+            z-index: 1001;
+            opacity: 100;
+        }
+        .sb-header {
+            display: none;
+        }
+        .syncfusion-logo {
+            float: left;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .sync-logo {
+            padding-right: 0px;
+            padding-left: 8px;
+            background: url(../../styles/images/SyncfusionLogo.svg) no-repeat right;
+            height: 40px;
+            width: 40px;
+        }
+        .sb-icon-notification {
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 18px;
+            transform: rotate(-180deg);
+            color: #5D5D5D;
+            opacity: 100%;
+        }
+        #sb-header-text {
+            padding-left: 0%;
+        }
+    
+        .sb-icon-notification:before {
+            content: "\ea08";
+        }
+    
+        .product a:hover{
+        color: #5D5D5D;
+        text-decoration: none;
+    }
+}
+
+    </style>
+<link rel="canonical" href="https://ej2.syncfusion.com/react/demos/stock-chart/disabled-navigator-functional/">
+    
+</head>
+<body class="ej2-new">
+        
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8WD8WN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div hidden id="sync-analytics" data-queue="EJ2 - react - Demos"></div>
+    
+        <div class="sample-browser">
+            <div id="sample-header" class="sb-header" role="banner">
+                <div class="sb-header-left sb-left sb-table">
+                    <div class="sb-header-item sb-table-cell">
+                        <div class="header-logo">
+                            <a href="https://ej2.syncfusion.com/home/react.html" target="" rel="noopener noreferrer">
+                                <div class="footer-logo"> </div>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <div class="sb-header-splitter sb-download-splitter"></div>
+                    <div class="sb-header-item sb-table-cell">
+                        <div id="sb-header-text" class="e-sb-header-text">
+    
+                            <span class="sb-header-text-left">Essential Studio for React</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sb-header-right sb-right sb-table">
+                    <div class="sb-header-item sb-table-cell">
+                        <div class="product-style">
+                            <div><a href="https://www.syncfusion.com/react-components/react-stock-chart">PRODUCT TOUR</a></div>
+                        </div>
+                    </div>
+                    <div class="sb-header-item sb-table-cell">
+                        <div class="sb-header-item sb-table-cell sb-download-wrapper">
+                            <a href="https://www.syncfusion.com/downloads/react" target="_blank">
+                                <button id="download-now" class="sb-download-btn">
+                                    <span class="sb-download-text">DOWNLOAD</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div id="sample-header" class="sb-headers" role="banner">
+                <div class="sb-header-left sb-left sb-table">
+                    <div class="sb-header-item sb-table-cell">
+                        <div class="syncfusion-logo">
+                            <a href="https://ej2.syncfusion.com/home/react.html" target="" rel="noopener noreferrer">
+                                <div class="sync-logo"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-header-item sb-table-cell">
+                        <div id="sb-header-text" class="e-sb-header-text">
+                            <span class="sb-header-text-left">Essential Studio for React</span>
+                        </div>
+                    </div>
+                </div>
+                    <div class="sb-header-right sb-right sb-table">
+                        <div class="sb-header-item sb-table-cell">
+                            <div class="product">
+                                <a href="https://www.syncfusion.com/react-components/react-stock-chart">
+                                <div class="sb-icon-notification sb-icons"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    
+            <div class="content e-view">
+            <div class="sample-content">
+                <div id="sample-bread-crumb" class="sb-bread-crumb">
+                            <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                                <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip " aria-label="previous sample" title="Previous Sample">
+                                    <a href="https://ej2.syncfusion.com/react/demos/undefined/"="" class=""><span class="sb-icons sb-icon-Previous"></span></a>
+                            
+                                </div>
+                                <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample" title="Next Sample">
+                                    <a href="https://ej2.syncfusion.com/react/demos/ai-smart-paste/default/"="" class=""><span class="sb-icons sb-icon-Next"></span></a>
+                            
+                                </div>
+                            </div>
+                    <h1 class="sb-bread-crumb-text">Example of undefined in React Stock Chart Component</h1>
+<h2 class="sb-bread-crumb-text">
+                        <div class="category-allcontrols"><a href="https://ej2.syncfusion.com/react/demos/"><span>All Controls</span></a></div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="category-text bread-ctext"><a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/stock-chart/disabled-navigator-functional"><span>Stock-chart</span></a></div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="crumb-sample">Navigator</div>
+                    </h2>
+                </div>
+                <div class="control-content">
+                <div id="action-description">
+                        <p>
+                            </p><div class="layout" id="actionDes">
+                <p>By hiding the range selector in the stock chart, this sample visualizes the AAPL stock price. The tooltip and crosshair display data and period information.</p>
+            </div>
+                            <a id="details" class="layout" onclick="desDetails()"> More Details...</a>
+                            <script>
+                                function desDetails() {
+                                    var element = document.getElementById('description-section');
+                                    if (element) {
+                                        element.scrollIntoView();
+                                    }
+                                }
+                            </script>
+                        <p></p>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="control-section">
+                            <div id="sample">
+                                <div id="loader">Loading....</div>
+                            </div>
+                    
+                        </div>
+                    </div>
+                    <div id="description-section">Description</div>    
+                    <div id="description">
+                        <p>
+                           
+                </p><p>
+                    In this example, you can see how to render and configure stock chart to visualize the stock data. The <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/api/stock-chart/stockChartModel/#enableselector" aria-label="Navigate to the enableSelector property reference for React Stock Chart component">enableSelector</a> property allows to toggle the visibility of range selector.
+                </p>
+                <p>
+                    <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
+                </p>
+                <br><br>
+                <p>Injecting Module</p>
+                <p>
+                    The Stock chart component features are segregated into individual feature-wise modules. To use date-time axis, inject
+                    the <code>DateTime</code> module using the <code>StockChart.Inject(DateTime)</code> method.  To use the LineSeries, inject the <code>LineSeries</code> module using the <code>StockChart.Inject(LineSeries)</code> method.
+                </p>
+                <p>
+                    More information about the series type can be found in this <a target="_blank" href="https://ej2.syncfusion.com/react/documentation/stock-chart/series-types" aria-label="Navigate to the documentation for React Stock Chart series types">documentation section</a>.
+                </p>
+            
+                         <p></p>     
+                    </div>    
+                </div>             
+            </div>
+                
+            </div>
+        </div>
+        <script src="./app/index.min.js"></script>
+        <script src="../../dataviz.min.js"></script> 
+
+
+
+
+</body>
+</html>

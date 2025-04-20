@@ -1,0 +1,254 @@
+import * as React from 'react';
+import { closest, isNullOrUndefined } from '@syncfusion/ej2-base';
+import { GridComponent, ColumnsDirective, ColumnDirective, Filter, Inject, VirtualScroll, Sort } from '@syncfusion/ej2-react-grids';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { RatingComponent } from '@syncfusion/ej2-react-inputs';
+import { SampleBase } from '../common/sample-base';
+import { Query, DataManager, UrlAdaptor } from '@syncfusion/ej2-data';
+import './grid-overview.css';
+function statusTemplate(props) {
+    return (<div>{props.Status === "Active" ?
+            <div id="status" className="statustemp e-activecolor">
+        <span className="statustxt e-activecolor">{props.Status}</span>
+      </div> :
+            <div id="status" className="statustemp e-inactivecolor">
+        <span className="statustxt e-inactivecolor">{props.Status}</span>
+      </div>}</div>);
+}
+function ratingTemplate(props) {
+    return (<div><RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true}/></div>);
+}
+function progessTemplate(props) {
+    let percentage = props[props.column.field];
+    if (percentage <= 20) {
+        percentage = percentage + 30;
+    }
+    return (<div id="myProgress" className="pbar">
+    {props.Status === "Inactive" ?
+            <div id="myBar" className="bar progressdisable" style={{ width: percentage + "%" }}>
+      <div id="pbarlabel" className="barlabel">{percentage + "%"}</div>
+    </div> :
+            <div id="myBar" className="bar" style={{ width: percentage + "%" }}>
+      <div id="pbarlabel" className="barlabel">{percentage + "%"}</div>
+    </div>}
+    </div>);
+}
+let loc = { width: '31px', height: '24px' };
+function trustTemplate(props) {
+    var Trustworthiness = props.Trustworthiness == "Sufficient" ? 'src/grid/images/Sufficient.png' : props.Trustworthiness == "Insufficient" ? 'src/grid/images/Insufficient.png' : 'src/grid/images/Perfect.png';
+    return (<div> <img style={loc} src={Trustworthiness} alt=""/>
+  <span id="Trusttext">{props.Trustworthiness}</span></div>);
+}
+function empTemplate(props) {
+    return (<div>
+    {props.EmployeeImg === 'usermale' ?
+            <div className="empimg">
+          <span className="e-userimg sf-icon-Male"/>
+        </div> :
+            <div className="empimg">
+          <span className="e-userimg sf-icon-FeMale"/>
+        </div>}
+    <span id="Emptext">{props.Employees}</span>
+  </div>);
+}
+function coltemplate(props) {
+    return (<div className="Mapimage">
+  <img src="src/grid/images/Map.png" className="e-image" alt=""/> <span>  </span> 
+  <span id="locationtext">{props.Location}</span>
+    </div>);
+}
+function trustdetails(props) {
+    if (props.Trustworthiness === "Select All") {
+        return (<span></span>);
+    }
+    let loc = { width: '31px', height: '24px' };
+    let Trustworthiness = props.Trustworthiness == "Sufficient" ? 'src/grid/images/Sufficient.png' : props.Trustworthiness == "Insufficient" ? 'src/grid/images/Insufficient.png' : 'src/grid/images/Perfect.png';
+    return (<div><img style={loc} src={Trustworthiness} alt=""/> <span id="Trusttext">{props.Trustworthiness}</span></div>);
+}
+function ratingDetails(props) {
+    return (<RatingComponent value={props.Rating} cssClass={'custom-rating'} readOnly={true}/>);
+}
+function statusdetails(props) {
+    if (props.Status === "Select All") {
+        return (<span>Select All</span>);
+    }
+    if (props.Status === "Active") {
+        return (<div className="statustemp e-activecolor">
+            <span className="statustxt e-activecolor">Active</span>
+            </div>);
+    }
+    if (props.Status === "Inactive") {
+        return (<div className="statustemp e-inactivecolor">
+          <span className="statustxt e-inactivecolor">Inactive</span>
+          </div>);
+    }
+}
+export class OverView extends SampleBase {
+    dReady = false;
+    dtTime = false;
+    isDataBound = false;
+    isDataChanged = true;
+    intervalFun;
+    clrIntervalFun;
+    clrIntervalFun1;
+    clrIntervalFun2;
+    dropSlectedIndex = null;
+    ddObj;
+    gridInstance;
+    stTime;
+    ddlData = [
+        { text: '1,000 Rows and 11 Columns', value: '1000' },
+        { text: '10,000 Rows and 11 Columns', value: '10000' },
+        { text: '1,00,000 Rows and 11 Columns', value: '100000' }
+    ];
+    fields = { text: 'text', value: 'value' };
+    onDataBound() {
+        clearTimeout(this.clrIntervalFun);
+        clearInterval(this.intervalFun);
+        this.dtTime = true;
+    }
+    onComplete(args) {
+        if (args.requestType === "filterchoicerequest") {
+            if (args.filterModel.options.field === "Trustworthiness" || args.filterModel.options.field === "Rating" || args.filterModel.options.field === "Status") {
+                var span = args.filterModel.dialogObj.element.querySelectorAll('.e-selectall')[0];
+                if (!isNullOrUndefined(span)) {
+                    closest(span, '.e-ftrchk').classList.add("e-hide");
+                }
+            }
+        }
+    }
+    hostUrl = 'http://localhost:62728/';
+    data = new DataManager({ url: this.hostUrl + 'api/UrlDataSource', adaptor: new UrlAdaptor });
+    query = new Query().addParams('dataCount', '1000');
+    onChange() {
+        this.ddObj.hidePopup();
+        this.dropSlectedIndex = null;
+        let index = this.ddObj.value;
+        clearTimeout(this.clrIntervalFun2);
+        this.clrIntervalFun2 = setTimeout(() => {
+            this.isDataChanged = true;
+            this.stTime = null;
+            let contentElement = this.gridInstance.contentModule.getPanel().firstChild;
+            contentElement.scrollLeft = 0;
+            contentElement.scrollTop = 0;
+            this.gridInstance.pageSettings.currentPage = 1;
+            this.stTime = performance.now();
+            if (this.gridInstance.query.params.length > 1) {
+                for (let i = 0; i < this.gridInstance.query.params.length; i++) {
+                    if (this.gridInstance.query.params[i].key === 'dataCount') {
+                        this.gridInstance.query.params[i].value = index.toString();
+                        break;
+                    }
+                }
+            }
+            else {
+                this.gridInstance.query.params[0].value = index.toString();
+            }
+            this.gridInstance.setProperties({ dataSource: this.data });
+        }, 100);
+    }
+    check = {
+        type: 'CheckBox'
+    };
+    select = {
+        persistSelection: true,
+        type: "Multiple",
+        checkboxOnly: true
+    };
+    onLoad(args) {
+        document.getElementById('overviewgrid').ej2_instances[0].on('data-ready', () => {
+            this.dReady = true;
+            this.stTime = performance.now();
+        });
+        var observer = new MutationObserver((mutations) => {
+            mutations.forEach(() => {
+                if (this.dReady && this.stTime && this.isDataChanged) {
+                    let msgEle = document.getElementById('msg');
+                    let val = (performance.now() - this.stTime).toFixed(0);
+                    this.stTime = null;
+                    this.dReady = false;
+                    this.dtTime = false;
+                    this.isDataChanged = false;
+                    msgEle.innerHTML = 'Load Time: ' + "<b>" + val + "</b>" + '<b>ms</b>';
+                    msgEle.classList.remove('e-hide');
+                }
+            });
+        });
+        observer.observe(document.getElementById('overviewgrid'), {
+            attributes: true,
+            childList: true,
+            subtree: true,
+        });
+    }
+    Filter = {
+        type: 'Menu'
+    };
+    status = {
+        type: 'CheckBox',
+        itemTemplate: statusdetails
+    };
+    trust = {
+        type: 'CheckBox',
+        itemTemplate: trustdetails
+    };
+    rating = {
+        type: 'CheckBox',
+        itemTemplate: ratingDetails
+    };
+    render() {
+        return (<div className='control-pane'>
+        <div className='control-section'>
+        <div style={{ paddingBottom: '18px' }}>
+        <DropDownListComponent id="games" width='220' dataSource={this.ddlData} index={0} ref={(dropdownlist) => { this.ddObj = dropdownlist; }} fields={this.fields} change={this.onChange.bind(this)} placeholder="Select a Data Range" popupHeight="240px"/>
+        <span id='msg'></span>
+        <br />
+        </div>
+          <GridComponent id="overviewgrid" dataSource={this.data} query={this.query} enableHover={false} enableVirtualization={true} loadingIndicator={{ indicatorType: 'Shimmer' }} rowHeight={38} height='400' ref={(g) => { this.gridInstance = g; }} actionComplete={this.onComplete.bind(this)} load={this.onLoad.bind(this)} dataBound={this.onDataBound.bind(this)} filterSettings={this.Filter} allowFiltering={true} allowSorting={true} allowSelection={true} selectionSettings={this.select}>
+            <ColumnsDirective>
+            <ColumnDirective type='checkbox' allowSorting={false} allowFiltering={false} width='60'></ColumnDirective>
+              <ColumnDirective field='EmployeeID' visible={false} headerText='Employee ID' isPrimaryKey={true} width='130'></ColumnDirective>
+              <ColumnDirective field='Employees' headerText='Employee Name' width='230' clipMode='EllipsisWithTooltip' template={empTemplate}/>
+              <ColumnDirective field='Designation' headerText='Designation' width='170' clipMode='EllipsisWithTooltip'/>
+              <ColumnDirective field='Mail' headerText='Mail' width='230'></ColumnDirective>
+              <ColumnDirective field='Location' headerText='Location' width='140' template={coltemplate}></ColumnDirective>
+              <ColumnDirective field='Status' headerText='Status' template={statusTemplate} width='130'></ColumnDirective>
+              <ColumnDirective field='Trustworthiness' headerText='Trustworthiness' template={trustTemplate} width='160'></ColumnDirective>
+              <ColumnDirective field='Rating' headerText='Rating' template={ratingTemplate} width='220'/>
+              <ColumnDirective field='Software' allowFiltering={false} allowSorting={false} headerText='Software Proficiency' width='180' template={progessTemplate} format='C2'/>
+              <ColumnDirective field='CurrentSalary' headerText='Current Salary' width='160' format='C2'></ColumnDirective>
+              <ColumnDirective field='Address' headerText='Address' width='240' clipMode="EllipsisWithTooltip"></ColumnDirective>
+            </ColumnsDirective>
+            <Inject services={[Filter, VirtualScroll, Sort]}/>
+          </GridComponent>
+        </div>  
+        <style>
+            @import 'src/grid/Grid/style.css';
+        </style>
+        <div id="action-description">
+    <p>This sample demonstrates the overview of basic grid features with its performance metrics of large data. To change datasource count, select rows and columns count from dropdown.</p>
+        </div>
+
+        <div id="description">
+    <p>
+        The Grid is used to display and manipulate tabular data with configuration options to control 
+        the way the data is presented and manipulated. 
+        It will pull the data from a data source, such as an array of JSON objects, OData web services,
+        or <code><a target="_blank" className="code" aria-label="API link for documentation" href="https://ej2.syncfusion.com/documentation/api/data/dataManager/">
+        DataManager</a></code> binding data fields to columns. 
+        Also, displaying a column header to identify the field with support for grouped records.
+    </p>
+    <p>
+        In this demo, Grid features such as <code>Virtual Scrolling, Filtering, Sorting, Column Template </code> etc... are used along with large data source.
+    </p>
+    <p>
+        You can follow the guidelines in this <a target="_blank" aria-label="API link for documentation" href="https://ej2.syncfusion.com/react/documentation/grid/virtual-scroll/#browser-height-limitation-in-virtual-scrolling-and-solution">
+	documentation</a> to get around the browser height restriction when loading and viewing millions of records.
+    </p>
+    <p>
+        More information on the Grid instantiation can be found in this
+        <a target="_blank" aria-label="API link for documentation" href="https://ej2.syncfusion.com/react/documentation/grid/getting-started"> documentation section</a>.
+    </p>
+        </div>
+        </div>);
+    }
+}

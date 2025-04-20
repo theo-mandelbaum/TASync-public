@@ -1,0 +1,461 @@
+{
+    "name": "LinearGauge",
+    "description": "Linear Gauge Component",
+     "keywords": {
+        "common": [
+			"ej2",
+			"syncfusion",
+			"ej2-lineargauge",
+			"web-components",
+			"linear-gauge",
+			"linear",
+			"gauge",
+			"vertical-orientation",
+			"horizontal-orientation",
+			"container",
+			"thermometer",
+			"rounded-rectangle",
+			"scale",
+			"range",
+			"multiple-ranges",
+			"axis",
+			"pointer",
+			"multiple-pointers",
+			"ticks",
+			"labels",
+			"annotation",
+			"animation",
+			"template"
+		],
+        "angular": ["angular", "ng-lineargauge", "ej2-ng-lineargauge"],
+        "react": ["react", "reactjs", "react-lineargauge", "ej2-react-lineargauge"],
+        "vue": ["vue", "vuejs", "vue-lineargauge", "ej2-vue-lineargauge"]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syncfusion/ej2-lineargauge"
+    },
+    "eventInterfaces": ["ILoadedEventArgs", "ILoadEventArgs", "IAnimationCompleteEventArgs", "IAxisLabelRenderEventArgs", "IAnnotationRenderEventArgs", "ITooltipRenderEventArgs", "IMouseEventArgs", "IValueChangeEventArgs", "IResizeEventArgs" ],
+    "components": [
+        {
+            "baseClass": "LinearGauge",
+            "directoryName": "linear-gauge",
+            "blazorPlaceholder": "lineargauge",
+            "isPartialClass": true,
+            "type": "simple",
+            "blazorType": "native",
+            "blazorDependency": [
+                "ej2-base",
+                "../blazor/sf-lineargauge"
+            ],
+            "twoWays": [],
+            "comment": [
+                "/**",
+                " * Represents the Angular Linear Gauge Component. This tag is used to customize the properties of the linear gauge to visualize the data in linear scale.",
+                " * ```html",
+                " * <ej-lineargauge></ej-lineargauge>",
+                " * ```",
+                " */"
+            ],
+            "reactComment": [
+                "/**",
+                " * Represents the React Linear Gauge Component. This tag is used to customize the properties of the linear gauge to visualize the data in linear scale.",
+                " * ```tsx",
+                " * <LinearGaugeComponent></LinearGaugeComponent>",
+                " * ```",
+                " */"
+            ],
+            "vueComment":[
+                "/**",
+                " * Represents the Vue Linear Gauge Component. This tag is used to customize the properties of the linear gauge to visualize the data in linear scale.",
+                " * ```vue",
+                " * <ejs-lineargauge></ejs-lineargauge>",
+                " * ```",
+                " */"
+            ],
+            "templateProperties": [
+                "tooltip.template"
+            ],
+            "dynamicModules": [
+                "GaugeTooltip",
+                "Annotations",
+				"Print",
+				"PdfExport",
+                "ImageExport",
+                "Gradient"
+            ],
+            "complexDirective": [
+                {
+                    "propertyName": "border",
+                    "baseClass": "Border"
+                },
+                {
+                    "propertyName": "container",
+                    "baseClass": "Container",
+                    "complexDirective": [
+                        {
+                            "propertyName": "border",
+                            "baseClass": "Border",
+                            "isCommon": true,
+                            "blazorCommonClassName": "LinearGaugeBorderSettings",
+                            "blazorClassName": "LinearGaugeContainerBorder"
+                        }
+                    ]
+                },
+                {
+                    "propertyName": "margin",
+                    "baseClass": "Margin"
+                },
+                {
+                    "propertyName": "titleStyle",
+                    "baseClass": "Font",
+                    "isCommon": true,
+                    "blazorCommonClassName": "LinearGaugeFontSettings",
+                    "blazorClassName": "LinearGaugeTitleStyle"
+                },
+                {
+                    "propertyName": "tooltip",
+                    "baseClass": "TooltipSettings",
+                    "blazorTemplates": ["template:tooltipTemplate"],
+                    "blazorTemplateModels": {
+                        "tooltipTemplate": "ITooltipTemplateValue"
+                    },
+                    "complexDirective": [
+                        {
+                            "propertyName": "textStyle",
+                            "baseClass": "Font",
+                            "isCommon": true,
+                            "blazorCommonClassName": "LinearGaugeFontSettings",
+                            "blazorClassName": "LinearGaugeTooltipTextStyle"
+                        },
+                        {
+                            "propertyName": "border",
+                            "baseClass": "Border",
+                            "isCommon": true,
+                            "blazorCommonClassName": "LinearGaugeBorderSettings",
+                            "blazorClassName": "LinearGaugeTooltipBorder"
+                        }
+                    ]
+                }
+            ],
+            "tagDirective": [
+                {
+                    "arrayDirectiveClassName": "axes",
+                    "directiveClassName": "axis",
+                    "arrayDirectiveSelector": "ej-lineargauge>e-axes",
+                    "directiveSelector": "e-axes>e-axis",
+                    "propertyName": "axes",
+                    "directoryName": "linear-gauge",
+                    "baseClass": "Axis",
+                    "complexDirective": [
+                        {
+                            "propertyName": "line",
+                            "baseClass": "Line"
+                        },
+                        {
+                            "propertyName": "majorTicks",
+                            "baseClass": "Tick",
+                            "isCommon": true,
+                            "blazorCommonClassName": "LinearGaugeTickSettings",
+                            "blazorClassName": "LinearGaugeMajorTicks"
+                        },
+                        {
+                            "propertyName": "minorTicks",
+                            "baseClass": "Tick",
+                            "isCommon": true,
+                            "blazorCommonClassName": "LinearGaugeTickSettings",
+                            "blazorClassName": "LinearGaugeMinorTicks"
+                        },
+                        {
+                            "propertyName": "labelStyle",
+                            "baseClass": "Label",
+                            "blazorClassName": "LinearGaugeAxisLabelStyle",
+                            "complexDirective": [{
+                                "propertyName": "font",
+                                "baseClass": "Font",
+                                "SelectorName": "e-axis-labelstyle-font",
+                                "aspSelectorName": "e-axis-labelstyle-font",
+                                "isCommon": true,
+                                "blazorCommonClassName": "LinearGaugeFontSettings",
+                                "blazorClassName":  "LinearGaugeAxisLabelFont"
+                            }]
+                        }
+                    ],
+                    "comment": [
+                        "/**",
+                        " * Represents the directive to render the axes in the Linear Gauge.",
+                        " * ```html",
+                        " * <e-axes><e-axis></e-axis></e-axes>",
+                        " * ```",
+                        " */"
+                    ],
+                    "reactComment": [
+                        "/**",
+                        " * Represents the directive to render the axes in the Linear Gauge.",
+                        " * ```tsx",
+                        " * <LinearGaugeComponent>",
+                        " * <AxesDirective>",
+                        " * <AxisDirective></AxisDirective>",
+                        " * </AxesDirective>",
+                        " * </LinearGaugeComponent>",
+                        " * ```",
+                        " */"
+                    ],
+                    "vueComment":[
+                        "/**",
+                        " * Represents the directive to render the axes in the Linear Gauge.",
+                        " * ```vue",
+                        " * <ejs-lineargauge>",
+                        " * <e-axes><e-axis></e-axis></e-axes>",
+                        " * </ejs-lineargauge>",
+                        " * ```",
+                        " */"
+                    ],
+                    "tagDirective": [
+                        {
+                            "arrayDirectiveClassName": "ranges",
+                            "directiveClassName": "range",
+                            "aspArrayDirectiveSelector": "e-lineargauge-ranges",
+                            "aspDirectiveSelector": "e-lineargauge-range",
+                            "arrayDirectiveSelector": "ej-lineargauge>e-axes>e-axis>e-ranges",
+                            "directiveSelector": "e-ranges>e-range",
+                            "propertyName": "ranges",
+                            "directoryName": "linear-gauge",
+                            "baseClass": "Range",
+                            "complexDirective":[{
+                                "propertyName": "border",
+                                "baseClass": "Border",
+                                "isCommon": true,
+                                "blazorCommonClassName": "LinearGaugeBorderSettings",
+                                "blazorClassName": "LinearGaugeRangeBorder"
+                            },
+                            {
+                                "propertyName": "linearGradient",
+                                "baseClass": "LinearGradient",
+                                "isCommon": true,
+                                "SelectorName": "e-linear-gradient",
+                                "aspSelectorName": "e-linear-gradient",
+                                "blazorCommonClassName": "LinearGaugeLinearGradient",
+                                "blazorClassName": "LinearGradient",
+                                "tagDirective": [{
+                                    "arrayDirectiveClassName": "colorStops",
+                                    "directiveClassName": "colorStop",
+                                    "aspArrayDirectiveSelector": "e-color-stops",
+                                    "aspDirectiveSelector": "e-color-stop",
+                                    "arrayDirectiveSelector": "ej-lineargauge>e-axes>e-axis>e-ranges>e-range>e-linear-gradient>e-color-stops",
+                                    "directiveSelector": "e-color-stops>e-color-stop",
+                                    "propertyName": "colorStop",
+                                    "directoryName": "linear-gauge",
+                                    "baseClass": "ColorStop",
+                                    "blazorClassName": "ColorStop"
+                                }]
+                            },
+                            {
+                                "propertyName": "radialGradient",
+                                "baseClass": "RadialGradient",
+                                "isCommon": true,
+                                "SelectorName": "e-radial-gradient",
+                                "aspSelectorName": "e-radial-gradient",
+                                "blazorCommonClassName": "LinearGaugeRadialGradient",
+                                "blazorClassName": "RadialGradient",
+                                "complexDirective":[{
+                                    "propertyName": "outerPosition",
+                                    "baseClass": "GradientPosition",
+                                    "isCommon": true,
+                                    "blazorCommonClassName": "GradientPosition",
+                                    "blazorClassName": "OuterPosition"
+                                },
+                                {
+                                    "propertyName": "innerPosition",
+                                    "baseClass": "GradientPosition",
+                                    "isCommon": true,
+                                    "blazorCommonClassName": "GradientPosition",
+                                    "blazorClassName": "InnerPosition"
+                                }],
+                                "tagDirective": [{
+                                    "arrayDirectiveClassName": "colorStops",
+                                    "directiveClassName": "colorStop",
+                                    "aspArrayDirectiveSelector": "e-color-stops",
+                                    "aspDirectiveSelector": "e-color-stop",
+                                    "arrayDirectiveSelector": "ej-lineargauge>e-axes>e-axis>e-ranges>e-range>e-radialgradient>e-color-stops",
+                                    "directiveSelector": "e-color-stops>e-color-stop",
+                                    "propertyName": "colorStop",
+                                    "directoryName": "linear-gauge",
+                                    "baseClass": "ColorStop",
+                                    "blazorClassName": "ColorStop"
+                                }]
+                            }
+                            ],
+                            "comment": [
+                                "/**",
+                                " * Represents the directive to render and customize the ranges in an axis of linear gauge.",
+                                " * ```html",
+                                " * <e-ranges><e-range></e-range></e-ranges>",
+                                " * ```",
+                                " */"
+                            ],
+                            "reactComment": [
+                                "/**",
+                                " * Represents the directive to render and customize the ranges in an axis of linear gauge.",
+                                " * ```tsx",
+                                " * <LinearGaugeComponent>",
+                                " * <AxesDirective>",
+                                " * <AxisDirective>",
+                                " * <RangesDirective>",
+                                " * <RangeDirective></RangeDirective>",
+                                " * </RangesDirective>",
+                                " * </AxisDirective>",
+                                " * </AxesDirective>",
+                                " * </LinearGaugeComponent>",
+                                " * ```",
+                                " */"
+                            ],
+                            "vueComment":[
+                                "/**",
+                                " * Represents the directive to render and customize the ranges in an axis of linear gauge.",
+                                " * ```vue",
+                                " * <ejs-lineargauge>",
+                                " * <e-axes>",
+                                " * <e-axis>",
+                                " * <e-ranges><e-range></e-range></e-ranges>",
+                                " * </e-axis>",
+                                " * </e-axes>",
+                                " * </ejs-lineargauge>",
+                                " * ```",
+                                " */"
+                            ]
+                        },
+                        {
+                            "arrayDirectiveClassName": "pointers",
+                            "directiveClassName": "pointer",
+                            "aspArrayDirectiveSelector": "e-lineargauge-pointers",
+                            "aspDirectiveSelector": "e-lineargauge-pointer",
+                            "arrayDirectiveSelector": "ej-linear-gauge>e-axes>e-axis>e-pointers",
+                            "directiveSelector": "e-pointers>e-pointer",
+                            "propertyName": "pointers",
+                            "directoryName": "linear-gauge",
+                            "baseClass": "Pointer",
+                            "complexDirective": [
+                                {
+                                    "propertyName": "border",
+                                    "baseClass": "Border",
+                                    "isCommon": true,
+                                    "blazorCommonClassName": "LinearGaugeBorderSettings",
+                                    "blazorClassName": "LinearGaugePointerBorder"
+                                },
+                                {
+                                    "propertyName": "linearGradient",
+                                    "baseClass": "LinearGradient",
+                                    "isCommon": true,
+                                    "blazorCommonClassName": "LinearGaugeLinearGradient",
+                                    "blazorClassName": "LinearGradient",
+                                    "SelectorName": "e-linear-gradient",
+                                    "aspSelectorName": "e-linear-gradient"
+                                },
+                                {
+                                    "propertyName": "radialGradient",
+                                    "baseClass": "RadialGradient",
+                                    "isCommon": true,
+                                    "blazorCommonClassName": "LinearGaugeRadialGradient",
+                                    "blazorClassName": "RadialGradient",
+                                    "SelectorName": "e-radial-gradient",
+                                    "aspSelectorName": "e-radial-gradient"
+                                }
+                            ],
+                            "comment": [
+                                "/**",
+                                " * Represents the directive to render and customize the pointers in an axis of linear gauge.",
+                                " * ```html",
+                                " * <e-pointers><e-pointer></e-pointer></e-pointers>",
+                                " * ```",
+                                " */"
+                            ],
+                            "reactComment": [
+                                "/**",
+                                " * Represents the directive to render and customize the pointers in an axis of linear gauge.",
+                                " * ```tsx",
+                                " * <LinearGaugeComponent>",
+                                " * <AxesDirective>",
+                                " * <AxisDirective>",
+                                " * <PointersDirective>",
+                                " * <PointerDirective></PointerDirective>",
+                                " * </PointersDirective>",
+                                " * </AxisDirective>",
+                                " * </AxesDirective>",
+                                " * </LinearGaugeComponent>",
+                                " * ```",
+                                " */"
+                            ],
+                            "vueComment":[
+                                "/**",
+                                " * Represents the directive to render and customize the pointers in an axis of linear gauge.",
+                                " * ```vue",
+                                " * <ejs-lineargauge>",
+                                " * <e-axes>",
+                                " * <e-axis>",
+                                " * <e-pointers><e-pointer></e-pointer></e-pointers>",
+                                " * </e-axis>",
+                                " * </e-axes>",
+                                " * </ejs-lineargauge>",
+                                " * ```",
+                                " */"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "arrayDirectiveClassName": "annotations",
+                    "directiveClassName": "annotation",
+                    "aspArrayDirectiveSelector": "e-lineargauge-annotations",
+                    "aspDirectiveSelector": "e-lineargauge-annotation",
+                    "arrayDirectiveSelector": "ej-linear-gauge>e-annotations",
+                    "directiveSelector": "e-annotations>e-annotation",
+                    "propertyName": "annotations",
+                    "directoryName": "linear-gauge",
+                    "baseClass": "Annotation",
+                    "blazorContainerTemplates": ["content:contentTemplate"],
+                    "complexDirective":[{
+                        "propertyName": "font",
+                        "baseClass": "Font",
+						"isCommon": true,
+                        "blazorCommonClassName": "LinearGaugeFontSettings",
+                        "blazorClassName": "LinearGaugeAnnotationFont"
+                    }],
+                    "comment": [
+                        "/**",
+                        " * Represents the directive to render and customize the annotations in the linear gauge.",
+                        " * ```html",
+                        " * <e-annotations><e-annotation></e-annotation></e-annotations>",
+                        " * ```",
+                        " */"
+                    ],
+                    "reactComment": [
+                        "/**",
+                        " * Represents the directive to render and customize the annotations in the linear gauge.",
+                        " * ```tsx",
+                        " * <LinearGaugeComponent>",
+                        " * <AnnotationsDirective>",
+                        " * <AnnotationDirective></AnnotationDirective>",
+                        " * </AnnotationsDirective>",
+                        " * </LinearGaugeComponent>",
+                        " * ```",
+                        " */"
+                    ],
+                    "vueComment":[
+                        "/**",
+                        " * Represents the directive to render and customize the annotations in the linear gauge.",
+                        " * ```vue",
+                        " * <ejs-lineargauge>",
+                        " * <e-annotations><e-annotation></e-annotation></e-annotations>",
+                        " * </ejs-lineargauge>",
+                        " * ```",
+                        " */"
+                    ],
+                    "templateProperties": [
+                                "content"
+                    ]
+                }
+            ]
+        }
+    ]
+}

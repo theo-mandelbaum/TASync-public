@@ -1,0 +1,44 @@
+<div id="action-description">
+    <p>This sample demonstrates the toolbar show on inline mode. Toolbar show while selection on the below editable
+        content and it hide on focus out from edit area.</p>
+</div>
+
+<div class="col-lg-8 control-section sb-property-border">
+    <div class="sample-container">
+        <div class="default-section">
+            <ejs-richtexteditor id='inlineRTE' #inlineRTE [inlineMode]='inlineMode' [toolbarSettings]='toolbarSettings'
+                [format]='format' [fontFamily]='fontFamily' [value]=editorValue>
+            </ejs-richtexteditor>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 property-section">
+    <div class="property-panel-section">
+        <div class="property-panel-header">Properties</div>
+        <div class="property-panel-content">
+            <table id="property" title="Properties">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <ejs-checkbox #select label="Show on Selection" [checked]="true"
+                                    (change)="onChangeSelect()"></ejs-checkbox>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="description">
+    <p>The Rich Text Editor provides an option to display toolbar on demand using mode property. Set mode as inline to
+        enable
+        inline editor. The toolbar becomes visible only when the content is selected</p>
+    <p><b>Injecting Module</b></p>
+    <p>Rich Text Editor features are segregated into individual feature-wise modules. In this demo we have used following
+        injectable services
+        <code>ToolbarService, LinkService, ImageService, HtmlEditorService, QuickToolbarService, PasteCleanupService</code> into the
+        <code>&#64;NgModule.providers section</code>.</p>
+</div>

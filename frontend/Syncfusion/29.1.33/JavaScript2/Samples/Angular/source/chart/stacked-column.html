@@ -1,0 +1,38 @@
+<div id="action-description">
+    <p>
+        This stacked column chart visualizes global cotton production trends over the years, with data points enhanced by data labels.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' [chartArea]='chartArea' [stackLabels]='stackLabels' [width]='width' align='center' id='chartcontainer' [primaryXAxis]='primaryXAxis'
+            [primaryYAxis]='primaryYAxis' [title]='title' [subTitle]='subTitle' [tooltip]='tooltip' (load)='load($event)' (legendClick)='legendClick($event)' [legendSettings]='legend'>
+            <e-series-collection>
+                <e-series [dataSource]='data1' type='StackingColumn' xName='x' yName='y' name='India' columnWidth=0.4 [border]='border' [marker]='marker' legendShape='Rectangle'> </e-series>
+                <e-series [dataSource]='data2' type='StackingColumn' xName='x' yName='y' name='China' columnWidth=0.4 [border]='border' [marker]='marker' legendShape='Rectangle'> </e-series>
+                <e-series [dataSource]='data3' type='StackingColumn' xName='x' yName='y' name='United States' columnWidth=0.4 [border]='border' [marker]='marker' [cornerRadius]='cornerRadius' legendShape='Rectangle'> </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure a stacked column chart. The stacked column chart stacks
+        points in the series vertically. You can also use the <code>stackingGroup</code> property to group stacked
+        collections based on category. This chart displays data labels for individual points and the total value on top
+        of each stack.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a
+        point in touch-enabled devices.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use stacking column series, we need to inject
+        <code>StackingColumnSeriesService</code> into the <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the stacked column series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/stack-column" aria-label="Navigate to the documentation for Stacked Column Chart in Angular Chart component">documentation section</a>.
+    </p>
+</div>

@@ -1,0 +1,35 @@
+<div id="action-description">
+    <p>
+        This sample visualizes the defects in shirts with default pareto series in the chart. Data points are enhanced with marker and tooltip.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' [chartArea]='chartArea' [width]='width' align='center' id='chartcontainer' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [legendSettings]='legend'
+            [title]='title' [tooltip]='tooltip' (load)='load($event)'>
+            <e-series-collection>
+                <e-series [dataSource]='data' type='Pareto' xName='x' yName='y' name='Defect'  opacity="0.75" [cornerRadius]="cornerRadius" columnWidth="0.4" [paretoOptions]='paretoOptions'  width=2> </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure a pareto chart. The pareto chart is used to find the cumulative values of the data in different categories. It is a combination of the column and line series. The initial values are shown in the column chart and the cumulative values are shown in the line chart.
+    </p>
+    <p>
+        The line series in the pareto chart can be customized using the <code>fill</code>, <code>dashArray</code>, <code>width</code>, and <code>marker</code> properties in <code>paretoOptions</code>. Additionally, the secondary axis in the pareto chart can be shown or hidden using the <code>showAxis</code> property in <code>paretoOptions</code>.
+    </p>
+     <p>
+         <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+     </p>
+         <p style="font-weight: 500"><b>Injecting Module</b></p>
+         <p>
+             In this example, we have used pareto series with the help of column and line series. To use pareto feature, we need to inject
+             <code>ParetoService</code>, <code>ColumnService</code> and <code>LineService</code>into the <code>&#64;NgModule.providers</code> section.
+         </p>
+         <p>
+             More information on the pareto series can be found in this
+             <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/pareto" aria-label="Navigate to the documentation for Pareto Chart in Angular Chart component">documentation section</a>.
+         </p> 
+ </div>

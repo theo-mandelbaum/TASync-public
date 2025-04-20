@@ -1,0 +1,134 @@
+<template>
+    <div class="schedule-vue-sample">
+        <div class="col-md-9 control-section">
+            <div class="content-wrapper">
+                <ejs-schedule id="Schedule" ref="ScheduleObj" width='100%' height='650px' :selectedDate="selectedDate" :eventSettings="eventSettings" :currentView="currentView"
+                    :eventRendered="oneventRendered" :created="onCreate" :actionBegin="onActionBegin" :actionComplete="onActionComplete"
+                    :actionFailure="onActionFailure" :cellClick="onCellClick" :cellDoubleClick="onCellDoubleClick" :navigating="onNavigating"
+                    :eventClick="onEventClick" :popupOpen="onPopupOpen">
+                </ejs-schedule>
+            </div>
+        </div>
+        <div class="col-lg-3 property-section">
+            <table id="property" title="Properties" style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="eventarea" style="height: 245px;overflow: auto">
+                                <span class="EventLog" id="EventLog" style="word-break: normal;"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="evtbtn" style="padding-bottom: 10px">
+                                <ejs-button id='clear' v-on:click="onClear">Clear</ejs-button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="action-description">
+            <p>
+                This demo illustrates the client-side events that triggers on respective Scheduler actions and the same is being displayed
+                on the event trace panel.
+            </p>
+        </div>
+        <div id="description">
+            <p>
+                In this demo, the client-side events that triggers based on the action taking place in Scheduler has been demonstrated. The
+                user can make use of these events, if at some point they need to perform some custom actions or any needed
+                additional customizations on the available Scheduler features.
+            </p>
+        </div>
+    </div>
+</template>
+<style>
+    .schedule-vue-sample #EventLog b {
+        color: #388e3c;
+    }
+
+    .schedule-vue-sample hr {
+        margin: 1px 10px 1px 0px;
+        border-top: 1px solid #eee;
+    }
+</style>
+<script>
+    import { scheduleData } from './datasource';
+    import { extend } from '@syncfusion/ej2-base';
+    import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop } from "@syncfusion/ej2-vue-schedule";
+    import { ButtonComponent } from "@syncfusion/ej2-vue-buttons";
+
+    export default {
+        components: {
+          'ejs-schedule': ScheduleComponent,
+          'ejs-button': ButtonComponent
+        },
+        data: function () {
+            return {
+                eventSettings: { dataSource: extend([], scheduleData, null, true) },
+                selectedDate: new Date(2021, 0, 10),
+                currentView: 'Week'
+            }
+        },
+        provide: {
+            schedule: [Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]
+        },
+        methods: {
+
+            appendElement: function (html) {
+                let span = document.createElement('span');
+                span.innerHTML = html;
+                let log = document.getElementById('EventLog');
+                log.insertBefore(span, log.firstChild);
+            },
+            onClear: function () {
+                document.getElementById('EventLog').innerHTML = '';
+            },
+            onCreate: function () {
+                this.appendElement('Schedule <b>Load</b> event is triggered<hr>');
+            },
+            onActionBegin: function () {
+                this.appendElement('Schedule <b>Action Begin</b> event is triggered<hr>');
+            },
+            onActionComplete: function () {
+                this.appendElement('Schedule <b>Action Complete</b> event is triggered<hr>');
+            },
+            onActionFailure: function () {
+                this.appendElement('Schedule <b>Action Failure</b> event is triggered<hr>');
+            },
+            onCellDoubleClick: function () {
+                this.appendElement('SChedule <b>Cell Double Click</b> event is triggered<hr>');
+            },
+            onCellClick: function () {
+                this.appendElement('Schedule <b>Cell Click</b> event is triggered<hr>');
+            },
+            onNavigating: function () {
+                this.appendElement('Schedule <b>Navigating</b> event is triggered<hr>');
+            },
+            onEventClick: function () {
+                this.appendElement('Schedule <b>Event Click</b> event is triggered<hr>');
+            },
+            onPopupOpen: function () {
+                this.appendElement('Schedule <b>Popup Open</b> event is triggered<hr>');
+            },
+
+            oneventRendered: function (args) {
+                let scheduleObj = this.$refs.ScheduleObj;
+                let categoryColor = args.data.CategoryColor;
+                if (!args.element || !categoryColor) {
+                    return;
+                }
+                if (scheduleObj.ej2Instances.currentView === 'Agenda') {
+                    (args.element.firstChild).style.borderLeftColor = categoryColor;
+                } else {
+                    args.element.style.backgroundColor = categoryColor;
+                }
+
+            },
+
+        }
+    }
+
+</script>

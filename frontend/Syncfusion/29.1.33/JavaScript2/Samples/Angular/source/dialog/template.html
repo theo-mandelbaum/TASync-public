@@ -1,0 +1,34 @@
+<div class="control-section template">
+
+    <!-- Render Button to open the Dialog -->
+    <button ejs-button id='dlgbtn' #ButtonInstance (click)="BtnClick()">Open</button>
+
+    <ejs-dialog #template [height]='height' [animationSettings]='animationSettings' [showCloseIcon]='showCloseIcon'
+        [target]='target' [width]='width' (open)="dialogOpen()" (close)="dialogClose()">
+        <ng-template #footerTemplate>
+            <input id="inVal" #inVal class="e-input" aria-label="Message" type="text" placeholder="Enter your message here!" />
+            <button id="sendButton" #sendButton class="e-control e-btn e-primary sendButton" data-ripple="true">Send</button>
+        </ng-template>
+        <ng-template #content>
+            <div class="dialogContent">
+                <span #dialogText class="dialogText">Greetings Nancy! When will you share me the source files of the project?</span>
+            </div>
+        </ng-template>
+        <ng-template #header>
+            <div class="e-avatar template-image e-avatar-xsmall e-avatar-circle"></div>
+            <div id="dlg-template" title="Nancy" class="e-icon-settings"> Nancy </div>
+        </ng-template>
+    </ejs-dialog>
+</div>
+<div id="action-description">
+    <p>
+        This example demonstrates the template functionalities of the dialog component. The dialog's header and footer
+        is configured with HTML template. The typed content will be replaced every time when clicking the "send" button.
+    </p>
+</div>
+<div id="description">
+    <p>
+        The dialog component displays HTML template content on the header and footer. The user can set any HTML element
+        as header and footer with the usage of content and footer template properties.
+    </p>
+</div>

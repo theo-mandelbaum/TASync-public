@@ -1,0 +1,113 @@
+import { ComponentBase, DefineVueComponent } from '@syncfusion/ej2-vue-base';
+import { Gantt, GanttModel } from '@syncfusion/ej2-gantt';
+export declare const properties: string[];
+export declare const modelProps: string[];
+export declare const testProp: any;
+export declare const props: any, watch: any, emitProbs: any;
+/**
+ * `ejs-gantt` represents the VueJS Gantt Component.
+ * ```vue
+ * <ejs-gantt :dataSource='data' allowSelection='true' allowSorting='true'></ejs-gantt>
+ * ```
+ */
+export declare let GanttComponent: DefineVueComponent<GanttModel>;
+export declare type GanttComponent = typeof ComponentBase & {
+    ej2Instances: Gantt;
+    isVue3: boolean;
+    isLazyUpdate: Boolean;
+    plugins: any[];
+    propKeys: string[];
+    models: string[];
+    hasChildDirective: boolean;
+    tagMapper: {
+        [key: string]: Object;
+    };
+    tagNameMapper: Object;
+    setProperties(prop: any, muteOnChange: boolean): void;
+    trigger(eventName: string, eventProp: {
+        [key: string]: Object;
+    }, successHandler?: Function): void;
+    addPredecessor(id: number | string, predecessorString: string): void;
+    addRecord(data?: Object[] | Object | Object, rowPosition?: Object, rowIndex?: number): void;
+    cancelEdit(): void;
+    changeTaskMode(data: Object): void;
+    clearFiltering(fields?: string[]): void;
+    clearRedoCollection(): void;
+    clearSelection(): void;
+    clearSorting(): void;
+    clearUndoCollection(): void;
+    collapseAll(): void;
+    collapseByID(id: number | string): void;
+    collapseByIndex(index: number): void;
+    convertToMilestone(id: string): void;
+    csvExport(excelExportProperties?: Object, isMultipleExport?: boolean, workbook?: any, isBlob?: boolean): Object;
+    deleteRecord(taskDetail: number | string | number[] | string[] | Object | Object[]): void;
+    enableItems(items: string[], isEnable: boolean): void;
+    excelExport(excelExportProperties?: Object, isMultipleExport?: boolean, workbook?: any, isBlob?: boolean): Object;
+    expandAll(): void;
+    expandByID(id: number | string): void;
+    expandByIndex(index: number[] | number): void;
+    filterByColumn(fieldName: string, filterOperator: string, filterValue: string | number | Object | boolean | number[] | string[] | Object[] | boolean[], predicate?: string, matchCase?: boolean, ignoreAccent?: boolean): void;
+    fitToProject(): void;
+    getCriticalTasks(): Object[];
+    getDurationString(duration: number, durationUnit: string): string;
+    getExpandedRecords(records: Object[]): Object[];
+    getFormatedDate(date: Object, format?: string): string;
+    getGanttColumns(): Object[];
+    getGridColumns(): Object[];
+    getRecordByID(id: string): Object;
+    getRedoActions(): Object[];
+    getRowByID(id: string | number): Object;
+    getRowByIndex(index: number): Object;
+    getTaskByUniqueID(id: string): Object;
+    getTaskbarHeight(): number;
+    getUndoActions(): Object[];
+    getWorkString(work: number, workUnit: string): string;
+    hideColumn(keys: string | string[], hideBy?: string): void;
+    hideMaskRow(): void;
+    hideSpinner(): void;
+    indent(): void;
+    keyActionHandler(e: Object): void;
+    mergeTask(taskId: number | string, segmentIndexes: undefined[]): void;
+    nextTimeSpan(mode?: string): void;
+    openAddDialog(): void;
+    openEditDialog(taskId?: number | string): void;
+    outdent(): void;
+    pdfExport(pdfExportProperties?: Object, isMultipleExport?: boolean, pdfDoc?: Object, isBlob?: boolean): Object;
+    previousTimeSpan(mode?: string): void;
+    redo(): void;
+    removeCriticalPathStyles(): void;
+    removePredecessor(id: number | string): void;
+    removeSortColumn(columnName: string): void;
+    reorderColumns(fromFName: string | string[], toFName: string): void;
+    reorderRows(fromIndexes: number[], toIndex: number, position: string): void;
+    scrollToDate(date: string): void;
+    scrollToTask(taskId: string): void;
+    search(keyVal: string): void;
+    selectCell(cellIndex: Object, isToggle?: boolean): void;
+    selectCells(rowCellIndexes: Object[]): void;
+    selectRow(index: number, isToggle?: boolean): void;
+    selectRows(records: number[]): void;
+    setScrollTop(scrollTop: number): void;
+    setSplitterPosition(value: string | number, type: string): void;
+    showColumn(keys: string | string[], showBy?: string): void;
+    showCriticalPath(isCritical: boolean): void;
+    showMaskRow(): void;
+    showSpinner(): void;
+    sortColumn(columnName: string, direction: Object, isMultiSort?: boolean): void;
+    splitTask(taskId: number | string, splitDate: Object | Object[]): void;
+    undo(): void;
+    updateChartScrollOffset(left: number, top: number): void;
+    updateDataSource(dataSource: Object[], args: object): void;
+    updatePredecessor(id: number | string, predecessorString: string): void;
+    updateProjectDates(startDate: Object, endDate: Object, isTimelineRoundOff: boolean, isFrom?: string): void;
+    updateRecordByID(data: Object): void;
+    updateRecordByIndex(index: number, data: Object): void;
+    updateTaskId(currentId: number | string, newId: number | string): void;
+    zoomIn(): void;
+    zoomOut(): void;
+};
+export declare const GanttPlugin: {
+    name: string;
+    install(Vue: any): void;
+};

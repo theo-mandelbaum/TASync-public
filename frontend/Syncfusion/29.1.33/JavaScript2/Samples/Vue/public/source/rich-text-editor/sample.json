@@ -1,0 +1,181 @@
+{
+    "name": "Rich Text Editor",
+    "directory": "rich-text-editor",
+    "category": "File Viewers & Editors",
+    "samples": [
+        {
+            "url": "tools",
+            "name": "Overview",
+            "category": "Rich Text Editor",
+            "description": "This demo describes basic and advanced features of the vue Rich Text Editor control (WYSIWYG HTML Editor) with all its tools and functionalities."
+        },
+        {
+            "url": "default",
+            "name": "Default Functionalities",
+            "category": "Rich Text Editor",
+            "description": "This demo shows how to render vue Rich Text Editor (WYSIWYG HTML editor) control with a minimum configuration setting."
+        },
+        {
+            "url": "image",
+            "name": "Image",
+            "category": "Rich Text Editor",
+            "description": "This demo explains how to insert images with a blob or base64 format, link to the images, image upload, rotate left/right, and more in vue WYSIWYG HTML Editor."
+        },
+        {
+            "url": "insert-media",
+            "name": "Insert Media",
+            "category": "Rich Text Editor",
+            "description": "This demo shows how to insert audio and video, Embed video, upload audio and video, and more in Insert Media."
+        },
+        {
+            "url": "inline",
+            "name": "Inline",
+            "category": "Rich Text Editor",
+            "description": "This demo shows inline WYSIWYG HTML editor that is displayed when selecting the content or simply focusing on the content inside the vue Rich Text Editor."
+        },
+        {
+            "url": "paste-cleanup",
+            "name": "Paste from MS Word",
+            "category": "Rich Text Editor",
+            "description": "This demo explains how to clean up HTML when pasting a content from Microsoft Word, Visual Studio Code, Visual Studio, or a web page in vue Rich Text Editor."
+        },
+        {
+            "url": "format-painter",
+            "name": "Format Painter",
+            "category": "Rich Text Editor",
+            "description": "This demo explains how to use Format Painter feature of the Rich Text Editor component."
+        },
+        {
+            "url": "iframe",
+            "name": "IFrame",
+            "category": "Rich Text Editor",
+            "description": "This demo shows how to render a classic vue Rich Text Editor (iframe editor) that was designed by using the iframe element covering all tool functionalities."
+        },
+        {
+            "url": "print",
+            "name": "Print",
+            "category": "Rich Text Editor",
+            "description": "This demo sample shows how to print the content of the vue Rich Text Editor (HTML editor) with styles and formatting using the print module."
+        },
+        {
+            "url": "ajax-load",
+            "name": "Ajax Content",
+            "category": "Rich Text Editor",
+            "description": "This demo shows how to load the content to the editor from external sources like external pages andfiles using the AJAX library in vue RIch Text Editor."
+        },
+        {
+            "url": "resize-editor",
+            "name": "Resizable Editor",
+            "category": "Rich Text Editor",
+            "description": "This demo explains how to render a resizable vue Editor that allows resizing an editor and viewing its content with an enlarging or shrunk scale."
+        },
+        {
+            "url": "api",
+            "name": "API",
+            "category": "Rich Text Editor",
+            "description": "This demo covers important APIs of the vue Rich Text Editor such as content length, HTML encoding, read-only, retrieve the selected content, and more."
+        },
+        {
+            "url": "enter-key-configuration",
+            "name": "Enter Key Configuration",
+            "category": "Rich Text Editor",
+            "description": "This demo explains the API usage to customize the enter and shift + enter key actions in the Rich Text Editor content."
+        },
+        {
+            "url": "events",
+            "name": "Events",
+            "category": "Rich Text Editor",
+            "description": "This demo explains client-side events of vue HTML Text Editor that is triggered on editing and formatting operations with an event tracer."
+        },
+        {
+            "url": "blog-posting",
+            "name": "Use Case",
+            "category": "Rich Text Editor",
+            "description": "The Rich Text Editor is used in most real-time applications. The vue Rich Text Editor example shows how to design a forum application in vue application."
+        },
+        {
+            "url": "auto-save",
+            "name": "Auto Save",
+            "category": "Rich Text Editor",
+            "description": "This demo shows how to autosave the content of the editor with customized time intervals and retrieve the saved content in vue Rich Text Editor."
+        },
+        {
+            "url": "two-way-binding",
+            "name": "Two Way Binding",
+            "category": "Rich Text Editor",
+            "description": "This demo explains how to achieve two-way binding using the v-model directive that updates the template  in real time in Vue Rich Text Editor."
+        },
+        {
+            "url": "file-browser",
+            "name": "File Browser",
+            "category": "Rich Text Editor",
+            "description": "This demo shows how to insert the image into the Rich Text Editor content using FileManager."
+        },
+        {
+            "url": "insert-emoticons",
+            "name": "Insert Emoticons",
+            "category": "Rich Text Editor",
+            "description": "This demo demonstrates how to insert emoticons into the rich content in vue WYSIWYG HTML Editor by using an emoji picker toolbar in the editor."
+        },
+        {
+            "url": "online-html-editor",
+            "name": "Online Html Editor",
+            "category": "Rich Text Editor",
+            "description": "The online HTML editor is a demo that provides LIVE experience for both content and HTML editing with Rich Text Editor features in a real-world scenario."
+        },
+        {
+            "url": "image-editor-integration",
+            "name": "Image Editor Integration",
+            "category": "Rich Text Editor",
+            "description": "This example shows how to integrate Image Editor into Rich Text Editor component, the edited image will be inserted into the Rich Text Editor."
+        },
+        {
+            "url": "mail-merge",
+            "name": "Mail Merge",
+            "category": "Rich Text Editor",
+            "description": "The Mail Merge feature in the Rich Text Editor allows inserting placeholders for personalized content creation, like letters and invoices."
+        },
+        {
+            "url": "export-document",
+            "name": "Export to Word / PDF",
+            "description": "This demo explains how to export the content of the Rich Text Editor to Word and PDF document formats using the Syncfusion<sup>®</sup> Document processing libraries.",
+            "category": "Export / Import"
+        },
+        {
+            "url": "import-word",
+            "name": "Import from Word",
+            "description": "This demo explains how to import the content from Word document to the Rich Text Editor using the Syncfusion<sup>®</sup> Document processing libraries.",
+            "category": "Export / Import"
+        },
+        {
+            "url": "mention-integration",
+            "name": "@ Mention",
+            "category": "Mention Integration",
+            "description": "This example shows how to integrate @mention component within Rich Text Editor component. Type `@` character and select a user from the suggestion list."
+        },
+        {
+            "url": "smart-suggestion",
+            "name": "Smart Suggestion",
+            "description": "This example demonstrates how to use the slash menu feature of the Rich Text Editor to apply formats, open dialogs easily.",
+            "category": "Mention Integration"
+        },
+        {
+            "url": "types",
+            "name": "Type",
+            "category": "Toolbar",
+            "description": "This demo demonstrates different types and behaviors of a toolbar used in the vue HTML Editor such as expand/collapse, multirow, and floating."
+        },
+        {
+            "url": "quick-format-toolbar",
+            "name": "Quick Format Toolbar",
+            "category": "Toolbar",
+            "description": "This sample demonstrates the 'Quick Format Toolbar' option in Rich Text Editor content. To select the text content inside the Rich Text Editor and open the quick format toolbar for editing the Rich Text Editor value."
+        },
+        {
+            "url": "insert-special-characters",
+            "name": "Insert Special Characters",
+            "category": "Custom Tool",
+            "description": "The demo demonstrates how to add special characters or symbols into the rich content in vue Rich Text Editor using a custom toolbar command."
+        }
+    ]
+}

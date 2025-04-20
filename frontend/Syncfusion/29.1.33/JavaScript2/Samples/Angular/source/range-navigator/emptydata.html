@@ -1,0 +1,222 @@
+<div id="action-description">
+    <p>
+        This sample illustrates the functionality of empty points in the range navigator series.
+    </p>
+</div>
+<div class="control-section" align="center">
+    <div id="Sample">
+        <div class="row" align="center">
+            <h1 id="days" style="font-family: Segoe UI; font-weight: 500; font-size: 15px; font-style: normal; margin-top: 10px;">AAPL 2012-17</h1>
+            <div align='center'>
+                <ejs-rangenavigator #containerEmpty style='display:block' align='center' id='containerEmpty' [value]='value'
+                valueType='DateTime' [majorTickLines]='majorTickLines' [majorGridLines]='majorGridLines' [tooltip]='tooltip'
+                    [navigatorBorder]='navigatorBorder' [width]='width' (changed)='changed($event)' [theme]='themes'  (load)='load($event)'>
+                    <e-rangenavigator-series-collection>
+                        <e-rangenavigator-series [dataSource]='data' xName='x' yName='open' type='Area' width=2 [fill]='fill' [border]='border'>
+                        </e-rangenavigator-series>
+                    </e-rangenavigator-series-collection>
+                </ejs-rangenavigator>
+            </div>
+            <div align='center'>
+                <ejs-chart #chartEmpty style='display:block;' id='chartEmpty' align='center' [chartArea]='chartArea' [width]='width' [primaryXAxis]='primaryXAxis'
+                    [primaryYAxis]='primaryYAxis' [crosshair]='crosshair' [tooltip]='chartTooltip' height='350' [theme]='themes' [legendSettings]='legendSettings'>
+                    <e-series-collection>
+                        <e-series [dataSource]='data' xName='x' yName='open' name='AAPL' type='Area' width=2 [fill]='fill' [border]='border'></e-series>
+                    </e-series-collection>
+                </ejs-chart>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="description">
+    <p>
+       In this example, you can see how to render empty points in range navigator. Tooltip is enabled in this
+       example, to see the tooltip in action, while the selected range is changed.
+    </p>
+</div>
+<style>
+    #control-containerEmpty {
+        padding: 0px !important;
+    }
+
+    #material-gradient-chart stop {
+        stop-color: #00bdae;
+    }
+
+    #fabric-gradient-chart stop {
+        stop-color: #4472c4;
+    }
+
+    #bootstrap-gradient-chart stop {
+        stop-color: #a16ee5;
+    }
+
+    #bootstrap4-gradient-chart stop {
+        stop-color: #a16ee5;
+    }
+
+    #highcontrast-gradient-chart stop {
+        stop-color: #79ECE4;
+    }
+	
+	#tailwind-gradient-chart stop {
+        stop-color: #5A61F6;
+    }
+
+    #tailwind3-gradient-chart stop {
+        stop-color: #2F4074;
+    }
+
+    #materialdark-gradient-chart stop {
+        stop-color: #9ECB08;
+    }
+
+    #fabricdark-gradient-chart stop {
+        stop-color: #4472c4;
+    }
+
+    #bootstrapdark-gradient-chart stop {
+        stop-color: #a16ee5;
+    }
+
+    #tailwinddark-gradient-chart stop {
+        stop-color: #8B5CF6;
+    }
+
+    #tailwind3dark-gradient-chart stop {
+        stop-color: #8029F1;
+    }
+
+    #bootstrap5-gradient-chart stop {
+        stop-color: #FD7E14;
+    }
+
+    #bootstrap5dark-gradient-chart stop {
+        stop-color: #FD7E14;
+    }
+
+    #fluent-gradient-chart stop {
+        stop-color: #1AC9E6;
+    }
+
+    #fluentdark-gradient-chart stop {
+      stop-color: #1AC9E6;
+    }
+
+    #material3-gradient-chart stop {
+        stop-color: #6355C7;
+    }
+
+    #material3dark-gradient-chart stop {
+        stop-color: #4EAAFF;
+    }
+
+    #fluent2-gradient-chart stop {
+        stop-color: #6200EE;
+    }
+
+    #fluent2highcontrast-gradient-chart stop {
+        stop-color: #9BB449;
+    }
+
+    #fluent2dark-gradient-chart stop {
+        stop-color: #9BB449;
+    }
+    
+    .chart-gradient stop[offset="0"] {
+        stop-opacity: 0.9;
+    }
+
+    .chart-gradient stop[offset="1"] {
+        stop-opacity: 0.3;
+    }
+</style>
+<svg style="height: 0">
+    <defs>
+        <linearGradient id="material-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fabric-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="bootstrap-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="bootstrap4-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="highcontrast-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+		<linearGradient id="tailwind-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="tailwind3-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="materialdark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fabricdark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="bootstrapdark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="tailwinddark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="tailwind3dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="bootstrap5-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="bootstrap5dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0"></stop>
+			<stop offset="1"></stop>
+		</linearGradient>
+        <linearGradient id="fluent-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluentdark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="material3-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="material3dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluent2-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluent2highcontrast-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fluent2dark-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+    </defs>
+</svg>

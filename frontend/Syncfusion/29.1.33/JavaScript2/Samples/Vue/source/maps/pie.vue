@@ -1,0 +1,242 @@
+<template>
+<main><div>
+    <div class="control-section">
+        <ejs-maps id='mapContainer' :loaded='loaded' :load='load' :resize='resize' :titleSettings='titleSettings' :zoomSettings='zoomSettings' :legendSettings='legendSettings'>
+            <template v-slot:pieOneTemplate="{}">
+                <div id="pieChart1" style="height:70px;width:70px;"></div>
+            </template>
+            <template v-slot:pieTwoTemplate="{}">
+                <div id="pieChart2" style="height:70px;width:70px;"></div>
+            </template>
+            <template v-slot:pieThreeTemplate="{}">
+                <div id="pieChart3" style="top:10px;left:10px;height:70px;width:70px;"></div>
+            </template>
+            <template v-slot:pieFourTemplate="{}">
+                <div id="pieChart4" style="height:70px;width:70px;"></div>
+            </template>
+            <template v-slot:pieFiveTemplate="{}">
+                <div id="pieChart5" style="height:70px;width:70px;"></div>
+            </template>
+            <template v-slot:pieSixTemplate="{}">
+                <div id="pieChart6" style="height:70px;width:70px;"></div>
+            </template>
+            <e-layers>
+                <e-layer :shapeData='shapeData' :shapeSettings='shapeSettings'>
+                    <e-markerSettings>
+                        <e-markerSetting visible='true' animationDuration='0' :dataSource='pieOneDataSource' :template="'pieOneTemplate'"></e-markerSetting>
+                        <e-markerSetting visible='true' animationDuration='0' :dataSource='pieTwoDataSource' :template="'pieTwoTemplate'"></e-markerSetting>
+                        <e-markerSetting visible='true' animationDuration='0' :dataSource='pieThreeDataSource' :template="'pieThreeTemplate'"></e-markerSetting>
+                        <e-markerSetting visible='true' animationDuration='0' :dataSource='pieFourDataSource' :template="'pieFourTemplate'"></e-markerSetting>
+                        <e-markerSetting visible='true' animationDuration='0' :dataSource='pieFiveDataSource' :template="'pieFiveTemplate'"></e-markerSetting>
+                        <e-markerSetting visible='true' animationDuration='0' :dataSource='pieSixDataSource' :template="'pieSixTemplate'"></e-markerSetting>
+                    </e-markerSettings>
+                </e-layer>
+            </e-layers>
+        </ejs-maps>
+
+        <div style="float: right; margin-right: 10px;">Source:
+            <a href="http://www.nationmaster.com/country-info/stats/People/Age-structure/55--64-years" target="_blank">www.nationmaster.com</a>
+        </div>
+    </div>
+</div>    
+    <section id="action-description" aria-label="Description of Maps sample">
+        <p>
+            This sample visualizes the placing of pie charts on the maps. Pie chart is rendered with the age group detais of top 6 largest countries.
+        </p>
+    </section>
+    <section id="description" aria-label="Description of the Maps features demonstrated in this sample">
+        <p>
+            <div id="description">
+                <p>
+                    In this example, you can see how to render the pie chart as marker in map. Any custom HTML elements can be used as a marker.
+
+                </p>
+                <br/>
+                <p style="font-weight: 500">Injecting Module</p>
+                <p>
+                    Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using <code>Maps.Inject(Marker)</code> method.
+                </p>
+            </div>
+        </p>
+    </section>
+</main>
+</template>
+
+<script>
+import { MapsComponent, LayersDirective, LayerDirective, MarkersDirective, MarkerDirective, Marker, Legend } from '@syncfusion/ej2-vue-maps';
+import { PieSeries, AccumulationDataLabel, AccumulationTooltip,AccumulationChart } from '@syncfusion/ej2-vue-charts';
+import { worldMap } from '../maps/map-data/world-map';
+
+AccumulationChart.Inject(AccumulationTooltip, PieSeries);
+let chartCollection = [];
+let count = 0;
+export default {
+    components: {
+        'ejs-maps': MapsComponent,
+        'e-layers': LayersDirective,
+        'e-layer': LayerDirective,
+        'e-markerSettings': MarkersDirective,
+        'e-markerSetting': MarkerDirective
+    },
+    data: function () { 
+        return {
+            titleSettings: {
+                text: 'Top 6 largest countries age group details',
+                textStyle: {
+                    size: '16px',
+                    fontFamily: 'Segoe UI'
+                }
+            },
+            legendSettings: {
+                visible: true,
+                position: 'Bottom',
+                textStyle: {
+                    fontFamily: 'Segoe UI'
+                }
+            },
+            zoomSettings: {
+                enable: false
+            },
+            shapeData: worldMap,
+            shapeSettings: {
+                fill: '#E5E5E5',
+                colorMapping: [{
+                        from: 0,
+                        to: 4,
+                        color: '#634D6F',
+                        label: '0-14 years',
+                    },
+                    {
+                        from: 5,
+                        to: 14,
+                        color: '#B34D6D',
+                        label: '15-24 years'
+                    },
+                    {
+                        from: 15,
+                        to: 59,
+                        color: '#557C5C',
+                        label: '25-54 years'
+                    },
+                    {
+                        from: 60,
+                        to: 100,
+                        color: '#5E55E2',
+                        label: '55-64 years'
+                    }
+                ]
+            },
+            pieOneDataSource: [{ 'latitude': 61.938950426660604, 'longitude': 97.03125 }],
+            pieTwoDataSource: [{ 'latitude': 57.70414723434193, 'longitude': -114.08203125 }],
+            pieThreeDataSource: [{ 'latitude': 39.90973623453719, 'longitude': -103.0078125 }],
+            pieFourDataSource: [{ 'latitude': 35.746512259918504, 'longitude': 102.216796875 }],
+            pieFiveDataSource: [{ 'latitude': -8.667918002363107, 'longitude': -52.55859375 }],
+            pieSixDataSource: [{ 'latitude': -23.725011735951796, 'longitude': 132.978515625 }]
+        }
+    },
+    provide: {
+        maps: [Legend, Marker],
+        accumulation: [PieSeries, AccumulationDataLabel, AccumulationTooltip ]   
+  },
+    methods: {
+        /* custom code start */
+        load: function (args) {
+            let selectedTheme = location.hash.split("/")[1];
+            selectedTheme = selectedTheme ? selectedTheme : "Material";
+            args.maps.theme = (selectedTheme.charAt(0).toUpperCase() +
+            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+        },
+        /* custom code end */
+    loaded:function(args){
+                let markers = document.getElementById(args.maps.element.id + '_LayerIndex_0_Markers_Template_Group');
+            if (markers) {
+                for (let i = 0; i < markers.childElementCount; i++) {
+                    this.AccumulationChartRender((markers.childNodes[i].childNodes[0]).id);
+                }
+                count = 0;
+            }
+    },
+    resize:function(args){
+              for (let i = 0; i < chartCollection.length; i++) {
+                chartCollection[i].destroy();
+            }
+    },
+    AccumulationChartRender:function(id){
+    let chartData = this.getData();
+    let dataSource = chartData['data'];
+    let name = chartData['name'];
+    let chart = new AccumulationChart({
+        background: 'transparent',
+        width: '70',
+        height: '70',
+        tooltip: {
+            enable: true,
+            format: '${point.x} : ${point.y}%'
+        },
+        legendSettings: {visible: false},
+        series: [
+            {
+                explode: true,
+                explodeIndex: 0,
+                explodeOffset: '20%',
+                name: name,
+                palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
+                dataSource: dataSource,
+                dataLabel: {
+                    visible: false
+                },
+                type: 'Pie',
+                xName: 'x',
+                yName: 'y'
+            }
+        ]
+    });
+    chart.appendTo('#' + id);
+    chartCollection.push(chart);
+},
+ getData:function(){
+    let dataSource;
+    let dataName;
+    if (count === 0) {
+        dataSource = [
+            { 'x': '0-14 years', y: 16 }, { 'x': '15-24 years', y: 11.5 },
+            { 'x': '25-54 years', y: 45.9 }, { 'x': '55-64 years', y: 13.5 },
+        ];
+        dataName = 'Russia';
+    } else if (count === 1) {
+        dataSource = [
+            { 'x': '0-14 years', y: 15.5 }, { 'x': '15-24 years', y: 12.9 },
+            { 'x': '25-54 years', y: 41.4 }, { 'x': '55-64 years', y: 13.3 },
+        ];
+        dataName = 'Canada';
+    } else if (count === 2) {
+        dataSource = [
+            { 'x': '0-14 years', y: 20 }, { 'x': '15-24 years', y: 13.7 },
+            { 'x': '25-54 years', y: 40.2 }, { 'x': '55-64 years', y: 12.3 },
+        ];
+        dataName = 'USA';
+    } else if (count === 3) {
+        dataSource = [
+            { 'x': '0-14 years', y: 17.2 }, { 'x': '15-24 years', y: 15.4 },
+            { 'x': '25-54 years', y: 46.9 }, { 'x': '55-64 years', y: 11.3 },
+        ];
+        dataName = 'China';
+    } else if (count === 4) {
+        dataSource = [
+            { 'x': '0-14 years', y: 24.2 }, { 'x': '15-24 years', y: 16.7 },
+            { 'x': '25-54 years', y: 43.6 }, { 'x': '55-64 years', y: 8.2 },
+        ];
+        dataName = 'Brazil';
+    } else if (count === 5) {
+        dataSource = [
+            { 'x': '0-14 years', y: 18.1 }, { 'x': '15-24 years', y: 13.4 },
+            { 'x': '25-54 years', y: 42 }, { 'x': '55-64 years', y: 11.8 },
+        ];
+        dataName = 'Australia';
+    }
+    count++;
+    return new Object({ name: dataName, data: dataSource });
+}   
+    }
+}
+</script>

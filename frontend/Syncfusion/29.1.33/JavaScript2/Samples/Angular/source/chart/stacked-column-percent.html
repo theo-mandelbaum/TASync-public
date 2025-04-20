@@ -1,0 +1,40 @@
+<div id="action-description">
+    <p>
+        This Angular 100% stacked column chart example visualizes global cotton production trends by depicting the contributions of various countries over multiple years. Each stacked column represents a countries proportionate production for a given year, summing to a total of 100% per year. The legend in the sample provides information about the series.
+    </p>
+</div>
+<div class="control-section">
+    <div align='center'>
+        <ejs-chart style='display:block;' id='chartcontainer' [chartArea]='chartArea' [width]='width' align='center' [primaryXAxis]='primaryXAxis'
+            [primaryYAxis]='primaryYAxis' [title]='title' [subTitle]='subTitle' [tooltip]='tooltip' (load)='load($event)' (legendClick)='legendClick($event)' (tooltipRender)='tooltipRender($event)' [legendSettings]='legend'>
+            <e-series-collection>
+                <e-series [dataSource]='data1' type='StackingColumn100' xName='x' yName='y' name='India' [border]='border' columnWidth=0.4 legendShape='Rectangle'> </e-series>
+                <e-series [dataSource]='data2' type='StackingColumn100' xName='x' yName='y' name='China' [border]='border' columnWidth=0.4 legendShape='Rectangle'> </e-series>
+                <e-series [dataSource]='data3' type='StackingColumn100' xName='x' yName='y' name='United States' [border]='border' columnWidth=0.4 legendShape='Rectangle'> </e-series>
+                <e-series [dataSource]='data4' type='StackingColumn100' xName='x' yName='y' name='Brazil' [border]='border' columnWidth=0.4 legendShape='Rectangle' [cornerRadius]='cornerRadius'> </e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to render and configure the 100% stacked column chart. The 100% stacked column chart
+        displays multiple series of data as stacked columns, ensuring that the cumulative proportion of each stacked element
+        always totals 100%.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover over a point or tap on a
+        point in touch-enabled devices.
+    </p>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules. To use 100% stacked column series, we need
+        to inject
+        <code>StackingColumnSeriesService</code> into the
+        <code>&#64;NgModule.providers</code> section.
+    </p>
+    <p>
+        More information about the 100% stacked column series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/chart-types/stacked-column" aria-label="Navigate to the documentation for 100% Stacked Column Chart in Angular Chart component">documentation section</a>.
+    </p>
+</div>

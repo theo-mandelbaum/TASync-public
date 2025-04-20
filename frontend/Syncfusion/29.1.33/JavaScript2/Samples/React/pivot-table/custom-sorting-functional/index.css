@@ -1,0 +1,19 @@
+.e-pivotview {
+    width: 100%;
+    height: 100%;
+}
+.e-pivottable .e-static {
+    width: 80% !important;
+}
+
+.hdrlabel {
+    font-size: 13px;
+}
+
+.e-bigger .hdrlabel {
+    font-size: 14px;
+}
+
+.pivot-property-section .e-multiselect {
+    padding: 0px !important;
+}

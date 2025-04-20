@@ -1,0 +1,36 @@
+<div id="action-description">
+    <p>
+        This sample shows a category axis in a chart with details about internet users across different countries.
+    </p>
+</div>
+<div class="control-section">
+        <div align='center'>
+            <ejs-chart style='display:block;' [chartArea]='chartArea' [width]='width' align='center' id='chartcontainer' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'
+                [title]='title' [tooltip]='tooltip' (pointRender)='pointRender($event)' [legendSettings]='legend' (load)='load($event)'>
+                <e-series-collection>
+                    <e-series [dataSource]='data' type='Bar' name='Users' xName='x' yName='y' width=2 tooltipMappingName='country' [marker]='marker'> </e-series>
+                </e-series-collection>
+            </ejs-chart>
+        </div>
+        <div style="float: right; margin-right: 10px; margin-top: -5px">Source:
+            <a href="http://www.internetworldstats.com/top20.htm" target="_blank" aria-label="Navigate to the documentation for internet world stats">www.internetworldstats.com</a>
+        </div>
+</div>
+<div id="description">
+  <p>
+    You can use the category axis to represent string values instead of numbers in the chart. To use category axis, set <code>valueType</code> in axis to <code>Category</code>.
+  
+  </p>
+  <p>
+  Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+  </p>
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Chart component features are segregated into individual feature-wise modules. To use category feature, we need to inject
+            <code>CategoryService</code> into the <code>&#64;NgModule.providers</code> section.
+        </p>
+        <p>
+            More information on the category axis can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/chart/category-axis/" aria-label="Navigate to the documentation for Category Axis in Angular Chart component">documentation section</a>.
+        </p>
+</div>

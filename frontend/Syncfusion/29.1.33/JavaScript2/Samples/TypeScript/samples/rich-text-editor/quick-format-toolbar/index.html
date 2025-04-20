@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Javascript Rich Text Editor Quick Format Toolbar Example - Syncfusion Demos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="description" content="This example demonstrates the Quick Format Toolbar in Javascript Rich Text Editor Control. Explore here for more details." />
+    <meta name="author" content="Syncfusion" />
+    <link rel="canonical" href="https://ej2.syncfusion.com/demos/{{:canonical}}" />
+    <link rel="shortcut icon" href="https://ej2.syncfusion.com/home/favicon.ico" />
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLQL39J');</script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript">
+        var themeName = location.hash || 'material';
+        themeName = themeName.replace('#', '');
+        window.ripple = (themeName === "material")
+        document.write('<link href="//npmci.syncfusion.com/packages/development/' + themeName + '.css" rel="stylesheet">');
+    </script>
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write("<script src=\'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js\'><\/script>");
+        }</script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet">
+    <style>
+        #loader {
+            color: #008cff;
+            height: 40px;
+            left: 45%;
+            position: absolute;
+            top: 45%;
+            width: 30%;
+        }
+
+        body {
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body class='e-view ej2-new' aria-busy="true">
+     <!-- Google Tag Manager (noscript) -->
+     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLQL39J"height="0"width="0"style="display:none;visibility:hidden"></iframe></noscript>
+     <!-- End Google Tag Manager (noscript) -->
+     <div hidden id="sync-analytics" data-queue="EJ2 - JavaScript - Demos"></div>
+    <div class="sample-browser">
+        <div id='sample-header' class="sb-header" role="banner">
+            <div class='sb-header-left sb-left sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="header-logo">
+                        <a href="#" target="" rel="noopener noreferrer">
+                            <a href="https://ej2.syncfusion.com/home/" target="" rel="noopener noreferrer">
+                                <div class="footer-logo"> </div>
+                            </a>
+                    </div>
+
+                </div>
+                <div class="sb-header-splitter sb-download-splitter"></div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div id='sb-header-text' class='e-sb-header-text'>
+
+                        <span class='sb-header-text-left'>Essential JS 2 for JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class='sb-header-right sb-right sb-table'>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class='product-style'>
+                        <div>
+                            <a href="https://www.syncfusion.com/javascript-ui-controls/rich-text-editor">PRODUCT DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='sb-header-item sb-table-cell'>
+                    <div class="sb-header-item sb-table-cell sb-download-wrapper">
+                        <a href="https://www.syncfusion.com/downloads/essential-js2" target="_blank">
+                            <button id="download-now" class="sb-download-btn">
+                                <span class="sb-download-text">Download Now</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class='content e-view'>
+            <div class='sample-content'>
+                <div id="sample-bread-crumb" class="sb-bread-crumb">
+                    <div class="sb-custom-item sb-sample-navigation sb-right sb-header-right sb-table-cell">
+                        <div id="prev-sample" class="sb-navigation-prev e-control e-tooltip "
+                            aria-label="previous sample" title="Previous Sample">
+                            <a {{:anchor-prev}} class='{{:disabled-prev}}'><span
+                                    class="sb-icons sb-icon-Previous"></span></a>
+
+                        </div>
+                        <div id="next-sample" class="sb-navigation-next e-control e-tooltip" aria-label="next sample"
+                            title="Next Sample">
+                            <a {{:anchor-next}} class='{{:disabled-next}}'><span
+                                    class="sb-icons sb-icon-Next"></span></a>
+
+                        </div>
+                    </div>
+                    <h1 class="sb-bread-crumb-text">
+                        <div class="category-allcontrols">
+                            <a href="https://ej2.syncfusion.com/demos/">
+                                <span>All Controls</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="category-text bread-ctext">
+                            <a href="https://ej2.syncfusion.com/demos/#/material/rich-text-editor/default.html">
+                                <span>Rich Text Editor</span>
+                            </a>
+                        </div>
+                        <div class="category-seperator sb-icons"> / </div>
+                        <div class="crumb-sample">Quick Format Toolbar</div>
+                    </h1>
+                </div>
+                <div class="control-content">
+                    <div id="action-description">
+                        <p>
+                            <div class="layout" id="actionDes">
+    <p>This sample demonstrates the "Quick Format Toolbar" option in Rich Text Editor content. To select the text content inside the Rich Text Editor and open the Quick Format toolbar for editing the Rich Text Editor value.</p>
+</div>
+                            <a id="details" class="layout" onclick="desDetails()"> More Details...</a>
+                            <script>
+                                function desDetails() {
+                                    var element = document.getElementById('description-section');
+                                    if (element) {
+                                        element.scrollIntoView();
+                                    }
+                                }
+                            </script>
+                        </p>
+                    </div>
+                    <div class='container-fluid'>
+                        <div class="control-section">
+                            <div class="control-section">
+  <div class="control-wrapper">
+    <div class="sample-container">
+      <div class="default-section">
+        <div id="quickRTE">
+          <p>Solar energy is radiant light and heat from the sun that is harnessed and converted into usable forms of energy. It is a clean, renewable, and abundant source of power that has a wide range of applications across various sectors. Solar energy
+            is typically harnessed through solar technologies, such as photovoltaic (PV) cells and solar thermal systems.
+          </p>
+          <p>Here's an overview of solar energy:</p>
+          <h3>
+            <strong>Photovoltaic (PV) solar energy:</strong> 
+          </h3>
+          <p>Photovoltaic Cells: PV cells, commonly known as solar cells, convert sunlight directly into electricity. They are made of semiconductor materials, often silicon, which absorb photons (particles of light) and release electrons, generating an
+            electric current.</p>
+          <p>Applications: PV solar energy is used for residential and commercial electricity generation, remote power systems, and grid-connected utility-scale power plants.</p>
+          <h3>
+            <strong>Solar Thermal Energy:</strong> 
+          </h3>
+          <ul>
+            <li>Concentrated Solar Power (CSP): CSP systems use mirrors or lenses to concentrate sunlight onto a receiver. The collected heat is used to generate steam, which drives turbines and generates electricity.
+            </li>
+            <li>Solar Water Heating: Solar thermal systems can heat water for domestic or industrial use. They consist of solar collectors that absorb sunlight and transfer heat to a fluid, which is then used for heating.</li>
+          </ul>
+          <h3>
+            <strong>Solar Energy Advantages:</strong> 
+          </h3>
+          <p>Renewable and Abundant: Solar energy is virtually limitless, as the sun provides an immense and continuous supply of energy. Clean and Environmentally Friendly: Solar energy production does not emit greenhouse gases or other pollutants, contributing
+            to a reduced carbon footprint and improved air quality. Reduced Energy Bills: Solar installations can significantly lower electricity bills for homes and businesses by generating free electricity from the sun. Low Operating and Maintenance
+            Costs: Solar systems have minimal operating and maintenance costs once installed, making them cost-effective over their lifespan.</p>
+          <h3>
+            <strong>Challenges and Considerations:</strong> 
+          </h3>
+          <p>Intermittency: Solar energy is dependent on sunlight, which varies with weather conditions and the time of day. Energy storage solutions are important to ensure a continuous power supply. Initial Costs: While solar energy has become more affordable,
+            the upfront costs of solar panel installation can be a barrier for some. Space Requirements: Large solar installations require substantial land or roof space to achieve significant energy output. Efficiency and Technology: Solar panel efficiency
+            continues to improve, but optimising energy conversion and storage technologies remains a focus.</p>
+          <h3>
+            <strong>Solar Energy Applications:</strong> 
+          </h3>
+          <p>Residential Energy: Homeowners can install solar panels on rooftops to generate electricity for personal use or even sell excess power back to the grid. Commercial and Industrial: Businesses and industries use solar energy to power their operations,
+            reduce energy costs, and meet sustainability goals. Off-Grid Power: Solar power is invaluable in remote areas without access to traditional power grids, providing electricity for lighting, communication, and basic needs. Solar-Powered Transportation:
+            Solar energy can be used to charge electric vehicles (EVs) and provide energy for electric public transportation.</p>
+          <p>
+            <img alt="Logo" src="//npmci.syncfusion.com/development/demos/src/rich-text-editor/images/QuickFormatToolbarImage.png" style="width: 300px;" class="e-rte-image e-imginline">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+                        </div>
+                    </div>
+                    <div id="description-section">Description</div>
+                    <div id="description">
+                        <p>
+                            The Quick format toolbar is used to easily edit the value of the Rich Text Editor when there is a lot of content in it. This quick toolbar item provides any toolbar item in the Rich Text Editor. This will support all the items in the toolbars of the Rich Text Editor.
+   In this demo, to enable this feature, configure the items in quickToolbarSettings.text property.
+   Injecting Module
+   The above features built as modules have to be included in your application. For example, to use image and link, inject the specific module using RichTextEditor.Inject (Toolbar, Link, Image, HtmlEditor, QuickToolbar, FormatPainter, PasteCleanup).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="index.min.js"></script>
+    <script src="../../samples.min.js"></script>
+</body>
+
+</html>

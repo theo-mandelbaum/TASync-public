@@ -1,0 +1,38 @@
+.e-image-editor {
+    margin: 0 auto;
+}
+    
+.e-img-editor-sample {
+    height: 80vh;
+    width: 100%;
+    margin-top: 18px;
+}
+
+.control-wrapper {
+    height: 100%;
+}
+
+.e-img-editor-numeric-textbox-container, .e-img-editor-dropdown-container {
+    display: inline-block;
+    margin-right: 30px;
+    text-align: left;
+}
+
+.e-img-editor-dropdown-container #dropdownbtn {
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 700px) {
+    .e-img-editor-sample {
+        height: 75vh;
+        width: 100%;
+    }
+
+    .e-img-editor-dropdown-container,
+    .e-img-editor-numeric-textbox-container {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}

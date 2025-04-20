@@ -1,0 +1,177 @@
+<div class="col-lg-8 control-section sb-property-border">
+    <div id="spark-container" class="row">
+        <div class="cols-sample-area" align="center">
+            <p>
+                <font size=4px> Worldwide car sales by brand - 2017</font>
+            </p>
+            <table style="width:150%;">
+                <tr>
+                    <td align="center">Sales Percentage</td>
+                    <td>
+                        <ejs-sparkline #percentage style="margin-right: 20px;" id="percentage1" height="200px" width="200px" [markerSettings]="permarkerSettings"
+                            [axisSettings]="peraxisSettings" [tooltipSettings]="pertooltipSettings" type='Column'
+                            [dataSource]='percentageData' xName='xval' yName='yval' valueType='Category' (load)='load($event)'></ejs-sparkline>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">Sales Count</td>
+                    <td>
+                        <ejs-sparkline #sales style="margin-right: 20px;" id="sales1" height="200px" width="200px" [markerSettings]="salmarkerSettings"
+                            [axisSettings]="salaxisSettings" [tooltipSettings]="saltooltipSettings" type='Column'
+                            [dataSource]='salData' xName='xval' yName='yval' valueType='Category' (onchange)="onchange($event)" (load)='load($event)'></ejs-sparkline>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="float: right; margin-right: 10px;">Source:
+        <a href=" http://carsalesbase.com/global-car-sales-2017" target="_blank" aria-label="Navigate to the documentation for car sales base">carsalesbase.com</a>
+    </div>
+</div>
+
+<div class="col-lg-4 property-section">
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>
+    <div class="property-panel-section">
+        <div class="property-panel-header">Properties</div>
+        <div class="property-panel-content">
+    <table id="property" style="width:100%" title="Properties">
+        <tbody>
+            <tr style="height: 40px">
+                <td style="width: 50%">
+                    Sparkline
+                </td>
+                <td style="width: 50%">
+                    <input type="text" id="spark" (change)="onchange($event)" style="width: 100px; height: 20px">
+
+                </td>
+            </tr>
+            <tr style="height: 40px">
+                <td style="width: 50%">
+                    Special Points
+                </td>
+                <td style="width: 50%">
+                    <table>
+                        <tr>
+                            <td id="checkboxAll">All</td>&nbsp; &nbsp;
+                            <td>
+                                <input type="checkbox" (change)="onchangeAll($event)" checked class="sparkinput"
+                                    checked=true id="all" aria-labelledby="Checkbox checked">
+                            </td> &nbsp; &nbsp;
+                            <td id="checkboxNegative">Negative</td>&nbsp; &nbsp;
+                            <td>
+                                <input type="checkbox" (change)="onchangeOthers($event)" disabled class="sparkinput" id="negative" aria-labelledby="Checkbox unchecked">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="checkboxFirst">First</td>&nbsp; &nbsp;
+                            <td>
+                                <input type="checkbox" (change)="onchangeOthers($event)" disabled class="sparkinput" id="first" aria-labelledby="Checkbox unchecked">
+                            </td>&nbsp; &nbsp;
+                            <td id="checkboxLast">Last</td>&nbsp; &nbsp;
+                            <td>
+                                <input type="checkbox" (change)="onchangeOthers($event)" disabled class="sparkinput" id="last" aria-labelledby="Checkbox unchecked">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="checkboxHigh">High</td>&nbsp; &nbsp;
+                            <td>
+                                <input type="checkbox" (change)="onchangeOthers($event)" disabled class="sparkinput" id="high" aria-labelledby="Checkbox unchecked">
+                            </td>&nbsp; &nbsp;
+                            <td id="checkboxLow">Low</td>&nbsp; &nbsp;
+                            <td>
+                                <input type="checkbox" (change)="onchangeOthers($event)" disabled class="sparkinput" id="low" aria-labelledby="Checkbox unchecked">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr style="height: 40px">
+                <td style="width: 50%" id="checkboxMarker">
+                    Marker
+                </td>
+                <td style="width: 50%">
+                    <input type="checkbox" [checked]="false" (change)="onchangeMarker($event)" class="sparkinput" name="marker"
+                        id="marker" aria-labelledby="Checkbox unchecked">
+                </td>
+            </tr>
+            <tr style="height: 40px">
+                <td style="width: 50%" id="checkboxDatalabel">
+                    Data Label
+                </td>
+                <td style="width: 50%">
+                    <input type="checkbox" [checked]="false" (change)="onchangeDatalabel($event)" class="sparkinput"
+                        name="datalabel" id="datalabel" aria-labelledby="Checkbox unchecked">
+                </td>
+            </tr>
+            <tr style="height: 40px">
+                <td style="width: 50%" id="checkboxRtl">
+                    Enable RTL
+                </td>
+                <td style="width: 50%">
+                    <input type="checkbox" [checked]="false" (change)="onshowLastLabel($event)" class="sparkinput" name="enableRTL"
+                        id="enableRTL" aria-labelledby="Checkbox unchecked">
+                </td>
+            </tr>
+            <tr style="height: 40px">
+                <td style="width: 50%" id="checkboxTooltip">
+                    Tooltip
+                </td>
+                <td style="width: 50%">
+                    <input type="checkbox" [checked]="false" (change)="onchangeTooltip($event)" class="sparkinput" name="tooltip"
+                        id="tooltip" aria-labelledby="Checkbox unchecked">
+                </td>
+            </tr>
+            <tr style="height: 40px">
+                <td style="width: 50%" id="checkboxTrackline">
+                    Track Line
+                </td>
+                <td style="width: 50%">
+                    <input type="checkbox" [checked]="false" (change)="onchangeTrackline($event)" class="sparkinput"
+                        name="trackline" id="trackline" aria-labelledby="Checkbox unchecked">
+                </td>
+            </tr>
+            <tr style="height: 40px">
+                <td style="width: 50%" id="checkboxAxisline">
+                    Axis Line
+                </td>
+                <td style="width: 50%">
+                    <input type="checkbox" [checked]="false" (change)="onchangeline($event)" class="sparkinput" name="axis"
+                        id="axis1" aria-labelledby="Checkbox unchecked">
+                </td>
+            </tr>
+            <tr>
+                <td id='axisval'>
+                    Axis Value<span>&nbsp;&nbsp;&nbsp;0</span>
+                </td>
+                <td>
+                    <div>
+                        <ejs-slider #slider (change)="onchangeAxis($event)" id="axis" value=0 min=0 step=1 style="width:100%">
+                        </ejs-slider>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+<style>
+    .property-text {
+        font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif" !important;
+        font-size: 13px !important;
+        font-weight: 400 !important;
+    }
+
+    .control-section {
+        min-height: 450px;
+    }
+
+    #range>* {
+        padding: 0px !important;
+    }
+
+    label {
+        height: 32px !important;
+    }
+</style>

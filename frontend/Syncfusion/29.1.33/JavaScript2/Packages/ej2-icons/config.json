@@ -1,0 +1,7 @@
+{
+	"sasslint": [
+		"./resources/**/*.scss"
+	],
+	"themes": [],
+	"releasedVersion": "v28.1.33"
+}

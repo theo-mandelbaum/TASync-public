@@ -1,0 +1,52 @@
+.e-btn-hide {
+    display: none;
+  }
+  .dlgbtn {
+    margin-right: 20px;
+  }
+  .control-section {
+    height: 100%;
+  }
+  #target {
+    height: 100%;
+    margin: 20px 0 0 40%;
+  }
+  #promptDialog table {
+    border-collapse: separate;
+    border-spacing: 10px;
+    width: 85%;
+    margin: 0px -5px 0px;
+  }
+  .control-pane .dialog-target {
+    min-height: 350px;
+  }
+  .dlgbtn {
+    margin-right: 2px;
+  }
+  .fileEdit{
+    display:flex;
+    justify-content:space-evenly;
+    padding: 20px 0 0 50px;
+}
+.e-alert-dialog .e-footer-content {
+    display: flex;
+    justify-content: center;
+}
+.circle-border{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: green;
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgb(215,215,215);
+    border-radius: 50%;
+}
+.e-changes-reject{
+    display: inline;
+    float: left;
+    font-size: 40px;
+    padding-right: 10px; 
+}
+  
+  

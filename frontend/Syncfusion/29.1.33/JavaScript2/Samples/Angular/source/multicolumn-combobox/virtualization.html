@@ -1,0 +1,25 @@
+<div id="action-description">
+    <p>This example demonstrates the virtualization support of the MultiColumn ComboBox. The component has 150 items bound to it; however, when you open the suggestion list, only few items are loaded based on the popup height, and the remaining items are loaded while scrolling.</p>
+</div>
+
+<div class="control-section">
+    <div class='control-wrapper'>
+        <div style='padding-top:60px;'>
+            <label>Select an employee</label>
+            <ejs-multicolumncombobox id='virtual' [dataSource]='records' [fields]='fields' [enableVirtualization]='true' [placeholder]='waterMark' popupHeight='210px' popupWidth='530px' [gridSettings]="gridSettings">
+                <e-columns>
+                    <e-column field='Name' header='Name' width='100'/>
+                    <e-column field='Department' header='Department' width='100'/>
+                    <e-column field='Role' header='Role' width='90'/>
+                    <e-column field='Location' header='Location' width='90'/>
+                </e-columns>
+            </ejs-multicolumncombobox>
+        </div>
+    </div>
+</div>
+
+<div id="description">
+    <p>The MultiColumn ComboBox component supports virtualization, which improves UI performance for large amounts of data. To enable virtualization, set the <code>enableVirtualization</code> property to true. 
+        When virtualization is enabled, MultiColumn ComboBox doesn't render the entire suggestion data source on initial component rendering. It loads the N number of items in the popup on initial rendering and the remaining set number of items will load while scrolling.
+        Virtualization works with both local and remote data.</p>
+</div>

@@ -1,0 +1,12 @@
+define(["require", "exports", "../common/culture-loader", "@syncfusion/ej2-richtexteditor"], function (require, exports, culture_loader_1, ej2_richtexteditor_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    ej2_richtexteditor_1.RichTextEditor.Inject(ej2_richtexteditor_1.Toolbar, ej2_richtexteditor_1.Link, ej2_richtexteditor_1.Image, ej2_richtexteditor_1.HtmlEditor, ej2_richtexteditor_1.QuickToolbar, ej2_richtexteditor_1.PasteCleanup, ej2_richtexteditor_1.Table, ej2_richtexteditor_1.Video, ej2_richtexteditor_1.Audio);
+    window.default = function () {
+        (0, culture_loader_1.loadCultureFiles)();
+        var defaultRTE = new ej2_richtexteditor_1.RichTextEditor({
+            value: "<div style=\"padding-left:25px\" ><p>We\u2019re all tired of hearing about the \u201Crapid pace of technological change.\u201D But it really is the one constant in today\u2019s business world.\n    And while it\u2019s startups that are most commonly associated with innovation and technical ingenuity, it is, in fact,impacting businesses of every size.From the SME seeking growth and managing change in stormy economic waters to the enterprise that dismisses concepts like \u201Cdigital transformation\u201D as needlessly highfalutin, taking advantage of a growing ecosystem of tools isn\u2019t technical hipsterism, it\u2019s absolutely vital.</p>\n    <div>\n    <img style=\"width:400px; height:200px; margin-left:auto; margin-right:auto;padding-bottom:10px;\n    display:block\"; alt=\" Logo \" src=\"./src/rich-text-editor/images/rte2.png \" /></div>\n    <p style><b> Let\u2019s look at the reasons businesses are going to fall behind in 2017 \u2013 and how Mapt can help.</b></p><ol type=\"1\"><li><p>They\u2019re not going to focus on the needs of their customers.</p></li><li><p>They\u2019re not going to move quickly enough when building and iterating their mobile apps.</p></li><li><p>They\u2019re going to underestimate the competition when it comes to the games industry.</p></li><li><p>They\u2019re going to be focusing on data for data\u2019s sake. They\u2019ll forget that insight is everything</p></li>\n    <li><p>They\u2019re going to ignore agile ways of working. And they\u2019re going to think their software and systems are <b>secure enough</b>.\n    </p></li><li><p>They\u2019re going to dismiss IOT as a fad. They\u2019re going to fear innovation and invention.</p></li></ol>"
+        });
+        defaultRTE.appendTo('#defaultRTE');
+    };
+});

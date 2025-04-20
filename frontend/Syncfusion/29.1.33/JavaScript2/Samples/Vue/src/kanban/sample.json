@@ -1,0 +1,404 @@
+{
+    "name": "Kanban",
+    "directory": "kanban",
+    "category": "Data Visualization",
+    "ftName": "kanban",
+    "samples": [
+        {
+            "url": "overview",
+            "name": "Overview",
+            "category": "Kanban",
+            "description": "This example demonstrates the overview functionalities of Kanban component. Enabled most features such as templating, swimlane and more in the Kanban board.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "swimlaneSettings",
+                    "enableTooltip",
+                    "dialogSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"overview.vue", "path":"src/kanban/overview.vue" },
+                { "displayName":"overview-column-template.vue", "path":"src/kanban/overview-column-template.vue" },
+                { "displayName":"overview-card-template.vue", "path":"src/kanban/overview-card-template.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "default",
+            "name": "Default Functionalities",
+            "category": "Kanban",
+            "description": "The example demonstrates the default functionalities of JS Kanban with very minimal essential settings such as data source, columns, and card details.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"default.vue", "path":"src/kanban/default.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "swimlane",
+            "name": "Swimlane",
+            "category": "Kanban",
+            "description": "The example explains how to configure swimlane and its related settings (sorting order, drag-and-drop, and more) in JavaScript Kanban board.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "swimlaneSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"swimlane.ts", "path":"src/kanban/swimlane.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "workflow",
+            "name": "Workflow",
+            "category": "Kanban",
+            "description": "The example demonstrates a workflow feature that controls the flow of cards while drag-and-drop the cards between the columns.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"workflow.ts", "path":"src/kanban/workflow.vue" },
+                { "displayName":"transition-template.vue", "path":"src/kanban/transition-template.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "stacked-header",
+            "name": "Stacked Header",
+            "category": "Kanban",
+            "description": "The example explains how to add a stacked header to group logically related columns above a column header in JS Kanban.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "stackedHeaders"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"stacked-header.ts", "path":"src/kanban/stacked-header.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "dialog-editing",
+            "name": "Dialog Editing",
+            "category": "Kanban",
+            "description": "The example explains how to handle the CRUD (Create, Read, Update, and Delete) actions on the JS Kanban cards from the application end.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "dialogSettings",
+                    "dialogOpen"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"dialog-editing.vue", "path":"src/kanban/dialog-editing.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "search-filter",
+            "name": "Search and Filter Cards",
+            "category": "Kanban",
+            "description": "The example demo shows how to filter the cards and make searching when more number of cards on a JavaScript Kanban board that helps you to focus.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "swimlaneSettings",
+                    "query"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"search-filter.vue", "path":"src/kanban/search-filter.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "sorting",
+            "name": "Sorting Cards",
+            "category": "Kanban",
+            "description": "The example demonstrates how to sort the cards in the ascending or descending based on the data source order or indexing or custom field on the Kanban board.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "sortSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"sorting.vue", "path":"src/kanban/sorting.vue" },
+                { "displayName":"sorting-card-template.vue", "path":"src/kanban/sorting-card-template.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "virtual-scrolling",
+            "name": "Virtual Scrolling",
+            "category": "Kanban",
+            "description": "The example demonstrates how to load a large number of cards in the Vue Kanban board with optimal load time using the virtual scrolling feature.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "dialogSettings",
+                    "enableTooltip"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"virtual-scrolling.vue", "path":"src/kanban/virtual-scrolling.vue" },
+                { "displayName":"virtual-card-templete.vue", "path":"src/kanban/virtual-card-templete.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "local-data",
+            "name": "Local Data",
+            "category": "Data Binding",
+            "description": "The example demonstrates how to bind data to the JavaScript Kanban board from the array of JavaScript objects (JSON) or instances of Data Manager.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"local-data.vue", "path":"src/kanban/local-data.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "remote-data",
+            "name": "Remote Data",
+            "category": "Data Binding",
+            "description": "The example demonstrates how to load data source from remote seervice to the JavaScript Kanban board using data manager.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "allowDragAndDrop",
+                    "dialogOpen"
+                ]
+            }
+        },
+        {
+            "url": "header-template",
+            "name": "Header Template",
+            "category": "Templates",
+            "description": "The example demonstrates how to customize the column headers of the JS Kanban board with text, images, badges, and count using HTML templates.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"header-template.vue", "path":"src/kanban/header-template.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "swimlane-template",
+            "name": "Swimlane Template",
+            "category": "Templates",
+            "description": "The example demonstrates how to customize the swimlane headers of the JS Kanban board using HTML templates, which is applicable to all swimlane headers.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "swimlaneSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"swimlane-template.vue", "path":"src/kanban/swimlane-template.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "card-template",
+            "name": "Card Template",
+            "category": "Templates",
+            "description": "The example demonstrates how to customize the JavaScript Kanban cards using templates, which is used to design beautiful cards with text, images, and more.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "dialogSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"card-template.vue", "path":"src/kanban/card-template.vue" },
+                { "displayName":"card.vue", "path":"src/kanban/card.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "tooltip-template",
+            "name": "Tooltip Template",
+            "category": "Templates",
+            "description": "The example demonstrates how to enable and disable the tooltip messages on JavaScript Kanban cards, and customize using templates.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "enableTooltip",
+                    "tooltipTemplate"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"tooltip-template.vue", "path":"src/kanban/tooltip-template.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "toggle-columns",
+            "name": "Toggle Columns",
+            "category": "Columns",
+            "description": "This sample demonstrates the toggle column of JS Kanban, which is helpful to expand and collapse the columns and can be collapsed on page load also.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"toggle-columns.vue", "path":"src/kanban/toggle-columns.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "show-hide",
+            "name": "Show/Hide Columns",
+            "category": "Columns",
+            "description": "The example demonstrates how to show or hide the columns of JavaScript Kanban board dynamically, which is achieved from code using the public methods.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"show-hide.vue", "path":"src/kanban/show-hide.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "wip-validation",
+            "name": "WIP Validation",
+            "category": "Validation",
+            "description": "The Work-in-progress (WIP) validation demo demonstrates the minimum and maximum limit of card per column or swimlane in JavaScript Kanban board.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings",
+                    "swimlaneSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"wip-validation.vue", "path":"src/kanban/wip-validation.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "api",
+            "name": "API",
+            "category": "Miscellaneous",
+            "description": "The example showcases the important APIs of JavaScript Kanban in the property panel, which are used to manipulate the Kanban board dynamically.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "columns",
+                    "cardSettings"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"api.vue", "path":"src/kanban/api.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        },
+        {
+            "url": "events",
+            "name": "Events",
+            "category": "Miscellaneous",
+            "description": "The sample showcases the client-side events of JavaScript Kanban with event tracer, which is helpful to customize the Kanban board from application end.",
+            "api": {
+                "Kanban": [
+                    "dataSource",
+                    "keyField",
+                    "height",
+                    "columns",
+                    "cardSettings",
+                    "swimlaneSettings",
+                    "created",
+                    "actionBegin",
+                    "actionComplete",
+                    "actionFailure",
+                    "dataBinding",
+                    "dataBound",
+                    "cardRendered",
+                    "queryCellInfo",
+                    "cardClick",
+                    "cardDoubleClick",
+                    "dragStart",
+                    "drag",
+                    "dragStop"
+                ]
+            },
+            "sourceFiles":[
+                { "displayName":"events.eve", "path":"src/kanban/events.vue" },
+                { "displayName":"datasource.ts", "path":"src/kanban/datasource.ts" }
+            ]
+        }
+    ]
+}

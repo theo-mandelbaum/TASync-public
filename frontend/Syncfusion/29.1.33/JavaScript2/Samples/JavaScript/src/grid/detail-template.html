@@ -1,0 +1,104 @@
+<style type="text/css" class="cssStyles">
+    .report {
+        font-size: 17px;
+        text-align: center;
+        padding-top: 5px;
+    }
+    .image img {
+        height: 55px;
+        width: 55px;
+        border-radius: 50px;
+        box-shadow: inset 0 0 1px #e0e0e0, inset 0 0 14px rgba(0, 0, 0, 0.2);
+    }
+    .e-grid .e-detailrow .e-detailcell .e-tab .e-content {
+        overflow-y: auto;
+    }
+</style>
+
+<script id="detailtemplate" type="text/x-template">
+    <p class='report'><b>Sprint</b></p>
+    <div class="e-tab-section">
+        <div id="tab">
+            <div class="e-tab-header">
+                <div>Taskboard</div>
+                <div>Burndown Chart</div>
+            </div>
+            <div class="e-content">
+                <div>
+                    <div id="taskTemplate"></div>
+                </div>
+                <div>
+                    <div id="chartTemplate"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="employeeImageTemplate" type="text/x-template">
+    ${employeeTemplate(data)}
+</script>
+<script id="mailIDTemplate" type="text/x-template">
+    <a href="mailto:${MailID}">${MailID}</a>
+</script>
+<script id="cardTemplate" type="text/x-template">
+    <div class='card-template'>
+            <table class='card-template-wrap' style="width: 100%">
+                <tbody>
+                    <tr>
+                        <td class='e-title'>
+                            <div class='e-card-header'>
+                                <div class='e-card-header-caption'>
+                                    <div class='e-card-header-title e-tooltip-text'>${Id}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <table class='card-template-wrap'>
+                                    <tbody>
+                                        <tr class='e-tooltip-text'>
+                                            <td>
+                                                <div class=e-card-content>${Summary}</div>
+                                                <span class=e-card-content><b>Estimated hour:</b> ${Estimate}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+  </script>
+
+<div>
+    <div class="control-section">
+        <div class="content-wrapper">
+            <div id="Grid"></div>
+        </div>
+    </div>
+</div>
+<div id="action-description">
+    <p>This sample demonstrates the Grid component's with the detail template feature. It lets users click the expand button
+        in each grid row to display detailed information about that row.
+    </p>
+</div>
+<div id="description">
+    <p>
+        This additional information can be shown or hidden by clicking on the expand or collapse button. The 
+        <code><a target="_blank" class="code" href="https://ej2.syncfusion.com/javascript/documentation/api/grid#detailtemplate">
+        detailTemplate</a></code> property accepts either a string or HTML element`s ID value, which will be used as the template for the detail row.
+    </p>
+        <p>
+        In this demonstration, the parent row provides information about employees name, ID, team and reporter names. In each employee row with 
+        a details view, when expanding the details, you can see the sprint report of that employee. In the details row with two tabs, the first tab contains 
+        <code><a target="_blank" class="code" href="https://ej2.syncfusion.com/javascript/demos/#/fluent2/kanban/overview">
+        Syncfusion Kanban component</a></code> used to list assigned tasks and their current statuses, and the second tab contains <code><a target="_blank" class="code" 
+        href="https://ej2.syncfusion.com/javascript/demos/#/fluent2/chart/overview.html"> Syncfusion Chart Component</a></code> used to 
+        display the burndown chart of employee task estimated time vs actual spend time.
+    </p>
+    <p>
+        More information on the detail template can be found in this
+        <a target="_blank" 
+        href="https://ej2.syncfusion.com/javascript/documentation/grid/row/detail-template">
+        documentation section</a>.
+    </p>
+</div>

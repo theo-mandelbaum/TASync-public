@@ -1,0 +1,106 @@
+<div>
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            <div id="export-container"></div>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px;">
+            <tr style="height: 50px">
+                <td style="width: 40%">
+                    <div>Export Type:
+                    </div>
+                </td>
+                <td style="width: 80%;">
+                    <div style="margin-left: -10px">
+                        <select id="mode">
+                            <option value='JPEG'>JPEG</option>
+                            <option value='PNG'>PNG</option>
+                            <option value='SVG'>SVG</option>
+                            <option value='PDF'>PDF</option>
+                            <option value='XLSX'>XLSX</option>
+                            <option value='CSV'>CSV</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 40%">
+                    <div id="exportFile">File Name:</div>
+                </td>
+                <td style="width: 40%;">
+                    <div class="e-float-input" style='margin-top: 0px;'>
+                        <input type="text" value="Chart" id="fileName" style="margin-left: -10px; width: 100px;" aria-labelledby="Chart">
+                    </div>
+                </td>
+            </tr>
+            <tr id="button-control" style="height: 50px" align='center'>
+                <td>
+                    <div style="margin-left:50%;">
+                        <button id="exporttogglebtn">Export</button>
+                    </div>                    
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="action-description">
+    <p>
+        This sample demonstrates client-side exporting of the chart, enabling you to export its data to Excel, PDF, and CSV formats. Additionally, it allows you to save the chart in image formats such as JPEG, PNG, and SVG.
+    </p>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how the export functionality is configured. The rendered chart can be exported in JPEG, PNG, SVG, and PDF file types. Data from the chart can also be exported to Excel and CSV files.
+    </p>
+    <p>
+        More information on the export can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/chart/chart-print/#export" aria-label="Navigate to the documentation for Export in JavaScript Chart control">documentation section</a>.
+    </p>
+</div>
+<style>
+    #button-control {
+        width: 100%;
+        text-align: center;
+    }
+
+    #control-container {
+        padding: 0px !important;
+    }
+
+    .e-icons.e-export::before {
+        content: '\e728';
+    }
+ 
+    .e-view.fabric .e-icons.e-export::before, .e-view.fabric-dark .e-icons.e-export::before {
+        content: '\e710';
+    }
+ 
+    .e-view.bootstrap4 .e-icons.e-export::before {
+        content: '\e780';
+    }
+ 
+    .e-view.tailwind-dark .e-icons.e-export::before, .e-view.tailwind .e-icons.e-export::before, .e-view.tailwind3-dark .e-icons.e-export::before, .e-view.tailwind3 .e-icons.e-export::before {
+        content: '\e7bf';
+    }
+ 
+    .e-view.highcontrast .e-icons.e-export::before {
+        content: '\e710';
+    }
+ 
+    .e-view.bootstrap5\.3 .e-icons.e-export::before, .e-view.bootstrap5\.3-dark .e-icons.e-export::before {
+        content: '\e72e';
+    }
+    
+    .e-view.fluent .e-icons.e-export::before, .e-view.fluent-dark .e-icons.e-export::before {
+        content: '\e72e';
+    }
+
+    .e-view.fluent2 .e-icons.e-export::before, .e-view.fluent2-dark .e-icons.e-export::before, .e-view.fluent2-highcontrast .e-icons.e-export::before {
+        content: '\e72e';
+    }
+
+    .e-view.material3 .e-icons.e-export::before, .e-view.material3-dark .e-icons.e-export::before {
+        content: '\e72e';
+    }
+</style>

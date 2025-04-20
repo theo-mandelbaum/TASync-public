@@ -1,0 +1,154 @@
+<div class="control-section">
+    <div class="col-lg-9">
+        <ejs-smithchart style='display:block' align='center' id='container' #smithchart [legendSettings] = 'legend'  (load)='load($event)'>
+            <e-seriesCollection>
+                <e-series [points]='data' name='Transmission'[marker]='marker' [enableAnimation] = false [tooltip] = 'tooltip'> </e-series>
+            </e-seriesCollection>
+        </ejs-smithchart>
+    </div>
+<div class="col-lg-3 property-section">
+ <div class="property-panel-section">
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+    <table id="property" title="Properties" style="width: 100%">
+        <tbody>
+            <tr style="height: 50px">
+                <td style="width: 20%">
+                    <div>Export Type</div>
+                </td>
+                <td style="width: 60%;">
+                    <div style="margin-left: -10px">
+                        <select id="mode">
+                            <option value="JPEG">JPEG</option>
+                            <option value="PNG">PNG</option>
+                            <option value="SVG">SVG</option>
+                            <option value="PDF">PDF</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 40%">
+                    <div id="filename">File Name</div>
+                </td>
+                <td style="width: 60%;">
+                    <div class="e-float-input" style="margin-top: 0px;">
+                        <input type="text" value="Smith chart" id="fileName" style="margin-left: -10px;width: 100px" aria-labelledby="Smith Chart">
+                    </div>
+                </td>
+            </tr>
+            <tr id="button-control" style="height: 50px" align="center">
+                <td>
+                     <div style="margin-left: 40%;">
+                        <button ejs-button id="togglebtn1" iconCss='e-icons e-export-icon' cssClass= 'e-flat' isPrimary=true (click)='onClick1($event)' style="width: 90px;" content="Export">Export</button>
+                    </div>
+                </td>
+            </tr>
+            <tr id="button-control" style="height: 50px">
+                <td align="center">
+                        <div style="margin-left: 40%;">
+                        <button ejs-button id="togglebtn2" iconCss='e-icons e-print-icon' cssClass= 'e-flat' isPrimary=true (click)='onClick2($event)' style="width: 90px;" content="Print">Print</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	</div>
+	</div>
+</div>
+</div>
+<div id="action-description">
+    <p>
+        This sample explores the exporting and printing functionality in Smith chart.
+    </p>
+</div>
+<div id="description">
+    <p>
+        In this example, you can see how to export and print the rendered Smith chart. Smith chart can be exported to JPEG, PNG, SVG, and PDF formats.
+    </p>
+</div>
+<!-- custom code start -->
+<style>    
+    .e-play-icon::before {
+        content: '\e728';
+    }
+	.control-section {
+        min-height: 450px;
+    }
+    #button-control {
+    width: 100%;
+    text-align: center;
+    text-transform:none !important;
+}
+
+.e-print-icon::before {
+        content: '\e34b';
+    }
+ 
+    .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before {
+        content: '\e7df';
+    }
+ 
+    .e-view.bootstrap .e-print-icon::before {
+        content: '\ebd2';
+    }
+ 
+   .e-view.bootstrap4 .e-print-icon::before {
+        content: '\e743';
+    }
+ 
+    .e-view.tailwind .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before, .e-view.tailwind3 .e-print-icon::before, .e-view.tailwind3-dark .e-print-icon::before {
+        content: '\e76c';
+    }
+ 
+    .e-view.highcontrast .e-print-icon::before {
+        content: '\ebf9';
+    }
+ 
+    .e-view.bootstrap5\.3 .e-print-icon::before, .e-view.bootstrap5\.3-dark .e-print-icon::before {
+        content: '\e75d';
+    }
+ 
+    .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+        content: '\e75d';
+    }
+    .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
+        content: '\e75d';
+    }
+    .e-view.material3 .e-print-icon::before, .e-view.material3-dark .e-print-icon::before {
+        content: '\e75d';
+    }
+    .e-export-icon::before {
+        content: '\e728';
+    }
+ 
+    .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before {
+        content: '\e710';
+    }
+ 
+    .e-view.bootstrap4 .e-icons.e-export::before {
+        content: '\e7bf';
+    }
+ 
+    .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before, .e-view.tailwind3-dark .e-export-icon::before, .e-view.tailwind3 .e-export-icon::before {
+        content: '\e7bf';
+    }
+ 
+    .e-view.highcontrast .e-export-icon::before {
+        content: '\e710';
+    }
+ 
+    .e-view.bootstrap5\.3 .e-export-icon::before, .e-view.bootstrap5\.3-dark .e-export-icon::before {
+        content: '\e72e';
+    }
+    .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
+        content: '\e72e';
+    }
+    .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before, .e-view.fluent2-highcontrast .e-export-icon::before {
+        content: '\e72e';
+    }
+    .e-view.material3 .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
+        content: '\e72e';
+    }
+</style>
+<!-- custom code end -->

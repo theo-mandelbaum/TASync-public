@@ -1,0 +1,6 @@
+#fabTarget {
+    position: relative;
+}
+.custom-index {
+    z-index: 500 !important;
+}

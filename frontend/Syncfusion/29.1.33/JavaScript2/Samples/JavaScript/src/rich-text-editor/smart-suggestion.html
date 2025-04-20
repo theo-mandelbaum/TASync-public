@@ -1,0 +1,38 @@
+<div class="control-section e-rte-emoticon-tbar-section">
+    <div class="sample-container">
+        <div class="default-section" id="mentionFormatIntegration">
+            <div id="slashMenuEditor"></div>
+        </div>
+    </div>
+</div>
+<div id="action-description">
+    <p>This example demonstrates how to use the slash menu feature of the Rich Text Editor to apply formats, open dialogs easily.</p>
+</div>
+
+<div id="description">
+    <p>This sample demonstrates the <code>SlashMenu</code> feature of the Rich Text Editor, which allows users to apply formatting such as headings, lists, quotes, open insert dialogs, and execute custom commands within the editor. The slash menu can be triggered by typing the "/" character in the editor.</p>
+    <p>In this example, the slash menu is enabled by setting the <code>enable</code> property within the <code>slashMenuSettings</code> to <code>true</code>.</p>
+    <p>This example includes two <b>Custom Slash menu items</b> that allow you to easily insert meeting notes and a signature into the content.</p>
+    <p>The slash menu is configured with the following properties:</p>
+    <ul>
+        <li>
+            <p><code>enable</code>: Enables or disables the slash menu in the editor. The default value is <code>false</code>.</p>
+        </li>
+        <li>
+            <p><code>items</code>: Defines the items displayed in the slash menu popup. Custom items can also be added, and their actions can be handled using the <code>slashMenuItemSelect</code> event.</p>
+        </li>
+    </ul>
+    <p><b>Adding Custom Slash Menu Items</b></p>
+    <p>The custom items can be added to the slash menu by defining the <code>items</code> child property within <code>slashMenuSettings</code>. The <code>items</code> property accepts a string of items and  also an array of objects, where each object represents a custom slash menu item. These objects can include the following properties:</p>
+    <ul>
+        <li><code>text</code> - Sets the text displayed for the slash menu item.</li>
+        <li><code>command</code> - Specifies the action to be executed when the slash menu item is clicked.</li>
+        <li><code>type</code> - Groups related items within the slash menu.</li>
+        <li><code>iconCss</code> - Sets the CSS class for the icon associated with the item.</li>
+        <li><code>description</code> - Provides a description for the slash menu item.</li>
+    </ul>
+    <p><b>Injecting the SlashMenu Module</b></p>
+    <p>The <code>SlashMenu</code> feature is provided as an injectable module. To use it, inject the module using the following code:</p>
+    <code>RichTextEditor.Inject(Toolbar, Link, Image, HtmlEditor, QuickToolbar, SlashMenu);</code>
+</div>
+

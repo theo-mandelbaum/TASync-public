@@ -1,0 +1,66 @@
+<div class="control-section" id="reswrapper">
+    <!-- sample level element  -->
+    <!-- header-section  declaration -->
+    <div>
+        <ejs-toolbar id="resToolbar" (clicked)="toolbarCliked()">
+            <e-items>
+                <e-item prefixIcon="e-tbar-menu-icon tb-icons" tooltipText="Menu"></e-item>
+                <e-item>
+                    <ng-template #template>
+                        <div class="e-folder">
+                            <div class="e-folder-name">Navigation Pane</div>
+                        </div>
+                    </ng-template>
+                </e-item>
+            </e-items>
+        </ejs-toolbar>
+    </div>
+    <!-- end of header-section -->
+    <ejs-sidebar id="sideTree" class="sidebar-treeview" #sidebarTreeviewInstance [width]="width" [target]="target"
+        [mediaQuery]="mediaQuery" [isOpen]="true">
+        <div class='main-menu'>
+            <div class="table-content">
+                <ejs-textbox id="resSearch" placeholder="Search..."></ejs-textbox>
+                <p class="main-menu-header">TABLE OF CONTENTS</p>
+            </div>
+            <div>
+                <ejs-treeview id='mainTree' cssClass="main-treeview" [fields]="fields" expandOn='Click'>
+                </ejs-treeview>
+            </div>
+        </div>
+    </ejs-sidebar>
+    <!-- end of sidebar element -->
+    <!-- .main-sidebar-content declaration -->
+    <div class="main-sidebar-content" id="main-text">
+        <div class="sidebar-content">
+            <div class="sidebar-heading"> Responsive Sidebar with Treeview</div>
+            <p class="paragraph-content">
+                This is a graphical aid for visualising and categorising the site, in the style of an expandable and
+                collapsable treeview component.
+                It auto-expands to display the node(s), if any, corresponding to the currently viewed title,
+                highlighting that node(s)
+                and its ancestors. Load-on-demand when expanding nodes is available where supported (most graphical
+                browsers),
+                falling back to a full-page reload. MediaWiki-supported caching, aside from squid, has been considered
+                so that
+                unnecessary re-downloads of content are avoided where possible. The complete expanded/collapsed state of
+                the treeview persists across page views in most situations.
+            </p>
+        </div>
+    </div>
+    <div id="action-description">
+        <p class="action">
+            The <code>Sidebar</code> sample demonstrates how the Sidebar will act in responsive case. Click on the
+            hamburger menu icon to expand/collapse the sidebar.
+        </p>
+    </div>
+    <div id="description">
+        <p>
+            The <code>Sidebar</code> will be shown or hidden based on the resolutions of the screen. It will be shown on
+            larger resolution screens and hidden automatically in lower resolution screens. This can be achieved by using the <a target="_blank" href="https://ej2.syncfusion.com/angular/documentation/api/sidebar#mediaquery">mediaquery</a> property.
+        </p>
+        <p>
+            In this sample, the TreeView component is placed inside the <code>Sidebar</code>.
+        </p>
+    </div>
+</div>

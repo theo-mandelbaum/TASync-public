@@ -1,0 +1,181 @@
+.formtitle {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.70);
+}
+
+.tailwind-dark .formtitle,
+.tailwind3-dark .formtitle {
+    color: rgb(249 249 249);
+}
+
+.e-error,
+.e-float-text {
+    font-weight: 500;
+}
+
+.e-custom-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+form {
+    padding-top: 20px;
+    margin-bottom: 45px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.highcontrast form,
+.highcontrast .header {
+    color: #fff;
+    background: #000000;
+}
+
+.header {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+table,
+td,
+th {
+    padding: 5px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.row {
+    padding-bottom: 30px;
+    padding-top: 25px;
+}
+/* <!-- custom code end --> */
+
+.control-section #component-dialog {
+top:0%! important;
+}
+.dlgbtn {
+    margin-right: 10px;
+}
+.control-section  {
+    height: 100%;
+    min-height: 500px;
+}
+@media screen and (min-width: 150px) and (max-width: 480px) {
+    .control-section {
+        margin-bottom: 30px;
+    }
+    .control-wrapper {
+        margin-bottom: 0px;
+    }
+}
+.e-btn-hide {
+    display: none;
+}
+
+.e-richtexteditor .e-rte-hidden {
+    border: 0;
+    display: block;
+    height: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    resize: none;
+    visibility: hidden;
+    width: 0;
+}
+
+.form-title {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.e-error,
+.e-float-text {
+    font-weight: 500;
+}
+
+.e-custom-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+#formId {
+    padding-top: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+    background: #f9f9f9;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.material-dark #formId,
+.material3-dark #formId,
+.bootstrap5-dark #formId
+.bootstrap5\.3-dark #formId {
+    background: #212529;
+}
+
+.bootstrap-dark #formId {
+    background: #1a1a1a;
+}
+.fabric-dark #formId {
+    background: #201f1f;
+}
+.tailwind-dark #formId,
+.tailwind3-dark #formId {
+    background: #1f2937;
+}
+.fluent-dark #formId,
+.fluent2-dark #formId,
+.fluent2-highcontrast #formId {
+    background: #111111;
+}
+.material-dark .form-title,
+.material3-dark .form-title,
+.bootstrap-dark .form-title,
+.fabric-dark .form-title,
+.tailwind-dark .form-title,
+.tailwind3-dark .form-title,
+.bootstrap5-dark .form-title,
+.bootstrap5\.3-dark .form-title,
+.fluent-dark .form-title,
+.fluent2-dark .form-title,
+.fluent2-highcontrast .form-title {
+    color: rgb(249 249 249);
+}
+
+.highcontrast form,
+.highcontrast .header {
+    color: #fff;
+    background: #000000;
+}
+
+.header {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+table,
+td,
+th {
+    padding: 3px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}

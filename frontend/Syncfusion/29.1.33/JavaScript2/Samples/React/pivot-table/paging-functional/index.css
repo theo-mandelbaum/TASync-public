@@ -1,0 +1,15 @@
+#PivotViewcontainerwrapper {
+    height: auto !important;
+}
+
+.e-bigger .pivot-property-panel-table .e-float-input.e-control-wrapper {
+    width: 100% !important;
+}
+
+.pivot-property-panel-table div {
+    padding: 0;
+}
+
+.pivot-property-panel-table {
+    margin-left: 10px;
+}

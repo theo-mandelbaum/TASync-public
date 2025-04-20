@@ -1,0 +1,15 @@
+    .skeleton-row .col-sm-6 {
+        padding: 20px;
+        min-height: 150px;
+        position: relative;
+    }
+    #skeletonRectangleMediumRight{
+        float: right;
+    }
+    .skeleton {
+        margin-left: 2px;
+    }
+    p.displayText {
+        margin: 10px 0px;
+        font-weight: 500;
+    }

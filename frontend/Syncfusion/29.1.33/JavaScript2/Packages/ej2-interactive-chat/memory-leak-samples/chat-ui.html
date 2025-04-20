@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chat UI MemoryLeak demo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Typescript UI Controls" />
+    <meta name="author" content="Syncfusion" />
+    <link id="font" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link id="theme" href="../demos/themes/fluent2.css" rel="stylesheet" />
+    <link href="https://cdn.syncfusion.com/ej2/27.1.48/ej2-base/styles/fluent2.css" rel="stylesheet" />
+    <script>
+        window.require = {
+            config: function (json) {
+                window.rsConfig = json;
+                window.rsConfig.baseUrl = '';
+            }
+        };
+    </script>
+    <script src="../demos/chat-ui/demo-config.js"></script>
+    <script src="./../../node_modules/requirejs/require.js" data-main="default"></script>
+    <script>
+        require.config(window.rsConfig);
+    </script>
+
+<style>
+.e-header-icon.creater-avatar1 {
+    background-image: url(https://ej2.syncfusion.com/demos/src/avatar/images/pic01.png);
+}
+</style>
+
+</head>
+
+<body>
+    <div class="container" style="margin: 0 auto; height: 500px;width: 450px;">
+        <button id="render">renderChatUI</button>
+        <button id="destroy">destroyChatUI</button>
+        <div id="chat1"></div>
+    </div>
+</body>
+</html>
