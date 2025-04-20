@@ -16,6 +16,8 @@ RUN npm install @syncfusion/ej2-react-buttons \
 RUN npm install --save-dev @babel/plugin-proposal-private-property-in-object
 COPY ./src ./src
 COPY ./public ./public
+COPY ./src ./src
+COPY ./public ./public
 EXPOSE 3000
 
 CMD ["npm", "start"]
