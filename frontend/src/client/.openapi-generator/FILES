@@ -39,7 +39,3 @@ src/model/SubjectSchema.js
 src/model/Success.js
 src/model/SwapRequestSchema.js
 src/model/UserSchema.js
-test/model/CommentCreateSchema.spec.js
-test/model/CommentSchema.spec.js
-test/model/GroupSchema.spec.js
-test/model/Success.spec.js

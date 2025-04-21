@@ -152,7 +152,7 @@ def add_group(request, group_id: int):
         return 403, {"message": "User already belongs to a group."}
 
 
-@sched_api.get("/user_group", response=GroupSchema)
+@sched_api.get("/user_group", response={200: GroupSchema, 403: Error})
 @require_auth
 def get_user_group(request):
     user = request.user
@@ -632,7 +632,7 @@ def handle_swap_request(request, swap_request_id: uuid.UUID, accepted: bool):
 
                 from_shift.save()
                 to_shift.save()
-                
+
             swap_request.delete()
             return 200, {"message": f"Swap was sucessfully {"accepted" if accepted else "rejected"}."}
         except Exception as e:

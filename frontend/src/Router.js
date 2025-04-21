@@ -60,6 +60,7 @@ import Questions from "./Questions";
 import SwapRequests from "./SwapRequests";
 import SubjectHome from "./SubjectHome";
 import NotFound from "./NotFound";
+import ChooseGroup from "./ChooseGroup";
 
 function createRouter(config) {
   return createBrowserRouter([
@@ -73,7 +74,11 @@ function createRouter(config) {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: (
+            <AuthenticatedRoute>
+              <Home />
+            </AuthenticatedRoute>
+          ),
         },
         {
           path: "*",
@@ -351,28 +356,60 @@ function createRouter(config) {
           ),
         },
         {
+          path: "/choosegroup",
+          element: (
+            <AuthenticatedRoute>
+              <ChooseGroup />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
           path: "/subjecthome/:subjectId",
-          element: <SubjectHome />,
+          element: (
+            <AuthenticatedRoute>
+              <SubjectHome />
+            </AuthenticatedRoute>
+          ),
         },
         {
           path: "/subjects",
-          element: <Subjects />,
+          element: (
+            <AuthenticatedRoute>
+              <Subjects />
+            </AuthenticatedRoute>
+          ),
         },
         {
           path: "/schedule",
-          element: <Schedule />,
+          element: (
+            <AuthenticatedRoute>
+              <Schedule />
+            </AuthenticatedRoute>
+          ),
         },
         {
           path: "/shift-request",
-          element: <ShiftRequests />,
+          element: (
+            <AuthenticatedRoute>
+              <ShiftRequests />
+            </AuthenticatedRoute>
+          ),
         },
         {
           path: "/questions",
-          element: <Questions />,
+          element: (
+            <AuthenticatedRoute>
+              <Questions />
+            </AuthenticatedRoute>
+          ),
         },
         {
           path: "/swap-requests",
-          element: <SwapRequests />,
+          element: (
+            <AuthenticatedRoute>
+              <SwapRequests />
+            </AuthenticatedRoute>
+          ),
         },
       ],
     },

@@ -3,7 +3,7 @@ import DefaultApi from "./client/src/api/DefaultApi";
 import { useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import SubjectButtons from "./components/SubjectButtons";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const api = new DefaultApi();
 
@@ -33,15 +33,11 @@ const Subjects = () => {
     navigate(`/subjecthome/${subjectId}`);
   }
 
-  if (isLoadingSubjects) {
-    return (
-      <Stack>
-        <Heading>Loading...</Heading>
-      </Stack>
-    );
-  }
-
-  return (
+  return isLoadingSubjects ? (
+    <Stack>
+      <Heading>Loading...</Heading>
+    </Stack>
+  ) : (
     <Stack>
       <Heading>List subjects</Heading>
       <SubjectButtons subjects={subjects} onSubjectClick={handleSubjectClick} />
