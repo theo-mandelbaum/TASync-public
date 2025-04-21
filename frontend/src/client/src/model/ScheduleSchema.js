@@ -25,13 +25,12 @@ class ScheduleSchema {
      * Constructs a new <code>ScheduleSchema</code>.
      * @alias module:model/ScheduleSchema
      * @param id {String} 
-     * @param isTaHours {Boolean} 
      * @param educator {module:model/UserSchema} 
      * @param subject {module:model/SubjectSchema} 
      */
-    constructor(id, isTaHours, educator, subject) { 
+    constructor(id, educator, subject) { 
         
-        ScheduleSchema.initialize(this, id, isTaHours, educator, subject);
+        ScheduleSchema.initialize(this, id, educator, subject);
     }
 
     /**
@@ -39,9 +38,8 @@ class ScheduleSchema {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, isTaHours, educator, subject) { 
+    static initialize(obj, id, educator, subject) { 
         obj['id'] = id;
-        obj['is_ta_hours'] = isTaHours;
         obj['educator'] = educator;
         obj['subject'] = subject;
     }
@@ -59,9 +57,6 @@ class ScheduleSchema {
 
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('is_ta_hours')) {
-                obj['is_ta_hours'] = ApiClient.convertToType(data['is_ta_hours'], 'Boolean');
             }
             if (data.hasOwnProperty('educator')) {
                 obj['educator'] = UserSchema.constructFromObject(data['educator']);
@@ -104,17 +99,12 @@ class ScheduleSchema {
 
 }
 
-ScheduleSchema.RequiredProperties = ["id", "is_ta_hours", "educator", "subject"];
+ScheduleSchema.RequiredProperties = ["id", "educator", "subject"];
 
 /**
  * @member {String} id
  */
 ScheduleSchema.prototype['id'] = undefined;
-
-/**
- * @member {Boolean} is_ta_hours
- */
-ScheduleSchema.prototype['is_ta_hours'] = undefined;
 
 /**
  * @member {module:model/UserSchema} educator

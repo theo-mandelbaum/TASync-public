@@ -13,16 +13,19 @@
 
 
 import ApiClient from './ApiClient';
+import CommentCreateSchema from './model/CommentCreateSchema';
+import CommentSchema from './model/CommentSchema';
 import Error from './model/Error';
+import GroupSchema from './model/GroupSchema';
 import QuestionCreateSchema from './model/QuestionCreateSchema';
 import QuestionSchema from './model/QuestionSchema';
 import ScheduleSchema from './model/ScheduleSchema';
-import ScheduleSchemaCreate from './model/ScheduleSchemaCreate';
 import SchoolSchema from './model/SchoolSchema';
 import ShiftSchema from './model/ShiftSchema';
 import ShiftSchemaCreate from './model/ShiftSchemaCreate';
 import SubjectCreateSchema from './model/SubjectCreateSchema';
 import SubjectSchema from './model/SubjectSchema';
+import Success from './model/Success';
 import SwapRequestSchema from './model/SwapRequestSchema';
 import UserSchema from './model/UserSchema';
 import DefaultApi from './api/DefaultApi';
@@ -67,10 +70,28 @@ export {
     ApiClient,
 
     /**
+     * The CommentCreateSchema model constructor.
+     * @property {module:model/CommentCreateSchema}
+     */
+    CommentCreateSchema,
+
+    /**
+     * The CommentSchema model constructor.
+     * @property {module:model/CommentSchema}
+     */
+    CommentSchema,
+
+    /**
      * The Error model constructor.
      * @property {module:model/Error}
      */
     Error,
+
+    /**
+     * The GroupSchema model constructor.
+     * @property {module:model/GroupSchema}
+     */
+    GroupSchema,
 
     /**
      * The QuestionCreateSchema model constructor.
@@ -89,12 +110,6 @@ export {
      * @property {module:model/ScheduleSchema}
      */
     ScheduleSchema,
-
-    /**
-     * The ScheduleSchemaCreate model constructor.
-     * @property {module:model/ScheduleSchemaCreate}
-     */
-    ScheduleSchemaCreate,
 
     /**
      * The SchoolSchema model constructor.
@@ -125,6 +140,12 @@ export {
      * @property {module:model/SubjectSchema}
      */
     SubjectSchema,
+
+    /**
+     * The Success model constructor.
+     * @property {module:model/Success}
+     */
+    Success,
 
     /**
      * The SwapRequestSchema model constructor.

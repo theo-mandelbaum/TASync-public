@@ -14,21 +14,20 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The SubjectSchema model module.
- * @module model/SubjectSchema
+ * The GroupSchema model module.
+ * @module model/GroupSchema
  * @version 1.0
  */
-class SubjectSchema {
+class GroupSchema {
     /**
-     * Constructs a new <code>SubjectSchema</code>.
-     * @alias module:model/SubjectSchema
-     * @param id {String} 
+     * Constructs a new <code>GroupSchema</code>.
+     * @alias module:model/GroupSchema
+     * @param id {Number} 
      * @param name {String} 
-     * @param isTaHours {Boolean} 
      */
-    constructor(id, name, isTaHours) { 
+    constructor(id, name) { 
         
-        SubjectSchema.initialize(this, id, name, isTaHours);
+        GroupSchema.initialize(this, id, name);
     }
 
     /**
@@ -36,51 +35,43 @@ class SubjectSchema {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, name, isTaHours) { 
+    static initialize(obj, id, name) { 
         obj['id'] = id;
         obj['name'] = name;
-        obj['is_ta_hours'] = isTaHours;
     }
 
     /**
-     * Constructs a <code>SubjectSchema</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>GroupSchema</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/SubjectSchema} obj Optional instance to populate.
-     * @return {module:model/SubjectSchema} The populated <code>SubjectSchema</code> instance.
+     * @param {module:model/GroupSchema} obj Optional instance to populate.
+     * @return {module:model/GroupSchema} The populated <code>GroupSchema</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new SubjectSchema();
+            obj = obj || new GroupSchema();
 
             if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
             }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
-            if (data.hasOwnProperty('is_ta_hours')) {
-                obj['is_ta_hours'] = ApiClient.convertToType(data['is_ta_hours'], 'Boolean');
             }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>SubjectSchema</code>.
+     * Validates the JSON data with respect to <code>GroupSchema</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SubjectSchema</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>GroupSchema</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of SubjectSchema.RequiredProperties) {
+        for (const property of GroupSchema.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
-        }
-        // ensure the json data is a string
-        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
-            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
@@ -93,27 +84,22 @@ class SubjectSchema {
 
 }
 
-SubjectSchema.RequiredProperties = ["id", "name", "is_ta_hours"];
+GroupSchema.RequiredProperties = ["id", "name"];
 
 /**
- * @member {String} id
+ * @member {Number} id
  */
-SubjectSchema.prototype['id'] = undefined;
+GroupSchema.prototype['id'] = undefined;
 
 /**
  * @member {String} name
  */
-SubjectSchema.prototype['name'] = undefined;
-
-/**
- * @member {Boolean} is_ta_hours
- */
-SubjectSchema.prototype['is_ta_hours'] = undefined;
+GroupSchema.prototype['name'] = undefined;
 
 
 
 
 
 
-export default SubjectSchema;
+export default GroupSchema;
 

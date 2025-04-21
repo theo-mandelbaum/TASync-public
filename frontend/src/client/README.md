@@ -103,7 +103,7 @@ var SchedApi = require('sched_api');
 
 
 var api = new SchedApi.DefaultApi()
-var questionId = "questionId_example"; // {String} 
+var groupId = 56; // {Number} 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -111,7 +111,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.backendSchedApiViewsAnswerQuestion(questionId, callback);
+api.backendSchedApiViewsAddGroup(groupId, callback);
 
 ```
 
@@ -121,32 +121,51 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SchedApi.DefaultApi* | [**backendSchedApiViewsAddGroup**](docs/DefaultApi.md#backendSchedApiViewsAddGroup) | **PUT** /sched_api/add_group/{group_id} | Add Group
+*SchedApi.DefaultApi* | [**backendSchedApiViewsAddStudentToShift**](docs/DefaultApi.md#backendSchedApiViewsAddStudentToShift) | **PUT** /sched_api/add_student_to_shift/{shift_id} | Add Student To Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsAddTaToShift**](docs/DefaultApi.md#backendSchedApiViewsAddTaToShift) | **PUT** /sched_api/add_ta_to_shift/{shift_id} | Add Ta To Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsAnswerQuestion**](docs/DefaultApi.md#backendSchedApiViewsAnswerQuestion) | **PUT** /sched_api/answer_question/{question_id} | Answer Question
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCommentQuestion**](docs/DefaultApi.md#backendSchedApiViewsCommentQuestion) | **PUT** /sched_api/comment/{question_id} | Comment Question
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCreateQuestion**](docs/DefaultApi.md#backendSchedApiViewsCreateQuestion) | **POST** /sched_api/question/{subject_id} | Create Question
-*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSchedule**](docs/DefaultApi.md#backendSchedApiViewsCreateSchedule) | **POST** /sched_api/schedule{subject_name} | Create Schedule
-*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSubject**](docs/DefaultApi.md#backendSchedApiViewsCreateSubject) | **POST** /sched_api/subject | Create Subject
+*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSchedule**](docs/DefaultApi.md#backendSchedApiViewsCreateSchedule) | **POST** /sched_api/schedule/{subject_id} | Create Schedule
+*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSubject**](docs/DefaultApi.md#backendSchedApiViewsCreateSubject) | **POST** /sched_api/subject/{is_ta_hours} | Create Subject
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsCreateSwapRequest) | **POST** /sched_api/create_swap_request | Create Swap Request
-*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateTaShift**](docs/DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift/{subject_id} | Create Ta Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsCreateTaShift**](docs/DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift/{schedule_id} | Create Ta Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsGetUserGroup**](docs/DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
+*SchedApi.DefaultApi* | [**backendSchedApiViewsHandleSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListGroups**](docs/DefaultApi.md#backendSchedApiViewsListGroups) | **GET** /sched_api/groups | List Groups
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListIncomingSwapRequests**](docs/DefaultApi.md#backendSchedApiViewsListIncomingSwapRequests) | **GET** /sched_api/incoming_swap_requests | List Incoming Swap Requests
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListOutgoingSwapRequests**](docs/DefaultApi.md#backendSchedApiViewsListOutgoingSwapRequests) | **GET** /sched_api/outgoing_swap_requests | List Outgoing Swap Requests
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListQuestions**](docs/DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions/{subject_id} | List Questions
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListSchedules**](docs/DefaultApi.md#backendSchedApiViewsListSchedules) | **GET** /sched_api/schedules/{subject_id} | List Schedules
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSchools**](docs/DefaultApi.md#backendSchedApiViewsListSchools) | **GET** /sched_api/schools | List Schools
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSchoolsPaginated**](docs/DefaultApi.md#backendSchedApiViewsListSchoolsPaginated) | **GET** /sched_api/schools_paginated | List Schools Paginated
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListShiftStudents**](docs/DefaultApi.md#backendSchedApiViewsListShiftStudents) | **GET** /sched_api/shift_students/{shift_id} | List Shift Students
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListShiftTas**](docs/DefaultApi.md#backendSchedApiViewsListShiftTas) | **GET** /sched_api/shift_tas/{shift_id} | List Shift Tas
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListSubjects**](docs/DefaultApi.md#backendSchedApiViewsListSubjects) | **GET** /sched_api/subjects | List Subjects
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListTaHourSchedule**](docs/DefaultApi.md#backendSchedApiViewsListTaHourSchedule) | **GET** /sched_api/ta_hour_schedule | List Ta Hour Schedule
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListTaHourShift**](docs/DefaultApi.md#backendSchedApiViewsListTaHourShift) | **GET** /sched_api/ta_hour_shift | List Ta Hour Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTaShifts**](docs/DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts/{subject_id} | List Ta Shifts
+*SchedApi.DefaultApi* | [**backendSchedApiViewsRemoveStudentFromShift**](docs/DefaultApi.md#backendSchedApiViewsRemoveStudentFromShift) | **PUT** /sched_api/remove_student_from_shift/{shift_id} | Remove Student From Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsRemoveTaFromShift**](docs/DefaultApi.md#backendSchedApiViewsRemoveTaFromShift) | **PUT** /sched_api/remove_ta_from_shift/{shift_id} | Remove Ta From Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsUnanswerQuestion**](docs/DefaultApi.md#backendSchedApiViewsUnanswerQuestion) | **PUT** /sched_api/unanswer_question/{question_id} | Unanswer Question
 
 
 ## Documentation for Models
 
+ - [SchedApi.CommentCreateSchema](docs/CommentCreateSchema.md)
+ - [SchedApi.CommentSchema](docs/CommentSchema.md)
  - [SchedApi.Error](docs/Error.md)
+ - [SchedApi.GroupSchema](docs/GroupSchema.md)
  - [SchedApi.QuestionCreateSchema](docs/QuestionCreateSchema.md)
  - [SchedApi.QuestionSchema](docs/QuestionSchema.md)
  - [SchedApi.ScheduleSchema](docs/ScheduleSchema.md)
- - [SchedApi.ScheduleSchemaCreate](docs/ScheduleSchemaCreate.md)
  - [SchedApi.SchoolSchema](docs/SchoolSchema.md)
  - [SchedApi.ShiftSchema](docs/ShiftSchema.md)
  - [SchedApi.ShiftSchemaCreate](docs/ShiftSchemaCreate.md)
  - [SchedApi.SubjectCreateSchema](docs/SubjectCreateSchema.md)
  - [SchedApi.SubjectSchema](docs/SubjectSchema.md)
+ - [SchedApi.Success](docs/Success.md)
  - [SchedApi.SwapRequestSchema](docs/SwapRequestSchema.md)
  - [SchedApi.UserSchema](docs/UserSchema.md)
 

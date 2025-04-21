@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
-**fromShift** | [**ShiftSchema**](ShiftSchema.md) |  | 
-**toShift** | [**ShiftSchema**](ShiftSchema.md) |  | 
-**fromUser** | [**UserSchema**](UserSchema.md) |  | 
-**toUser** | [**UserSchema**](UserSchema.md) |  | 
+**requesterShift** | [**ShiftSchema**](ShiftSchema.md) |  | 
+**requestedShift** | [**ShiftSchema**](ShiftSchema.md) |  | 
+**requesterUser** | [**UserSchema**](UserSchema.md) |  | 
+**requestedUser** | [**UserSchema**](UserSchema.md) |  | 
 **dateRequested** | **Date** |  | 
 
 

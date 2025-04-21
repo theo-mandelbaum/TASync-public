@@ -25,15 +25,15 @@ class SwapRequestSchema {
      * Constructs a new <code>SwapRequestSchema</code>.
      * @alias module:model/SwapRequestSchema
      * @param id {String} 
-     * @param fromShift {module:model/ShiftSchema} 
-     * @param toShift {module:model/ShiftSchema} 
-     * @param fromUser {module:model/UserSchema} 
-     * @param toUser {module:model/UserSchema} 
+     * @param requesterShift {module:model/ShiftSchema} 
+     * @param requestedShift {module:model/ShiftSchema} 
+     * @param requesterUser {module:model/UserSchema} 
+     * @param requestedUser {module:model/UserSchema} 
      * @param dateRequested {Date} 
      */
-    constructor(id, fromShift, toShift, fromUser, toUser, dateRequested) { 
+    constructor(id, requesterShift, requestedShift, requesterUser, requestedUser, dateRequested) { 
         
-        SwapRequestSchema.initialize(this, id, fromShift, toShift, fromUser, toUser, dateRequested);
+        SwapRequestSchema.initialize(this, id, requesterShift, requestedShift, requesterUser, requestedUser, dateRequested);
     }
 
     /**
@@ -41,12 +41,12 @@ class SwapRequestSchema {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, id, fromShift, toShift, fromUser, toUser, dateRequested) { 
+    static initialize(obj, id, requesterShift, requestedShift, requesterUser, requestedUser, dateRequested) { 
         obj['id'] = id;
-        obj['from_shift'] = fromShift;
-        obj['to_shift'] = toShift;
-        obj['from_user'] = fromUser;
-        obj['to_user'] = toUser;
+        obj['requester_shift'] = requesterShift;
+        obj['requested_shift'] = requestedShift;
+        obj['requester_user'] = requesterUser;
+        obj['requested_user'] = requestedUser;
         obj['date_requested'] = dateRequested;
     }
 
@@ -64,17 +64,17 @@ class SwapRequestSchema {
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
-            if (data.hasOwnProperty('from_shift')) {
-                obj['from_shift'] = ShiftSchema.constructFromObject(data['from_shift']);
+            if (data.hasOwnProperty('requester_shift')) {
+                obj['requester_shift'] = ShiftSchema.constructFromObject(data['requester_shift']);
             }
-            if (data.hasOwnProperty('to_shift')) {
-                obj['to_shift'] = ShiftSchema.constructFromObject(data['to_shift']);
+            if (data.hasOwnProperty('requested_shift')) {
+                obj['requested_shift'] = ShiftSchema.constructFromObject(data['requested_shift']);
             }
-            if (data.hasOwnProperty('from_user')) {
-                obj['from_user'] = UserSchema.constructFromObject(data['from_user']);
+            if (data.hasOwnProperty('requester_user')) {
+                obj['requester_user'] = UserSchema.constructFromObject(data['requester_user']);
             }
-            if (data.hasOwnProperty('to_user')) {
-                obj['to_user'] = UserSchema.constructFromObject(data['to_user']);
+            if (data.hasOwnProperty('requested_user')) {
+                obj['requested_user'] = UserSchema.constructFromObject(data['requested_user']);
             }
             if (data.hasOwnProperty('date_requested')) {
                 obj['date_requested'] = ApiClient.convertToType(data['date_requested'], 'Date');
@@ -99,21 +99,21 @@ class SwapRequestSchema {
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
-        // validate the optional field `from_shift`
-        if (data['from_shift']) { // data not null
-          ShiftSchema.validateJSON(data['from_shift']);
+        // validate the optional field `requester_shift`
+        if (data['requester_shift']) { // data not null
+          ShiftSchema.validateJSON(data['requester_shift']);
         }
-        // validate the optional field `to_shift`
-        if (data['to_shift']) { // data not null
-          ShiftSchema.validateJSON(data['to_shift']);
+        // validate the optional field `requested_shift`
+        if (data['requested_shift']) { // data not null
+          ShiftSchema.validateJSON(data['requested_shift']);
         }
-        // validate the optional field `from_user`
-        if (data['from_user']) { // data not null
-          UserSchema.validateJSON(data['from_user']);
+        // validate the optional field `requester_user`
+        if (data['requester_user']) { // data not null
+          UserSchema.validateJSON(data['requester_user']);
         }
-        // validate the optional field `to_user`
-        if (data['to_user']) { // data not null
-          UserSchema.validateJSON(data['to_user']);
+        // validate the optional field `requested_user`
+        if (data['requested_user']) { // data not null
+          UserSchema.validateJSON(data['requested_user']);
         }
 
         return true;
@@ -122,7 +122,7 @@ class SwapRequestSchema {
 
 }
 
-SwapRequestSchema.RequiredProperties = ["id", "from_shift", "to_shift", "from_user", "to_user", "date_requested"];
+SwapRequestSchema.RequiredProperties = ["id", "requester_shift", "requested_shift", "requester_user", "requested_user", "date_requested"];
 
 /**
  * @member {String} id
@@ -130,24 +130,24 @@ SwapRequestSchema.RequiredProperties = ["id", "from_shift", "to_shift", "from_us
 SwapRequestSchema.prototype['id'] = undefined;
 
 /**
- * @member {module:model/ShiftSchema} from_shift
+ * @member {module:model/ShiftSchema} requester_shift
  */
-SwapRequestSchema.prototype['from_shift'] = undefined;
+SwapRequestSchema.prototype['requester_shift'] = undefined;
 
 /**
- * @member {module:model/ShiftSchema} to_shift
+ * @member {module:model/ShiftSchema} requested_shift
  */
-SwapRequestSchema.prototype['to_shift'] = undefined;
+SwapRequestSchema.prototype['requested_shift'] = undefined;
 
 /**
- * @member {module:model/UserSchema} from_user
+ * @member {module:model/UserSchema} requester_user
  */
-SwapRequestSchema.prototype['from_user'] = undefined;
+SwapRequestSchema.prototype['requester_user'] = undefined;
 
 /**
- * @member {module:model/UserSchema} to_user
+ * @member {module:model/UserSchema} requested_user
  */
-SwapRequestSchema.prototype['to_user'] = undefined;
+SwapRequestSchema.prototype['requested_user'] = undefined;
 
 /**
  * @member {Date} date_requested

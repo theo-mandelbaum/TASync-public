@@ -24,14 +24,15 @@ class UserSchema {
     /**
      * Constructs a new <code>UserSchema</code>.
      * @alias module:model/UserSchema
+     * @param id {String} 
      * @param username {String} 
      * @param name {String} 
      * @param school {module:model/SchoolSchema} 
      * @param subjects {Array.<module:model/SubjectSchema>} 
      */
-    constructor(username, name, school, subjects) { 
+    constructor(id, username, name, school, subjects) { 
         
-        UserSchema.initialize(this, username, name, school, subjects);
+        UserSchema.initialize(this, id, username, name, school, subjects);
     }
 
     /**
@@ -39,7 +40,8 @@ class UserSchema {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, username, name, school, subjects) { 
+    static initialize(obj, id, username, name, school, subjects) { 
+        obj['id'] = id;
         obj['username'] = username;
         obj['name'] = name;
         obj['school'] = school;
@@ -57,6 +59,9 @@ class UserSchema {
         if (data) {
             obj = obj || new UserSchema();
 
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            }
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
@@ -84,6 +89,10 @@ class UserSchema {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // ensure the json data is a string
         if (data['username'] && !(typeof data['username'] === 'string' || data['username'] instanceof String)) {
@@ -114,7 +123,12 @@ class UserSchema {
 
 }
 
-UserSchema.RequiredProperties = ["username", "name", "school", "subjects"];
+UserSchema.RequiredProperties = ["id", "username", "name", "school", "subjects"];
+
+/**
+ * @member {String} id
+ */
+UserSchema.prototype['id'] = undefined;
 
 /**
  * @member {String} username

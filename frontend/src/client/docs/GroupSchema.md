@@ -1,11 +1,10 @@
-# SchedApi.SubjectSchema
+# SchedApi.GroupSchema
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
+**id** | **Number** |  | 
 **name** | **String** |  | 
-**isTaHours** | **Boolean** |  | 
 
 

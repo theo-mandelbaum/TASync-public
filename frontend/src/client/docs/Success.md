@@ -1,11 +1,9 @@
-# SchedApi.SubjectSchema
+# SchedApi.Success
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
-**name** | **String** |  | 
-**isTaHours** | **Boolean** |  | 
+**message** | **String** |  | 
 
 

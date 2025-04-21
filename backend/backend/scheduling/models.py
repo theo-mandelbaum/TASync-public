@@ -11,6 +11,7 @@ from django.utils.translation import gettext_lazy as _
 class Subject(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
+    is_ta_hours = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -67,14 +68,13 @@ class Question(models.Model):
 
 class Schedule(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    is_ta_hours = models.BooleanField(default=False)
     educator = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
     subject = models.ForeignKey(
         Subject, on_delete=models.CASCADE, related_name="schedule", null=True, blank=True)
 
     def __str__(self):
-        return f"Schedule for {self.educator.username}({self.subject.name})"
+        return f"Schedule for {self.educator.username if self.educator else ""}({self.subject.name})"
 
 
 class Shift(models.Model):
