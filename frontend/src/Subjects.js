@@ -1,8 +1,9 @@
-import { Container, Heading } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 import DefaultApi from "./client/src/api/DefaultApi";
 import { useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import SubjectButtons from "./components/SubjectButtons";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const api = new DefaultApi();
 
@@ -20,6 +21,7 @@ function get_subjects() {
 
 const Subjects = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { data: subjects, isLoading: isLoadingSubjects } = useQuery({
     queryKey: ["subjects"],
     queryFn: get_subjects,
@@ -28,21 +30,22 @@ const Subjects = () => {
 
   function handleSubjectClick(subjectId) {
     console.log("Subject clicked:", subjectId);
+    navigate(`/subjecthome/${subjectId}`);
   }
 
   if (isLoadingSubjects) {
     return (
-      <Container h="100%">
+      <Stack>
         <Heading>Loading...</Heading>
-      </Container>
+      </Stack>
     );
   }
 
   return (
-    <Container h="100%">
+    <Stack>
       <Heading>List subjects</Heading>
       <SubjectButtons subjects={subjects} onSubjectClick={handleSubjectClick} />
-    </Container>
+    </Stack>
   );
 };
 
