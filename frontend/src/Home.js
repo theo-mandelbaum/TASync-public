@@ -25,7 +25,6 @@ export default function Home() {
     queryFn: backendSchedApiViewsListSchools,
     placeholderData: (prevData) => prevData,
   });
-  console.log("schools", schools);
   // useEffect(() => {
   //   console.log("hello");
   //   queryClient.prefetchQuery(backendSchedApiViewsListSchools);

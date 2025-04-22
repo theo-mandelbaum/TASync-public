@@ -1,24 +1,31 @@
 import { useUser, useConfig } from "./auth";
 import { useLocation, Link } from "react-router-dom";
+import { HStack } from "@chakra-ui/react";
+import {
+  TabsRoot,
+  TabsTrigger,
+  TabsList,
+  Link as ChaLink,
+} from "@chakra-ui/react";
 
 function NavBarItem(props) {
   const location = useLocation();
   const isActive =
     (props.href && location.pathname.startsWith(props.href)) ||
     (props.to && location.pathname.startsWith(props.to));
-  const cls = isActive ? "nav-link active" : "nav-link";
-  return (
-    <li className="nav-item">
-      {props.href ? (
-        <a className={cls} href={props.href}>
-          {props.icon} {props.name}
-        </a>
-      ) : (
-        <Link className={cls} to={props.to}>
-          {props.icon} {props.name}
-        </Link>
-      )}
-    </li>
+  console.log(props.to, props.href, isActive);
+  return props.href ? (
+    <TabsTrigger value={props.href} asChild>
+      <ChaLink as={Link} unstyled href={props.href}>
+        {props.name}
+      </ChaLink>
+    </TabsTrigger>
+  ) : (
+    <TabsTrigger value={props.to} asChild>
+      <ChaLink as={Link} unstyled to={props.to}>
+        {props.name}
+      </ChaLink>
+    </TabsTrigger>
   );
 }
 
@@ -27,75 +34,46 @@ export default function NavBar() {
   const config = useConfig();
   const anonNav = (
     <>
-      <NavBarItem to="/account/login" icon="🔑" name="Login" />
-      <NavBarItem to="/account/signup" icon="🧑" name="Signup" />
-      <NavBarItem
-        to="/account/password/reset"
-        icon="🔓"
-        name="Reset password"
-      />
+      <NavBarItem to="/account/login" name="Login" />
+      <NavBarItem to="/account/signup" name="Signup" />
+      <NavBarItem to="/account/password/reset" name="Reset password" />
     </>
   );
   const authNav = (
     <>
-      <NavBarItem to="/account/email" icon="📬" name="Change Email" />
-      <NavBarItem
-        to="/account/password/change"
-        icon="🔒"
-        name="Change Password"
-      />
+      <NavBarItem to="/account/email" name="Change Email" />
+      <NavBarItem to="/account/password/change" name="Change Password" />
       {config.data.socialaccount ? (
-        <NavBarItem to="/account/providers" icon="👤" name="Providers" />
+        <NavBarItem to="/account/providers" name="Providers" />
       ) : null}
       {config.data.mfa ? (
-        <NavBarItem
-          to="/account/2fa"
-          icon="📱"
-          name="Two-Factor Authentication"
-        />
+        <NavBarItem to="/account/2fa" name="Two-Factor Authentication" />
       ) : null}
 
       {config.data.usersessions ? (
-        <NavBarItem to="/account/sessions" icon="🚀" name="Sessions" />
+        <NavBarItem to="/account/sessions" name="Sessions" />
       ) : null}
-      <NavBarItem to="/account/logout" icon="👋" name="Logout" />
+      <NavBarItem to="/account/logout" name="Logout" />
     </>
   );
+  const { pathname } = useLocation();
   return (
-    <nav className="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
-      <div className="container-fluid">
-        <Link to="/" className="navbar-brand">
-          TASync
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav me-auto mb-2 mb-md-0">
-            <NavBarItem to="/subjects" icon="" name="Subjects" />
-            <NavBarItem to="/schedule" icon="" name="Schedule" />
-            <NavBarItem to="/shift-request" icon="" name="Request Shift" />
-            <NavBarItem to="/questions" icon="" name="Questions" />
-            <NavBarItem to="/swap-requests" icon="" name="Request Shift Swap" />
-            {window.DEVELOPMENT ? (
-              <NavBarItem
-                href="http://localhost:1080"
-                icon="✉️"
-                name="MailCatcher"
-              />
-            ) : null}
-            {user ? authNav : anonNav}
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <HStack bgColor="white" position="sticky" top={0} zIndex={100}>
+      <Link to="/" className="navbar-brand">
+        TASync
+      </Link>
+      <TabsRoot value={pathname}>
+        <TabsList>
+          <NavBarItem to="/schedule" icon="" name="Schedule" />
+          <NavBarItem to="/shift-request" icon="" name="Request Shift" />
+          <NavBarItem to="/questions" icon="" name="Questions" />
+          <NavBarItem to="/swap-requests" icon="" name="Request Shift Swap" />
+          {window.DEVELOPMENT ? (
+            <NavBarItem href="http://localhost:1080" name="MailCatcher" />
+          ) : null}
+          {user ? authNav : anonNav}
+        </TabsList>
+      </TabsRoot>
+    </HStack>
   );
 }

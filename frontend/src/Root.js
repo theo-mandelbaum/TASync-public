@@ -65,14 +65,6 @@ export default function Root() {
     // },
   });
 
-  console.log("SETTINGGROUP", settingGroup);
-  console.log("GROUP", group);
-  console.log("no group?", group === null || group === undefined);
-  console.log("ISERROR", isErrorUserGroup);
-  console.log("the eroor", errorUserGroup);
-  console.log("user group", userGroup);
-  console.log("changed");
-
   useLayoutEffect(() => {
     if (group === null || group === undefined) {
       setEnable(true);
@@ -96,7 +88,6 @@ export default function Root() {
           userGroup !== undefined &&
           (group === null || group === undefined)
         ) {
-          console.log("setting group", userGroup);
           setGroup(userGroup);
         }
       }
