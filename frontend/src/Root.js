@@ -41,7 +41,7 @@ export default function Root() {
     queryKey: ["user_group"],
     queryFn: getUserGroup,
     placeholderData: (prevData) => prevData,
-    enabled: enable,
+    enabled: enable && status.isAuthenticated,
     // retry: 3,
     refetchOnWindowFocus: false,
     // onSuccess: (data) => {
@@ -74,7 +74,7 @@ export default function Root() {
   }, [group]);
 
   useLayoutEffect(() => {
-    if (!isLoadingUserGroup && !isFetchingUserGroup) {
+    if (!isLoadingUserGroup && !isFetchingUserGroup && status.isAuthenticated) {
       if (isErrorUserGroup) {
         setEnable(true);
         if (!currentURL.includes("choosegroup")) {
@@ -101,6 +101,7 @@ export default function Root() {
     navigate,
     queryClient,
     setGroup,
+    status.isAuthenticated,
     userGroup,
   ]);
   // useEffect(() => {
