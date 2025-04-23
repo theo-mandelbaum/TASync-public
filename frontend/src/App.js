@@ -16,7 +16,7 @@ import { registerLicense } from "@syncfusion/ej2-base";
 import { use } from "react";
 import GroupCheckProvider from "./GroupCheckProvider";
 
-// registerLicense("YOUR_LICENSE_KEY");
+registerLicense("ORg4AjUWIQA/Gnt2XFhhQlJHfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTH5XdEdhWH5dcnRTQWlaWkZ/");
 
 function App() {
   const queryClient = new QueryClient();
