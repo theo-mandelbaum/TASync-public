@@ -68,6 +68,7 @@ export default function ChooseGroup() {
     onSuccess: (data) => {
       console.log("Group added successfully");
       queryClient.invalidateQueries(["user_group"]);
+      navigate("/subjects");
     },
     onError: (error) => {
       console.error("Error adding group:", error);

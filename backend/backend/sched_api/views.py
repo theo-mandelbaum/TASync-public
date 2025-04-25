@@ -303,6 +303,35 @@ def create_subject(request, subject: SubjectCreateSchema, is_ta_hours: bool):
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to create a subject."}
 
+@sched_api.put("/subject/{subject_id}", response={200: SubjectSchema, 403: Error})
+@require_auth
+def update_subject(request, subject_id: uuid.UUID, updated: SubjectCreateSchema):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            subject = Subject.objects.get(id=subject_id)
+            subject.name = updated.name
+            subject.save()
+            return 200, subject
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to update a subject."}
+
+
+@sched_api.delete("/subject/{subject_id}", response={200: Success, 403: Error})
+@require_auth
+def delete_subject(request, subject_id: uuid.UUID):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            subject = Subject.objects.get(id=subject_id)
+            subject.delete()
+            return 200, {"message": "Subject deleted successfully."}
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to delete a subject."}
+
+
 
 # SCHEDULES-----------------------------------------------------------------------
 
