@@ -29,40 +29,18 @@ export default function Root() {
   const navigate = useNavigate();
   const currentURL = useLocation().pathname;
   const { group, setGroup } = useGroupCheck();
-  const [settingGroup, setSettingGroup] = useState(false);
   const [enable, setEnable] = useState(group === null || group === undefined);
   const {
     data: userGroup,
     isLoading: isLoadingUserGroup,
     isFetching: isFetchingUserGroup,
     isError: isErrorUserGroup,
-    error: errorUserGroup,
   } = useQuery({
     queryKey: ["user_group"],
     queryFn: getUserGroup,
     placeholderData: (prevData) => prevData,
     enabled: enable && status.isAuthenticated,
-    // retry: 3,
     refetchOnWindowFocus: false,
-    // onSuccess: (data) => {
-    //   console.log("hello THIS WAS A SUCCESS");
-    //   if (data) {
-    //     setGroup(data);
-    //   }
-    // },
-    // onError: (error) => {
-    //   console.log("group2", group);
-    //   console.log(
-    //     error && status.isAuthenticated && !currentURL.includes("choosegroup")
-    //   );
-    //   if (
-    //     error &&
-    //     status.isAuthenticated &&
-    //     !currentURL.includes("choosegroup")
-    //   ) {
-    //     navigate(`/choosegroup`, { replace: true });
-    //   }
-    // },
   });
 
   useLayoutEffect(() => {
@@ -104,52 +82,10 @@ export default function Root() {
     status.isAuthenticated,
     userGroup,
   ]);
-  // useEffect(() => {
-  //   if (
-  //     status.isAuthenticated &&
-  //     (group === null || group === undefined) &&
-  //     !isErrorUserGroup
-  //   ) {
-  //     setGroup(userGroup);
-  //     setSettingGroup(false);
-  //   }
-  //   if (isErrorUserGroup) {
-  //     console.log("error", errorUserGroup);
-  //     if (status.isAuthenticated) {
-  //       setSettingGroup(true);
-  //       if (!currentURL.includes("choosegroup")) {
-  //         navigate(`/choosegroup`, { replace: true });
-  //       }
-  //     }
-  //   }
-  // }, [
-  //   status,
-  //   group,
-  //   setGroup,
-  //   userGroup,
-  //   isErrorUserGroup,
-  //   errorUserGroup,
-  //   currentURL,
-  //   navigate,
-  // ]);
 
   if (isLoadingUserGroup) {
     return <p>Loading...</p>;
   }
-
-  // if (isErrorUserGroup) {
-  //   if (status.isAuthenticated) {
-  //     setSettingGroup(true);
-  //     if (!currentURL.includes("choosegroup")) {
-  //       navigate(`/choosegroup`, { replace: true });
-  //     }
-  //   }
-  // } else {
-  //   if (status.isAuthenticated && group === null) {
-  //     setGroup(userGroup);
-  //     setSettingGroup(false);
-  //   }
-  // }
 
   return (
     <Flex h="100vh" direction="column">

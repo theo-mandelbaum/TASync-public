@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**backendSchedApiViewsCreateTaShift**](DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift/{schedule_id} | Create Ta Shift
 [**backendSchedApiViewsGetUserGroup**](DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
 [**backendSchedApiViewsHandleSwapRequest**](DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
+[**backendSchedApiViewsListComments**](DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
 [**backendSchedApiViewsListGroups**](DefaultApi.md#backendSchedApiViewsListGroups) | **GET** /sched_api/groups | List Groups
 [**backendSchedApiViewsListIncomingSwapRequests**](DefaultApi.md#backendSchedApiViewsListIncomingSwapRequests) | **GET** /sched_api/incoming_swap_requests | List Incoming Swap Requests
 [**backendSchedApiViewsListOutgoingSwapRequests**](DefaultApi.md#backendSchedApiViewsListOutgoingSwapRequests) | **GET** /sched_api/outgoing_swap_requests | List Outgoing Swap Requests
@@ -550,6 +551,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Success**](Success.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## backendSchedApiViewsListComments
+
+> [CommentSchema] backendSchedApiViewsListComments(questionId)
+
+List Comments
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+let questionId = "questionId_example"; // String | 
+apiInstance.backendSchedApiViewsListComments(questionId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **questionId** | **String**|  | 
+
+### Return type
+
+[**[CommentSchema]**](CommentSchema.md)
 
 ### Authorization
 

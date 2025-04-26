@@ -4,7 +4,7 @@ import DefaultApi from "./client/src/api/DefaultApi";
 
 const api = new DefaultApi();
 
-function get_shifts(subjectID) {
+function getShifts(subjectID) {
   return new Promise((resolve, reject) => {
     api.backendSchedApiViewsListTaShifts(subjectID, (error, data, response) => {
       if (error) {

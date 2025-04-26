@@ -585,6 +585,48 @@ export default class DefaultApi {
     }
 
     /**
+     * Callback function to receive the result of the backendSchedApiViewsListComments operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsListCommentsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/CommentSchema>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List Comments
+     * @param {String} questionId 
+     * @param {module:api/DefaultApi~backendSchedApiViewsListCommentsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/CommentSchema>}
+     */
+    backendSchedApiViewsListComments(questionId, callback) {
+      let postBody = null;
+      // verify the required parameter 'questionId' is set
+      if (questionId === undefined || questionId === null) {
+        throw new Error("Missing the required parameter 'questionId' when calling backendSchedApiViewsListComments");
+      }
+
+      let pathParams = {
+        'question_id': questionId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [CommentSchema];
+      return this.apiClient.callApi(
+        '/sched_api/comments/{question_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the backendSchedApiViewsListGroups operation.
      * @callback module:api/DefaultApi~backendSchedApiViewsListGroupsCallback
      * @param {String} error Error message, if any.

@@ -396,7 +396,7 @@ function createRouter(config) {
           ),
         },
         {
-          path: "/questions",
+          path: "/questions/:subjectID",
           element: (
             <AuthenticatedRoute>
               <Questions />

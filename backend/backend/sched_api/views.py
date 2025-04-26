@@ -211,6 +211,19 @@ def create_question(request, question: QuestionCreateSchema, subject_id: uuid.UU
     return 403, {"message": "You are not authorized to create a question."}
 
 
+@sched_api.get("/comments/{question_id}", response={200: List[CommentSchema], 403: Error})
+@require_auth
+def list_comments(request, question_id: uuid.UUID):
+    try:
+        question = Question.objects.get(id=question_id)
+        if not question:
+            return 403, {"message": "Question not found."}
+        comments = question.comments.all()
+        return 200, comments
+    except Exception as e:
+        return 403, {"message": str(e)}
+
+
 @sched_api.put("/comment/{question_id}", response={200: CommentSchema, 403: Error})
 @require_auth
 def comment_question(request, question_id: uuid.UUID, comment: CommentCreateSchema):
@@ -276,7 +289,6 @@ def list_subjects(request):
 @require_auth
 def create_subject(request, subject: SubjectCreateSchema, is_ta_hours: bool):
     user = request.user
-    print(user.groups.all())
     if user.groups.filter(name="Educator").exists():
         try:
             if is_ta_hours == True:

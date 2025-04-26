@@ -13,7 +13,6 @@ function NavBarItem(props) {
   const isActive =
     (props.href && location.pathname.startsWith(props.href)) ||
     (props.to && location.pathname.startsWith(props.to));
-  console.log(props.to, props.href, isActive);
   return props.href ? (
     <TabsTrigger value={props.href} asChild>
       <ChaLink as={Link} unstyled href={props.href}>
