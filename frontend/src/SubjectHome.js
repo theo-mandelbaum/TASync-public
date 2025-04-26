@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import DefaultApi from "./client/src/api/DefaultApi";
+import { Button } from "@chakra-ui/react";
 
 const api = new DefaultApi();
 
@@ -30,5 +31,16 @@ export default function SubjectHome() {
     return null;
   }
 
-  return <div>hello</div>;
+  const handleGoToQuestions = () => {
+    navigate(`/questions/${subjectID}`);
+  };
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Welcome to Subject Home</h1>
+      <Button colorScheme="blue" size="lg" onClick={handleGoToQuestions}>
+        Go to Questions
+      </Button>
+    </div>
+  );
 }
