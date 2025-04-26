@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSubject**](docs/DefaultApi.md#backendSchedApiViewsCreateSubject) | **POST** /sched_api/subject/{is_ta_hours} | Create Subject
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCreateSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsCreateSwapRequest) | **POST** /sched_api/create_swap_request | Create Swap Request
 *SchedApi.DefaultApi* | [**backendSchedApiViewsCreateTaShift**](docs/DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift/{schedule_id} | Create Ta Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsDeleteSubject**](docs/DefaultApi.md#backendSchedApiViewsDeleteSubject) | **DELETE** /sched_api/subject/{subject_id} | Delete Subject
 *SchedApi.DefaultApi* | [**backendSchedApiViewsGetUserGroup**](docs/DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
 *SchedApi.DefaultApi* | [**backendSchedApiViewsHandleSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListComments**](docs/DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
@@ -150,6 +151,7 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsRemoveStudentFromShift**](docs/DefaultApi.md#backendSchedApiViewsRemoveStudentFromShift) | **PUT** /sched_api/remove_student_from_shift/{shift_id} | Remove Student From Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsRemoveTaFromShift**](docs/DefaultApi.md#backendSchedApiViewsRemoveTaFromShift) | **PUT** /sched_api/remove_ta_from_shift/{shift_id} | Remove Ta From Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsUnanswerQuestion**](docs/DefaultApi.md#backendSchedApiViewsUnanswerQuestion) | **PUT** /sched_api/unanswer_question/{question_id} | Unanswer Question
+*SchedApi.DefaultApi* | [**backendSchedApiViewsUpdateSubject**](docs/DefaultApi.md#backendSchedApiViewsUpdateSubject) | **PUT** /sched_api/subject/{subject_id} | Update Subject
 
 
 ## Documentation for Models

@@ -501,6 +501,48 @@ export default class DefaultApi {
     }
 
     /**
+     * Callback function to receive the result of the backendSchedApiViewsDeleteSubject operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsDeleteSubjectCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Success} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Delete Subject
+     * @param {String} subjectId 
+     * @param {module:api/DefaultApi~backendSchedApiViewsDeleteSubjectCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Success}
+     */
+    backendSchedApiViewsDeleteSubject(subjectId, callback) {
+      let postBody = null;
+      // verify the required parameter 'subjectId' is set
+      if (subjectId === undefined || subjectId === null) {
+        throw new Error("Missing the required parameter 'subjectId' when calling backendSchedApiViewsDeleteSubject");
+      }
+
+      let pathParams = {
+        'subject_id': subjectId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Success;
+      return this.apiClient.callApi(
+        '/sched_api/subject/{subject_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the backendSchedApiViewsGetUserGroup operation.
      * @callback module:api/DefaultApi~backendSchedApiViewsGetUserGroupCallback
      * @param {String} error Error message, if any.
@@ -1251,6 +1293,53 @@ export default class DefaultApi {
       let returnType = QuestionSchema;
       return this.apiClient.callApi(
         '/sched_api/unanswer_question/{question_id}', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the backendSchedApiViewsUpdateSubject operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsUpdateSubjectCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SubjectSchema} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update Subject
+     * @param {String} subjectId 
+     * @param {module:model/SubjectCreateSchema} subjectCreateSchema 
+     * @param {module:api/DefaultApi~backendSchedApiViewsUpdateSubjectCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SubjectSchema}
+     */
+    backendSchedApiViewsUpdateSubject(subjectId, subjectCreateSchema, callback) {
+      let postBody = subjectCreateSchema;
+      // verify the required parameter 'subjectId' is set
+      if (subjectId === undefined || subjectId === null) {
+        throw new Error("Missing the required parameter 'subjectId' when calling backendSchedApiViewsUpdateSubject");
+      }
+      // verify the required parameter 'subjectCreateSchema' is set
+      if (subjectCreateSchema === undefined || subjectCreateSchema === null) {
+        throw new Error("Missing the required parameter 'subjectCreateSchema' when calling backendSchedApiViewsUpdateSubject");
+      }
+
+      let pathParams = {
+        'subject_id': subjectId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = SubjectSchema;
+      return this.apiClient.callApi(
+        '/sched_api/subject/{subject_id}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
