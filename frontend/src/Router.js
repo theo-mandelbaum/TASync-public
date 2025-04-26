@@ -61,6 +61,7 @@ import SwapRequests from "./SwapRequests";
 import SubjectHome from "./SubjectHome";
 import NotFound from "./NotFound";
 import ChooseGroup from "./ChooseGroup";
+import AddSubject from "./AddSubject";
 
 function createRouter(config) {
   return createBrowserRouter([
@@ -376,6 +377,14 @@ function createRouter(config) {
           element: (
             <AuthenticatedRoute>
               <Subjects />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: "/addsubjects",
+          element: (
+            <AuthenticatedRoute>
+              <AddSubject />
             </AuthenticatedRoute>
           ),
         },
