@@ -63,6 +63,7 @@ import NotFound from "./NotFound";
 import ChooseGroup from "./ChooseGroup";
 import AddSubject from "./AddSubject";
 import ScheduleManager from "./ScheduleManager";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function createRouter(config) {
   return createBrowserRouter([

@@ -140,6 +140,13 @@ def list_groups(request):
 # USERS------------------------------------------------------------------------
 
 
+@sched_api.get("/get_id", response={200: uuid.UUID})
+@require_auth
+def get_user_id(request):
+    user = request.user
+    return 200, user.id
+
+
 @sched_api.put("/add_group/{group_id}", response={200: UserSchema, 403: Error})
 @require_auth
 def add_group(request, group_id: int):
@@ -308,6 +315,18 @@ def unanswer_question(request, question_id: uuid.UUID):
 def list_subjects(request):
     subjects = Subject.objects.all()
     return 200, subjects
+
+
+@sched_api.get("/subjects/{subject_id}", response={200: SubjectSchema, 403: Error})
+@require_auth
+def get_subject(request, subject_id: uuid.UUID):
+    try:
+        subject = Subject.objects.get(id=subject_id)
+        if not subject:
+            return 403, {"message": "Subject not found."}
+        return 200, subject
+    except Exception as e:
+        return 403, {"message": str(e)}
 
 
 @sched_api.post("/subject/{is_ta_hours}", response={200: SubjectSchema, 403: Error})

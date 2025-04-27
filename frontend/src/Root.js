@@ -28,7 +28,7 @@ export default function Root() {
   const navigate = useNavigate();
   const currentURL = useLocation().pathname;
   const group = JSON.parse(localStorage.getItem("group"));
-  const [enable, setEnable] = useState(group === null || group === undefined);
+  const [enable, setEnable] = useState(true);
   const {
     data: userGroup,
     isLoading: isLoadingUserGroup,
@@ -39,10 +39,14 @@ export default function Root() {
     queryFn: getUserGroup,
     placeholderData: (prevData) => prevData,
     enabled: enable && status.isAuthenticated,
-    retry: 1,
+    retry: 3,
     retryDelay: 200,
     refetchOnWindowFocus: false,
   });
+
+  console.log("userGroup", userGroup);
+  console.log("enable", enable);
+  console.log("iserror", isErrorUserGroup);
 
   useLayoutEffect(() => {
     if (!status.isAuthenticated) {
@@ -52,23 +56,28 @@ export default function Root() {
   }, [status]);
 
   useLayoutEffect(() => {
-    if (userGroup === null || userGroup === undefined) {
-      setEnable(true);
-    } else {
+    let group_check = JSON.parse(localStorage.getItem("group"));
+    if (group_check) {
       setEnable(false);
+    } else {
+      setEnable(true);
     }
-  }, [userGroup]);
+  }, [group]);
 
   useLayoutEffect(() => {
     if (!isLoadingUserGroup && !isFetchingUserGroup && status.isAuthenticated) {
       if (isErrorUserGroup) {
-        setEnable(true);
+        console.log("error");
+        // setEnable(true);
+        console.log("REMOVING GROUP");
+        localStorage.removeItem("group");
         if (!currentURL.includes("choosegroup")) {
           queryClient.invalidateQueries(["groups"]);
           navigate(`/choosegroup`, { replace: true });
         }
       } else {
-        setEnable(false);
+        console.log("no eror");
+        // setEnable(false);
         if (userGroup !== null && userGroup !== undefined) {
           localStorage.setItem("group", JSON.stringify(userGroup));
         }

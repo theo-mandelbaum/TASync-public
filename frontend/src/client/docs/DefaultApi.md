@@ -21,7 +21,9 @@ Method | HTTP request | Description
 [**backendSchedApiViewsEdAddTaToShift**](DefaultApi.md#backendSchedApiViewsEdAddTaToShift) | **PUT** /sched_api/ed_add_ta_to_shift/{shift_id} | Ed Add Ta To Shift
 [**backendSchedApiViewsEdRemoveStudentFromShift**](DefaultApi.md#backendSchedApiViewsEdRemoveStudentFromShift) | **PUT** /sched_api/ed_remove_student_from_shift/{shift_id} | Ed Remove Student From Shift
 [**backendSchedApiViewsEdRemoveTaFromShift**](DefaultApi.md#backendSchedApiViewsEdRemoveTaFromShift) | **PUT** /sched_api/ed_remove_ta_from_shift/{shift_id} | Ed Remove Ta From Shift
+[**backendSchedApiViewsGetSubject**](DefaultApi.md#backendSchedApiViewsGetSubject) | **GET** /sched_api/subjects/{subject_id} | Get Subject
 [**backendSchedApiViewsGetUserGroup**](DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
+[**backendSchedApiViewsGetUserId**](DefaultApi.md#backendSchedApiViewsGetUserId) | **GET** /sched_api/get_id | Get User Id
 [**backendSchedApiViewsHandleSwapRequest**](DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 [**backendSchedApiViewsListComments**](DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
 [**backendSchedApiViewsListEducatorSchedules**](DefaultApi.md#backendSchedApiViewsListEducatorSchedules) | **GET** /sched_api/educator_schedules | List Educator Schedules
@@ -802,6 +804,49 @@ No authorization required
 - **Accept**: application/json
 
 
+## backendSchedApiViewsGetSubject
+
+> SubjectSchema backendSchedApiViewsGetSubject(subjectId)
+
+Get Subject
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+let subjectId = "subjectId_example"; // String | 
+apiInstance.backendSchedApiViewsGetSubject(subjectId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subjectId** | **String**|  | 
+
+### Return type
+
+[**SubjectSchema**](SubjectSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## backendSchedApiViewsGetUserGroup
 
 > GroupSchema backendSchedApiViewsGetUserGroup()
@@ -830,6 +875,45 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**GroupSchema**](GroupSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## backendSchedApiViewsGetUserId
+
+> String backendSchedApiViewsGetUserId()
+
+Get User Id
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+apiInstance.backendSchedApiViewsGetUserId((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**String**
 
 ### Authorization
 

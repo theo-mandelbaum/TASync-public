@@ -28,6 +28,7 @@ import {
   EducatorFooter,
   EducatorShiftSidebar,
 } from "./edcuatorcarditems/EducatorCardItem";
+import { StudentCardSideBar } from "./studentcarditems/StudentCardItems";
 
 const api = new DefaultApi();
 
@@ -196,8 +197,6 @@ function ShiftCell({
 
   let sidebar = null;
 
-  console.log(tasInShift, studentsInShift);
-
   if (is_educator_card) {
     sidebar = (
       <EducatorShiftSidebar
@@ -208,6 +207,10 @@ function ShiftCell({
         in_tas={tasInShift}
         in_students={studentsInShift}
       />
+    );
+  } else if (is_student_card) {
+    sidebar = (
+      <StudentCardSideBar shift_id={shift_id} schedule_id={schedule_id} />
     );
   }
 
@@ -284,6 +287,9 @@ export default function ScheduleCard({
     queryFn: () => getShifts(schedule_id),
   });
 
+  console.log(shifts);
+  console.log(schedule_id);
+
   const deleteScheduleMutation = useMutation({
     mutationFn: () => deleteScheduleAPI(schedule_id),
     onSuccess: () => {
@@ -359,7 +365,7 @@ export default function ScheduleCard({
             {subject_name} {!is_ta_hours && `for ${educator_name}`}
           </CardTitle>
           <Spacer />
-          {!is_ta_hours && (
+          {!is_ta_hours && is_educator_card && (
             <IconButton
               onClick={deleteSchedule}
               aria-label="Delete schedule button"
@@ -373,9 +379,7 @@ export default function ScheduleCard({
           <Table.Body>
             {mondayShifts.length > 0 && (
               <>
-                <Heading as="h2" size="lg">
-                  Monday
-                </Heading>
+                <Text size="lg">Monday</Text>
                 <Separator size="lg" />
                 {mondayShifts.map((shift) => (
                   <Table.Row key={shift.id}>
@@ -398,9 +402,7 @@ export default function ScheduleCard({
             )}
             {tuesdayShifts.length > 0 && (
               <>
-                <Heading as="h2" size="lg">
-                  Tuesday
-                </Heading>
+                <Text size="lg">Tuesday</Text>
                 <Separator size="lg" />
                 {tuesdayShifts.map((shift) => (
                   <Table.Row key={shift.id}>
@@ -423,9 +425,7 @@ export default function ScheduleCard({
             )}
             {wednesdayShifts.length > 0 && (
               <>
-                <Heading as="h2" size="lg">
-                  Wednesday
-                </Heading>
+                <Text size="lg">Wednesday</Text>
                 <Separator size="lg" />
                 {wednesdayShifts.map((shift) => (
                   <Table.Row key={shift.id}>
@@ -448,9 +448,7 @@ export default function ScheduleCard({
             )}
             {thursdayShifts.length > 0 && (
               <>
-                <Heading as="h2" size="lg">
-                  Thursday
-                </Heading>
+                <Text size="lg">Thursday</Text>
                 <Separator size="lg" />
                 {thursdayShifts.map((shift) => (
                   <Table.Row key={shift.id}>
@@ -473,9 +471,7 @@ export default function ScheduleCard({
             )}
             {fridayShifts.length > 0 && (
               <>
-                <Heading as="h2" size="lg">
-                  Friday
-                </Heading>
+                <Text size="lg">Friday</Text>
                 <Separator size="lg" />
                 {fridayShifts.map((shift) => (
                   <Table.Row key={shift.id}>
@@ -498,9 +494,7 @@ export default function ScheduleCard({
             )}
             {saturdayShifts.length > 0 && (
               <>
-                <Heading as="h2" size="lg">
-                  Saturday
-                </Heading>
+                <Text size="lg">Saturday</Text>
                 <Separator size="lg" />
                 {saturdayShifts.map((shift) => (
                   <Table.Row key={shift.id}>
@@ -523,9 +517,7 @@ export default function ScheduleCard({
             )}
             {sundayShifts.length > 0 && (
               <>
-                <Heading as="h2" size="lg">
-                  Sunday
-                </Heading>
+                <Text size="lg">Sunday</Text>
                 <Separator size="lg" />
                 {sundayShifts.map((shift) => (
                   <Table.Row key={shift.id}>

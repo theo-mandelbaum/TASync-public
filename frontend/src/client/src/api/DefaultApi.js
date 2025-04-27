@@ -816,6 +816,48 @@ export default class DefaultApi {
     }
 
     /**
+     * Callback function to receive the result of the backendSchedApiViewsGetSubject operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsGetSubjectCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/SubjectSchema} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Subject
+     * @param {String} subjectId 
+     * @param {module:api/DefaultApi~backendSchedApiViewsGetSubjectCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SubjectSchema}
+     */
+    backendSchedApiViewsGetSubject(subjectId, callback) {
+      let postBody = null;
+      // verify the required parameter 'subjectId' is set
+      if (subjectId === undefined || subjectId === null) {
+        throw new Error("Missing the required parameter 'subjectId' when calling backendSchedApiViewsGetSubject");
+      }
+
+      let pathParams = {
+        'subject_id': subjectId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = SubjectSchema;
+      return this.apiClient.callApi(
+        '/sched_api/subjects/{subject_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the backendSchedApiViewsGetUserGroup operation.
      * @callback module:api/DefaultApi~backendSchedApiViewsGetUserGroupCallback
      * @param {String} error Error message, if any.
@@ -846,6 +888,42 @@ export default class DefaultApi {
       let returnType = GroupSchema;
       return this.apiClient.callApi(
         '/sched_api/user_group', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the backendSchedApiViewsGetUserId operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsGetUserIdCallback
+     * @param {String} error Error message, if any.
+     * @param {String} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get User Id
+     * @param {module:api/DefaultApi~backendSchedApiViewsGetUserIdCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link String}
+     */
+    backendSchedApiViewsGetUserId(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+      return this.apiClient.callApi(
+        '/sched_api/get_id', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

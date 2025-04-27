@@ -262,7 +262,7 @@ function EducatorShiftSidebar({
         status: "success",
         duration: 5000,
       });
-      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
+      queryClient.refetchQueries([`shifts ${schedule_id}`]);
     },
     onError: (error) => {
       toaster.create({
@@ -284,9 +284,9 @@ function EducatorShiftSidebar({
         duration: 5000,
       });
       setIsOpenStudentAdd(false);
-      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
-      queryClient.invalidateQueries([`students_not_in_shift ${shift_id}`]);
-      queryClient.invalidateQueries([`students_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`shifts ${schedule_id}`]);
+      queryClient.refetchQueries([`students_not_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`students_in_shift ${shift_id}`]);
     },
     onError: (error) => {
       toaster.create({
@@ -308,9 +308,9 @@ function EducatorShiftSidebar({
         duration: 5000,
       });
       setIsOpenTAAdd(false);
-      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
-      queryClient.invalidateQueries([`tas_not_in_shift ${shift_id}`]);
-      queryClient.invalidateQueries([`tas_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`shifts ${schedule_id}`]);
+      queryClient.refetchQueries([`tas_not_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`tas_in_shift ${shift_id}`]);
     },
     onError: (error) => {
       toaster.create({
@@ -333,9 +333,9 @@ function EducatorShiftSidebar({
         duration: 5000,
       });
       setIsOpenStudentRemove(false);
-      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
-      queryClient.invalidateQueries([`students_not_in_shift ${shift_id}`]);
-      queryClient.invalidateQueries([`students_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`shifts ${schedule_id}`]);
+      queryClient.refetchQueries([`students_not_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`students_in_shift ${shift_id}`]);
     },
     onError: (error) => {
       toaster.create({
@@ -357,9 +357,9 @@ function EducatorShiftSidebar({
         duration: 5000,
       });
       setIsOpenTARemove(false);
-      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
-      queryClient.invalidateQueries([`tas_not_in_shift ${shift_id}`]);
-      queryClient.invalidateQueries([`tas_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`shifts ${schedule_id}`]);
+      queryClient.refetchQueries([`tas_not_in_shift ${shift_id}`]);
+      queryClient.refetchQueries([`tas_in_shift ${shift_id}`]);
     },
     onError: (error) => {
       toaster.create({
@@ -546,7 +546,7 @@ function EducatorFooter({ schedule_id }) {
         duration: 5000,
       });
       setOpen(false);
-      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
+      queryClient.refetchQueries([`shifts ${schedule_id}`]);
     },
     onError: (error) => {
       toaster.create({

@@ -20,6 +20,7 @@ registerLicense(
   "ORg4AjUWIQA/Gnt2XFhhQlJHfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTH5XdEdhWH5dcnRTQWlaWkZ/"
 );
 
+console.log("Environment:", process.env.NODE_ENV);
 function App() {
   const queryClient = new QueryClient();
   return (

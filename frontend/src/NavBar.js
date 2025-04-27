@@ -62,7 +62,8 @@ export default function NavBar() {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    if (group?.name === "Educator") {
+    let group_check = JSON.parse(localStorage.getItem("group"));
+    if (group_check?.name === "Educator") {
       setEdVisible(true);
     } else {
       setEdVisible(false);
@@ -70,7 +71,8 @@ export default function NavBar() {
   }, [group]);
 
   useLayoutEffect(() => {
-    if (group?.name === "TA") {
+    let group_check = JSON.parse(localStorage.getItem("group"));
+    if (group_check?.name === "TA") {
       setTaVisible(true);
     } else {
       setTaVisible(false);

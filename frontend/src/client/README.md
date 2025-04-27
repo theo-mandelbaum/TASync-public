@@ -138,7 +138,9 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsEdAddTaToShift**](docs/DefaultApi.md#backendSchedApiViewsEdAddTaToShift) | **PUT** /sched_api/ed_add_ta_to_shift/{shift_id} | Ed Add Ta To Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsEdRemoveStudentFromShift**](docs/DefaultApi.md#backendSchedApiViewsEdRemoveStudentFromShift) | **PUT** /sched_api/ed_remove_student_from_shift/{shift_id} | Ed Remove Student From Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsEdRemoveTaFromShift**](docs/DefaultApi.md#backendSchedApiViewsEdRemoveTaFromShift) | **PUT** /sched_api/ed_remove_ta_from_shift/{shift_id} | Ed Remove Ta From Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsGetSubject**](docs/DefaultApi.md#backendSchedApiViewsGetSubject) | **GET** /sched_api/subjects/{subject_id} | Get Subject
 *SchedApi.DefaultApi* | [**backendSchedApiViewsGetUserGroup**](docs/DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
+*SchedApi.DefaultApi* | [**backendSchedApiViewsGetUserId**](docs/DefaultApi.md#backendSchedApiViewsGetUserId) | **GET** /sched_api/get_id | Get User Id
 *SchedApi.DefaultApi* | [**backendSchedApiViewsHandleSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListComments**](docs/DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListEducatorSchedules**](docs/DefaultApi.md#backendSchedApiViewsListEducatorSchedules) | **GET** /sched_api/educator_schedules | List Educator Schedules
