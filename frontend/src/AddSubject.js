@@ -6,20 +6,28 @@ import {
   Button,
   Stack,
   Heading,
-  Checkbox,
+  CheckboxRoot,
+  CheckboxControl,
   Flex,
   Text,
+  CheckboxHiddenInput,
+  CheckboxLabel,
 } from "@chakra-ui/react";
-import { useGroupCheck } from "./GroupCheckProvider";
+import { set } from "react-hook-form";
+import { toaster } from "./components/ui/toaster";
 
 const api = new DefaultApi();
 
-function addSubject({ name, is_ta_hours }) {
+function addSubject(name, is_ta_hours) {
   return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsCreateSubject(is_ta_hours, { name }, (error, data) => {
-      if (error) reject(error);
-      else resolve(data);
-    });
+    api.backendSchedApiViewsCreateSubject(
+      is_ta_hours,
+      { name },
+      (error, data) => {
+        if (error) reject(error);
+        else resolve(data);
+      }
+    );
   });
 }
 
@@ -35,8 +43,9 @@ function deleteSubject(id) {
 export default function AddSubject() {
   const [name, setName] = useState("");
   const [isTA, setIsTA] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const queryClient = useQueryClient();
-  const { group } = useGroupCheck();
+  const group = JSON.parse(localStorage.getItem("group"));
 
   const { data: subjects = [] } = useQuery({
     queryKey: ["subjects"],
@@ -50,24 +59,47 @@ export default function AddSubject() {
   });
 
   const createMutation = useMutation({
-    mutationFn: addSubject,
+    mutationFn: () => addSubject(name, isTA),
     onSuccess: () => {
-      alert("Subject added!");
+      toaster.create({
+        title: "Subject added successfully",
+        status: "success",
+      });
       queryClient.invalidateQueries(["subjects"]);
-      setName("");
-      setIsTA(false);
+      if (!isTA) {
+        setName("");
+      }
+    },
+    onError: (error) => {
+      toaster.create({
+        title: "Error adding subject",
+        description: error.message,
+        status: "error",
+      });
     },
   });
 
   const deleteMutation = useMutation({
-    mutationFn: deleteSubject,
+    mutationFn: (id) => deleteSubject(id),
     onSuccess: () => {
+      toaster.create({
+        title: "Subject deleted successfully",
+        status: "success",
+      });
       queryClient.invalidateQueries(["subjects"]);
+    },
+    onError: (error) => {
+      toaster.create({
+        title: "Error deleting subject",
+        description: error.message,
+        status: "error",
+      });
     },
   });
 
   if (!group) return <p>Loading group info...</p>;
-  if (group.name !== "Educator") return <p>You do not have permission to add subjects.</p>;
+  if (group.name !== "Educator")
+    return <p>You do not have permission to add subjects.</p>;
 
   return (
     <Stack spacing={4} p={4} maxW="md" mx="auto" mt={8}>
@@ -75,9 +107,28 @@ export default function AddSubject() {
       <Input
         placeholder="Subject Name"
         value={name}
+        disabled={disabled}
         onChange={(e) => setName(e.target.value)}
       />
-      
+
+      <CheckboxRoot
+        checked={isTA}
+        onCheckedChange={(e) => {
+          setIsTA(!!e.checked);
+          if (!!e.checked) {
+            setName("TA Hours");
+            setDisabled(true);
+          } else {
+            setName("");
+            setDisabled(false);
+          }
+        }}
+      >
+        <CheckboxHiddenInput />
+        <CheckboxControl />
+        <CheckboxLabel>TA Hours</CheckboxLabel>
+      </CheckboxRoot>
+
       <Button
         colorScheme="blue"
         onClick={() => createMutation.mutate({ name, is_ta_hours: isTA })}
@@ -86,7 +137,9 @@ export default function AddSubject() {
         Submit
       </Button>
 
-      <Heading size="sm" mt={6}>Subjects</Heading>
+      <Heading size="sm" mt={6}>
+        Subjects
+      </Heading>
       {subjects.map((subject) => (
         <Flex key={subject.id} justify="space-between" align="center">
           <Text>
@@ -94,16 +147,19 @@ export default function AddSubject() {
           </Text>
           <Flex gap={2}>
             {/* Placeholder for future editing */}
-            <Button size="sm" colorScheme="yellow" onClick={() => {
-              setName(subject.name);
-              setIsTA(subject.is_ta_hours);
-            }}>
+            {/* <Button
+              size="sm"
+              colorScheme="yellow"
+              onClick={() => {
+                setName(subject.name);
+                setIsTA(subject.is_ta_hours);
+              }}
+            >
               Edit
-            </Button>
+            </Button> */}
             <Button
               size="sm"
               colorScheme="red"
-        
               onClick={() => {
                 console.log("deleting", subject.id);
                 deleteMutation.mutate(subject.id);

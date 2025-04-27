@@ -16,7 +16,6 @@ import {
   RadioCardItemHiddenInput,
 } from "@chakra-ui/react";
 import { useLayoutEffect, useState } from "react";
-import { useGroupCheck } from "./GroupCheckProvider";
 
 const api = new DefaultApi();
 
@@ -45,7 +44,7 @@ function addUserGroup(groupID) {
 }
 
 export default function ChooseGroup() {
-  const { group } = useGroupCheck();
+  const group = JSON.parse(localStorage.getItem("group"));
   const queryClient = useQueryClient();
 
   const {
@@ -62,10 +61,9 @@ export default function ChooseGroup() {
   const navigate = useNavigate();
   const { mutate: mutateUserGroup } = useMutation({
     mutationFn: (currentGroupID) => {
-      console.log("GROUPY", group);
       addUserGroup(currentGroupID);
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       console.log("Group added successfully");
       queryClient.invalidateQueries(["user_group"]);
       navigate("/subjects");
@@ -85,10 +83,6 @@ export default function ChooseGroup() {
       navigate("/", { replace: true });
     }
   }, [group, navigate]);
-
-  if (group) {
-    navigate("/", { replace: true });
-  }
 
   if (isLoadingGroups) {
     return <p>Loading...</p>;

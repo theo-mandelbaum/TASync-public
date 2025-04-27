@@ -111,7 +111,6 @@ const Questions = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     const question_raw = {
       question_text: data.question,
     };

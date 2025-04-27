@@ -4,7 +4,6 @@ import { Flex } from "@chakra-ui/react";
 import { useAuthStatus } from "./auth/hooks";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import DefaultApi from "./client/src/api/DefaultApi";
-import { useGroupCheck } from "./GroupCheckProvider";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useLayoutEffect } from "react";
 import { set } from "zod";
@@ -28,7 +27,7 @@ export default function Root() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const currentURL = useLocation().pathname;
-  const { group, setGroup } = useGroupCheck();
+  const group = JSON.parse(localStorage.getItem("group"));
   const [enable, setEnable] = useState(group === null || group === undefined);
   const {
     data: userGroup,
@@ -40,16 +39,25 @@ export default function Root() {
     queryFn: getUserGroup,
     placeholderData: (prevData) => prevData,
     enabled: enable && status.isAuthenticated,
+    retry: 1,
+    retryDelay: 200,
     refetchOnWindowFocus: false,
   });
 
   useLayoutEffect(() => {
-    if (group === null || group === undefined) {
+    if (!status.isAuthenticated) {
+      localStorage.removeItem("group");
+      console.log("User is not authenticated, redirecting to login page.");
+    }
+  }, [status]);
+
+  useLayoutEffect(() => {
+    if (userGroup === null || userGroup === undefined) {
       setEnable(true);
     } else {
       setEnable(false);
     }
-  }, [group]);
+  }, [userGroup]);
 
   useLayoutEffect(() => {
     if (!isLoadingUserGroup && !isFetchingUserGroup && status.isAuthenticated) {
@@ -61,12 +69,8 @@ export default function Root() {
         }
       } else {
         setEnable(false);
-        if (
-          userGroup !== null &&
-          userGroup !== undefined &&
-          (group === null || group === undefined)
-        ) {
-          setGroup(userGroup);
+        if (userGroup !== null && userGroup !== undefined) {
+          localStorage.setItem("group", JSON.stringify(userGroup));
         }
       }
     }
@@ -78,19 +82,18 @@ export default function Root() {
     isLoadingUserGroup,
     navigate,
     queryClient,
-    setGroup,
     status.isAuthenticated,
     userGroup,
   ]);
 
-  if (isLoadingUserGroup) {
+  if (isLoadingUserGroup || isFetchingUserGroup) {
     return <p>Loading...</p>;
   }
 
   return (
     <Flex h="100vh" direction="column">
       <NavBar />
-      <main className="flex-shrink-0 flex-grow-1">
+      <main style={{ height: "100%" }}>
         <Outlet />
       </main>
     </Flex>

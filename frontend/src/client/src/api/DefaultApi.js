@@ -501,6 +501,48 @@ export default class DefaultApi {
     }
 
     /**
+     * Callback function to receive the result of the backendSchedApiViewsDeleteSchedule operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsDeleteScheduleCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Success} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Delete Schedule
+     * @param {String} scheduleId 
+     * @param {module:api/DefaultApi~backendSchedApiViewsDeleteScheduleCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Success}
+     */
+    backendSchedApiViewsDeleteSchedule(scheduleId, callback) {
+      let postBody = null;
+      // verify the required parameter 'scheduleId' is set
+      if (scheduleId === undefined || scheduleId === null) {
+        throw new Error("Missing the required parameter 'scheduleId' when calling backendSchedApiViewsDeleteSchedule");
+      }
+
+      let pathParams = {
+        'schedule_id': scheduleId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Success;
+      return this.apiClient.callApi(
+        '/sched_api/delete_schedule/{schedule_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the backendSchedApiViewsDeleteSubject operation.
      * @callback module:api/DefaultApi~backendSchedApiViewsDeleteSubjectCallback
      * @param {String} error Error message, if any.
@@ -536,7 +578,7 @@ export default class DefaultApi {
       let accepts = ['application/json'];
       let returnType = Success;
       return this.apiClient.callApi(
-        '/sched_api/subject/{subject_id}', 'DELETE',
+        '/sched_api/delete_subject/{subject_id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -663,6 +705,42 @@ export default class DefaultApi {
       let returnType = [CommentSchema];
       return this.apiClient.callApi(
         '/sched_api/comments/{question_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the backendSchedApiViewsListEducatorSchedules operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsListEducatorSchedulesCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ScheduleSchema>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List Educator Schedules
+     * @param {module:api/DefaultApi~backendSchedApiViewsListEducatorSchedulesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ScheduleSchema>}
+     */
+    backendSchedApiViewsListEducatorSchedules(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [ScheduleSchema];
+      return this.apiClient.callApi(
+        '/sched_api/educator_schedules', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -813,6 +891,48 @@ export default class DefaultApi {
       let returnType = [QuestionSchema];
       return this.apiClient.callApi(
         '/sched_api/questions/{subject_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the backendSchedApiViewsListScheduleTaShifts operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsListScheduleTaShiftsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ShiftSchema>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List Schedule Ta Shifts
+     * @param {String} scheduleId 
+     * @param {module:api/DefaultApi~backendSchedApiViewsListScheduleTaShiftsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ShiftSchema>}
+     */
+    backendSchedApiViewsListScheduleTaShifts(scheduleId, callback) {
+      let postBody = null;
+      // verify the required parameter 'scheduleId' is set
+      if (scheduleId === undefined || scheduleId === null) {
+        throw new Error("Missing the required parameter 'scheduleId' when calling backendSchedApiViewsListScheduleTaShifts");
+      }
+
+      let pathParams = {
+        'schedule_id': scheduleId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [ShiftSchema];
+      return this.apiClient.callApi(
+        '/sched_api/schedule_ta_shifts/{schedule_id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -1339,7 +1459,7 @@ export default class DefaultApi {
       let accepts = ['application/json'];
       let returnType = SubjectSchema;
       return this.apiClient.callApi(
-        '/sched_api/subject/{subject_id}', 'PUT',
+        '/sched_api/update_subject/{subject_id}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

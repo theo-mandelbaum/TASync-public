@@ -62,6 +62,7 @@ import SubjectHome from "./SubjectHome";
 import NotFound from "./NotFound";
 import ChooseGroup from "./ChooseGroup";
 import AddSubject from "./AddSubject";
+import ScheduleManager from "./ScheduleManager";
 
 function createRouter(config) {
   return createBrowserRouter([
@@ -84,10 +85,6 @@ function createRouter(config) {
         {
           path: "*",
           element: <NotFound />,
-        },
-        {
-          path: "/calculator",
-          element: <Calculator />,
         },
         {
           path: "/account/login",
@@ -393,6 +390,14 @@ function createRouter(config) {
           element: (
             <AuthenticatedRoute>
               <Schedule />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: "/manageschedule",
+          element: (
+            <AuthenticatedRoute>
+              <ScheduleManager />
             </AuthenticatedRoute>
           ),
         },

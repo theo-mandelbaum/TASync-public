@@ -14,14 +14,17 @@ Method | HTTP request | Description
 [**backendSchedApiViewsCreateSubject**](DefaultApi.md#backendSchedApiViewsCreateSubject) | **POST** /sched_api/subject/{is_ta_hours} | Create Subject
 [**backendSchedApiViewsCreateSwapRequest**](DefaultApi.md#backendSchedApiViewsCreateSwapRequest) | **POST** /sched_api/create_swap_request | Create Swap Request
 [**backendSchedApiViewsCreateTaShift**](DefaultApi.md#backendSchedApiViewsCreateTaShift) | **POST** /sched_api/ta_shift/{schedule_id} | Create Ta Shift
-[**backendSchedApiViewsDeleteSubject**](DefaultApi.md#backendSchedApiViewsDeleteSubject) | **DELETE** /sched_api/subject/{subject_id} | Delete Subject
+[**backendSchedApiViewsDeleteSchedule**](DefaultApi.md#backendSchedApiViewsDeleteSchedule) | **DELETE** /sched_api/delete_schedule/{schedule_id} | Delete Schedule
+[**backendSchedApiViewsDeleteSubject**](DefaultApi.md#backendSchedApiViewsDeleteSubject) | **DELETE** /sched_api/delete_subject/{subject_id} | Delete Subject
 [**backendSchedApiViewsGetUserGroup**](DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
 [**backendSchedApiViewsHandleSwapRequest**](DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 [**backendSchedApiViewsListComments**](DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
+[**backendSchedApiViewsListEducatorSchedules**](DefaultApi.md#backendSchedApiViewsListEducatorSchedules) | **GET** /sched_api/educator_schedules | List Educator Schedules
 [**backendSchedApiViewsListGroups**](DefaultApi.md#backendSchedApiViewsListGroups) | **GET** /sched_api/groups | List Groups
 [**backendSchedApiViewsListIncomingSwapRequests**](DefaultApi.md#backendSchedApiViewsListIncomingSwapRequests) | **GET** /sched_api/incoming_swap_requests | List Incoming Swap Requests
 [**backendSchedApiViewsListOutgoingSwapRequests**](DefaultApi.md#backendSchedApiViewsListOutgoingSwapRequests) | **GET** /sched_api/outgoing_swap_requests | List Outgoing Swap Requests
 [**backendSchedApiViewsListQuestions**](DefaultApi.md#backendSchedApiViewsListQuestions) | **GET** /sched_api/questions/{subject_id} | List Questions
+[**backendSchedApiViewsListScheduleTaShifts**](DefaultApi.md#backendSchedApiViewsListScheduleTaShifts) | **GET** /sched_api/schedule_ta_shifts/{schedule_id} | List Schedule Ta Shifts
 [**backendSchedApiViewsListSchedules**](DefaultApi.md#backendSchedApiViewsListSchedules) | **GET** /sched_api/schedules/{subject_id} | List Schedules
 [**backendSchedApiViewsListSchools**](DefaultApi.md#backendSchedApiViewsListSchools) | **GET** /sched_api/schools | List Schools
 [**backendSchedApiViewsListSchoolsPaginated**](DefaultApi.md#backendSchedApiViewsListSchoolsPaginated) | **GET** /sched_api/schools_paginated | List Schools Paginated
@@ -34,7 +37,7 @@ Method | HTTP request | Description
 [**backendSchedApiViewsRemoveStudentFromShift**](DefaultApi.md#backendSchedApiViewsRemoveStudentFromShift) | **PUT** /sched_api/remove_student_from_shift/{shift_id} | Remove Student From Shift
 [**backendSchedApiViewsRemoveTaFromShift**](DefaultApi.md#backendSchedApiViewsRemoveTaFromShift) | **PUT** /sched_api/remove_ta_from_shift/{shift_id} | Remove Ta From Shift
 [**backendSchedApiViewsUnanswerQuestion**](DefaultApi.md#backendSchedApiViewsUnanswerQuestion) | **PUT** /sched_api/unanswer_question/{question_id} | Unanswer Question
-[**backendSchedApiViewsUpdateSubject**](DefaultApi.md#backendSchedApiViewsUpdateSubject) | **PUT** /sched_api/subject/{subject_id} | Update Subject
+[**backendSchedApiViewsUpdateSubject**](DefaultApi.md#backendSchedApiViewsUpdateSubject) | **PUT** /sched_api/update_subject/{subject_id} | Update Subject
 
 
 
@@ -480,6 +483,49 @@ No authorization required
 - **Accept**: application/json
 
 
+## backendSchedApiViewsDeleteSchedule
+
+> Success backendSchedApiViewsDeleteSchedule(scheduleId)
+
+Delete Schedule
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+let scheduleId = "scheduleId_example"; // String | 
+apiInstance.backendSchedApiViewsDeleteSchedule(scheduleId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scheduleId** | **String**|  | 
+
+### Return type
+
+[**Success**](Success.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## backendSchedApiViewsDeleteSubject
 
 > Success backendSchedApiViewsDeleteSubject(subjectId)
@@ -650,6 +696,45 @@ No authorization required
 - **Accept**: application/json
 
 
+## backendSchedApiViewsListEducatorSchedules
+
+> [ScheduleSchema] backendSchedApiViewsListEducatorSchedules()
+
+List Educator Schedules
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+apiInstance.backendSchedApiViewsListEducatorSchedules((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[ScheduleSchema]**](ScheduleSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## backendSchedApiViewsListGroups
 
 > [GroupSchema] backendSchedApiViewsListGroups()
@@ -799,6 +884,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[QuestionSchema]**](QuestionSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## backendSchedApiViewsListScheduleTaShifts
+
+> [ShiftSchema] backendSchedApiViewsListScheduleTaShifts(scheduleId)
+
+List Schedule Ta Shifts
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+let scheduleId = "scheduleId_example"; // String | 
+apiInstance.backendSchedApiViewsListScheduleTaShifts(scheduleId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scheduleId** | **String**|  | 
+
+### Return type
+
+[**[ShiftSchema]**](ShiftSchema.md)
 
 ### Authorization
 

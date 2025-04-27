@@ -315,7 +315,8 @@ def create_subject(request, subject: SubjectCreateSchema, is_ta_hours: bool):
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to create a subject."}
 
-@sched_api.put("/subject/{subject_id}", response={200: SubjectSchema, 403: Error})
+
+@sched_api.put("/update_subject/{subject_id}", response={200: SubjectSchema, 403: Error})
 @require_auth
 def update_subject(request, subject_id: uuid.UUID, updated: SubjectCreateSchema):
     user = request.user
@@ -330,12 +331,13 @@ def update_subject(request, subject_id: uuid.UUID, updated: SubjectCreateSchema)
     return 403, {"message": "You are not authorized to update a subject."}
 
 
-@sched_api.delete("/subject/{subject_id}", response={200: Success, 403: Error})
+@sched_api.delete("/delete_subject/{subject_id}", response={200: Success, 403: Error})
 @require_auth
 def delete_subject(request, subject_id: uuid.UUID):
     user = request.user
     if user.groups.filter(name="Educator").exists():
         try:
+            print("trying to delete")
             subject = Subject.objects.get(id=subject_id)
             subject.delete()
             return 200, {"message": "Subject deleted successfully."}
@@ -344,10 +346,9 @@ def delete_subject(request, subject_id: uuid.UUID):
     return 403, {"message": "You are not authorized to delete a subject."}
 
 
-
 # SCHEDULES-----------------------------------------------------------------------
 
-@sched_api.get("schedules/{subject_id}", response={200: List[ScheduleSchema], 403: Error})
+@sched_api.get("/schedules/{subject_id}", response={200: List[ScheduleSchema], 403: Error})
 @require_auth
 def list_schedules(request, subject_id: uuid.UUID):
     try:
@@ -358,7 +359,21 @@ def list_schedules(request, subject_id: uuid.UUID):
         return 403, {"message": str(e)}
 
 
-@sched_api.get("ta_hour_schedule", response={200: ScheduleSchema, 403: Error})
+@sched_api.get("/educator_schedules", response={200: List[ScheduleSchema], 403: Error})
+@require_auth
+def list_educator_schedules(request):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            schedules = Schedule.objects.filter(educator__id=user.id)
+            return 200, schedules
+        except Exception as e:
+            return 403, {"message": str(e)}
+    else:
+        return 403, {"message": "You are not authorized to view this resource."}
+
+
+@sched_api.get("/ta_hour_schedule", response={200: ScheduleSchema, 403: Error})
 @require_auth
 def list_ta_hour_schedule(request):
     try:
@@ -366,8 +381,7 @@ def list_ta_hour_schedule(request):
         if ta_hour_subject:
             schedule = Schedule.objects.filter(
                 subject__id=ta_hour_subject.id).first()
-            if schedule:
-                return 200, schedule
+            return 200, schedule
         else:
             return 403, {"message": "No TA hours subject found."}
     except Exception as e:
@@ -408,6 +422,24 @@ def create_schedule(request, subject_id: uuid.UUID):
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to create a schedule."}
 
+
+@sched_api.delete("/delete_schedule/{schedule_id}", response={200: Success, 403: Error})
+@require_auth
+def delete_schedule(request, schedule_id: uuid.UUID):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            schedule = Schedule.objects.get(id=schedule_id)
+            if not schedule:
+                return 403, {"message": "Schedule not found."}
+            if schedule.educator != user:
+                return 403, {"message": "You are not authorized to delete this schedule."}
+            schedule.delete()
+            return 200, {"message": "Schedule deleted successfully."}
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to delete a schedule."}
+
 # SHIFTS-----------------------------------------------------------------------
 
 
@@ -415,9 +447,14 @@ def create_schedule(request, subject_id: uuid.UUID):
 @require_auth
 def list_ta_shifts(request, subject_id: uuid.UUID):
     shifts = Shift.objects.filter(schedule__subject__id=subject_id)
-    if shifts != None:
-        return 200, shifts
-    return 403, {"message": "You are not authorized to view this resource."}
+    return 200, shifts
+
+
+@sched_api.get("/schedule_ta_shifts/{schedule_id}", response={200: List[ShiftSchema], 403: Error})
+@require_auth
+def list_schedule_ta_shifts(request, schedule_id: uuid.UUID):
+    shifts = Shift.objects.filter(schedule__id=schedule_id)
+    return 200, shifts
 
 
 @sched_api.get("/ta_hour_shift", response={200: List[ShiftSchema], 403: Error})
