@@ -33,6 +33,8 @@ import { useState, useLayoutEffect } from "react";
 import { toaster } from "./ui/toaster";
 import { use } from "react";
 import { FaTrash, FaUsers, FaUser, FaMinus } from "react-icons/fa";
+import ListUsersSchema from "../client/src/model/ListStudentsSchema";
+import { on } from "superagent";
 
 const api = new DefaultApi();
 
@@ -82,6 +84,80 @@ function deleteScheduleAPI(schedule_id) {
   });
 }
 
+function deleteShiftAPI(shift_id) {
+  return new Promise((resolve, reject) => {
+    api.backendSchedApiViewsDeleteShift(shift_id, (error, data, response) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+function tasNotInShiftAPI(shift_id) {
+  return new Promise((resolve, reject) => {
+    api.backendSchedApiViewsListTasNotInShift(
+      shift_id,
+      (error, data, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      }
+    );
+  });
+}
+
+function studentsNotInShiftAPI(shift_id) {
+  return new Promise((resolve, reject) => {
+    api.backendSchedApiViewsListStudentsNotInShift(
+      shift_id,
+      (error, data, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      }
+    );
+  });
+}
+
+function edAddStudentToShiftAPI(shift_id, student_ids) {
+  return new Promise((resolve, reject) => {
+    api.backendSchedApiViewsEdAddStudentToShift(
+      shift_id,
+      student_ids,
+      (error, data, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      }
+    );
+  });
+}
+
+function edAddTAToShiftAPI(shift_id, ta_ids) {
+  return new Promise((resolve, reject) => {
+    api.backendSchedApiViewsEdAddTaToShift(
+      shift_id,
+      ta_ids,
+      (error, data, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      }
+    );
+  });
+}
+
 const weekFrameworks = createListCollection({
   items: [
     { label: "Monday", value: "Monday" },
@@ -94,18 +170,234 @@ const weekFrameworks = createListCollection({
   ],
 });
 
-function EducatorShiftSidebar({ id }) {
+function EducatorAddSideBarButton({
+  submitFunction,
+  target,
+  icon,
+  target_framework,
+  value_name,
+  setValue,
+  bgColor,
+  isOpen,
+  setOpen,
+}) {
+  const [targets, setTargets] = useState([]);
+
+  return (
+    <Dialog.Root open={isOpen} onOpenChange={(e) => setOpen(e.open)}>
+      <Dialog.Trigger asChild>
+        <IconButton size="lg" bgColor={bgColor}>
+          {icon}
+        </IconButton>
+      </Dialog.Trigger>
+      <Portal>
+        <Dialog.Backdrop />
+        <Dialog.Positioner>
+          <Dialog.Content>
+            <Dialog.Header>Add {target}s</Dialog.Header>
+            <form onSubmit={submitFunction}>
+              <Dialog.Body>
+                <Fieldset.Root>
+                  <Fieldset.Content>
+                    <Field.Root required>
+                      <Field.RequiredIndicator />
+                      <Field.Label>{target}s</Field.Label>
+                      <Select.Root
+                        multiple
+                        collection={target_framework}
+                        value={targets}
+                        onValueChange={(e) => {
+                          setValue(`${value_name}`, e.value);
+                          setTargets(e.value);
+                        }}
+                      >
+                        <Select.HiddenSelect />
+                        <Select.Control>
+                          <Select.Trigger>
+                            <Select.ValueText
+                              placeholder={`Select ${target}s`}
+                            />
+                          </Select.Trigger>
+                          <Select.IndicatorGroup>
+                            <Select.Indicator />
+                          </Select.IndicatorGroup>
+                        </Select.Control>
+                        <Select.Positioner>
+                          <Select.Content>
+                            {target_framework.items?.map((target) => (
+                              <Select.Item key={target.id} item={target.value}>
+                                {target.label}
+                                <Select.ItemIndicator />
+                              </Select.Item>
+                            ))}
+                          </Select.Content>
+                        </Select.Positioner>
+                      </Select.Root>
+                    </Field.Root>
+                  </Fieldset.Content>
+                </Fieldset.Root>
+              </Dialog.Body>
+              <Dialog.Footer>
+                <Button type="submit">Add {target}s</Button>
+              </Dialog.Footer>
+            </form>
+            <Dialog.CloseTrigger asChild>
+              <CloseButton />
+            </Dialog.CloseTrigger>
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Portal>
+    </Dialog.Root>
+  );
+}
+
+function EducatorShiftSidebar({ shift_id, schedule_id, tas, students }) {
   const queryClient = useQueryClient();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [taFramework, setTaFramework] = useState({});
+  const [studentFramework, setStudentFramework] = useState({});
+  const [isOpenStudentAdd, setIsOpenStudentAdd] = useState(false);
+  const [isOpenTAAdd, setIsOpenTAAdd] = useState(false);
+
+  const { handleSubmit: handleTASubmit, setValue: setTAValue } = useForm({
+    defaultValues: {
+      ta_ids: [],
+    },
+  });
+
+  const { handleSubmit: handleStudentSubmit, setValue: setStudentValue } =
+    useForm({
+      defaultValues: {
+        student_ids: [],
+      },
+    });
+
+  const deleteShiftMutation = useMutation({
+    mutationFn: () => deleteShiftAPI(shift_id),
+    onSuccess: () => {
+      toaster.create({
+        title: "Success",
+        description: "Shift deleted successfully",
+        status: "success",
+        duration: 5000,
+      });
+      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
+    },
+    onError: (error) => {
+      toaster.create({
+        title: "Error",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+      });
+    },
+  });
+
+  const addStudentToShiftMutation = useMutation({
+    mutationFn: (student_ids) => edAddStudentToShiftAPI(shift_id, student_ids),
+    onSuccess: () => {
+      toaster.create({
+        title: "Success",
+        description: "Student added to shift successfully",
+        status: "success",
+        duration: 5000,
+      });
+      setIsOpenStudentAdd(false);
+      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
+      queryClient.invalidateQueries([`students_not_in_shift ${shift_id}`]);
+    },
+    onError: (error) => {
+      toaster.create({
+        title: "Error",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+      });
+    },
+  });
+
+  const addTAToShiftMutation = useMutation({
+    mutationFn: (ta_ids) => edAddTAToShiftAPI(shift_id, ta_ids),
+    onSuccess: () => {
+      toaster.create({
+        title: "Success",
+        description: "TA added to shift successfully",
+        status: "success",
+        duration: 5000,
+      });
+      setIsOpenTAAdd(false);
+      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
+      queryClient.invalidateQueries([`tas_not_in_shift ${shift_id}`]);
+    },
+    onError: (error) => {
+      toaster.create({
+        title: "Error",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+      });
+    },
+  });
+
+  function handleTAAddSubmitForm(data, e) {
+    e.preventDefault();
+    const ta_ids_Data = new ListUsersSchema(data.ta_ids);
+    addTAToShiftMutation.mutate(ta_ids_Data);
+  }
+
+  function handleStudentAddSubmitForm(data, e) {
+    e.preventDefault();
+    const student_ids_Data = new ListUsersSchema(data.student_ids);
+    addStudentToShiftMutation.mutate(student_ids_Data);
+  }
+
+  useLayoutEffect(() => {
+    if (students) {
+      const studentList = students.map((student) => ({
+        label: student.username,
+        value: student.id,
+      }));
+
+      const studentFrameworkRaw = createListCollection({
+        items: studentList,
+      });
+
+      setStudentFramework(studentFrameworkRaw);
+    }
+
+    if (tas) {
+      const taList = tas.map((ta) => ({
+        label: ta.username,
+        value: ta.id,
+      }));
+      const taFrameworkRaw = createListCollection({
+        items: taList,
+      });
+
+      setTaFramework(taFrameworkRaw);
+    }
+  }, [tas, students]);
+
+  function deleteShift() {
+    deleteShiftMutation.mutate();
+  }
 
   return (
     <HStack spacing={4}>
       <Stack>
         <Text>TA controls:</Text>
         <Stack spacing={2} alignItems="center">
-          <IconButton size="lg" bgColor="green.200">
-            <FaUser />{" "}
-          </IconButton>
+          <EducatorAddSideBarButton
+            submitFunction={handleTASubmit(handleTAAddSubmitForm)}
+            target="TA"
+            icon={<FaUser />}
+            target_framework={taFramework}
+            value_name="ta_ids"
+            setValue={setTAValue}
+            bgColor="green.200"
+            isOpen={isOpenTAAdd}
+            setOpen={setIsOpenTAAdd}
+          />
           <IconButton size="lg" bgColor="red.400">
             <FaMinus />{" "}
           </IconButton>
@@ -114,21 +406,32 @@ function EducatorShiftSidebar({ id }) {
       <Stack>
         <Text>Student controls:</Text>
         <Stack spacing={2} alignItems="center">
-          <IconButton size="lg" bgColor="green.200">
-            <FaUsers />
-          </IconButton>
+          <EducatorAddSideBarButton
+            submitFunction={handleStudentSubmit(handleStudentAddSubmitForm)}
+            target="Student"
+            icon={<FaUsers />}
+            target_framework={studentFramework}
+            value_name="student_ids"
+            setValue={setStudentValue}
+            bgColor="green.200"
+            isOpen={isOpenStudentAdd}
+            setOpen={setIsOpenStudentAdd}
+          />
           <IconButton size="lg" bgColor="red.400">
             <FaMinus />
           </IconButton>
         </Stack>
       </Stack>
+      <IconButton onClick={deleteShift} size="lg" bgColor="red.400">
+        <FaTrash />
+      </IconButton>
     </HStack>
   );
 }
 
-function EducatorFooter({ id }) {
+function EducatorFooter({ schedule_id }) {
   const queryClient = useQueryClient();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [open, setOpen] = useState(false);
   const [dayValue, setDayValue] = useState([]);
   const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
@@ -141,7 +444,7 @@ function EducatorFooter({ id }) {
   });
 
   const taShiftMutation = useMutation({
-    mutationFn: (data) => createTAShft(id, data),
+    mutationFn: (data) => createTAShft(schedule_id, data),
     onSuccess: () => {
       toaster.create({
         title: "Success",
@@ -149,8 +452,8 @@ function EducatorFooter({ id }) {
         status: "success",
         duration: 5000,
       });
-      onClose();
-      queryClient.invalidateQueries([`shifts ${id}`]);
+      setOpen(false);
+      queryClient.invalidateQueries([`shifts ${schedule_id}`]);
     },
     onError: (error) => {
       toaster.create({
@@ -164,7 +467,6 @@ function EducatorFooter({ id }) {
 
   function submitShift(data, e) {
     e.preventDefault();
-    console.log(data);
     const shiftData = new ShiftSchemaCreate(
       data.start_time,
       data.end_time,
@@ -176,11 +478,19 @@ function EducatorFooter({ id }) {
     taShiftMutation.mutate(shiftData);
   }
 
+  console.log(open);
+
   return (
     <HStack>
-      <Dialog.Root isOpen={isOpen} onClose={onClose}>
+      <Dialog.Root
+        open={open}
+        onOpenChange={(e) => {
+          console.log("value", e.open);
+          setOpen(e.open);
+        }}
+      >
         <Dialog.Trigger asChild>
-          <Button onClick={onOpen}>Add Shift</Button>
+          <Button>Add Shift</Button>
         </Dialog.Trigger>
         <Portal>
           <Dialog.Backdrop />
@@ -249,7 +559,7 @@ function EducatorFooter({ id }) {
                 </Dialog.Body>
               </form>
               <Dialog.CloseTrigger asChild>
-                <CloseButton onClick={onClose} />
+                <CloseButton />
               </Dialog.CloseTrigger>
             </Dialog.Content>
           </Dialog.Positioner>
@@ -261,6 +571,7 @@ function EducatorFooter({ id }) {
 
 function ShiftCell({
   shift_id,
+  schedule_id,
   start_time,
   end_time,
   tas,
@@ -282,13 +593,33 @@ function ShiftCell({
   const remainingTAs = max_tas - tas.length;
   const remainingStudents = max_students - students.length;
 
-  const taAvatars = tas.map((ta) => (
+  const {
+    data: tasNotInShift,
+    isLoading: isLoadingTAsNotInShift,
+    isError: isErrorTAsNotInShift,
+    error: errorTAsNotInShift,
+  } = useQuery({
+    queryKey: [`tas_not_in_shift ${shift_id}`],
+    queryFn: () => tasNotInShiftAPI(shift_id),
+  });
+
+  const {
+    data: studentsNotInShift,
+    isLoading: isLoadingStudentsNotInShift,
+    isError: isErrorStudentsNotInShift,
+    error: errorStudentsNotInShift,
+  } = useQuery({
+    queryKey: [`students_not_in_shift ${shift_id}`],
+    queryFn: () => studentsNotInShiftAPI(shift_id),
+  });
+
+  const taAvatars = tas?.map((ta) => (
     <Avatar.Root key={ta.id}>
       <Avatar.Fallback name={ta.username} />
     </Avatar.Root>
   ));
 
-  const studentAvatars = students.map((student) => (
+  const studentAvatars = students?.map((student) => (
     <Avatar.Root key={student.id}>
       <Avatar.Fallback name={student.username} />
     </Avatar.Root>
@@ -296,8 +627,18 @@ function ShiftCell({
 
   let sidebar = null;
 
+  console.log(tasNotInShift, studentsNotInShift);
+  console.log(shift_id);
+
   if (is_educator_card) {
-    sidebar = <EducatorShiftSidebar id={shift_id} />;
+    sidebar = (
+      <EducatorShiftSidebar
+        shift_id={shift_id}
+        schedule_id={schedule_id}
+        tas={tasNotInShift}
+        students={studentsNotInShift}
+      />
+    );
   }
 
   return (
@@ -346,7 +687,7 @@ function ShiftCell({
 }
 
 export default function ScheduleCard({
-  id,
+  schedule_id,
   subject_name,
   is_ta_hours,
   is_educator_card,
@@ -369,12 +710,12 @@ export default function ScheduleCard({
     isError: isErrorShifts,
     error: errorShifts,
   } = useQuery({
-    queryKey: [`shifts ${id}`],
-    queryFn: () => getShifts(id),
+    queryKey: [`shifts ${schedule_id}`],
+    queryFn: () => getShifts(schedule_id),
   });
 
   const deleteScheduleMutation = useMutation({
-    mutationFn: (schedule_id) => deleteScheduleAPI(schedule_id),
+    mutationFn: () => deleteScheduleAPI(schedule_id),
     onSuccess: () => {
       toaster.create({
         title: "Success",
@@ -396,7 +737,7 @@ export default function ScheduleCard({
   });
 
   function deleteSchedule() {
-    deleteScheduleMutation.mutate(id);
+    deleteScheduleMutation.mutate();
   }
 
   useLayoutEffect(() => {
@@ -437,7 +778,7 @@ export default function ScheduleCard({
   let footer = null;
 
   if (is_educator_card) {
-    footer = <EducatorFooter id={id} />;
+    footer = <EducatorFooter schedule_id={schedule_id} />;
   }
 
   return (
@@ -470,6 +811,7 @@ export default function ScheduleCard({
                   <Table.Row key={shift.id}>
                     <ShiftCell
                       shift_id={shift.id}
+                      schedule_id={schedule_id}
                       start_time={shift.start_time}
                       end_time={shift.end_time}
                       tas={shift.ta}
@@ -494,6 +836,7 @@ export default function ScheduleCard({
                   <Table.Row key={shift.id}>
                     <ShiftCell
                       shift_id={shift.id}
+                      schedule_id={schedule_id}
                       start_time={shift.start_time}
                       end_time={shift.end_time}
                       tas={shift.ta}
@@ -518,6 +861,7 @@ export default function ScheduleCard({
                   <Table.Row key={shift.id}>
                     <ShiftCell
                       shift_id={shift.id}
+                      schedule_id={schedule_id}
                       start_time={shift.start_time}
                       end_time={shift.end_time}
                       tas={shift.ta}
@@ -542,6 +886,7 @@ export default function ScheduleCard({
                   <Table.Row key={shift.id}>
                     <ShiftCell
                       shift_id={shift.id}
+                      schedule_id={schedule_id}
                       start_time={shift.start_time}
                       end_time={shift.end_time}
                       tas={shift.ta}
@@ -566,6 +911,7 @@ export default function ScheduleCard({
                   <Table.Row key={shift.id}>
                     <ShiftCell
                       shift_id={shift.id}
+                      schedule_id={schedule_id}
                       start_time={shift.start_time}
                       end_time={shift.end_time}
                       tas={shift.ta}
@@ -590,6 +936,7 @@ export default function ScheduleCard({
                   <Table.Row key={shift.id}>
                     <ShiftCell
                       shift_id={shift.id}
+                      schedule_id={schedule_id}
                       start_time={shift.start_time}
                       end_time={shift.end_time}
                       tas={shift.ta}
@@ -614,6 +961,7 @@ export default function ScheduleCard({
                   <Table.Row key={shift.id}>
                     <ShiftCell
                       shift_id={shift.id}
+                      schedule_id={schedule_id}
                       start_time={shift.start_time}
                       end_time={shift.end_time}
                       tas={shift.ta}

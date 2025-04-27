@@ -17,6 +17,7 @@ import CommentCreateSchema from './model/CommentCreateSchema';
 import CommentSchema from './model/CommentSchema';
 import Error from './model/Error';
 import GroupSchema from './model/GroupSchema';
+import ListUsersSchema from './model/ListUsersSchema';
 import QuestionCreateSchema from './model/QuestionCreateSchema';
 import QuestionSchema from './model/QuestionSchema';
 import ScheduleSchema from './model/ScheduleSchema';
@@ -92,6 +93,12 @@ export {
      * @property {module:model/GroupSchema}
      */
     GroupSchema,
+
+    /**
+     * The ListUsersSchema model constructor.
+     * @property {module:model/ListUsersSchema}
+     */
+    ListUsersSchema,
 
     /**
      * The QuestionCreateSchema model constructor.

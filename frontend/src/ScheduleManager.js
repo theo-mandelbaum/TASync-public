@@ -41,7 +41,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import ScheduleCard from "./components/ScheduleCard";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { toaster } from "./components/ui/toaster";
 
 const api = new DefaultApi();
@@ -106,6 +106,7 @@ export default function ScheduleManager() {
   const [subjectDict, setSubjectDict] = useState({});
   const [subjectFramework, setSubjectFramework] = useState({ items: [] });
   const [placeholder, setPlaceholder] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const {
     register,
@@ -128,8 +129,10 @@ export default function ScheduleManager() {
     queryKey: ["schedules"],
     queryFn: getUserSchedules,
     placeholderData: (prevData) => prevData,
-    enabled: group !== null && group !== undefined && group.name === "Educator",
+    enabled: group !== null && group !== undefined,
     refetchOnWindowFocus: false,
+    retry: 3,
+    retryDelay: 200,
   });
 
   const {
@@ -141,8 +144,10 @@ export default function ScheduleManager() {
     queryKey: ["ta_schedule"],
     queryFn: getTAHourSchedule,
     placeholderData: (prevData) => prevData,
-    enabled: group !== null && group !== undefined && group.name === "Educator",
+    enabled: group !== null && group !== undefined,
     refetchOnWindowFocus: false,
+    retry: 3,
+    retryDelay: 200,
   });
 
   const {
@@ -183,7 +188,6 @@ export default function ScheduleManager() {
 
   useLayoutEffect(() => {
     if (group === null || group === undefined || group.name !== "Educator") {
-      console.log(group);
       navigate("/", { replace: true });
     }
   }, [group, navigate]);
@@ -219,11 +223,18 @@ export default function ScheduleManager() {
     postScheduleMutation.mutate(data.subject[0]);
   }
 
+  useLayoutEffect(() => {
+    if (schedules || ta_schedule) {
+      setFirstLoad(false);
+    }
+  }, [schedules, ta_schedule]);
+
   if (
-    isLoadingSchedules ||
-    isFetchingSchedules ||
-    isLoadingTaSchedule ||
-    isFetchingTaSchedule
+    (isLoadingSchedules ||
+      isFetchingSchedules ||
+      isLoadingTaSchedule ||
+      isFetchingTaSchedule) &&
+    firstLoad
   ) {
     return <div>Loading...</div>;
   }
@@ -235,10 +246,10 @@ export default function ScheduleManager() {
     <Container h="100%">
       <Heading>Schedule Manager</Heading>
       <Flex direction="column" gap={4} mb={7}>
-        {schedules.map((schedule) => (
+        {schedules?.map((schedule) => (
           <ScheduleCard
             key={schedule.id}
-            id={schedule.id}
+            schedule_id={schedule.id}
             subject_name={schedule.subject.name}
             is_ta_hours={schedule.subject.is_ta_hours}
             is_educator_card={true}
@@ -250,7 +261,7 @@ export default function ScheduleManager() {
         {ta_schedule && (
           <ScheduleCard
             key={ta_schedule.id}
-            id={ta_schedule.id}
+            schedule_id={ta_schedule.id}
             subject_name={ta_schedule.subject.name}
             is_ta_hours={ta_schedule.subject.is_ta_hours}
             is_educator_card={true}

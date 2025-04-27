@@ -7,6 +7,7 @@ docs/CommentSchema.md
 docs/DefaultApi.md
 docs/Error.md
 docs/GroupSchema.md
+docs/ListUsersSchema.md
 docs/QuestionCreateSchema.md
 docs/QuestionSchema.md
 docs/ScheduleSchema.md
@@ -28,6 +29,7 @@ src/model/CommentCreateSchema.js
 src/model/CommentSchema.js
 src/model/Error.js
 src/model/GroupSchema.js
+src/model/ListUsersSchema.js
 src/model/QuestionCreateSchema.js
 src/model/QuestionSchema.js
 src/model/ScheduleSchema.js

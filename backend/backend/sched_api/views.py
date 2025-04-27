@@ -103,6 +103,10 @@ class SwapRequestSchema(Schema):
     date_requested: datetime
 
 
+class ListUsersSchema(Schema):
+    ids: List[uuid.UUID]
+
+
 class Success(Schema):
     message: str
 
@@ -161,6 +165,27 @@ def get_user_group(request):
         return group
     else:
         return 403, {"message": "User does not belong to any group."}
+
+
+@sched_api.get("/get_students", response={200: List[UserSchema]})
+@require_auth
+def list_students(request):
+    students = User.objects.filter(groups__name="Student")
+    return 200, students
+
+
+@sched_api.get("/get_tas", response={200: List[UserSchema]})
+@require_auth
+def list_tas(request):
+    tas = User.objects.filter(groups__name="TA")
+    return 200, tas
+
+
+@sched_api.get("/get_educators", response={200: List[UserSchema]})
+@require_auth
+def list_educators(request):
+    educators = User.objects.filter(groups__name="Educator")
+    return 200, educators
 # SCHOOLS------------------------------------------------------------------------
 
 
@@ -532,6 +557,36 @@ def list_shift_tas(request, shift_id: uuid.UUID):
         return 403, {"message": str(e)}
 
 
+@sched_api.get("/tas_not_in_shift/{shift_id}", response={200: List[UserSchema], 403: Error})
+@require_auth
+def list_tas_not_in_shift(request, shift_id: uuid.UUID):
+    try:
+        shift = Shift.objects.get(id=shift_id)
+        if not shift:
+            return 403, {"message": "Shift not found."}
+        users = User.objects.filter(
+            groups__name="TA").exclude(ta_shift__id=shift_id)
+        print("INNER")
+        print(users)
+        return 200, users
+    except Exception as e:
+        return 403, {"message": str(e)}
+
+
+@sched_api.get("/students_not_in_shift/{shift_id}", response={200: List[UserSchema], 403: Error})
+@require_auth
+def list_students_not_in_shift(request, shift_id: uuid.UUID):
+    try:
+        shift = Shift.objects.get(id=shift_id)
+        if not shift:
+            return 403, {"message": "Shift not found."}
+        users = User.objects.filter(groups__name="Student").exclude(
+            student_shift__id=shift_id)
+        return 200, users
+    except Exception as e:
+        return 403, {"message": str(e)}
+
+
 @sched_api.get("/shift_students/{shift_id}", response={200: List[UserSchema], 403: Error})
 @require_auth
 def list_shift_students(request, shift_id: uuid.UUID):
@@ -623,6 +678,130 @@ def remove_student_from_shift(request, shift_id: uuid.UUID):
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to remove a student from this shift."}
+
+
+@sched_api.put("/ed_add_student_to_shift/{shift_id}", response={200: ShiftSchema, 403: Error})
+@require_auth
+def ed_add_student_to_shift(request, shift_id: uuid.UUID, student_ids: ListUsersSchema):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            shift = Shift.objects.get(id=shift_id)
+            if not shift:
+                return 403, {"message": "Shift not found."}
+            if shift.students.count() + len(student_ids.ids) > shift.max_students:
+                return 403, {"message": "Max student limit reached for this shift."}
+            for student_id in student_ids.ids:
+                student = User.objects.get(id=student_id)
+                if not student:
+                    return 403, {"message": "Student not found."}
+                if not student.groups.filter(name="Student").exists():
+                    return 403, {"message": "User is not a student."}
+                if shift.students.filter(id=student.id).exists():
+                    return 403, {"message": "Student already assigned to this shift."}
+            for student_id in student_ids.ids:
+                student = User.objects.get(id=student_id)
+                shift.students.add(student)
+                shift.save()
+            return 200, shift
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to add a student to this shift."}
+
+
+@sched_api.put("/ed_remove_student_from_shift/{shift_id}/{student_id}", response={200: ShiftSchema, 403: Error})
+@require_auth
+def ed_remove_student_from_shift(request, shift_id: uuid.UUID, student_id: uuid.UUID):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            shift = Shift.objects.get(id=shift_id)
+            student = User.objects.get(id=student_id)
+            if not shift:
+                return 403, {"message": "Shift not found."}
+            if not student:
+                return 403, {"message": "Student not found."}
+            if not student.groups.filter(name="Student").exists():
+                return 403, {"message": "User is not a student."}
+            if shift.students.filter(id=student.id).exists():
+                shift.students.remove(student)
+                shift.save()
+                return 200, shift
+            else:
+                return 403, {"message": "Student is not assigned to this shift."}
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to remove a student from this shift."}
+
+
+@sched_api.put("/ed_add_ta_to_shift/{shift_id}", response={200: ShiftSchema, 403: Error})
+@require_auth
+def ed_add_ta_to_shift(request, shift_id: uuid.UUID, ta_ids: ListUsersSchema):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            shift = Shift.objects.get(id=shift_id)
+            if not shift:
+                return 403, {"message": "Shift not found."}
+            if shift.ta.count() + len(ta_ids.ids) > shift.max_ta:
+                return 403, {"message": "Max TA limit reached for this shift."}
+            for ta_id in ta_ids.ids:
+                ta = User.objects.get(id=ta_id)
+                if not ta:
+                    return 403, {"message": "TA not found."}
+                if not ta.groups.filter(name="TA").exists():
+                    return 403, {"message": "User is not a TA."}
+                if shift.ta.filter(id=ta.id).exists():
+                    return 403, {"message": "TA already assigned to this shift."}
+            for ta_id in ta_ids.ids:
+                ta = User.objects.get(id=ta_id)
+                shift.ta.add(ta)
+                shift.save()
+            return 200, shift
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to add a TA to this shift."}
+
+
+@sched_api.put("/ed_remove_student_from_shift/{shift_id}/{ta_id}", response={200: ShiftSchema, 403: Error})
+@require_auth
+def ed_remove_ta_from_shift(request, shift_id: uuid.UUID, ta_id: uuid.UUID):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            shift = Shift.objects.get(id=shift_id)
+            ta = User.objects.get(id=ta_id)
+            if not shift:
+                return 403, {"message": "Shift not found."}
+            if not ta:
+                return 403, {"message": "TA not found."}
+            if not ta.groups.filter(name="TA").exists():
+                return 403, {"message": "User is not a TA."}
+            if shift.ta.filter(id=ta.id).exists():
+                shift.ta.remove(ta)
+                shift.save()
+                return 200, shift
+            else:
+                return 403, {"message": "TA is not assigned to this shift."}
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to remove a TA from this shift."}
+
+
+@sched_api.delete("/delete_shift/{shift_id}", response={200: Success, 403: Error})
+@require_auth
+def delete_shift(request, shift_id: uuid.UUID):
+    user = request.user
+    if user.groups.filter(name="Educator").exists():
+        try:
+            shift = Shift.objects.get(id=shift_id)
+            if not shift:
+                return 403, {"message": "Shift not found."}
+            shift.delete()
+            return 200, {"message": "Shift deleted successfully."}
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to delete a shift."}
 
 
 @sched_api.post("/create_swap_request", response={200: SwapRequestSchema, 403: Error})
