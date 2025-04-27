@@ -362,7 +362,7 @@ function createRouter(config) {
           ),
         },
         {
-          path: "/subjecthome/:subjectId",
+          path: "/subjecthome/:subjectID",
           element: (
             <AuthenticatedRoute>
               <SubjectHome />
