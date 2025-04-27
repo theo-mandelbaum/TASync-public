@@ -709,26 +709,28 @@ def ed_add_student_to_shift(request, shift_id: uuid.UUID, student_ids: ListUsers
     return 403, {"message": "You are not authorized to add a student to this shift."}
 
 
-@sched_api.put("/ed_remove_student_from_shift/{shift_id}/{student_id}", response={200: ShiftSchema, 403: Error})
+@sched_api.put("/ed_remove_student_from_shift/{shift_id}", response={200: ShiftSchema, 403: Error})
 @require_auth
-def ed_remove_student_from_shift(request, shift_id: uuid.UUID, student_id: uuid.UUID):
+def ed_remove_student_from_shift(request, shift_id: uuid.UUID, student_ids: ListUsersSchema):
     user = request.user
     if user.groups.filter(name="Educator").exists():
         try:
             shift = Shift.objects.get(id=shift_id)
-            student = User.objects.get(id=student_id)
             if not shift:
                 return 403, {"message": "Shift not found."}
-            if not student:
-                return 403, {"message": "Student not found."}
-            if not student.groups.filter(name="Student").exists():
-                return 403, {"message": "User is not a student."}
-            if shift.students.filter(id=student.id).exists():
+            for student_id in student_ids.ids:
+                student = User.objects.get(id=student_id)
+                if not student:
+                    return 403, {"message": "Student not found."}
+                if not student.groups.filter(name="Student").exists():
+                    return 403, {"message": "User is not a student."}
+                if not shift.students.filter(id=student.id).exists():
+                    return 403, {"message": "Student is not assigned to this shift."}
+            for student_id in student_ids.ids:
+                student = User.objects.get(id=student_id)
                 shift.students.remove(student)
                 shift.save()
                 return 200, shift
-            else:
-                return 403, {"message": "Student is not assigned to this shift."}
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to remove a student from this shift."}
@@ -763,26 +765,28 @@ def ed_add_ta_to_shift(request, shift_id: uuid.UUID, ta_ids: ListUsersSchema):
     return 403, {"message": "You are not authorized to add a TA to this shift."}
 
 
-@sched_api.put("/ed_remove_student_from_shift/{shift_id}/{ta_id}", response={200: ShiftSchema, 403: Error})
+@sched_api.put("/ed_remove_ta_from_shift/{shift_id}", response={200: ShiftSchema, 403: Error})
 @require_auth
-def ed_remove_ta_from_shift(request, shift_id: uuid.UUID, ta_id: uuid.UUID):
+def ed_remove_ta_from_shift(request, shift_id: uuid.UUID, ta_ids: ListUsersSchema):
     user = request.user
     if user.groups.filter(name="Educator").exists():
         try:
             shift = Shift.objects.get(id=shift_id)
-            ta = User.objects.get(id=ta_id)
             if not shift:
                 return 403, {"message": "Shift not found."}
-            if not ta:
-                return 403, {"message": "TA not found."}
-            if not ta.groups.filter(name="TA").exists():
-                return 403, {"message": "User is not a TA."}
-            if shift.ta.filter(id=ta.id).exists():
+            for ta_id in ta_ids.ids:
+                ta = User.objects.get(id=ta_id)
+                if not ta:
+                    return 403, {"message": "TA not found."}
+                if not ta.groups.filter(name="TA").exists():
+                    return 403, {"message": "User is not a TA."}
+                if not shift.ta.filter(id=ta.id).exists():
+                    return 403, {"message": "TA is not assigned to this shift."}
+            for ta_id in ta_ids.ids:
+                ta = User.objects.get(id=ta_id)
                 shift.ta.remove(ta)
                 shift.save()
                 return 200, shift
-            else:
-                return 403, {"message": "TA is not assigned to this shift."}
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to remove a TA from this shift."}

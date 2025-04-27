@@ -19,8 +19,8 @@ Method | HTTP request | Description
 [**backendSchedApiViewsDeleteSubject**](DefaultApi.md#backendSchedApiViewsDeleteSubject) | **DELETE** /sched_api/delete_subject/{subject_id} | Delete Subject
 [**backendSchedApiViewsEdAddStudentToShift**](DefaultApi.md#backendSchedApiViewsEdAddStudentToShift) | **PUT** /sched_api/ed_add_student_to_shift/{shift_id} | Ed Add Student To Shift
 [**backendSchedApiViewsEdAddTaToShift**](DefaultApi.md#backendSchedApiViewsEdAddTaToShift) | **PUT** /sched_api/ed_add_ta_to_shift/{shift_id} | Ed Add Ta To Shift
-[**backendSchedApiViewsEdRemoveStudentFromShift**](DefaultApi.md#backendSchedApiViewsEdRemoveStudentFromShift) | **PUT** /sched_api/ed_remove_student_from_shift/{shift_id}/{student_id} | Ed Remove Student From Shift
-[**backendSchedApiViewsEdRemoveTaFromShift**](DefaultApi.md#backendSchedApiViewsEdRemoveTaFromShift) | **PUT** /sched_api/ed_remove_student_from_shift/{shift_id}/{ta_id} | Ed Remove Ta From Shift
+[**backendSchedApiViewsEdRemoveStudentFromShift**](DefaultApi.md#backendSchedApiViewsEdRemoveStudentFromShift) | **PUT** /sched_api/ed_remove_student_from_shift/{shift_id} | Ed Remove Student From Shift
+[**backendSchedApiViewsEdRemoveTaFromShift**](DefaultApi.md#backendSchedApiViewsEdRemoveTaFromShift) | **PUT** /sched_api/ed_remove_ta_from_shift/{shift_id} | Ed Remove Ta From Shift
 [**backendSchedApiViewsGetUserGroup**](DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
 [**backendSchedApiViewsHandleSwapRequest**](DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 [**backendSchedApiViewsListComments**](DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
@@ -714,7 +714,7 @@ No authorization required
 
 ## backendSchedApiViewsEdRemoveStudentFromShift
 
-> ShiftSchema backendSchedApiViewsEdRemoveStudentFromShift(shiftId, studentId)
+> ShiftSchema backendSchedApiViewsEdRemoveStudentFromShift(shiftId, listUsersSchema)
 
 Ed Remove Student From Shift
 
@@ -725,8 +725,8 @@ import SchedApi from 'sched_api';
 
 let apiInstance = new SchedApi.DefaultApi();
 let shiftId = "shiftId_example"; // String | 
-let studentId = "studentId_example"; // String | 
-apiInstance.backendSchedApiViewsEdRemoveStudentFromShift(shiftId, studentId, (error, data, response) => {
+let listUsersSchema = new SchedApi.ListUsersSchema(); // ListUsersSchema | 
+apiInstance.backendSchedApiViewsEdRemoveStudentFromShift(shiftId, listUsersSchema, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -741,7 +741,7 @@ apiInstance.backendSchedApiViewsEdRemoveStudentFromShift(shiftId, studentId, (er
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **shiftId** | **String**|  | 
- **studentId** | **String**|  | 
+ **listUsersSchema** | [**ListUsersSchema**](ListUsersSchema.md)|  | 
 
 ### Return type
 
@@ -753,13 +753,13 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
 ## backendSchedApiViewsEdRemoveTaFromShift
 
-> ShiftSchema backendSchedApiViewsEdRemoveTaFromShift(shiftId, taId)
+> ShiftSchema backendSchedApiViewsEdRemoveTaFromShift(shiftId, listUsersSchema)
 
 Ed Remove Ta From Shift
 
@@ -770,8 +770,8 @@ import SchedApi from 'sched_api';
 
 let apiInstance = new SchedApi.DefaultApi();
 let shiftId = "shiftId_example"; // String | 
-let taId = "taId_example"; // String | 
-apiInstance.backendSchedApiViewsEdRemoveTaFromShift(shiftId, taId, (error, data, response) => {
+let listUsersSchema = new SchedApi.ListUsersSchema(); // ListUsersSchema | 
+apiInstance.backendSchedApiViewsEdRemoveTaFromShift(shiftId, listUsersSchema, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -786,7 +786,7 @@ apiInstance.backendSchedApiViewsEdRemoveTaFromShift(shiftId, taId, (error, data,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **shiftId** | **String**|  | 
- **taId** | **String**|  | 
+ **listUsersSchema** | [**ListUsersSchema**](ListUsersSchema.md)|  | 
 
 ### Return type
 
@@ -798,7 +798,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

@@ -732,24 +732,23 @@ export default class DefaultApi {
     /**
      * Ed Remove Student From Shift
      * @param {String} shiftId 
-     * @param {String} studentId 
+     * @param {module:model/ListUsersSchema} listUsersSchema 
      * @param {module:api/DefaultApi~backendSchedApiViewsEdRemoveStudentFromShiftCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ShiftSchema}
      */
-    backendSchedApiViewsEdRemoveStudentFromShift(shiftId, studentId, callback) {
-      let postBody = null;
+    backendSchedApiViewsEdRemoveStudentFromShift(shiftId, listUsersSchema, callback) {
+      let postBody = listUsersSchema;
       // verify the required parameter 'shiftId' is set
       if (shiftId === undefined || shiftId === null) {
         throw new Error("Missing the required parameter 'shiftId' when calling backendSchedApiViewsEdRemoveStudentFromShift");
       }
-      // verify the required parameter 'studentId' is set
-      if (studentId === undefined || studentId === null) {
-        throw new Error("Missing the required parameter 'studentId' when calling backendSchedApiViewsEdRemoveStudentFromShift");
+      // verify the required parameter 'listUsersSchema' is set
+      if (listUsersSchema === undefined || listUsersSchema === null) {
+        throw new Error("Missing the required parameter 'listUsersSchema' when calling backendSchedApiViewsEdRemoveStudentFromShift");
       }
 
       let pathParams = {
-        'shift_id': shiftId,
-        'student_id': studentId
+        'shift_id': shiftId
       };
       let queryParams = {
       };
@@ -759,11 +758,11 @@ export default class DefaultApi {
       };
 
       let authNames = [];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = ShiftSchema;
       return this.apiClient.callApi(
-        '/sched_api/ed_remove_student_from_shift/{shift_id}/{student_id}', 'PUT',
+        '/sched_api/ed_remove_student_from_shift/{shift_id}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -780,24 +779,23 @@ export default class DefaultApi {
     /**
      * Ed Remove Ta From Shift
      * @param {String} shiftId 
-     * @param {String} taId 
+     * @param {module:model/ListUsersSchema} listUsersSchema 
      * @param {module:api/DefaultApi~backendSchedApiViewsEdRemoveTaFromShiftCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ShiftSchema}
      */
-    backendSchedApiViewsEdRemoveTaFromShift(shiftId, taId, callback) {
-      let postBody = null;
+    backendSchedApiViewsEdRemoveTaFromShift(shiftId, listUsersSchema, callback) {
+      let postBody = listUsersSchema;
       // verify the required parameter 'shiftId' is set
       if (shiftId === undefined || shiftId === null) {
         throw new Error("Missing the required parameter 'shiftId' when calling backendSchedApiViewsEdRemoveTaFromShift");
       }
-      // verify the required parameter 'taId' is set
-      if (taId === undefined || taId === null) {
-        throw new Error("Missing the required parameter 'taId' when calling backendSchedApiViewsEdRemoveTaFromShift");
+      // verify the required parameter 'listUsersSchema' is set
+      if (listUsersSchema === undefined || listUsersSchema === null) {
+        throw new Error("Missing the required parameter 'listUsersSchema' when calling backendSchedApiViewsEdRemoveTaFromShift");
       }
 
       let pathParams = {
-        'shift_id': shiftId,
-        'ta_id': taId
+        'shift_id': shiftId
       };
       let queryParams = {
       };
@@ -807,11 +805,11 @@ export default class DefaultApi {
       };
 
       let authNames = [];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = ShiftSchema;
       return this.apiClient.callApi(
-        '/sched_api/ed_remove_student_from_shift/{shift_id}/{ta_id}', 'PUT',
+        '/sched_api/ed_remove_ta_from_shift/{shift_id}', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

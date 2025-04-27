@@ -101,7 +101,7 @@ export default function ScheduleManager() {
   const group = JSON.parse(localStorage.getItem("group"));
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [open, setOpen] = useState(false);
 
   const [subjectDict, setSubjectDict] = useState({});
   const [subjectFramework, setSubjectFramework] = useState({ items: [] });
@@ -172,7 +172,7 @@ export default function ScheduleManager() {
         status: "success",
         duration: 5000,
       });
-      onClose();
+      setOpen(false);
       queryClient.invalidateQueries({ queryKey: ["schedules"] });
       queryClient.invalidateQueries({ queryKey: ["ta_schedule"] });
     },
@@ -271,9 +271,9 @@ export default function ScheduleManager() {
           />
         )}
       </Flex>
-      <DialogRoot isOpen={isOpen} onClose={onClose}>
+      <DialogRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
         <DialogTrigger asChild>
-          <Button onClick={onOpen}>Add Schedule</Button>
+          <Button>Add Schedule</Button>
         </DialogTrigger>
         <Portal>
           <DialogBackdrop />
@@ -325,9 +325,7 @@ export default function ScheduleManager() {
                   </FieldsetContent>
                   <DialogFooter>
                     <DialogActionTrigger asChild>
-                      <Button variant="secondary" onClick={onClose}>
-                        Cancel
-                      </Button>
+                      <Button variant="secondary">Cancel</Button>
                     </DialogActionTrigger>
                     <Button type="submit" variant="primary">
                       Submit
@@ -336,7 +334,7 @@ export default function ScheduleManager() {
                 </FieldsetRoot>
               </form>
               <DialogCloseTrigger asChild>
-                <CloseButton onClick={onClose} />
+                <CloseButton />
               </DialogCloseTrigger>
             </DialogContent>
           </DialogPositioner>
