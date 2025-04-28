@@ -237,11 +237,12 @@ const Overview = () => {
       console.log(`Fetched shifts for user ID ${userId}:`, shifts);
       const newEvents = shifts.map((shift) => ({
         Id: shift.id,
-        Subject: `Shift for ${shift.schedule?.educator?.name || "Unknown"}`,
+        Subject: `${shift.schedule?.subject?.name || "Unknown Subject"}`,
         StartTime: setTimeOnDate(shift.date, shift.start_time),
         EndTime: setTimeOnDate(shift.date, shift.end_time),
         IsAllDay: false,
-        Description: `User ID: ${userId}`, // Add user ID to the description for easy filtering
+        Description: `${shift.schedule?.subject?.name || "Unknown Subject"} for ${shift.schedule?.educator?.name || "Unknown TA"}`,
+        userId: `User ID: ${userId}`, // Add user ID to the description for easy filtering
         CalendarId: 1,
       }));
       setEvents((prevEvents) => [...prevEvents, ...newEvents]);
@@ -259,7 +260,7 @@ const Overview = () => {
       fetchAndAddUserShifts(userId); // Fetch and add shifts for the selected user
     } else {
       setSelectedUsers((prev) => prev.filter((id) => id !== userId));
-      setEvents((prevEvents) => prevEvents.filter((event) => event.Description !== `User ID: ${userId}`));
+      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== `User ID: ${userId}`));
       console.log(`Removed events for user ID ${userId}`);
     }
   };
