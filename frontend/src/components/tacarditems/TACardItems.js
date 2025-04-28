@@ -235,10 +235,22 @@ function TACardSideBar({
       setInFrameWork(newInFrameWork);
     }
     if (userShifts && userID) {
-      const usersShiftsFrameWorkRaw = userShifts.map((shift) => ({
-        label: `${shift.schedule.subject.name} ${shift.day_of_week} ${shift.start_time} - ${shift.end_time}`,
-        value: shift.id,
-      }));
+      const usersShiftsFrameWorkRaw = userShifts.map((shift) => {
+        const start_time = new Date(`1970-01-01T${shift.start_time}`)
+          .toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+          .replace("AM", "am")
+          .replace("PM", "pm");
+
+        const end_time = new Date(`1970-01-01T${shift.end_time}`)
+          .toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+          .replace("AM", "am")
+          .replace("PM", "pm");
+
+        return {
+          label: `${shift.schedule.subject.name} ${shift.day_of_week} ${start_time} - ${end_time}`,
+          value: shift.id,
+        };
+      });
       const newUserShiftsFrameWork = createListCollection({
         items: usersShiftsFrameWorkRaw,
       });

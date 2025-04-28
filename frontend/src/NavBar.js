@@ -97,7 +97,7 @@ export default function NavBar() {
             <NavBarItem to="/shift-request" icon="" name="Request Shift" />
           )} */}
           {taVisible && (
-            <NavBarItem to="/swap-requests" icon="" name="view Swap Requests" />
+            <NavBarItem to="/swap-requests" icon="" name="View Swap Requests" />
           )}
           {window.DEVELOPMENT ? (
             <NavBarItem href="http://localhost:1080" name="MailCatcher" />

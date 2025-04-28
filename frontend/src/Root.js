@@ -44,14 +44,9 @@ export default function Root() {
     refetchOnWindowFocus: false,
   });
 
-  console.log("userGroup", userGroup);
-  console.log("enable", enable);
-  console.log("iserror", isErrorUserGroup);
-
   useLayoutEffect(() => {
     if (!status.isAuthenticated) {
       localStorage.removeItem("group");
-      console.log("User is not authenticated, redirecting to login page.");
     }
   }, [status]);
 
@@ -67,8 +62,6 @@ export default function Root() {
   useLayoutEffect(() => {
     if (!isLoadingUserGroup && !isFetchingUserGroup && status.isAuthenticated) {
       if (isErrorUserGroup) {
-        console.log("auth", status.isAuthenticated);
-        console.log("usergroup", userGroup);
         localStorage.removeItem("group");
         if (!currentURL.includes("choosegroup")) {
           navigate(`/choosegroup`, { replace: true });
