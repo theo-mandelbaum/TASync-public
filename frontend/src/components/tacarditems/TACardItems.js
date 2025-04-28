@@ -35,7 +35,7 @@ function getUserIDAPI() {
 
 function getUserShiftsAPI() {
   return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsListUserShifts((error, data, response) => {
+    api.backendSchedApiViewsListTaUserShifts((error, data, response) => {
       if (error) {
         reject(error);
       } else {

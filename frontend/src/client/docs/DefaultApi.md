@@ -26,7 +26,6 @@ Method | HTTP request | Description
 [**backendSchedApiViewsGetUserId**](DefaultApi.md#backendSchedApiViewsGetUserId) | **GET** /sched_api/get_id | Get User Id
 [**backendSchedApiViewsHandleSwapRequest**](DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 [**backendSchedApiViewsListAllShifts**](DefaultApi.md#backendSchedApiViewsListAllShifts) | **GET** /sched_api/all_shifts | List All Shifts
-[**backendSchedApiViewsListAllShifts**](DefaultApi.md#backendSchedApiViewsListAllShifts) | **GET** /sched_api/all_shifts | List All Shifts
 [**backendSchedApiViewsListComments**](DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
 [**backendSchedApiViewsListEducatorSchedules**](DefaultApi.md#backendSchedApiViewsListEducatorSchedules) | **GET** /sched_api/educator_schedules | List Educator Schedules
 [**backendSchedApiViewsListEducators**](DefaultApi.md#backendSchedApiViewsListEducators) | **GET** /sched_api/get_educators | List Educators
@@ -46,9 +45,10 @@ Method | HTTP request | Description
 [**backendSchedApiViewsListTaHourSchedule**](DefaultApi.md#backendSchedApiViewsListTaHourSchedule) | **GET** /sched_api/ta_hour_schedule | List Ta Hour Schedule
 [**backendSchedApiViewsListTaHourShift**](DefaultApi.md#backendSchedApiViewsListTaHourShift) | **GET** /sched_api/ta_hour_shift | List Ta Hour Shift
 [**backendSchedApiViewsListTaShifts**](DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts/{subject_id} | List Ta Shifts
+[**backendSchedApiViewsListTaUserShifts**](DefaultApi.md#backendSchedApiViewsListTaUserShifts) | **GET** /sched_api/ta_user_shifts | List Ta User Shifts
 [**backendSchedApiViewsListTas**](DefaultApi.md#backendSchedApiViewsListTas) | **GET** /sched_api/get_tas | List Tas
 [**backendSchedApiViewsListTasNotInShift**](DefaultApi.md#backendSchedApiViewsListTasNotInShift) | **GET** /sched_api/tas_not_in_shift/{shift_id} | List Tas Not In Shift
-[**backendSchedApiViewsListUserShifts**](DefaultApi.md#backendSchedApiViewsListUserShifts) | **GET** /sched_api/user_shifts | List User Shifts
+[**backendSchedApiViewsListUserShifts**](DefaultApi.md#backendSchedApiViewsListUserShifts) | **GET** /sched_api/user_shifts/{user_id} | List User Shifts
 [**backendSchedApiViewsRemoveStudentFromShift**](DefaultApi.md#backendSchedApiViewsRemoveStudentFromShift) | **PUT** /sched_api/remove_student_from_shift/{shift_id} | Remove Student From Shift
 [**backendSchedApiViewsRemoveTaFromShift**](DefaultApi.md#backendSchedApiViewsRemoveTaFromShift) | **PUT** /sched_api/remove_ta_from_shift/{shift_id} | Remove Ta From Shift
 [**backendSchedApiViewsUnanswerQuestion**](DefaultApi.md#backendSchedApiViewsUnanswerQuestion) | **PUT** /sched_api/unanswer_question/{question_id} | Unanswer Question
@@ -1793,6 +1793,45 @@ No authorization required
 - **Accept**: application/json
 
 
+## backendSchedApiViewsListTaUserShifts
+
+> [ShiftSchema] backendSchedApiViewsListTaUserShifts()
+
+List Ta User Shifts
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+apiInstance.backendSchedApiViewsListTaUserShifts((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[ShiftSchema]**](ShiftSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## backendSchedApiViewsListTas
 
 > [UserSchema] backendSchedApiViewsListTas()
@@ -1877,9 +1916,11 @@ No authorization required
 
 ## backendSchedApiViewsListUserShifts
 
-> [ShiftSchema] backendSchedApiViewsListUserShifts()
+> [ShiftSchema] backendSchedApiViewsListUserShifts(userId)
 
 List User Shifts
+
+Fetch all shifts for a specific user (TA or Educator).
 
 ### Example
 
@@ -1887,7 +1928,8 @@ List User Shifts
 import SchedApi from 'sched_api';
 
 let apiInstance = new SchedApi.DefaultApi();
-apiInstance.backendSchedApiViewsListUserShifts((error, data, response) => {
+let userId = "userId_example"; // String | 
+apiInstance.backendSchedApiViewsListUserShifts(userId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -1898,7 +1940,10 @@ apiInstance.backendSchedApiViewsListUserShifts((error, data, response) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**|  | 
 
 ### Return type
 

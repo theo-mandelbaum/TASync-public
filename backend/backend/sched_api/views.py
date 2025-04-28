@@ -849,9 +849,9 @@ def delete_shift(request, shift_id: uuid.UUID):
     return 403, {"message": "You are not authorized to delete a shift."}
 
 
-@sched_api.get("/user_shifts", response={200: List[ShiftSchema], 403: Error})
+@sched_api.get("/ta_user_shifts", response={200: List[ShiftSchema], 403: Error})
 @require_auth
-def list_user_shifts(request):
+def list_ta_user_shifts(request):
     user = request.user
     if user.groups.filter(name="TA").exists():
         try:
@@ -956,6 +956,7 @@ def handle_swap_request(request, swap_request_id: uuid.UUID, accepted: bool):
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to handle this swap request."}
+
 
 @sched_api.get("/user_shifts/{user_id}", response={200: List[ShiftSchema], 403: Error})
 @require_auth
