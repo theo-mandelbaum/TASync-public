@@ -14,19 +14,21 @@ import "@syncfusion/ej2-react-grids/styles/material.css";
 import "@syncfusion/ej2-react-schedule/styles/material.css";
 import { registerLicense } from "@syncfusion/ej2-base";
 import { use } from "react";
-import GroupCheckProvider from "./GroupCheckProvider";
+import { Toaster } from "./components/ui/toaster";
 
-registerLicense("ORg4AjUWIQA/Gnt2XFhhQlJHfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTH5XdEdhWH5dcnRTQWlaWkZ/");
+registerLicense(
+  "ORg4AjUWIQA/Gnt2XFhhQlJHfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTH5XdEdhWH5dcnRTQWlaWkZ/"
+);
 
+console.log("Environment:", process.env.NODE_ENV);
 function App() {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
         <Provider>
-          <GroupCheckProvider>
-            <Router />
-          </GroupCheckProvider>
+          <Router />
+          <Toaster />
         </Provider>
       </AuthContextProvider>
     </QueryClientProvider>

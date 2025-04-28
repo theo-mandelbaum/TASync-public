@@ -1,13 +1,12 @@
-import { Heading, Stack } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
 import DefaultApi from "./client/src/api/DefaultApi";
-import { useEffect } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import SubjectButtons from "./components/SubjectButtons";
+import { Flex } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const api = new DefaultApi();
 
-function get_subjects() {
+function getSubjects() {
   return new Promise((resolve, reject) => {
     api.backendSchedApiViewsListSubjects((error, data, response) => {
       if (error) {
@@ -19,30 +18,34 @@ function get_subjects() {
   });
 }
 
-const Subjects = () => {
-  const queryClient = useQueryClient();
+function Subjects() {
   const navigate = useNavigate();
-  const { data: subjects, isLoading: isLoadingSubjects } = useQuery({
+  const {
+    data: subjects,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["subjects"],
-    queryFn: get_subjects,
+    queryFn: getSubjects,
     placeholderData: (prevData) => prevData,
+    refetchOnWindowFocus: false,
   });
 
-  function handleSubjectClick(subjectId) {
-    console.log("Subject clicked:", subjectId);
-    navigate(`/subjecthome/${subjectId}`);
+  function navigateSubjectHome(subjectID) {
+    navigate(`/subjecthome/${subjectID}`);
   }
 
-  return isLoadingSubjects ? (
-    <Stack>
-      <Heading>Loading...</Heading>
-    </Stack>
-  ) : (
-    <Stack>
-      <Heading>List subjects</Heading>
-      <SubjectButtons subjects={subjects} onSubjectClick={handleSubjectClick} />
-    </Stack>
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <Flex flexDirection="column" alignItems="center" justifyContent="center">
+      <SubjectButtons
+        subjects={subjects}
+        onSubjectClick={navigateSubjectHome}
+      />
+    </Flex>
   );
-};
+}
 
 export default Subjects;

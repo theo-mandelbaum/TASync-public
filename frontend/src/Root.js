@@ -4,7 +4,6 @@ import { Flex } from "@chakra-ui/react";
 import { useAuthStatus } from "./auth/hooks";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import DefaultApi from "./client/src/api/DefaultApi";
-import { useGroupCheck } from "./GroupCheckProvider";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useLayoutEffect } from "react";
 import { set } from "zod";
@@ -28,67 +27,59 @@ export default function Root() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const currentURL = useLocation().pathname;
-  const { group, setGroup } = useGroupCheck();
-  const [settingGroup, setSettingGroup] = useState(false);
-  const [enable, setEnable] = useState(group === null || group === undefined);
+  const group = JSON.parse(localStorage.getItem("group"));
+  const [enable, setEnable] = useState(true);
   const {
     data: userGroup,
     isLoading: isLoadingUserGroup,
     isFetching: isFetchingUserGroup,
     isError: isErrorUserGroup,
-    error: errorUserGroup,
   } = useQuery({
     queryKey: ["user_group"],
     queryFn: getUserGroup,
     placeholderData: (prevData) => prevData,
     enabled: enable && status.isAuthenticated,
-    // retry: 3,
+    retry: 3,
+    retryDelay: 200,
     refetchOnWindowFocus: false,
-    // onSuccess: (data) => {
-    //   console.log("hello THIS WAS A SUCCESS");
-    //   if (data) {
-    //     setGroup(data);
-    //   }
-    // },
-    // onError: (error) => {
-    //   console.log("group2", group);
-    //   console.log(
-    //     error && status.isAuthenticated && !currentURL.includes("choosegroup")
-    //   );
-    //   if (
-    //     error &&
-    //     status.isAuthenticated &&
-    //     !currentURL.includes("choosegroup")
-    //   ) {
-    //     navigate(`/choosegroup`, { replace: true });
-    //   }
-    // },
   });
 
+  console.log("userGroup", userGroup);
+  console.log("enable", enable);
+  console.log("iserror", isErrorUserGroup);
+
   useLayoutEffect(() => {
-    if (group === null || group === undefined) {
-      setEnable(true);
-    } else {
+    if (!status.isAuthenticated) {
+      localStorage.removeItem("group");
+      console.log("User is not authenticated, redirecting to login page.");
+    }
+  }, [status]);
+
+  useLayoutEffect(() => {
+    let group_check = JSON.parse(localStorage.getItem("group"));
+    if (group_check) {
       setEnable(false);
+    } else {
+      setEnable(true);
     }
   }, [group]);
 
   useLayoutEffect(() => {
     if (!isLoadingUserGroup && !isFetchingUserGroup && status.isAuthenticated) {
       if (isErrorUserGroup) {
-        setEnable(true);
+        console.log("error");
+        // setEnable(true);
+        console.log("REMOVING GROUP");
+        localStorage.removeItem("group");
         if (!currentURL.includes("choosegroup")) {
           queryClient.invalidateQueries(["groups"]);
           navigate(`/choosegroup`, { replace: true });
         }
       } else {
-        setEnable(false);
-        if (
-          userGroup !== null &&
-          userGroup !== undefined &&
-          (group === null || group === undefined)
-        ) {
-          setGroup(userGroup);
+        console.log("no eror");
+        // setEnable(false);
+        if (userGroup !== null && userGroup !== undefined) {
+          localStorage.setItem("group", JSON.stringify(userGroup));
         }
       }
     }
@@ -100,61 +91,18 @@ export default function Root() {
     isLoadingUserGroup,
     navigate,
     queryClient,
-    setGroup,
     status.isAuthenticated,
     userGroup,
   ]);
-  // useEffect(() => {
-  //   if (
-  //     status.isAuthenticated &&
-  //     (group === null || group === undefined) &&
-  //     !isErrorUserGroup
-  //   ) {
-  //     setGroup(userGroup);
-  //     setSettingGroup(false);
-  //   }
-  //   if (isErrorUserGroup) {
-  //     console.log("error", errorUserGroup);
-  //     if (status.isAuthenticated) {
-  //       setSettingGroup(true);
-  //       if (!currentURL.includes("choosegroup")) {
-  //         navigate(`/choosegroup`, { replace: true });
-  //       }
-  //     }
-  //   }
-  // }, [
-  //   status,
-  //   group,
-  //   setGroup,
-  //   userGroup,
-  //   isErrorUserGroup,
-  //   errorUserGroup,
-  //   currentURL,
-  //   navigate,
-  // ]);
 
-  if (isLoadingUserGroup) {
+  if (isLoadingUserGroup || isFetchingUserGroup) {
     return <p>Loading...</p>;
   }
-
-  // if (isErrorUserGroup) {
-  //   if (status.isAuthenticated) {
-  //     setSettingGroup(true);
-  //     if (!currentURL.includes("choosegroup")) {
-  //       navigate(`/choosegroup`, { replace: true });
-  //     }
-  //   }
-  // } else {
-  //   if (status.isAuthenticated && group === null) {
-  //     setGroup(userGroup);
-  //     setSettingGroup(false);
-  //   }
-  // }
 
   return (
     <Flex h="100vh" direction="column">
       <NavBar />
-      <main className="flex-shrink-0 flex-grow-1">
+      <main style={{ height: "100%" }}>
         <Outlet />
       </main>
     </Flex>

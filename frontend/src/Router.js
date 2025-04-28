@@ -61,6 +61,9 @@ import SwapRequests from "./SwapRequests";
 import SubjectHome from "./SubjectHome";
 import NotFound from "./NotFound";
 import ChooseGroup from "./ChooseGroup";
+import AddSubject from "./AddSubject";
+import ScheduleManager from "./ScheduleManager";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function createRouter(config) {
   return createBrowserRouter([
@@ -83,10 +86,6 @@ function createRouter(config) {
         {
           path: "*",
           element: <NotFound />,
-        },
-        {
-          path: "/calculator",
-          element: <Calculator />,
         },
         {
           path: "/account/login",
@@ -364,7 +363,7 @@ function createRouter(config) {
           ),
         },
         {
-          path: "/subjecthome/:subjectId",
+          path: "/subjecthome/:subjectID",
           element: (
             <AuthenticatedRoute>
               <SubjectHome />
@@ -380,10 +379,26 @@ function createRouter(config) {
           ),
         },
         {
+          path: "/addsubjects",
+          element: (
+            <AuthenticatedRoute>
+              <AddSubject />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
           path: "/schedule",
           element: (
             <AuthenticatedRoute>
               <Schedule />
+            </AuthenticatedRoute>
+          ),
+        },
+        {
+          path: "/manageschedule",
+          element: (
+            <AuthenticatedRoute>
+              <ScheduleManager />
             </AuthenticatedRoute>
           ),
         },
@@ -396,7 +411,7 @@ function createRouter(config) {
           ),
         },
         {
-          path: "/questions",
+          path: "/questions/:subjectID",
           element: (
             <AuthenticatedRoute>
               <Questions />
