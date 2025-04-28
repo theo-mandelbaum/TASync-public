@@ -126,7 +126,8 @@ def get_openapi_schema_view(request):
 def require_auth(func):
     @wraps(func)
     def wrapper(request, *args, **kwargs):
-        print(f"User authenticated: {request.user.is_authenticated}")  # Debugging
+        # Debugging
+        print(f"User authenticated: {request.user.is_authenticated}")
         if not request.user.is_authenticated:
             raise HttpError(401, "Unauthorized")
         return func(request, *args, **kwargs)
@@ -848,6 +849,19 @@ def delete_shift(request, shift_id: uuid.UUID):
     return 403, {"message": "You are not authorized to delete a shift."}
 
 
+@sched_api.get("/ta_user_shifts", response={200: List[ShiftSchema], 403: Error})
+@require_auth
+def list_ta_user_shifts(request):
+    user = request.user
+    if user.groups.filter(name="TA").exists():
+        try:
+            shifts = Shift.objects.filter(ta__id=user.id)
+            return 200, shifts
+        except Exception as e:
+            return 403, {"message": str(e)}
+    return 403, {"message": "You are not authorized to view this resource."}
+
+
 @sched_api.post("/create_swap_request", response={200: SwapRequestSchema, 403: Error})
 @require_auth
 def create_swap_request(request, from_shift_id: uuid.UUID, to_shift_id: uuid.UUID, to_user_id: uuid.UUID):
@@ -869,6 +883,9 @@ def create_swap_request(request, from_shift_id: uuid.UUID, to_shift_id: uuid.UUI
 
             if to_shift.ta.filter(id=from_user.id).exists():
                 return 403, {"message": "You are already assigned to the target shift."}
+
+            if from_shift.ta.filter(id=to_user.id).exists():
+                return 403, {"message": "The user is already assigned to the source shift."}
 
             swap_request = SwapRequest.objects.create(
                 requester_shift=from_shift,
@@ -939,6 +956,7 @@ def handle_swap_request(request, swap_request_id: uuid.UUID, accepted: bool):
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to handle this swap request."}
+
 
 @sched_api.get("/user_shifts/{user_id}", response={200: List[ShiftSchema], 403: Error})
 @require_auth

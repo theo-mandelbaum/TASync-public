@@ -7,10 +7,10 @@ import { useState, useLayoutEffect } from "react";
 
 const api = new DefaultApi();
 
-function studentsInShiftAPI(schedule_id) {
+function studentsInShiftAPI(shift_id) {
   return new Promise((resolve, reject) => {
     api.backendSchedApiViewsListShiftStudents(
-      schedule_id,
+      shift_id,
       (error, data, response) => {
         if (error) {
           reject(error);
@@ -22,7 +22,7 @@ function studentsInShiftAPI(schedule_id) {
   });
 }
 
-function getUserIDAPI(schedule_id) {
+function getUserIDAPI() {
   return new Promise((resolve, reject) => {
     api.backendSchedApiViewsGetUserId((error, data, response) => {
       if (error) {
@@ -34,10 +34,10 @@ function getUserIDAPI(schedule_id) {
   });
 }
 
-function addStudentToShiftAPI(schedule_id) {
+function addStudentToShiftAPI(shift_id) {
   return new Promise((resolve, reject) => {
     api.backendSchedApiViewsAddStudentToShift(
-      schedule_id,
+      shift_id,
       (error, data, response) => {
         if (error) {
           reject(error);
@@ -49,10 +49,10 @@ function addStudentToShiftAPI(schedule_id) {
   });
 }
 
-function removeStudentFromShiftAPI(schedule_id) {
+function removeStudentFromShiftAPI(shift_id) {
   return new Promise((resolve, reject) => {
     api.backendSchedApiViewsRemoveStudentFromShift(
-      schedule_id,
+      shift_id,
       (error, data, response) => {
         if (error) {
           reject(error);
@@ -64,7 +64,7 @@ function removeStudentFromShiftAPI(schedule_id) {
   });
 }
 
-function StudentCardSideBar({ shift_id, schedule_id }) {
+function StudentCardSideBar({ shift_id, schedule_id, full_capacity, empty }) {
   const queryClient = useQueryClient();
   const [inShift, setInShift] = useState(false);
   const { data: studentsInShift, isFetching: isStudentsFetching } = useQuery({
@@ -139,25 +139,33 @@ function StudentCardSideBar({ shift_id, schedule_id }) {
 
   useLayoutEffect(() => {
     if (studentsInShift && userID) {
-      const studentInShift = studentsInShift.find(
+      const studentInShiftFilter = studentsInShift.find(
         (student) => student.id === userID
       );
-      console.log(studentInShift);
-      console.log(!!studentInShift);
-      setInShift(!!studentInShift);
+      setInShift(!!studentInShiftFilter);
     }
   }, [studentsInShift, shift_id, userID]);
   return (
     <Stack spacing={2} alignItems="center" justifyContent="center">
-      {!inShift ? (
-        <IconButton onClick={handleAddStudent} size="lg" bgColor="green.200">
-          <FaPlus />
-        </IconButton>
-      ) : (
-        <IconButton onClick={handleRemoveStudent} size="lg" bgColor="red.400">
-          <FaMinus />
-        </IconButton>
-      )}
+      {!inShift
+        ? !full_capacity && (
+            <IconButton
+              onClick={handleAddStudent}
+              size="lg"
+              bgColor="green.200"
+            >
+              <FaPlus />
+            </IconButton>
+          )
+        : !empty && (
+            <IconButton
+              onClick={handleRemoveStudent}
+              size="lg"
+              bgColor="red.400"
+            >
+              <FaMinus />
+            </IconButton>
+          )}
     </Stack>
   );
 }

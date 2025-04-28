@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTaHourSchedule**](docs/DefaultApi.md#backendSchedApiViewsListTaHourSchedule) | **GET** /sched_api/ta_hour_schedule | List Ta Hour Schedule
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTaHourShift**](docs/DefaultApi.md#backendSchedApiViewsListTaHourShift) | **GET** /sched_api/ta_hour_shift | List Ta Hour Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTaShifts**](docs/DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts/{subject_id} | List Ta Shifts
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListTaUserShifts**](docs/DefaultApi.md#backendSchedApiViewsListTaUserShifts) | **GET** /sched_api/ta_user_shifts | List Ta User Shifts
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTas**](docs/DefaultApi.md#backendSchedApiViewsListTas) | **GET** /sched_api/get_tas | List Tas
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTasNotInShift**](docs/DefaultApi.md#backendSchedApiViewsListTasNotInShift) | **GET** /sched_api/tas_not_in_shift/{shift_id} | List Tas Not In Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListUserShifts**](docs/DefaultApi.md#backendSchedApiViewsListUserShifts) | **GET** /sched_api/user_shifts/{user_id} | List User Shifts

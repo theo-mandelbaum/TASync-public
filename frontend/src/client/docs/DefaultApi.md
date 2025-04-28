@@ -45,6 +45,7 @@ Method | HTTP request | Description
 [**backendSchedApiViewsListTaHourSchedule**](DefaultApi.md#backendSchedApiViewsListTaHourSchedule) | **GET** /sched_api/ta_hour_schedule | List Ta Hour Schedule
 [**backendSchedApiViewsListTaHourShift**](DefaultApi.md#backendSchedApiViewsListTaHourShift) | **GET** /sched_api/ta_hour_shift | List Ta Hour Shift
 [**backendSchedApiViewsListTaShifts**](DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts/{subject_id} | List Ta Shifts
+[**backendSchedApiViewsListTaUserShifts**](DefaultApi.md#backendSchedApiViewsListTaUserShifts) | **GET** /sched_api/ta_user_shifts | List Ta User Shifts
 [**backendSchedApiViewsListTas**](DefaultApi.md#backendSchedApiViewsListTas) | **GET** /sched_api/get_tas | List Tas
 [**backendSchedApiViewsListTasNotInShift**](DefaultApi.md#backendSchedApiViewsListTasNotInShift) | **GET** /sched_api/tas_not_in_shift/{shift_id} | List Tas Not In Shift
 [**backendSchedApiViewsListUserShifts**](DefaultApi.md#backendSchedApiViewsListUserShifts) | **GET** /sched_api/user_shifts/{user_id} | List User Shifts
@@ -1777,6 +1778,45 @@ apiInstance.backendSchedApiViewsListTaShifts(subjectId, (error, data, response) 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subjectId** | **String**|  | 
+
+### Return type
+
+[**[ShiftSchema]**](ShiftSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## backendSchedApiViewsListTaUserShifts
+
+> [ShiftSchema] backendSchedApiViewsListTaUserShifts()
+
+List Ta User Shifts
+
+### Example
+
+```javascript
+import SchedApi from 'sched_api';
+
+let apiInstance = new SchedApi.DefaultApi();
+apiInstance.backendSchedApiViewsListTaUserShifts((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
 
 ### Return type
 

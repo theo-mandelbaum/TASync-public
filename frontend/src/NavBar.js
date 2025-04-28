@@ -68,7 +68,7 @@ export default function NavBar() {
     } else {
       setEdVisible(false);
     }
-  }, [group]);
+  }, []);
 
   useLayoutEffect(() => {
     let group_check = JSON.parse(localStorage.getItem("group"));
@@ -77,7 +77,7 @@ export default function NavBar() {
     } else {
       setTaVisible(false);
     }
-  }, [group]);
+  }, []);
 
   return (
     <HStack bgColor="white" position="sticky" top={0} zIndex={100}>
@@ -93,11 +93,11 @@ export default function NavBar() {
           {edVisible && (
             <NavBarItem to="/addsubjects" icon="" name="Add Subjects" />
           )}
-          {taVisible && (
+          {/* {taVisible && (
             <NavBarItem to="/shift-request" icon="" name="Request Shift" />
-          )}
+          )} */}
           {taVisible && (
-            <NavBarItem to="/swap-requests" icon="" name="Request Shift Swap" />
+            <NavBarItem to="/swap-requests" icon="" name="view Swap Requests" />
           )}
           {window.DEVELOPMENT ? (
             <NavBarItem href="http://localhost:1080" name="MailCatcher" />

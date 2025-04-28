@@ -29,6 +29,7 @@ import {
   EducatorShiftSidebar,
 } from "./edcuatorcarditems/EducatorCardItem";
 import { StudentCardSideBar } from "./studentcarditems/StudentCardItems";
+import { TACardSideBar } from "./tacarditems/TACardItems";
 
 const api = new DefaultApi();
 
@@ -153,6 +154,8 @@ function ShiftCell({
     queryFn: () => tasNotInShiftAPI(shift_id),
   });
 
+  console.log("shift_id", shift_id);
+
   const {
     data: studentsNotInShift,
     isLoading: isLoadingStudentsNotInShift,
@@ -206,11 +209,31 @@ function ShiftCell({
         not_students={studentsNotInShift}
         in_tas={tasInShift}
         in_students={studentsInShift}
+        full_capacity_tas={tasInShift?.length === max_tas}
+        full_capacity_students={studentsInShift?.length === max_students}
+        empty_tas={tasInShift?.length === 0}
+        empty_students={studentsInShift?.length === 0}
       />
     );
   } else if (is_student_card) {
     sidebar = (
-      <StudentCardSideBar shift_id={shift_id} schedule_id={schedule_id} />
+      <StudentCardSideBar
+        shift_id={shift_id}
+        schedule_id={schedule_id}
+        full_capacity={studentsInShift?.length === max_students}
+        empty={studentsInShift?.length === 0}
+      />
+    );
+  } else if (is_ta_card) {
+    sidebar = (
+      <TACardSideBar
+        shift_id={shift_id}
+        schedule_id={schedule_id}
+        not_tas={tasNotInShift}
+        in_tas={tasInShift}
+        full_capacity={tasInShift?.length === max_tas}
+        empty={tasInShift?.length === 0}
+      />
     );
   }
 
@@ -286,9 +309,6 @@ export default function ScheduleCard({
     queryKey: [`shifts ${schedule_id}`],
     queryFn: () => getShifts(schedule_id),
   });
-
-  console.log(shifts);
-  console.log(schedule_id);
 
   const deleteScheduleMutation = useMutation({
     mutationFn: () => deleteScheduleAPI(schedule_id),
