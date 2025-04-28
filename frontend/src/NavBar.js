@@ -68,7 +68,7 @@ export default function NavBar() {
     } else {
       setEdVisible(false);
     }
-  }, [group]);
+  }, []);
 
   useLayoutEffect(() => {
     let group_check = JSON.parse(localStorage.getItem("group"));
@@ -77,7 +77,7 @@ export default function NavBar() {
     } else {
       setTaVisible(false);
     }
-  }, [group]);
+  }, []);
 
   return (
     <HStack bgColor="white" position="sticky" top={0} zIndex={100}>

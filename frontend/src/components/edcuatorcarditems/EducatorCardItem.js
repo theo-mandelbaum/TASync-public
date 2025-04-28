@@ -139,6 +139,7 @@ function EducatorAddSideBarButton({
   isOpen,
   setOpen,
   action_type,
+  hide,
 }) {
   const [targets, setTargets] = useState([]);
 
@@ -148,6 +149,10 @@ function EducatorAddSideBarButton({
       setTargets([]);
     }
   }, [isOpen]);
+
+  if (hide) {
+    return null;
+  }
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={(e) => setOpen(e.open)}>
@@ -228,6 +233,10 @@ function EducatorShiftSidebar({
   not_students,
   in_tas,
   in_students,
+  full_capacity_tas,
+  full_capacity_students,
+  empty_tas,
+  empty_students,
 }) {
   const queryClient = useQueryClient();
 
@@ -456,8 +465,8 @@ function EducatorShiftSidebar({
   }
 
   return (
-    <HStack spacing={4}>
-      <Stack>
+    <HStack spacing={4} h="100%">
+      <Stack minH="100%">
         <Text>TA controls:</Text>
         <Stack spacing={2} alignItems="center">
           <EducatorAddSideBarButton
@@ -471,6 +480,7 @@ function EducatorShiftSidebar({
             isOpen={isOpenTAAdd}
             setOpen={setIsOpenTAAdd}
             action_type="Add"
+            hide={full_capacity_tas}
           />
           <EducatorAddSideBarButton
             submitFunction={handleTASubmit(handleTADeleteSubmitForm)}
@@ -483,10 +493,11 @@ function EducatorShiftSidebar({
             isOpen={isOpenTARemove}
             setOpen={setIsOpenTARemove}
             action_type="Remove"
+            hide={empty_tas}
           />
         </Stack>
       </Stack>
-      <Stack>
+      <Stack minH="100%">
         <Text>Student controls:</Text>
         <Stack spacing={2} alignItems="center">
           <EducatorAddSideBarButton
@@ -500,6 +511,7 @@ function EducatorShiftSidebar({
             isOpen={isOpenStudentAdd}
             setOpen={setIsOpenStudentAdd}
             action_type="Add"
+            hide={full_capacity_students}
           />
           <EducatorAddSideBarButton
             submitFunction={handleStudentSubmit(handleStudentDeleteSubmitForm)}
@@ -512,6 +524,7 @@ function EducatorShiftSidebar({
             isOpen={isOpenStudentRemove}
             setOpen={setIsOpenStudentRemove}
             action_type="Remove"
+            hide={empty_students}
           />
         </Stack>
       </Stack>
@@ -576,7 +589,6 @@ function EducatorFooter({ schedule_id }) {
       <Dialog.Root
         open={open}
         onOpenChange={(e) => {
-          console.log("value", e.open);
           setOpen(e.open);
         }}
       >
@@ -625,7 +637,7 @@ function EducatorFooter({ schedule_id }) {
                           <Select.Positioner>
                             <Select.Content>
                               {weekFrameworks.items.map((day) => (
-                                <Select.Item key={day.id} item={day.value}>
+                                <Select.Item key={day.value} item={day.value}>
                                   {day.label}
                                   <Select.ItemIndicator />
                                 </Select.Item>

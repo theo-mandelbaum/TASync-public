@@ -104,7 +104,7 @@ export default function ScheduleManager() {
   const [open, setOpen] = useState(false);
 
   const [subjectDict, setSubjectDict] = useState({});
-  const [subjectFramework, setSubjectFramework] = useState({ items: [] });
+  const [subjectFramework, setSubjectFramework] = useState(null);
   const [placeholder, setPlaceholder] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true);
 
@@ -308,7 +308,7 @@ export default function ScheduleManager() {
                           </SelectControl>
                           <SelectPositioner>
                             <SelectContent>
-                              {subjectFramework.items.map((subject) => (
+                              {subjectFramework?.items?.map((subject) => (
                                 <SelectItem
                                   key={subject.id}
                                   item={subject.value}

@@ -978,6 +978,42 @@ export default class DefaultApi {
     }
 
     /**
+     * Callback function to receive the result of the backendSchedApiViewsListAllShifts operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsListAllShiftsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ShiftSchema>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List All Shifts
+     * @param {module:api/DefaultApi~backendSchedApiViewsListAllShiftsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ShiftSchema>}
+     */
+    backendSchedApiViewsListAllShifts(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [ShiftSchema];
+      return this.apiClient.callApi(
+        '/sched_api/all_shifts', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the backendSchedApiViewsListComments operation.
      * @callback module:api/DefaultApi~backendSchedApiViewsListCommentsCallback
      * @param {String} error Error message, if any.
@@ -1788,6 +1824,42 @@ export default class DefaultApi {
       let returnType = [UserSchema];
       return this.apiClient.callApi(
         '/sched_api/tas_not_in_shift/{shift_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the backendSchedApiViewsListUserShifts operation.
+     * @callback module:api/DefaultApi~backendSchedApiViewsListUserShiftsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ShiftSchema>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List User Shifts
+     * @param {module:api/DefaultApi~backendSchedApiViewsListUserShiftsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ShiftSchema>}
+     */
+    backendSchedApiViewsListUserShifts(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [ShiftSchema];
+      return this.apiClient.callApi(
+        '/sched_api/user_shifts', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
