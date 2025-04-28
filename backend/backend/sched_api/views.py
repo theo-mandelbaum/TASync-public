@@ -939,3 +939,24 @@ def handle_swap_request(request, swap_request_id: uuid.UUID, accepted: bool):
         except Exception as e:
             return 403, {"message": str(e)}
     return 403, {"message": "You are not authorized to handle this swap request."}
+
+@sched_api.get("/user_shifts/{user_id}", response={200: List[ShiftSchema], 403: Error})
+@require_auth
+def list_user_shifts(request, user_id: uuid.UUID):
+    """
+    Fetch all shifts for a specific user (TA or Educator).
+    """
+    try:
+        user = User.objects.get(id=user_id)
+        if not user:
+            return 403, {"message": "User not found."}
+
+        # Fetch shifts where the user is a TA or an educator
+        ta_shifts = Shift.objects.filter(ta__id=user_id)
+        educator_shifts = Shift.objects.filter(schedule__educator__id=user_id)
+
+        # Combine and return the shifts
+        shifts = ta_shifts | educator_shifts
+        return 200, shifts
+    except Exception as e:
+        return 403, {"message": str(e)}

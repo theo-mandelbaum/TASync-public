@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsGetUserGroup**](docs/DefaultApi.md#backendSchedApiViewsGetUserGroup) | **GET** /sched_api/user_group | Get User Group
 *SchedApi.DefaultApi* | [**backendSchedApiViewsGetUserId**](docs/DefaultApi.md#backendSchedApiViewsGetUserId) | **GET** /sched_api/get_id | Get User Id
 *SchedApi.DefaultApi* | [**backendSchedApiViewsHandleSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListAllShifts**](docs/DefaultApi.md#backendSchedApiViewsListAllShifts) | **GET** /sched_api/all_shifts | List All Shifts
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListComments**](docs/DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListEducatorSchedules**](docs/DefaultApi.md#backendSchedApiViewsListEducatorSchedules) | **GET** /sched_api/educator_schedules | List Educator Schedules
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListEducators**](docs/DefaultApi.md#backendSchedApiViewsListEducators) | **GET** /sched_api/get_educators | List Educators
@@ -163,6 +164,7 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTaShifts**](docs/DefaultApi.md#backendSchedApiViewsListTaShifts) | **GET** /sched_api/ta_shifts/{subject_id} | List Ta Shifts
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTas**](docs/DefaultApi.md#backendSchedApiViewsListTas) | **GET** /sched_api/get_tas | List Tas
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListTasNotInShift**](docs/DefaultApi.md#backendSchedApiViewsListTasNotInShift) | **GET** /sched_api/tas_not_in_shift/{shift_id} | List Tas Not In Shift
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListUserShifts**](docs/DefaultApi.md#backendSchedApiViewsListUserShifts) | **GET** /sched_api/user_shifts/{user_id} | List User Shifts
 *SchedApi.DefaultApi* | [**backendSchedApiViewsRemoveStudentFromShift**](docs/DefaultApi.md#backendSchedApiViewsRemoveStudentFromShift) | **PUT** /sched_api/remove_student_from_shift/{shift_id} | Remove Student From Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsRemoveTaFromShift**](docs/DefaultApi.md#backendSchedApiViewsRemoveTaFromShift) | **PUT** /sched_api/remove_ta_from_shift/{shift_id} | Remove Ta From Shift
 *SchedApi.DefaultApi* | [**backendSchedApiViewsUnanswerQuestion**](docs/DefaultApi.md#backendSchedApiViewsUnanswerQuestion) | **PUT** /sched_api/unanswer_question/{question_id} | Unanswer Question
