@@ -19,6 +19,7 @@ function backendSchedApiViewsListSchools() {
 }
 
 export default function Home() {
+  console.log("Available API methods:", Object.keys(api));
   const queryClient = useQueryClient();
   const { data: schools } = useQuery({
     queryKey: ["schools"],

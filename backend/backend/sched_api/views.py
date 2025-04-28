@@ -1,5 +1,5 @@
 from functools import wraps
-from ninja import NinjaAPI, Schema
+from ninja import NinjaAPI, Schema, Router
 import uuid
 from datetime import date, time, datetime
 from django.contrib.auth.models import Group
@@ -7,7 +7,10 @@ from backend.scheduling.models import Subject, School, User, Question, Schedule,
 from typing import List, Optional
 from ninja.errors import HttpError
 from django.http import JsonResponse
+import logging
 
+
+logger = logging.getLogger(__name__)
 
 sched_api = NinjaAPI(urls_namespace="sched_api",
                      title="Sched API", version="1.0")
@@ -119,7 +122,7 @@ def get_openapi_schema_view(request):
 def require_auth(func):
     @wraps(func)
     def wrapper(request, *args, **kwargs):
-        print(request.user.is_authenticated)
+        print(f"User authenticated: {request.user.is_authenticated}")  # Debugging
         if not request.user.is_authenticated:
             raise HttpError(401, "Unauthorized")
         return func(request, *args, **kwargs)
@@ -161,6 +164,22 @@ def get_user_group(request):
         return group
     else:
         return 403, {"message": "User does not belong to any group."}
+
+@sched_api.get("/users", response={200: List[UserSchema], 403: Error})
+@require_auth
+def list_users(request):
+    users = User.objects.filter(groups__name__in=["TA", "Educator"]).distinct()
+    logger.info("\n\n\n\n\n\n")
+    logger.info("Fetched users:", users)  # Debug log
+    return 200, users
+
+
+@sched_api.get("/user_shifts/{user_id}", response={200: List[ShiftSchema], 403: Error})
+@require_auth
+def list_user_shifts(request, user_id: uuid.UUID):
+    shifts = Shift.objects.filter(ta__id=user_id) | Shift.objects.filter(schedule__educator__id=user_id)
+    return 200, shifts
+
 # SCHOOLS------------------------------------------------------------------------
 
 
@@ -269,6 +288,8 @@ def unanswer_question(request, question_id: uuid.UUID):
 @require_auth
 def list_subjects(request):
     subjects = Subject.objects.all()
+    logger.error("\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    logger.error(subjects)
     return 200, subjects
 
 
@@ -373,10 +394,13 @@ def create_schedule(request, subject_id: uuid.UUID):
 @sched_api.get("/ta_shifts/{subject_id}", response={200: List[ShiftSchema], 403: Error})
 @require_auth
 def list_ta_shifts(request, subject_id: uuid.UUID):
+    logger.info("\n\n\n\n\n\n\n\n\n\n")
+    logger.info(f"Fetching shifts for subject_id: {subject_id}")
     shifts = Shift.objects.filter(schedule__subject__id=subject_id)
-    if shifts != None:
+    logger.info(f"Shifts found: {shifts}")
+    if shifts.exists():
         return 200, shifts
-    return 403, {"message": "You are not authorized to view this resource."}
+    return 403, {"message": "No shifts found for the given subject."}
 
 
 @sched_api.get("/ta_hour_shift", response={200: List[ShiftSchema], 403: Error})
@@ -464,6 +488,20 @@ def list_shift_students(request, shift_id: uuid.UUID):
         students = shift.students.all()
         return 200, students
     except Exception as e:
+        return 403, {"message": str(e)}
+
+
+@sched_api.get("/all_shifts", response={200: List[ShiftSchema], 403: Error})
+@require_auth
+def list_all_shifts(request):
+    try:
+        shifts = Shift.objects.all()
+        print(f"Shifts in database: {shifts}")  # Debugging
+        for shift in shifts:
+            print(shift.id, shift.start_time, shift.end_time)  # Debugging
+        return 200, shifts
+    except Exception as e:
+        print(f"Error fetching shifts: {e}")
         return 403, {"message": str(e)}
 
 
