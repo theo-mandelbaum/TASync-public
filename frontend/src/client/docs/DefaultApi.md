@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**backendSchedApiViewsGetUserId**](DefaultApi.md#backendSchedApiViewsGetUserId) | **GET** /sched_api/get_id | Get User Id
 [**backendSchedApiViewsHandleSwapRequest**](DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 [**backendSchedApiViewsListAllShifts**](DefaultApi.md#backendSchedApiViewsListAllShifts) | **GET** /sched_api/all_shifts | List All Shifts
+[**backendSchedApiViewsListAllShifts**](DefaultApi.md#backendSchedApiViewsListAllShifts) | **GET** /sched_api/all_shifts | List All Shifts
 [**backendSchedApiViewsListComments**](DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
 [**backendSchedApiViewsListEducatorSchedules**](DefaultApi.md#backendSchedApiViewsListEducatorSchedules) | **GET** /sched_api/educator_schedules | List Educator Schedules
 [**backendSchedApiViewsListEducators**](DefaultApi.md#backendSchedApiViewsListEducators) | **GET** /sched_api/get_educators | List Educators

@@ -143,6 +143,7 @@ Class | Method | HTTP request | Description
 *SchedApi.DefaultApi* | [**backendSchedApiViewsGetUserId**](docs/DefaultApi.md#backendSchedApiViewsGetUserId) | **GET** /sched_api/get_id | Get User Id
 *SchedApi.DefaultApi* | [**backendSchedApiViewsHandleSwapRequest**](docs/DefaultApi.md#backendSchedApiViewsHandleSwapRequest) | **DELETE** /sched_api/handle_swap_request/{swap_request_id}/{accepted} | Handle Swap Request
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListAllShifts**](docs/DefaultApi.md#backendSchedApiViewsListAllShifts) | **GET** /sched_api/all_shifts | List All Shifts
+*SchedApi.DefaultApi* | [**backendSchedApiViewsListAllShifts**](docs/DefaultApi.md#backendSchedApiViewsListAllShifts) | **GET** /sched_api/all_shifts | List All Shifts
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListComments**](docs/DefaultApi.md#backendSchedApiViewsListComments) | **GET** /sched_api/comments/{question_id} | List Comments
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListEducatorSchedules**](docs/DefaultApi.md#backendSchedApiViewsListEducatorSchedules) | **GET** /sched_api/educator_schedules | List Educator Schedules
 *SchedApi.DefaultApi* | [**backendSchedApiViewsListEducators**](docs/DefaultApi.md#backendSchedApiViewsListEducators) | **GET** /sched_api/get_educators | List Educators

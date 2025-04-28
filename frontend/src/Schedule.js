@@ -158,7 +158,7 @@ const processEvents = (events) => {
 // Fetch all users (TAs and Educators)
 const fetchUsers = async () => {
   return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsListUsers((error, data) => {
+    api.backendSchedApiViewsListTas((error, data) => {
       if (error) {
         console.error("Error fetching users:", error);
         reject(error);
@@ -169,13 +169,13 @@ const fetchUsers = async () => {
   });
 };
 
-// Fetch shifts for a specific user
-const fetchUserShifts = async (userId) => {
+// Fetch all educators
+const fetchEducators = async () => {
   return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsListUserShifts(userId, (error, data) => {
+    api.backendSchedApiViewsListEducators((error, data) => {
       if (error) {
-        console.error(`Error fetching shifts for user ${userId}:`, error);
-        resolve([]);
+        console.error("Error fetching educators:", error);
+        reject(error);
       } else {
         resolve(data);
       }
@@ -183,40 +183,86 @@ const fetchUserShifts = async (userId) => {
   });
 };
 
+// React Query hooks for TAs and educators
+export const useTAs = () => {
+  return useQuery({
+    queryKey: ["tas"],
+    queryFn: fetchUsers, // Fetch TAs
+    placeholderData: [],
+  });
+};
+
+export const useEducators = () => {
+  return useQuery({
+    queryKey: ["educators"],
+    queryFn: fetchEducators,
+    placeholderData: [],
+  });
+};
+
 const calendarCollections = [
   { CalendarId: 1, CalendarText: "Default Calendar", CalendarColor: "#1aaa55" },
 ];
 
+// Fetch shifts for a specific user
+const fetchUserShifts = async (userId) => {
+  return new Promise((resolve, reject) => {
+    api.backendSchedApiViewsListUserShifts(userId, (error, data) => {
+      if (error) {
+        console.error(`Error fetching shifts for user ${userId}:`, error);
+        reject(error);
+      } else {
+        console.log(`Fetched shifts for user ${userId}:`, data);
+        resolve(data);
+      }
+    });
+  });
+};
+
 const Overview = () => {
   console.log("Overview component rendered");
 
-  const { data: users, isLoading: usersLoading } = useQuery({
-    queryKey: ["users"],
-    queryFn: fetchUsers,
-  });
+  const [selectedUsers, setSelectedUsers] = useState([]); // Array to store selected user IDs
+  const [events, setEvents] = useState([]); // Array to store events for the schedule
+  const [currentView, setCurrentView] = useState("Week"); // Initialize currentView with "Week"
 
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [currentView, setCurrentView] = useState("Week");
+  const { data: tas, isLoading: tasLoading } = useTAs();
+  const { data: educators, isLoading: educatorsLoading } = useEducators();
 
-  const { data: userShifts, isLoading: shiftsLoading } = useQuery({
-    queryKey: ["userShifts", selectedUser],
-    queryFn: () => fetchUserShifts(selectedUser),
-    enabled: !!selectedUser,
-  });
-
-  const handleUserClick = (userId) => {
-    setSelectedUser(userId);
+  // Fetch shifts for a specific user and add them to the events array
+  const fetchAndAddUserShifts = async (userId) => {
+    console.log(`Fetching shifts for user ID: ${userId}`);
+    try {
+      const shifts = await fetchUserShifts(userId);
+      console.log(`Fetched shifts for user ID ${userId}:`, shifts);
+      const newEvents = shifts.map((shift) => ({
+        Id: shift.id,
+        Subject: `Shift for ${shift.schedule?.educator?.name || "Unknown"}`,
+        StartTime: setTimeOnDate(shift.date, shift.start_time),
+        EndTime: setTimeOnDate(shift.date, shift.end_time),
+        IsAllDay: false,
+        Description: `User ID: ${userId}`, // Add user ID to the description for easy filtering
+        CalendarId: 1,
+      }));
+      setEvents((prevEvents) => [...prevEvents, ...newEvents]);
+      console.log(`Updated events after adding shifts for user ID ${userId}:`, newEvents);
+    } catch (error) {
+      console.error(`Error fetching shifts for user ${userId}:`, error);
+    }
   };
 
-  const processedShifts = userShifts?.map((shift) => ({
-    Id: shift.id,
-    Subject: `Shift for ${shift.schedule?.educator?.name || "Unknown"}`,
-    StartTime: setTimeOnDate(shift.date, shift.start_time),
-    EndTime: setTimeOnDate(shift.date, shift.end_time),
-    IsAllDay: false,
-    Description: `Max TAs: ${shift.max_ta}, Max Students: ${shift.max_students}`,
-    CalendarId: 1,
-  })) || [];
+  // Handle checkbox change for selecting/deselecting users
+  const handleUserSelection = (userId, isSelected) => {
+    console.log(`User selection changed: userId=${userId}, isSelected=${isSelected}`);
+    if (isSelected) {
+      setSelectedUsers((prev) => [...prev, userId]);
+      fetchAndAddUserShifts(userId); // Fetch and add shifts for the selected user
+    } else {
+      setSelectedUsers((prev) => prev.filter((id) => id !== userId));
+      setEvents((prevEvents) => prevEvents.filter((event) => event.Description !== `User ID: ${userId}`));
+      console.log(`Removed events for user ID ${userId}`);
+    }
+  };
 
   const scheduleObj = useRef(null);
 
@@ -231,23 +277,37 @@ const Overview = () => {
   return (
     <div className="schedule-control-section">
       <div style={{ marginBottom: "20px", padding: "10px" }}>
-        <h3>Select a User</h3>
-        {usersLoading ? (
-          <p>Loading users...</p>
-        ) : (
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-            {console.log("Fetched users:", users)} {/* log for debugging */}
-            {users?.map((user) => (
-              <button
-                key={user.id}
-                onClick={() => handleUserClick(user.id)}
-                style={{ padding: "10px 20px", cursor: "pointer" }}
-              >
-                {user.name || user.username}
-              </button>
-            ))}
-          </div>
-        )}
+        <h3>Filter Shifts</h3>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+          {tasLoading ? (
+            <p>Loading TAs...</p>
+          ) : (
+            tas?.map((ta) => (
+              <div key={ta.id} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                <input
+                  type="checkbox"
+                  checked={selectedUsers.includes(ta.id)}
+                  onChange={(e) => handleUserSelection(ta.id, e.target.checked)}
+                />
+                <span>{ta.name || ta.username}</span>
+              </div>
+            ))
+          )}
+          {educatorsLoading ? (
+            <p>Loading Educators...</p>
+          ) : (
+            educators?.map((educator) => (
+              <div key={educator.id} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                <input
+                  type="checkbox"
+                  checked={selectedUsers.includes(educator.id)}
+                  onChange={(e) => handleUserSelection(educator.id, e.target.checked)}
+                />
+                <span>{educator.name || educator.username}</span>
+              </div>
+            ))
+          )}
+        </div>
       </div>
 
       <div className="col-lg-12 control-section">
@@ -261,9 +321,10 @@ const Overview = () => {
               height="100%"
               currentView={currentView}
               group={{ resources: ["Calendars"] }}
-              timezone="UTC"
-              eventSettings={{ dataSource: processedShifts }}
+              timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}
+              eventSettings={{ dataSource: events }} // Use the events array
               dateHeaderTemplate={dateHeaderTemplate}
+              showTimeIndicator={true}
             >
               <ResourcesDirective>
                 <ResourceDirective
