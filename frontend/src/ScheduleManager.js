@@ -173,8 +173,8 @@ export default function ScheduleManager() {
         duration: 5000,
       });
       setOpen(false);
-      queryClient.invalidateQueries({ queryKey: ["schedules"] });
-      queryClient.invalidateQueries({ queryKey: ["ta_schedule"] });
+      queryClient.refetchQueries({ queryKey: ["schedules"] });
+      queryClient.refetchQueries({ queryKey: ["ta_schedule"] });
     },
     onError: (error) => {
       toaster.create({
