@@ -15,7 +15,6 @@ function studentsInShiftAPI(schedule_id) {
         if (error) {
           reject(error);
         } else {
-          console.log("gooooood");
           resolve(data);
         }
       }
@@ -29,7 +28,6 @@ function getUserIDAPI(schedule_id) {
       if (error) {
         reject(error);
       } else {
-        console.log("gooooood");
         resolve(data);
       }
     });
@@ -44,7 +42,6 @@ function addStudentToShiftAPI(schedule_id) {
         if (error) {
           reject(error);
         } else {
-          console.log("gooooood");
           resolve(data);
         }
       }

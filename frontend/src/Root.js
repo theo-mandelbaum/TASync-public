@@ -100,7 +100,7 @@ export default function Root() {
   }
 
   return (
-    <Flex h="100vh" direction="column">
+    <Flex h="100vh" direction="column" position="relative">
       <NavBar />
       <main style={{ height: "100%" }}>
         <Outlet />

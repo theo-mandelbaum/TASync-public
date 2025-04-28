@@ -68,9 +68,11 @@ function postQuestion(subjectID, questionSchema) {
 }
 
 const Questions = () => {
+  const group = JSON.parse(localStorage.getItem("group"));
   const queryClient = useQueryClient();
   const { subjectID } = useParams();
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const uuidSchema = z.string().uuid();
   const [questions, setQuestions] = useState([]);
@@ -80,7 +82,7 @@ const Questions = () => {
     isFetching: isFetchingQuestions,
     isError: isErrorQuestions,
   } = useQuery({
-    queryKey: ["questions", subjectID],
+    queryKey: [`questions ${subjectID}`],
     queryFn: () => getQuestions(subjectID),
     placeholderData: (prevData) => prevData,
     enabled: subjectID !== undefined && subjectID !== null,
@@ -90,7 +92,7 @@ const Questions = () => {
   const postQuestionMutation = useMutation({
     mutationFn: (questionSchema) => postQuestion(subjectID, questionSchema),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["questions", subjectID] });
+      queryClient.refetchQueries({ queryKey: [`questions ${subjectID}`] });
       toaster.create({
         title: "Success",
         description: "Question posted successfully!",
@@ -98,6 +100,7 @@ const Questions = () => {
         duration: 5000,
         isClosable: true,
       });
+      setOpen(false);
     },
     onError: (error) => {
       toaster.create({
@@ -149,65 +152,71 @@ const Questions = () => {
       ) : isErrorQuestions ? (
         <Text>Error loading questions</Text>
       ) : (
-        <Flex direction="column" flexGrow="1">
-          <Flex direction="column" gap={4} minH="90%" maxH="90%">
+        <Flex direction="column">
+          <Flex direction="column" gap={4}>
             {questions &&
               questions.map((question) => (
                 <QuestionCard
                   key={question.id}
                   id={question.id}
+                  subject_id={subjectID}
                   question_text={question.question_text}
                   asker={question.asker.username}
                   date_asked={question.date_asked.toLocaleDateString()}
+                  is_answered={question.is_answered}
                 />
               ))}
           </Flex>
-          <DialogRoot>
-            <DialogTrigger asChild>
-              <Button>Add Question</Button>
-            </DialogTrigger>
-            <Portal>
-              <DialogBackdrop />
-              <DialogPositioner>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Add Question</DialogTitle>
-                  </DialogHeader>
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <FieldsetRoot>
-                      <FieldsetContent>
-                        <DialogBody>
-                          <FieldRoot required>
-                            <FieldLabel>Question</FieldLabel>
-                            <FieldRequiredIndicator />
-                            <Textarea
-                              name="question"
-                              placeholder="Enter your question here"
-                              {...register("question", {
-                                required: "Question is required",
-                              })}
-                              isInvalid={!!errors.question}
-                            />
-                          </FieldRoot>
-                        </DialogBody>
-                      </FieldsetContent>
-                      <DialogFooter>
-                        <DialogActionTrigger asChild>
-                          <Button variant="secondary">Cancel</Button>
-                        </DialogActionTrigger>
-                        <Button type="submit" variant="primary">
-                          Submit
-                        </Button>
-                      </DialogFooter>
-                    </FieldsetRoot>
-                  </form>
-                  <DialogCloseTrigger asChild>
-                    <CloseButton />
-                  </DialogCloseTrigger>
-                </DialogContent>
-              </DialogPositioner>
-            </Portal>
-          </DialogRoot>
+          {group?.name !== "Educator" && (
+            <DialogRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
+              <DialogTrigger asChild>
+                <Button position="fixed" bottom="3" right="3">
+                  Add Question
+                </Button>
+              </DialogTrigger>
+              <Portal>
+                <DialogBackdrop />
+                <DialogPositioner>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Add Question</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                      <FieldsetRoot>
+                        <FieldsetContent>
+                          <DialogBody>
+                            <FieldRoot required>
+                              <FieldLabel>Question</FieldLabel>
+                              <FieldRequiredIndicator />
+                              <Textarea
+                                name="question"
+                                placeholder="Enter your question here"
+                                {...register("question", {
+                                  required: "Question is required",
+                                })}
+                                isInvalid={!!errors.question}
+                              />
+                            </FieldRoot>
+                          </DialogBody>
+                        </FieldsetContent>
+                        <DialogFooter>
+                          <DialogActionTrigger asChild>
+                            <Button variant="secondary">Cancel</Button>
+                          </DialogActionTrigger>
+                          <Button type="submit" variant="primary">
+                            Submit
+                          </Button>
+                        </DialogFooter>
+                      </FieldsetRoot>
+                    </form>
+                    <DialogCloseTrigger asChild>
+                      <CloseButton />
+                    </DialogCloseTrigger>
+                  </DialogContent>
+                </DialogPositioner>
+              </Portal>
+            </DialogRoot>
+          )}
         </Flex>
       )}
     </Container>
