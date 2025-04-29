@@ -15,7 +15,6 @@ import {
   FieldRoot,
   FieldLabel,
   Button,
-  Field,
 } from "@chakra-ui/react";
 
 export default function Signup() {

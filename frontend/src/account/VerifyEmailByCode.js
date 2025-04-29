@@ -3,7 +3,15 @@ import FormErrors from "../components/FormErrors";
 import { Navigate } from "react-router-dom";
 import { verifyEmail } from "../lib/allauth";
 import Button from "../components/Button";
-import { Container, Fieldset, Field, Input, Heading } from "@chakra-ui/react";
+import {
+  Container,
+  Heading,
+  Input,
+  FieldsetRoot,
+  FieldsetContent,
+  FieldRoot,
+  FieldLabel,
+} from "@chakra-ui/react";
 
 export default function VerifyEmail() {
   const [code, setCode] = useState("");
@@ -35,25 +43,23 @@ export default function VerifyEmail() {
     <Container h="100%">
       <Heading>Confirm Email Address</Heading>
       <FormErrors errors={response.content?.errors} />
-      <Fieldset.Root>
-        <Fieldset.Content>
-          <Field.Root>
-            <Field.Label>Code</Field.Label>
-            <Field.Content>
-              <Input
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                type="code"
-                required
-              />
-              <FormErrors param="key" errors={response.content?.errors} />
-            </Field.Content>
-          </Field.Root>
+      <FieldsetRoot>
+        <FieldsetContent>
+          <FieldRoot>
+            <FieldLabel>Code</FieldLabel>
+            <Input
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              type="code"
+              required
+            />
+            <FormErrors param="key" errors={response.content?.errors} />
+          </FieldRoot>
           <Button disabled={response.fetching} onClick={() => submit()}>
             Confirm
           </Button>
-        </Fieldset.Content>
-      </Fieldset.Root>
+        </FieldsetContent>
+      </FieldsetRoot>
     </Container>
   );
 
