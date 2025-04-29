@@ -62,59 +62,8 @@ import DefaultApi from "./client/src/api/DefaultApi";
 
 const api = new DefaultApi();
 
-// get all subject IDs
-const fetchAllSubjectIds = async () => {
-  return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsListSubjects((error, data) => {
-      if (error) {
-        console.error("Error fetching subjects:", error);
-        reject(error);
-      } else {
-        console.log("Raw subject data:", data);
-        const ids = data.map((s) => s.id);
-        console.log("Extracted subject IDs:", ids);
-        resolve(ids);
-      }
-    });
-  });
-};
-
-
-// fetch TA shifts for a given subject ID
-const fetchShiftsForSubject = async (subjectId) => {
-  return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsListTaShifts(subjectId, (error, data) => {
-      if (error) {
-        console.error(`Error fetching shifts for subject ${subjectId}`, error);
-        resolve([]); // fail
-      } else {
-        resolve(data);
-      }
-    });
-  });
-};
-
-// Main fetcher: get all shifts by looping through subject IDs
-const fetchAllShifts = async () => {
-  console.log('reached fetchAllShifts')
-  const subjectIds = await fetchAllSubjectIds();
-  const allShifts = [];
-
-  console.log('About to enter subjectId loop')
-  console.log(subjectIds)
-  for (const subjectId of subjectIds) {
-    console.log('About to await shifts')
-    const shifts = await fetchShiftsForSubject(subjectId);
-    console.log(`Shifts for subject ${subjectId}:`, shifts);
-    allShifts.push(...shifts);
-  }
-
-  return allShifts;
-};
-
 
 const setTimeOnDate = (date, timeStr) => {
-  if (!date || !timeStr) return null;
   const [hours, minutes, seconds] = timeStr.split(":").map(Number);
   const utcDate = new Date(date);
   utcDate.setUTCHours(hours, minutes, seconds || 0, 0);
@@ -222,9 +171,9 @@ const fetchUserShifts = async (userId) => {
 const Overview = () => {
   console.log("Overview component rendered");
 
-  const [selectedUsers, setSelectedUsers] = useState([]); // Array to store selected user IDs
-  const [events, setEvents] = useState([]); // Array to store events for the schedule
-  const [currentView, setCurrentView] = useState("Week"); // Initialize currentView with "Week"
+  const [selectedUsers, setSelectedUsers] = useState([]);  // Array to store selected user IDs
+  const [events, setEvents] = useState([]);  // Array to store events for the schedule
+  const [currentView, setCurrentView] = useState("Week");  // Initialize currentView with "Week"
 
   const { data: tas, isLoading: tasLoading } = useTAs();
   const { data: educators, isLoading: educatorsLoading } = useEducators();
@@ -236,41 +185,53 @@ const Overview = () => {
 
   console.log("Valid events being passed to ScheduleComponent:", validEvents);
 
+  // Map day_of_week to iCalendar BYDAY values
+  const dayOfWeekMap = {
+    Monday: "MO",
+    Tuesday: "TU",
+    Wednesday: "WE",
+    Thursday: "TH",
+    Friday: "FR",
+    Saturday: "SA",
+    Sunday: "SU",
+  };
+
   // Fetch shifts for a specific user and add them to the events array
   const fetchAndAddUserShifts = async (userId) => {
     console.log(`Fetching shifts for user ID: ${userId}`);
     try {
       const shifts = await fetchUserShifts(userId);
-      console.log(`Fetched shifts for user ID ${userId}:`, shifts);
-      const newEvents = shifts.map((shift) => ({
-        Id: shift.id,
-        Subject: `${shift.schedule?.subject?.name || "Unknown Subject"}`,
-        StartTime: setTimeOnDate(shift.date, shift.start_time),
-        EndTime: setTimeOnDate(shift.date, shift.end_time),
-        IsAllDay: false,
-        Description: `${shift.schedule?.subject?.name || "Unknown Subject"} for ${shift.schedule?.educator?.name || "Unknown TA"}`,
-        userId: userId, // Store userId as a number for consistency
-        CalendarId: 1,
-      }));
-      setEvents((prevEvents) => [...prevEvents, ...newEvents]);
-      console.log(`Updated events after adding shifts for user ID ${userId}:`, newEvents);
-    } catch (error) {
-      console.error(`Error fetching shifts for user ${userId}:`, error);
-    }
-  };
+    console.log(`Fetched shifts for user ID ${userId}:`, shifts);
+    const newEvents = shifts.map((shift) => ({
+      Id: shift.id,
+      Subject: `${shift.schedule?.subject?.name || "Unknown Subject"}`,
+      StartTime: setTimeOnDate(shift.date, shift.start_time),
+      EndTime: setTimeOnDate(shift.date, shift.end_time),
+      IsAllDay: false,
+      Description: `${shift.schedule?.subject?.name || "Unknown Subject"} for ${shift.schedule?.educator?.name || "Unknown TA"}`,
+      userId: userId, // Store userId as a number for consistency
+      CalendarId: 1,
+      RecurrenceRule: `FREQ=WEEKLY;BYDAY=${dayOfWeekMap[shift.day_of_week]}`, // Dynamically set recurrence rule
+    }));
+    setEvents((prevEvents) => [...prevEvents, ...newEvents]);
+    console.log(`Updated events after adding shifts for user ID ${userId}:`, newEvents);
+  } catch (error) {
+    console.error(`Error fetching shifts for user ${userId}:`, error);
+  }
+};
 
   // Handle checkbox change for selecting/deselecting users
   const handleUserSelection = (userId, isSelected) => {
     console.log(`User selection changed: userId=${userId}, isSelected=${isSelected}`);
     if (isSelected) {
       setSelectedUsers((prev) => [...prev, userId]);
-      fetchAndAddUserShifts(userId); // Fetch and add shifts for the selected user
+      fetchAndAddUserShifts(userId);  // Fetch and add shifts for the selected user
     } else {
       setSelectedUsers((prev) => prev.filter((id) => id !== userId));
-      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== userId)); // Match userId as a number
+      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== userId));  // Match userId as a number
       console.log(`Removed events for user ID ${userId}`);
     }
-  };
+  }
 
   const scheduleObj = useRef(null);
 
@@ -330,7 +291,7 @@ const Overview = () => {
               currentView={currentView}
               group={{ resources: ["Calendars"] }}
               timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}
-              eventSettings={{ dataSource: validEvents }} // Use the filtered events array
+              eventSettings={{ dataSource: validEvents }}  // Use the filtered events array
               dateHeaderTemplate={dateHeaderTemplate}
               showTimeIndicator={true}
             >
