@@ -281,65 +281,71 @@ const Overview = () => {
 
       <div className="col-lg-12 control-section">
         <div className="content-wrapper">
-          <div className="overview-scheduler">
-            <ScheduleComponent
-              id="scheduler"
-              cssClass="schedule-overview"
-              ref={scheduleObj}
-              width="100%"
-              height="100%"
-              currentView={currentView}
-              group={{ resources: ["Calendars"] }}
-              timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}
-              eventSettings={{ dataSource: validEvents }}  // Use the filtered events array
-              dateHeaderTemplate={dateHeaderTemplate}
-              showTimeIndicator={true}
-            >
-              <ResourcesDirective>
-                <ResourceDirective
-                  field="CalendarId"
-                  title="Calendars"
-                  name="Calendars"
-                  dataSource={calendarCollections}
-                  query={new Query().where("CalendarId", "equal", 1)}
-                  textField="CalendarText"
-                  idField="CalendarId"
-                  colorField="CalendarColor"
-                />
-              </ResourcesDirective>
-              <ViewsDirective>
-                <ViewDirective option="Day" />
-                <ViewDirective option="Week" />
-                <ViewDirective option="WorkWeek" />
-                <ViewDirective option="Month" />
-                <ViewDirective option="Year" />
-                <ViewDirective option="Agenda" />
-                <ViewDirective option="TimelineDay" />
-                <ViewDirective option="TimelineWeek" />
-                <ViewDirective option="TimelineWorkWeek" />
-                <ViewDirective option="TimelineMonth" />
-                <ViewDirective option="TimelineYear" />
-              </ViewsDirective>
-              <Inject
-                services={[
-                  Day,
-                  Week,
-                  WorkWeek,
-                  Month,
-                  Year,
-                  Agenda,
-                  TimelineViews,
-                  TimelineMonth,
-                  TimelineYear,
-                  DragAndDrop,
-                  Resize,
-                  Print,
-                  ExcelExport,
-                  ICalendarImport,
-                  ICalendarExport,
-                ]}
-              />
-            </ScheduleComponent>
+          <div className="schedule-overview">
+            <div className="overview-content">
+              <div className="left-panel">
+                <div className="overview-scheduler">
+                  <ScheduleComponent
+                    id="scheduler"
+                    cssClass="schedule-overview"
+                    ref={scheduleObj}
+                    width="100%"
+                    height="100%"
+                    currentView={currentView}
+                    group={{ resources: ["Calendars"] }}
+                    timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}
+                    eventSettings={{ dataSource: validEvents }}
+                    dateHeaderTemplate={dateHeaderTemplate}
+                    showTimeIndicator={true}
+                  >
+                    <ResourcesDirective>
+                      <ResourceDirective
+                        field="CalendarId"
+                        title="Calendars"
+                        name="Calendars"
+                        dataSource={calendarCollections}
+                        query={new Query().where("CalendarId", "equal", 1)}
+                        textField="CalendarText"
+                        idField="CalendarId"
+                        colorField="CalendarColor"
+                      />
+                    </ResourcesDirective>
+                    <ViewsDirective>
+                      <ViewDirective option="Day" />
+                      <ViewDirective option="Week" />
+                      <ViewDirective option="WorkWeek" />
+                      <ViewDirective option="Month" />
+                      <ViewDirective option="Year" />
+                      <ViewDirective option="Agenda" />
+                      <ViewDirective option="TimelineDay" />
+                      <ViewDirective option="TimelineWeek" />
+                      <ViewDirective option="TimelineWorkWeek" />
+                      <ViewDirective option="TimelineMonth" />
+                      <ViewDirective option="TimelineYear" />
+                    </ViewsDirective>
+                    <Inject
+                      services={[
+                        Day,
+                        Week,
+                        WorkWeek,
+                        Month,
+                        Year,
+                        Agenda,
+                        TimelineViews,
+                        TimelineMonth,
+                        TimelineYear,
+                        DragAndDrop,
+                        Resize,
+                        Print,
+                        ExcelExport,
+                        ICalendarImport,
+                        ICalendarExport,
+                      ]}
+                    />
+                  </ScheduleComponent>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
