@@ -527,11 +527,6 @@ def create_ta_shift(request, shift: ShiftSchemaCreate, schedule_id: uuid.UUID):
     if user.groups.filter(name="Educator").exists():
         try:
             schedule = Schedule.objects.get(id=schedule_id)
-            # if not subject:
-            #     return 403, {"message": "Subject not found."}
-
-            # schedule = Schedule.objects.filter(
-            #     subject__id=subject_id, educator__id=user.id).first()
             if schedule == None:
                 return 403, {"message": "Schedule not found for the given subject and educator."}
 
