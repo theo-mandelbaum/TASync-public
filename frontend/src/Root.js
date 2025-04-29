@@ -91,7 +91,7 @@ export default function Root() {
 
   return (
     <Flex h="100vh" direction="column" position="relative">
-      <NavBar />
+      <NavBar group={userGroup} />
       <main style={{ height: "100%" }}>
         <Outlet />
       </main>

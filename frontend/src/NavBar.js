@@ -29,12 +29,13 @@ function NavBarItem(props) {
   );
 }
 
-export default function NavBar() {
+export default function NavBar({ group }) {
   const user = useUser();
   const config = useConfig();
-  const group = JSON.parse(localStorage.getItem("group"));
-  const [edVisible, setEdVisible] = useState(false);
-  const [taVisible, setTaVisible] = useState(false);
+  const [edVisible, setEdVisible] = useState(group?.name === "Educator");
+  const [taVisible, setTaVisible] = useState(group?.name === "TA");
+  console.log("edVisible", edVisible);
+  console.log("taVisible", taVisible);
   const anonNav = (
     <>
       <NavBarItem to="/account/login" name="Login" />
@@ -62,22 +63,18 @@ export default function NavBar() {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    let group_check = JSON.parse(localStorage.getItem("group"));
-    if (group_check?.name === "Educator") {
+    if (group?.name === "Educator") {
       setEdVisible(true);
     } else {
       setEdVisible(false);
     }
-  }, []);
-
-  useLayoutEffect(() => {
-    let group_check = JSON.parse(localStorage.getItem("group"));
-    if (group_check?.name === "TA") {
+    if (group?.name === "TA") {
       setTaVisible(true);
     } else {
       setTaVisible(false);
     }
-  }, []);
+    console.log("checking", group?.name);
+  }, [group]);
 
   return (
     <HStack bgColor="white" position="sticky" top={0} zIndex={100}>
@@ -90,8 +87,8 @@ export default function NavBar() {
           {edVisible && (
             <NavBarItem to="/manageschedule" icon="" name="Manage Schedules" />
           )}
-          {(edVisible || taVisible) && ( 
-            <NavBarItem to="/schedule" icon="" name="Schedule"/>
+          {(edVisible || taVisible) && (
+            <NavBarItem to="/schedule" icon="" name="Schedule" />
           )}
           {edVisible && (
             <NavBarItem to="/addsubjects" icon="" name="Add Subjects" />
