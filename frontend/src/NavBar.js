@@ -90,6 +90,9 @@ export default function NavBar() {
           {edVisible && (
             <NavBarItem to="/manageschedule" icon="" name="Manage Schedules" />
           )}
+          {(edVisible || taVisible) && ( 
+            <NavBarItem to="/schedule" icon="" name="Schedule"/>
+          )}
           {edVisible && (
             <NavBarItem to="/addsubjects" icon="" name="Add Subjects" />
           )}
