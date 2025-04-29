@@ -19,7 +19,7 @@ import {
   AppBarComponent,
 } from "@syncfusion/ej2-react-navigations";
 import {
-  ScheduleComponent,
+  ScheduleComponent, // Ensure this is imported
   Day,
   Week,
   WorkWeek,
@@ -229,6 +229,13 @@ const Overview = () => {
   const { data: tas, isLoading: tasLoading } = useTAs();
   const { data: educators, isLoading: educatorsLoading } = useEducators();
 
+  // Filter out events with invalid StartTime or EndTime
+  const validEvents = events.filter(
+    (event) => event.StartTime && event.EndTime
+  );
+
+  console.log("Valid events being passed to ScheduleComponent:", validEvents);
+
   // Fetch shifts for a specific user and add them to the events array
   const fetchAndAddUserShifts = async (userId) => {
     console.log(`Fetching shifts for user ID: ${userId}`);
@@ -242,7 +249,7 @@ const Overview = () => {
         EndTime: setTimeOnDate(shift.date, shift.end_time),
         IsAllDay: false,
         Description: `${shift.schedule?.subject?.name || "Unknown Subject"} for ${shift.schedule?.educator?.name || "Unknown TA"}`,
-        userId: `User ID: ${userId}`, // Add user ID to the description for easy filtering
+        userId: userId, // Store userId as a number for consistency
         CalendarId: 1,
       }));
       setEvents((prevEvents) => [...prevEvents, ...newEvents]);
@@ -260,7 +267,7 @@ const Overview = () => {
       fetchAndAddUserShifts(userId); // Fetch and add shifts for the selected user
     } else {
       setSelectedUsers((prev) => prev.filter((id) => id !== userId));
-      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== `User ID: ${userId}`));
+      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== userId)); // Match userId as a number
       console.log(`Removed events for user ID ${userId}`);
     }
   };
@@ -323,7 +330,7 @@ const Overview = () => {
               currentView={currentView}
               group={{ resources: ["Calendars"] }}
               timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}
-              eventSettings={{ dataSource: events }} // Use the events array
+              eventSettings={{ dataSource: validEvents }} // Use the filtered events array
               dateHeaderTemplate={dateHeaderTemplate}
               showTimeIndicator={true}
             >
