@@ -559,6 +559,13 @@ function EducatorFooter({ schedule_id }) {
         duration: 5000,
       });
       setOpen(false);
+      setValue("start_time", "");
+      setValue("end_time", "");
+      setValue("day_of_week", "");
+      setValue("max_ta", 0);
+      setValue("max_students", 0);
+      setDayValue([]);
+
       queryClient.refetchQueries([`shifts ${schedule_id}`]);
     },
     onError: (error) => {
