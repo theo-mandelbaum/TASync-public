@@ -337,3 +337,47 @@
             max-width: initial;
         }
     }
+
+/* Styles for dropdown */
+.custom-dropdown .e-dropdownbase {
+  background-color: #c9c9c9;
+  border: 1px solid #555;
+}
+
+.custom-dropdown .e-input {
+  background-color: #333;
+  color: #333;
+  border: 1px solid #555;
+  font-weight: bold;
+}
+
+.custom-dropdown .e-list-item {
+  background-color: #333;
+  color: #333;
+}
+
+.custom-dropdown .e-list-item:hover {
+    background-color: #555;
+  }
+
+.custom-dropdown .e-placeholder {
+color: #aaa;
+}
+
+/* Custom styles for checkboxes */
+.custom-checkbox {
+  accent-color: #1aaa55; /* Green accent color for checkboxes */
+}
+
+/* Ensure headings and other text elements are readable */
+h1, h2, h3, h4, h5, h6 {
+  color: #222; /* Slightly darker text for headings */
+}
+
+h3 {
+  color: #222; /* Darker text for headings like "Filter Shifts" */
+}
+
+p, span, label {
+  color: #333; /* Consistent text color for readability */
+}

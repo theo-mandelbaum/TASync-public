@@ -19,7 +19,7 @@ import {
   AppBarComponent,
 } from "@syncfusion/ej2-react-navigations";
 import {
-  ScheduleComponent, // Ensure this is imported
+  ScheduleComponent,
   Day,
   Week,
   WorkWeek,
@@ -60,6 +60,15 @@ import "./css/overview.css";
 import { useQuery } from "@tanstack/react-query";
 import DefaultApi from "./client/src/api/DefaultApi";
 
+const weekDays = [
+  { text: 'Sunday', value: 0 },
+  { text: 'Monday', value: 1 },
+  { text: 'Tuesday', value: 2 },
+  { text: 'Wednesday', value: 3 },
+  { text: 'Thursday', value: 4 },
+  { text: 'Friday', value: 5 },
+  { text: 'Saturday', value: 6 }
+];
 const api = new DefaultApi();
 
 
@@ -174,6 +183,7 @@ const Overview = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);  // Array to store selected user IDs
   const [events, setEvents] = useState([]);  // Array to store events for the schedule
   const [currentView, setCurrentView] = useState("Week");  // Initialize currentView with "Week"
+  const [userType, setUserType] = useState("TAs"); // State to toggle between TAs and Educators
 
   const { data: tas, isLoading: tasLoading } = useTAs();
   const { data: educators, isLoading: educatorsLoading } = useEducators();
@@ -220,59 +230,66 @@ const Overview = () => {
   }
 };
 
-  // Handle checkbox change for selecting/deselecting users
+  const handleUserTypeChange = (e) => {
+    setUserType(e.value); // Update the user type based on dropdown selection
+  };
+
   const handleUserSelection = (userId, isSelected) => {
     console.log(`User selection changed: userId=${userId}, isSelected=${isSelected}`);
     if (isSelected) {
       setSelectedUsers((prev) => [...prev, userId]);
-      fetchAndAddUserShifts(userId);  // Fetch and add shifts for the selected user
+      fetchAndAddUserShifts(userId); // Fetch and add shifts for the selected user
     } else {
       setSelectedUsers((prev) => prev.filter((id) => id !== userId));
-      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== userId));  // Match userId as a number
+      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== userId)); // Match userId as a number
       console.log(`Removed events for user ID ${userId}`);
     }
   }
 
+  const userList = userType === "TAs" ? tas : educators; // Dynamically select the list based on userType
+  const isLoading = userType === "TAs" ? tasLoading : educatorsLoading;
+
   const scheduleObj = useRef(null);
 
-  const dateHeaderTemplate = (date) => {
-    if (!(date instanceof Date)) {
-      date = new Date(date);
-    }
+  const dateHeaderTemplate = (props) => {
     const intl = new Internationalization();
-    return intl.formatDate(date, { skeleton: "Ed" });
+    const dayName = intl.formatDate(props.date, { type: "date", format: "EEEE" });
+    const dayNumber = intl.formatDate(props.date, { type: "date", format: "d" });
+    return (
+      <Fragment>
+        <div style={{ fontWeight: "bold" }}>{dayName}</div> {/* Day of the week */}
+        <div>{dayNumber}</div> {/* Day of the month */}
+      </Fragment>
+    );
   };
 
   return (
     <div className="schedule-control-section">
       <div style={{ marginBottom: "20px", padding: "10px" }}>
-        <h3>Filter Shifts</h3>
+        <h3 style={{ color: "#222" }}>Filter Shifts</h3>
+        <div style={{ marginBottom: "10px" }}>
+          <DropDownListComponent
+            id="userTypeDropdown"
+            dataSource={["TAs", "Educators"]} // Dropdown options
+            value={userType} // Bind to userType state
+            change={handleUserTypeChange} // Handle dropdown selection
+            placeholder="Select User Type"
+            cssClass="custom-dropdown" // Add a custom CSS class
+          />
+        </div>
         <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-          {tasLoading ? (
-            <p>Loading TAs...</p>
+          {isLoading ? (
+            <p style={{ color: "white" }}>Loading {userType}...</p> // Ensure loading text is visible
           ) : (
-            tas?.map((ta) => (
-              <div key={ta.id} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            userList && userList.map((user) => ( // Ensure userList is not null or undefined
+              <div key={user.id} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
                 <input
                   type="checkbox"
-                  checked={selectedUsers.includes(ta.id)}
-                  onChange={(e) => handleUserSelection(ta.id, e.target.checked)}
+                  checked={selectedUsers.includes(user.id)} // Ensure selectedUsers is an array
+                  onChange={(e) => handleUserSelection(user.id, e.target.checked)} // Correctly handle checkbox changes
+                  className="custom-checkbox" // Add a custom CSS class
                 />
-                <span>{ta.name || ta.username}</span>
-              </div>
-            ))
-          )}
-          {educatorsLoading ? (
-            <p>Loading Educators...</p>
-          ) : (
-            educators?.map((educator) => (
-              <div key={educator.id} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                <input
-                  type="checkbox"
-                  checked={selectedUsers.includes(educator.id)}
-                  onChange={(e) => handleUserSelection(educator.id, e.target.checked)}
-                />
-                <span>{educator.name || educator.username}</span>
+                <span style={{ color: "#222" }}>{user.name || user.username}</span>
               </div>
             ))
           )}
@@ -295,7 +312,7 @@ const Overview = () => {
                     group={{ resources: ["Calendars"] }}
                     timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}
                     eventSettings={{ dataSource: validEvents }}
-                    dateHeaderTemplate={dateHeaderTemplate}
+                    dateHeaderTemplate={dateHeaderTemplate} // Pass the custom template here
                     showTimeIndicator={true}
                   >
                     <ResourcesDirective>
@@ -343,6 +360,9 @@ const Overview = () => {
                       ]}
                     />
                   </ScheduleComponent>
+                </div>
+                <div className='col-right'>
+                  <DropDownListComponent id="weekFirstDay" dataSource={weekDays} fields={{ text: 'text', value: 'value' }} value={0} popupHeight={400} change={(args) => { scheduleObj.current.firstDayOfWeek = args.value; }}/>
                 </div>
               </div>
             </div>
