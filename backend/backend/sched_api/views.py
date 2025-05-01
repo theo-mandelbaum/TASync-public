@@ -535,7 +535,7 @@ def create_ta_shift(request, shift: ShiftSchemaCreate, schedule_id: uuid.UUID):
             if shift.day_of_week not in days_of_week:
                 return 403, {"message": "Invalid day of the week."}
 
-            shifts = schedule.shifts.all()
+            shifts = Shift.objects.filter(schedule__educator__id=user.id)
             for existing_shift in shifts:
                 e_start_time = existing_shift.start_time
                 e_end_time = existing_shift.end_time
