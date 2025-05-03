@@ -30,6 +30,7 @@ import {
 } from "./edcuatorcarditems/EducatorCardItem";
 import { StudentCardSideBar } from "./studentcarditems/StudentCardItems";
 import { TACardSideBar } from "./tacarditems/TACardItems";
+import "../css/manageschedule.css"
 
 const api = new DefaultApi();
 
@@ -378,7 +379,7 @@ export default function ScheduleCard({
   }
 
   return (
-    <CardRoot bgColor={is_ta_hours && "purple.100"}>
+    <CardRoot className="schedule-card" bgColor={is_ta_hours && "purple.100"}>
       <CardBody>
         <HStack>
           <CardTitle>

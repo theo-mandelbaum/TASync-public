@@ -43,6 +43,7 @@ import {
 import ScheduleCard from "./components/ScheduleCard";
 import { set, useForm } from "react-hook-form";
 import { toaster } from "./components/ui/toaster";
+import "./css/manageschedule.css"
 
 const api = new DefaultApi();
 
