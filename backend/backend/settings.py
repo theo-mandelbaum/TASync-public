@@ -126,8 +126,17 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-EMAIL_HOST = "mail"
-EMAIL_PORT = 1025
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "postmaster@mail.jeromeslocallibrary.me"
+EMAIL_HOST_PASSWORD = "fbfc8be8c5750d17eebcbae9b97b425c-67bd41c2-ebfd6fd6"
+# DEFAULT_FROM_EMAIL = "TSYNC <tsync@sandbox13204bff4f754359a794e2ae20b91e6a.mailgun.org>"
+# EMAIL_HOST_USER = "postmaster@sandbox13204bff4f754359a794e2ae20b91e6a.mailgun.org"
+# EMAIL_HOST_PASSWORD = "639b8a6fbfb67ef44a5118a09aab1e92-67bd41c2-bbf7ea8b"
+DEFAULT_FROM_EMAIL = "noreply@tsync.org"
+
 
 AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",)

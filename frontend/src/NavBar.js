@@ -63,19 +63,17 @@ export default function NavBar({ group }) {
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    if (group?.name === "Educator") {
-      setEdVisible(true);
+    const group_check = JSON.parse(localStorage.getItem("group"));
+    if (group_check) {
+      setEdVisible(group_check.name === "Educator");
+      setTaVisible(group_check.name === "TA");
     } else {
       setEdVisible(false);
-    }
-    if (group?.name === "TA") {
-      setTaVisible(true);
-    } else {
       setTaVisible(false);
     }
     console.log("checking", group?.name);
-  }, [group]);
-
+  });
+  //
   return (
     <HStack bgColor="white" position="sticky" top={0} zIndex={100}>
       <Link to="/" className="navbar-brand">
