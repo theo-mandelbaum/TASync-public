@@ -73,7 +73,7 @@ export default function NavBar({ group }) {
     }
     console.log("checking", group?.name);
   });
-
+  //
   return (
     <HStack bgColor="white" position="sticky" top={0} zIndex={100}>
       <Link to="/" className="navbar-brand">
