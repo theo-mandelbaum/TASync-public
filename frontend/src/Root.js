@@ -84,7 +84,6 @@ export default function Root() {
     status.isAuthenticated,
     userGroup,
   ]);
-
   if (isLoadingUserGroup || isFetchingUserGroup) {
     return <p>Loading...</p>;
   }
