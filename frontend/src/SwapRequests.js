@@ -158,10 +158,15 @@ export default function ShiftRquests() {
     return <div>Error loading messages</div>;
   }
   return (
-    <SimpleGrid columns={2} gap="40px" pt={3} pl={5} pr={5}>
-      {incomingSwapRequests?.map((request) => (
-        <RequestCard request={request} key={request.id} />
-      ))}
-    </SimpleGrid>
+    <Container maxW="container.lg" py={6}>
+      <Heading size="lg" mb={6} textAlign="center">
+        Incoming Swap Requests
+      </Heading>
+      <SimpleGrid columns={[1, 2]} spacing={6}>
+        {incomingSwapRequests?.map((request) => (
+          <RequestCard request={request} key={request.id} />
+        ))}
+      </SimpleGrid>
+    </Container>
   );
 }

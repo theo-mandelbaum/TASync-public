@@ -116,6 +116,7 @@
 
     .schedule-overview .overview-content {
         display: flex;
+        gap: 20px;
     }
 
     .schedule-overview .overview-content .left-panel {
@@ -129,6 +130,9 @@
         transform: translateX(0%);
         transition: transform .5s ease, width 500ms;
         width: 500px;
+        background-color: #f3f4f6;
+        padding: 15px;
+        border-radius: 8px;
     }
 
     .schedule-overview .overview-content .right-panel.hide {
@@ -345,19 +349,20 @@
 }
 
 .custom-dropdown .e-input {
-  background-color: #333;
-  color: #333;
-  border: 1px solid #555;
-  font-weight: bold;
+  background-color: #fff;
+  color: #222;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 .custom-dropdown .e-list-item {
-  background-color: #333;
-  color: #333;
+  background-color: #fff;
+  color: #222;
 }
 
 .custom-dropdown .e-list-item:hover {
-    background-color: #555;
+    background-color: #f0f0f0;
   }
 
 .custom-dropdown .e-placeholder {
@@ -367,6 +372,12 @@ color: #aaa;
 /* Custom styles for checkboxes */
 .custom-checkbox {
   accent-color: #1aaa55; /* Green accent color for checkboxes */
+  margin-right: 10px;
+}
+
+.custom-checkbox + span {
+  font-size: 1rem;
+  color: #333;
 }
 
 /* Ensure headings and other text elements are readable */
@@ -375,9 +386,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h3 {
-  color: #222; /* Darker text for headings like "Filter Shifts" */
+  color: #222;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 p, span, label {
   color: #333; /* Consistent text color for readability */
+}
+
+/* Add padding and spacing for better layout */
+.schedule-control-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the schedule component */
+.schedule-overview {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Style buttons */
+button {
+  background-color: #1aaa55;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #138a45;
 }

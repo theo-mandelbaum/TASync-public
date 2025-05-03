@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import DefaultApi from "./client/src/api/DefaultApi";
-import { Button, Container, Heading } from "@chakra-ui/react";
+import { Button, Container, Heading, Flex } from "@chakra-ui/react";
 import SubjectSchedView from "./SubjectSchedView";
 import { useQuery } from "@tanstack/react-query";
 import { useLayoutEffect, useState } from "react";
@@ -80,12 +80,16 @@ export default function SubjectHome() {
   }
 
   return (
-    <Container>
-      <Heading>Welcome to {subject?.name} Home</Heading>
+    <Container maxW="container.md" py={6}>
+      <Heading size="lg" mb={6} textAlign="center">
+        Welcome to {subject?.name} Home
+      </Heading>
       <SubjectSchedView subject_id={subjectID} />
-      <Button colorScheme="blue" size="lg" onClick={handleGoToQuestions}>
-        Go to Questions
-      </Button>
+      <Flex justifyContent="center" mt={6}>
+        <Button colorScheme="blue" size="lg" onClick={handleGoToQuestions}>
+          Go to Questions
+        </Button>
+      </Flex>
     </Container>
   );
 }

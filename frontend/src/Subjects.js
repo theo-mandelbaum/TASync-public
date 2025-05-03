@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import DefaultApi from "./client/src/api/DefaultApi";
 import SubjectButtons from "./components/SubjectButtons";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const api = new DefaultApi();
@@ -39,7 +39,10 @@ function Subjects() {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <Flex flexDirection="column" alignItems="center" justifyContent="center">
+    <Flex flexDirection="column" alignItems="center" justifyContent="center" py={6}>
+      <Heading size="lg" mb={6}>
+        Subjects
+      </Heading>
       <SubjectButtons
         subjects={subjects}
         onSubjectClick={navigateSubjectHome}

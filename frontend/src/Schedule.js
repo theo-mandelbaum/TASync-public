@@ -266,30 +266,42 @@ const Overview = () => {
   return (
     <div className="schedule-control-section">
       <div style={{ marginBottom: "20px", padding: "10px" }}>
-        <h3 style={{ color: "#222" }}>Filter Shifts</h3>
-        <div style={{ marginBottom: "10px" }}>
+        <h3>Filter Shifts</h3>
+        <div style={{ marginBottom: "10px", textAlign: "center" }}>
           <DropDownListComponent
             id="userTypeDropdown"
-            dataSource={["TAs", "Educators"]} // Dropdown options
-            value={userType} // Bind to userType state
-            change={handleUserTypeChange} // Handle dropdown selection
+            dataSource={["TAs", "Educators"]}
+            value={userType}
+            change={handleUserTypeChange}
             placeholder="Select User Type"
-            cssClass="custom-dropdown" // Add a custom CSS class
+            cssClass="custom-dropdown"
           />
         </div>
-        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
           {isLoading ? (
-            <p style={{ color: "white" }}>Loading {userType}...</p> // Ensure loading text is visible
+            <p>Loading {userType}...</p>
           ) : (
-            userList && userList.map((user) => ( // Ensure userList is not null or undefined
-              <div key={user.id} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            userList &&
+            userList.map((user) => (
+              <div
+                key={user.id}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  padding: "5px 10px",
+                  backgroundColor: "#f9f9f9",
+                  borderRadius: "4px",
+                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                }}
+              >
                 <input
                   type="checkbox"
-                  checked={selectedUsers.includes(user.id)} // Ensure selectedUsers is an array
-                  onChange={(e) => handleUserSelection(user.id, e.target.checked)} // Correctly handle checkbox changes
-                  className="custom-checkbox" // Add a custom CSS class
+                  checked={selectedUsers.includes(user.id)}
+                  onChange={(e) => handleUserSelection(user.id, e.target.checked)}
+                  className="custom-checkbox"
                 />
-                <span style={{ color: "#222" }}>{user.name || user.username}</span>
+                <span>{user.name || user.username}</span>
               </div>
             ))
           )}
@@ -312,7 +324,7 @@ const Overview = () => {
                     group={{ resources: ["Calendars"] }}
                     timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}
                     eventSettings={{ dataSource: validEvents }}
-                    dateHeaderTemplate={dateHeaderTemplate} // Pass the custom template here
+                    dateHeaderTemplate={dateHeaderTemplate}
                     showTimeIndicator={true}
                   >
                     <ResourcesDirective>
@@ -361,8 +373,17 @@ const Overview = () => {
                     />
                   </ScheduleComponent>
                 </div>
-                <div className='col-right'>
-                  <DropDownListComponent id="weekFirstDay" dataSource={weekDays} fields={{ text: 'text', value: 'value' }} value={0} popupHeight={400} change={(args) => { scheduleObj.current.firstDayOfWeek = args.value; }}/>
+                <div className="col-right">
+                  <DropDownListComponent
+                    id="weekFirstDay"
+                    dataSource={weekDays}
+                    fields={{ text: "text", value: "value" }}
+                    value={0}
+                    popupHeight={400}
+                    change={(args) => {
+                      scheduleObj.current.firstDayOfWeek = args.value;
+                    }}
+                  />
                 </div>
               </div>
             </div>

@@ -244,8 +244,10 @@ export default function ScheduleManager() {
   }
 
   return (
-    <Container h="100%">
-      <Heading>Schedule Manager</Heading>
+    <Container h="100%" className="schedule-manager">
+      <Heading size="lg" mb={6} textAlign="center">
+        Schedule Manager
+      </Heading>
       <Flex direction="column" gap={4} mb={7}>
         {schedules?.map((schedule) => (
           <ScheduleCard

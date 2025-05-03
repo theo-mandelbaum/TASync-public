@@ -14,6 +14,7 @@ import {
   RadioCardItemContent,
   RadioCardItemIndicator,
   RadioCardItemHiddenInput,
+  Heading,
 } from "@chakra-ui/react";
 import { useLayoutEffect, useState } from "react";
 
@@ -93,10 +94,11 @@ export default function ChooseGroup() {
   }
 
   return (
-    <Stack>
+    <Stack spacing={6} align="center" py={6}>
+      <Heading size="lg">Choose a Group</Heading>
       <RadioCardRoot>
-        <RadioCardLabel>Choose a group:</RadioCardLabel>
-        <HStack w="100%" justifyContent="space-between">
+        <RadioCardLabel>Select a group:</RadioCardLabel>
+        <HStack w="100%" justifyContent="center" spacing={4}>
           {groups.map((group) => (
             <RadioCardItem
               key={group.id}
@@ -118,7 +120,7 @@ export default function ChooseGroup() {
       <Button
         disabled={currentGroupID === null}
         onClick={handleGroupClick}
-        w="min-content"
+        colorScheme="blue"
       >
         Select Group
       </Button>

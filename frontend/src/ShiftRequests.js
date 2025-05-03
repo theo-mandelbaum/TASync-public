@@ -1,7 +1,7 @@
 const ShiftRequests = () => {
   return (
-    <div className="shift-requests">
-      <h2>List shift requests</h2>
+    <div className="shift-requests" style={{ textAlign: "center", padding: "20px" }}>
+      <h2 style={{ fontSize: "1.5rem", marginBottom: "20px" }}>List Shift Requests</h2>
     </div>
   );
 };

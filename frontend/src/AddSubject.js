@@ -102,15 +102,16 @@ export default function AddSubject() {
     return <p>You do not have permission to add subjects.</p>;
 
   return (
-    <Stack spacing={4} p={4} maxW="md" mx="auto" mt={8}>
-      <Heading size="md">Add Subject</Heading>
+    <Stack spacing={6} p={6} maxW="md" mx="auto" mt={8} borderWidth={1} borderRadius="lg" boxShadow="md">
+      <Heading size="lg" textAlign="center">
+        Add Subject
+      </Heading>
       <Input
         placeholder="Subject Name"
         value={name}
         disabled={disabled}
         onChange={(e) => setName(e.target.value)}
       />
-
       <CheckboxRoot
         checked={isTA}
         onCheckedChange={(e) => {
@@ -128,7 +129,6 @@ export default function AddSubject() {
         <CheckboxControl />
         <CheckboxLabel>TA Hours</CheckboxLabel>
       </CheckboxRoot>
-
       <Button
         colorScheme="blue"
         onClick={() => createMutation.mutate({ name, is_ta_hours: isTA })}
@@ -136,8 +136,7 @@ export default function AddSubject() {
       >
         Submit
       </Button>
-
-      <Heading size="sm" mt={6}>
+      <Heading size="md" mt={6}>
         Subjects
       </Heading>
       {subjects.map((subject) => (
@@ -145,29 +144,13 @@ export default function AddSubject() {
           <Text>
             {subject.name} {subject.is_ta_hours ? "(TA Hours)" : ""}
           </Text>
-          <Flex gap={2}>
-            {/* Placeholder for future editing */}
-            {/* <Button
-              size="sm"
-              colorScheme="yellow"
-              onClick={() => {
-                setName(subject.name);
-                setIsTA(subject.is_ta_hours);
-              }}
-            >
-              Edit
-            </Button> */}
-            <Button
-              size="sm"
-              colorScheme="red"
-              onClick={() => {
-                console.log("deleting", subject.id);
-                deleteMutation.mutate(subject.id);
-              }}
-            >
-              Delete
-            </Button>
-          </Flex>
+          <Button
+            size="sm"
+            colorScheme="red"
+            onClick={() => deleteMutation.mutate(subject.id)}
+          >
+            Delete
+          </Button>
         </Flex>
       ))}
     </Stack>
