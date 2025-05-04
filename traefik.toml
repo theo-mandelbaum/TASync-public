@@ -34,7 +34,7 @@ address = ":443"
 
 [http.routers.django]
 service = "django"
-rule = "(Host(`tasync.jeromeslocallibrary.me`) || Host(`localhost`) || Host(`165.227.121.242`)) && PathPrefix(`/accounts`) || PathPrefix(`/_allauth`) || PathPrefix(`/ninja`) || PathPrefix(`/drf`) || PathPrefix(`/sched_api`)"
+rule = "Host(`tasync.jeromeslocallibrary.me`) && PathPrefix(`/accounts`) || PathPrefix(`/_allauth`) || PathPrefix(`/ninja`) || PathPrefix(`/drf`) || PathPrefix(`/sched_api`)"
 entryPoints = ["web", "websecure"]
 tls.certresolver = "letsencrypt"
 
