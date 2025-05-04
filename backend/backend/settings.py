@@ -61,6 +61,11 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://tasync.jeromeslocallibrary.me",
+    "https://165.227.121.242:10000",
+]
+
 AUTH_USER_MODEL = "scheduling.User"
 
 ROOT_URLCONF = "backend.urls"
