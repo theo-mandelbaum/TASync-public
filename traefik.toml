@@ -1,5 +1,12 @@
 defaultEntryPoints = ["http"]
 
+[entryPoints]
+  [entryPoints.web]
+  address = ":80"
+
+  [entryPoints.websecure]
+  address = ":443"
+
 [log]
 level = "DEBUG"
 
@@ -26,13 +33,15 @@ address = ":10000"
 [http.routers.django]
 service = "django"
 rule = "(Host(`tasync.jeromeslocallibrary.me`) || Host(`localhost`) || Host(`165.227.121.242`)) && PathPrefix(`/accounts`) || PathPrefix(`/_allauth`) || PathPrefix(`/ninja`) || PathPrefix(`/drf`) || PathPrefix(`/sched_api`)"
-entrypoints = ["web"]
+entryPoints = ["web", "websecure"]
+tls.certresolver = "letsencrypt"
 
 
 [http.routers.react]
 service = "react"
 rule = "(Host(`tasync.jeromeslocallibrary.me`) || Host(`localhost`) || Host(`165.227.121.242`)) && PathPrefix(`/`)"
-entrypoints = ["web"]
+entryPoints = ["web", "websecure"]
+tls.certresolver = "letsencrypt"
 
 [http.services]
 [http.services.react.loadBalancer]
