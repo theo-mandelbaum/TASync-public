@@ -25,13 +25,13 @@ address = ":10000"
 
 [http.routers.django]
 service = "django"
-rule = "PathPrefix(`/accounts`) || PathPrefix(`/_allauth`) || PathPrefix(`/ninja`) || PathPrefix(`/drf`) || PathPrefix(`/sched_api`)"
+rule = "(Host(`tasync.jeromeslocallibrary.me`) || Host(`localhost`) || Host(`165.227.121.242`)) && PathPrefix(`/accounts`) || PathPrefix(`/_allauth`) || PathPrefix(`/ninja`) || PathPrefix(`/drf`) || PathPrefix(`/sched_api`)"
 entrypoints = ["web"]
 
 
 [http.routers.react]
 service = "react"
-rule = "PathPrefix(`/`)"
+rule = "(Host(`tasync.jeromeslocallibrary.me`) || Host(`localhost`) || Host(`165.227.121.242`)) && PathPrefix(`/`)"
 entrypoints = ["web"]
 
 [http.services]
