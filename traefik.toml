@@ -1,12 +1,5 @@
 defaultEntryPoints = ["http"]
 
-[entryPoints]
-  [entryPoints.web]
-  address = ":80"
-
-  [entryPoints.websecure]
-  address = ":443"
-
 [log]
 level = "DEBUG"
 
@@ -26,7 +19,9 @@ watch = true
 
 [entryPoints]
 [entryPoints.web]
-address = ":10000"
+address = ":80"
+[entryPoints.websecure]
+address = ":443"
 
 [http.routers]
 
@@ -39,7 +34,7 @@ tls.certresolver = "letsencrypt"
 
 [http.routers.react]
 service = "react"
-rule = "(Host(`tasync.jeromeslocallibrary.me`) || Host(`localhost`) || Host(`165.227.121.242`)) && PathPrefix(`/`)"
+rule = "PathPrefix(`/`)"
 entryPoints = ["web", "websecure"]
 tls.certresolver = "letsencrypt"
 
