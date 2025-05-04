@@ -47,22 +47,19 @@ function getUserShiftsAPI() {
 
 function addTAToShiftAPI(shift_id) {
   return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsAddStudentToShift(
-      shift_id,
-      (error, data, response) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(data);
-        }
+    api.backendSchedApiViewsAddTaToShift(shift_id, (error, data, response) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
       }
-    );
+    });
   });
 }
 
 function removeTAFromShiftAPI(shift_id) {
   return new Promise((resolve, reject) => {
-    api.backendSchedApiViewsRemoveStudentFromShift(
+    api.backendSchedApiViewsRemoveTaFromShift(
       shift_id,
       (error, data, response) => {
         if (error) {

@@ -61,16 +61,15 @@ import { useQuery } from "@tanstack/react-query";
 import DefaultApi from "./client/src/api/DefaultApi";
 
 const weekDays = [
-  { text: 'Sunday', value: 0 },
-  { text: 'Monday', value: 1 },
-  { text: 'Tuesday', value: 2 },
-  { text: 'Wednesday', value: 3 },
-  { text: 'Thursday', value: 4 },
-  { text: 'Friday', value: 5 },
-  { text: 'Saturday', value: 6 }
+  { text: "Sunday", value: 0 },
+  { text: "Monday", value: 1 },
+  { text: "Tuesday", value: 2 },
+  { text: "Wednesday", value: 3 },
+  { text: "Thursday", value: 4 },
+  { text: "Friday", value: 5 },
+  { text: "Saturday", value: 6 },
 ];
 const api = new DefaultApi();
-
 
 const setTimeOnDate = (date, timeStr) => {
   const [hours, minutes, seconds] = timeStr.split(":").map(Number);
@@ -78,10 +77,11 @@ const setTimeOnDate = (date, timeStr) => {
   utcDate.setUTCHours(hours, minutes, seconds || 0, 0);
 
   // Convert UTC to local time by adding the timezone offset
-  const localDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset() * 60000);
+  const localDate = new Date(
+    utcDate.getTime() + utcDate.getTimezoneOffset() * 60000
+  );
   return localDate;
 };
-
 
 // React Query hook
 export const useShifts = () => {
@@ -180,9 +180,9 @@ const fetchUserShifts = async (userId) => {
 const Overview = () => {
   console.log("Overview component rendered");
 
-  const [selectedUsers, setSelectedUsers] = useState([]);  // Array to store selected user IDs
-  const [events, setEvents] = useState([]);  // Array to store events for the schedule
-  const [currentView, setCurrentView] = useState("Week");  // Initialize currentView with "Week"
+  const [selectedUsers, setSelectedUsers] = useState([]); // Array to store selected user IDs
+  const [events, setEvents] = useState([]); // Array to store events for the schedule
+  const [currentView, setCurrentView] = useState("Week"); // Initialize currentView with "Week"
   const [userType, setUserType] = useState("TAs"); // State to toggle between TAs and Educators
 
   const { data: tas, isLoading: tasLoading } = useTAs();
@@ -211,40 +211,50 @@ const Overview = () => {
     console.log(`Fetching shifts for user ID: ${userId}`);
     try {
       const shifts = await fetchUserShifts(userId);
-    console.log(`Fetched shifts for user ID ${userId}:`, shifts);
-    const newEvents = shifts.map((shift) => ({
-      Id: shift.id,
-      Subject: `${shift.schedule?.subject?.name || "Unknown Subject"}`,
-      StartTime: setTimeOnDate(shift.date, shift.start_time),
-      EndTime: setTimeOnDate(shift.date, shift.end_time),
-      IsAllDay: false,
-      Description: `${shift.schedule?.subject?.name || "Unknown Subject"} for ${shift.schedule?.educator?.name || "Unknown TA"}`,
-      userId: userId, // Store userId as a number for consistency
-      CalendarId: 1,
-      RecurrenceRule: `FREQ=WEEKLY;BYDAY=${dayOfWeekMap[shift.day_of_week]}`, // Dynamically set recurrence rule
-    }));
-    setEvents((prevEvents) => [...prevEvents, ...newEvents]);
-    console.log(`Updated events after adding shifts for user ID ${userId}:`, newEvents);
-  } catch (error) {
-    console.error(`Error fetching shifts for user ${userId}:`, error);
-  }
-};
+      console.log(`Fetched shifts for user ID ${userId}:`, shifts);
+      const newEvents = shifts.map((shift) => ({
+        Id: shift.id,
+        Subject: `${shift.schedule?.subject?.name || "Unknown Subject"}`,
+        StartTime: setTimeOnDate(shift.date, shift.start_time),
+        EndTime: setTimeOnDate(shift.date, shift.end_time),
+        IsAllDay: false,
+        Description: `${
+          shift.schedule?.subject?.name || "Unknown Subject"
+        } for ${shift.schedule?.educator?.name || "Unknown TA"}`,
+        userId: userId, // Store userId as a number for consistency
+        CalendarId: 1,
+        RecurrenceRule: `FREQ=WEEKLY;BYDAY=${dayOfWeekMap[shift.day_of_week]}`, // Dynamically set recurrence rule
+      }));
+      setEvents((prevEvents) => [...prevEvents, ...newEvents]);
+      console.log(
+        `Updated events after adding shifts for user ID ${userId}:`,
+        newEvents
+      );
+    } catch (error) {
+      console.error(`Error fetching shifts for user ${userId}:`, error);
+    }
+  };
 
   const handleUserTypeChange = (e) => {
     setUserType(e.value); // Update the user type based on dropdown selection
+    setSelectedUsers([]); // Reset selected users when user type changes
   };
 
   const handleUserSelection = (userId, isSelected) => {
-    console.log(`User selection changed: userId=${userId}, isSelected=${isSelected}`);
+    console.log(
+      `User selection changed: userId=${userId}, isSelected=${isSelected}`
+    );
     if (isSelected) {
       setSelectedUsers((prev) => [...prev, userId]);
       fetchAndAddUserShifts(userId); // Fetch and add shifts for the selected user
     } else {
       setSelectedUsers((prev) => prev.filter((id) => id !== userId));
-      setEvents((prevEvents) => prevEvents.filter((event) => event.userId !== userId)); // Match userId as a number
+      setEvents((prevEvents) =>
+        prevEvents.filter((event) => event.userId !== userId)
+      ); // Match userId as a number
       console.log(`Removed events for user ID ${userId}`);
     }
-  }
+  };
 
   const userList = userType === "TAs" ? tas : educators; // Dynamically select the list based on userType
   const isLoading = userType === "TAs" ? tasLoading : educatorsLoading;
@@ -253,11 +263,18 @@ const Overview = () => {
 
   const dateHeaderTemplate = (props) => {
     const intl = new Internationalization();
-    const dayName = intl.formatDate(props.date, { type: "date", format: "EEEE" });
-    const dayNumber = intl.formatDate(props.date, { type: "date", format: "d" });
+    const dayName = intl.formatDate(props.date, {
+      type: "date",
+      format: "EEEE",
+    });
+    const dayNumber = intl.formatDate(props.date, {
+      type: "date",
+      format: "d",
+    });
     return (
       <Fragment>
-        <div style={{ fontWeight: "bold" }}>{dayName}</div> {/* Day of the week */}
+        <div style={{ fontWeight: "bold" }}>{dayName}</div>{" "}
+        {/* Day of the week */}
         <div>{dayNumber}</div> {/* Day of the month */}
       </Fragment>
     );
@@ -277,7 +294,14 @@ const Overview = () => {
             cssClass="custom-dropdown"
           />
         </div>
-        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           {isLoading ? (
             <p>Loading {userType}...</p>
           ) : (
@@ -298,7 +322,9 @@ const Overview = () => {
                 <input
                   type="checkbox"
                   checked={selectedUsers.includes(user.id)}
-                  onChange={(e) => handleUserSelection(user.id, e.target.checked)}
+                  onChange={(e) =>
+                    handleUserSelection(user.id, e.target.checked)
+                  }
                   className="custom-checkbox"
                 />
                 <span>{user.name || user.username}</span>
