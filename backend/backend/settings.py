@@ -1,3 +1,4 @@
+import socket
 from pathlib import Path
 
 
@@ -14,7 +15,16 @@ SECRET_KEY = "dummy-secret-key"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "backend", '127.0.0.1']
+
+ALLOWED_HOSTS = ["localhost", "backend", "127.0.0.1",
+                 "tasync.jeromeslocallibrary.me", "tsync.org"]
+
+try:
+    hostname = socket.gethostname()
+    server_ip = socket.gethostbyname(hostname)
+    ALLOWED_HOSTS.append(server_ip)
+except Exception as e:
+    print(f"Error retrieving server IP: {e}")
 
 
 # Application definition
