@@ -17,14 +17,14 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ["localhost", "backend", "127.0.0.1",
-                 "tasync.jeromeslocallibrary.me", "tsync.org"]
+                 "tasync.jeromeslocallibrary.me", "tsync.org", "165.227.121.242:10000", "165.227.121.242"]
 
-try:
-    hostname = socket.gethostname()
-    server_ip = socket.gethostbyname(hostname)
-    ALLOWED_HOSTS.append(server_ip)
-except Exception as e:
-    print(f"Error retrieving server IP: {e}")
+# try:
+#     hostname = socket.gethostname()
+#     server_ip = socket.gethostbyname(hostname)
+#     ALLOWED_HOSTS.append(server_ip)
+# except Exception as e:
+#     print(f"Error retrieving server IP: {e}")
 
 
 # Application definition
