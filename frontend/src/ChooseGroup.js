@@ -99,7 +99,7 @@ export default function ChooseGroup() {
       <RadioCardRoot>
         <RadioCardLabel>Select a group:</RadioCardLabel>
         <HStack w="100%" justifyContent="center" spacing={4}>
-          {groups.map((group) => (
+          {groups?.map((group) => (
             <RadioCardItem
               key={group.id}
               value={group.id}
