@@ -167,7 +167,7 @@ const Questions = () => {
                 />
               ))}
           </Flex>
-          {group?.name !== "Educator" && (
+          {group?.name !== "Educator" && group?.name !== "TA" && (
             <DialogRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
               <DialogTrigger asChild>
                 <Button position="fixed" bottom="3" right="3">
