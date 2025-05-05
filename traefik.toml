@@ -19,31 +19,20 @@ watch = true
 
 [entryPoints]
 [entryPoints.web]
-address = ":80"
-[entryPoints.websecure]
-address = ":443"
-
-[certificatesResolvers]
-  [certificatesResolvers.letsencrypt.acme]
-  email = "jcdonfack04@gmail.com"
-  storage = "/acme.json"
-  [certificatesResolvers.letsencrypt.acme.httpChallenge]
-    entryPoint = "web"
+address = ":10000"
 
 [http.routers]
 
 [http.routers.django]
 service = "django"
-rule = "Host(`tasync.jeromeslocallibrary.me`) && PathPrefix(`/accounts`) || PathPrefix(`/_allauth`) || PathPrefix(`/ninja`) || PathPrefix(`/drf`) || PathPrefix(`/sched_api`)"
-entryPoints = ["web", "websecure"]
-tls.certresolver = "letsencrypt"
+rule = "PathPrefix(`/accounts`) || PathPrefix(`/_allauth`) || PathPrefix(`/ninja`) || PathPrefix(`/drf`) || PathPrefix(`/sched_api`)"
+entrypoints = ["web"]
 
 
 [http.routers.react]
 service = "react"
 rule = "PathPrefix(`/`)"
-entryPoints = ["web", "websecure"]
-tls.certresolver = "letsencrypt"
+entrypoints = ["web"]
 
 [http.services]
 [http.services.react.loadBalancer]
