@@ -2,6 +2,7 @@ import {
   Container,
   Flex,
   Heading,
+  Theme,
   Text,
   Button,
   DialogBody,
@@ -174,46 +175,48 @@ const Questions = () => {
                   Add Question
                 </Button>
               </DialogTrigger>
-              <Portal>
-                <DialogBackdrop />
-                <DialogPositioner>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Add Question</DialogTitle>
-                    </DialogHeader>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      <FieldsetRoot>
-                        <FieldsetContent>
-                          <DialogBody>
-                            <FieldRoot required>
-                              <FieldLabel>Question</FieldLabel>
-                              <FieldRequiredIndicator />
-                              <Textarea
-                                name="question"
-                                placeholder="Enter your question here"
-                                {...register("question", {
-                                  required: "Question is required",
-                                })}
-                                isInvalid={!!errors.question}
-                              />
-                            </FieldRoot>
-                          </DialogBody>
-                        </FieldsetContent>
-                        <DialogFooter>
-                          <DialogActionTrigger asChild>
-                            <Button variant="secondary">Cancel</Button>
-                          </DialogActionTrigger>
-                          <Button type="submit" variant="primary">
-                            Submit
-                          </Button>
-                        </DialogFooter>
-                      </FieldsetRoot>
-                    </form>
-                    <DialogCloseTrigger asChild>
-                      <CloseButton />
-                    </DialogCloseTrigger>
-                  </DialogContent>
-                </DialogPositioner>
+              <Portal asChild>
+                <Theme appearance="light">
+                  <DialogBackdrop />
+                  <DialogPositioner>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Add Question</DialogTitle>
+                      </DialogHeader>
+                      <form onSubmit={handleSubmit(onSubmit)}>
+                        <FieldsetRoot>
+                          <FieldsetContent>
+                            <DialogBody>
+                              <FieldRoot required>
+                                <FieldLabel>Question</FieldLabel>
+                                <FieldRequiredIndicator />
+                                <Textarea
+                                  name="question"
+                                  placeholder="Enter your question here"
+                                  {...register("question", {
+                                    required: "Question is required",
+                                  })}
+                                  isInvalid={!!errors.question}
+                                />
+                              </FieldRoot>
+                            </DialogBody>
+                          </FieldsetContent>
+                          <DialogFooter>
+                            <DialogActionTrigger asChild>
+                              <Button variant="secondary">Cancel</Button>
+                            </DialogActionTrigger>
+                            <Button type="submit" variant="primary">
+                              Submit
+                            </Button>
+                          </DialogFooter>
+                        </FieldsetRoot>
+                      </form>
+                      <DialogCloseTrigger asChild>
+                        <CloseButton />
+                      </DialogCloseTrigger>
+                    </DialogContent>
+                  </DialogPositioner>
+                </Theme>
               </Portal>
             </DialogRoot>
           )}

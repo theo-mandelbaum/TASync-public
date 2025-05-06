@@ -2,6 +2,7 @@ import { AuthContextProvider } from "./auth";
 import Router from "./Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "./components/ui/provider";
+import { Theme } from "@chakra-ui/react";
 import "@syncfusion/ej2-base/styles/material.css";
 import "@syncfusion/ej2-buttons/styles/material.css";
 import "@syncfusion/ej2-calendars/styles/material.css";
@@ -27,8 +28,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
         <Provider>
-          <Router />
-          <Toaster />
+          <Theme appearance="light">
+            <Router />
+            <Toaster />
+          </Theme>
         </Provider>
       </AuthContextProvider>
     </QueryClientProvider>

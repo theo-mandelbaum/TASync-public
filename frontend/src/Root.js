@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import { Outlet } from "react-router-dom";
-import { Flex, Theme } from "@chakra-ui/react";
+import { Flex, Theme, Container } from "@chakra-ui/react";
 import { useAuthStatus } from "./auth/hooks";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import DefaultApi from "./client/src/api/DefaultApi";
@@ -89,13 +89,11 @@ export default function Root() {
   }
 
   return (
-    <Theme appearance="light">
-      <Flex h="100vh" direction="column" position="relative">
-        <NavBar group={userGroup} />
-        <main style={{ height: "100%" }}>
-          <Outlet />
-        </main>
-      </Flex>
-    </Theme>
+    <Container minH="100vh" m={0} p={0} bgColor="white">
+      <NavBar group={userGroup} />
+      <main style={{ height: "100%" }}>
+        <Outlet />
+      </main>
+    </Container>
   );
 }
