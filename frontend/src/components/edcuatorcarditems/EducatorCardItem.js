@@ -6,6 +6,7 @@ import {
   Portal,
   Fieldset,
   Field,
+  Theme,
   Select,
   createListCollection,
   Input,
@@ -161,66 +162,71 @@ function EducatorAddSideBarButton({
           {icon}
         </IconButton>
       </Dialog.Trigger>
-      <Portal>
-        <Dialog.Backdrop />
-        <Dialog.Positioner>
-          <Dialog.Content>
-            <Dialog.Header>
-              {action_type} {target}s
-            </Dialog.Header>
-            <form onSubmit={submitFunction}>
-              <Dialog.Body>
-                <Fieldset.Root>
-                  <Fieldset.Content>
-                    <Field.Root required>
-                      <Field.RequiredIndicator />
-                      <Field.Label>{target}s</Field.Label>
-                      <Select.Root
-                        multiple
-                        collection={target_framework}
-                        value={targets}
-                        onValueChange={(e) => {
-                          setValue(`${value_name}`, e.value);
-                          setTargets(e.value);
-                        }}
-                      >
-                        <Select.HiddenSelect />
-                        <Select.Control>
-                          <Select.Trigger>
-                            <Select.ValueText
-                              placeholder={`Select ${target}s`}
-                            />
-                          </Select.Trigger>
-                          <Select.IndicatorGroup>
-                            <Select.Indicator />
-                          </Select.IndicatorGroup>
-                        </Select.Control>
-                        <Select.Positioner>
-                          <Select.Content>
-                            {target_framework.items?.map((target) => (
-                              <Select.Item key={target.id} item={target.value}>
-                                {target.label}
-                                <Select.ItemIndicator />
-                              </Select.Item>
-                            ))}
-                          </Select.Content>
-                        </Select.Positioner>
-                      </Select.Root>
-                    </Field.Root>
-                  </Fieldset.Content>
-                </Fieldset.Root>
-              </Dialog.Body>
-              <Dialog.Footer>
-                <Button type="submit">
-                  {action_type} {target}s
-                </Button>
-              </Dialog.Footer>
-            </form>
-            <Dialog.CloseTrigger asChild>
-              <CloseButton />
-            </Dialog.CloseTrigger>
-          </Dialog.Content>
-        </Dialog.Positioner>
+      <Portal asChild>
+        <Theme appearance="light">
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <Dialog.Header>
+                {action_type} {target}s
+              </Dialog.Header>
+              <form onSubmit={submitFunction}>
+                <Dialog.Body>
+                  <Fieldset.Root>
+                    <Fieldset.Content>
+                      <Field.Root required>
+                        <Field.RequiredIndicator />
+                        <Field.Label>{target}s</Field.Label>
+                        <Select.Root
+                          multiple
+                          collection={target_framework}
+                          value={targets}
+                          onValueChange={(e) => {
+                            setValue(`${value_name}`, e.value);
+                            setTargets(e.value);
+                          }}
+                        >
+                          <Select.HiddenSelect />
+                          <Select.Control>
+                            <Select.Trigger>
+                              <Select.ValueText
+                                placeholder={`Select ${target}s`}
+                              />
+                            </Select.Trigger>
+                            <Select.IndicatorGroup>
+                              <Select.Indicator />
+                            </Select.IndicatorGroup>
+                          </Select.Control>
+                          <Select.Positioner>
+                            <Select.Content>
+                              {target_framework.items?.map((target) => (
+                                <Select.Item
+                                  key={target.id}
+                                  item={target.value}
+                                >
+                                  {target.label}
+                                  <Select.ItemIndicator />
+                                </Select.Item>
+                              ))}
+                            </Select.Content>
+                          </Select.Positioner>
+                        </Select.Root>
+                      </Field.Root>
+                    </Fieldset.Content>
+                  </Fieldset.Root>
+                </Dialog.Body>
+                <Dialog.Footer>
+                  <Button type="submit">
+                    {action_type} {target}s
+                  </Button>
+                </Dialog.Footer>
+              </form>
+              <Dialog.CloseTrigger asChild>
+                <CloseButton />
+              </Dialog.CloseTrigger>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Theme>
       </Portal>
     </Dialog.Root>
   );
@@ -602,77 +608,79 @@ function EducatorFooter({ schedule_id }) {
         <Dialog.Trigger asChild>
           <Button>Add Shift</Button>
         </Dialog.Trigger>
-        <Portal>
-          <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
-              <Dialog.Header>Add Shift</Dialog.Header>
-              <form onSubmit={handleSubmit(submitShift)}>
-                <Dialog.Body>
-                  <Fieldset.Root>
-                    <Fieldset.Content>
-                      <Field.Root required>
-                        <Field.RequiredIndicator />
-                        <Field.Label>Start Time</Field.Label>
-                        <Input {...register("start_time")} type="time" />
-                      </Field.Root>
-                      <Field.Root required>
-                        <Field.RequiredIndicator />
-                        <Field.Label>End Time</Field.Label>
-                        <Input {...register("end_time")} type="time" />
-                      </Field.Root>
-                      <Field.Root required>
-                        <Field.RequiredIndicator />
-                        <Field.Label>Day of the Week</Field.Label>
-                        <Select.Root
-                          collection={weekFrameworks}
-                          value={dayValue}
-                          onValueChange={(e) => {
-                            setValue("day_of_week", e.value);
-                            setDayValue(e.value);
-                          }}
-                        >
-                          <Select.HiddenSelect />
-                          <Select.Control>
-                            <Select.Trigger>
-                              <Select.ValueText placeholder="Select a day" />
-                            </Select.Trigger>
-                            <Select.IndicatorGroup>
-                              <Select.Indicator />
-                            </Select.IndicatorGroup>
-                          </Select.Control>
-                          <Select.Positioner>
-                            <Select.Content>
-                              {weekFrameworks.items.map((day) => (
-                                <Select.Item key={day.value} item={day.value}>
-                                  {day.label}
-                                  <Select.ItemIndicator />
-                                </Select.Item>
-                              ))}
-                            </Select.Content>
-                          </Select.Positioner>
-                        </Select.Root>
-                      </Field.Root>
-                      <Field.Root required>
-                        <Field.RequiredIndicator />
-                        <Field.Label>Max TA</Field.Label>
-                        <Input {...register("max_ta")} type="number" />
-                      </Field.Root>
-                      <Field.Root required>
-                        <Field.RequiredIndicator />
-                        <Field.Label>Max Students</Field.Label>
-                        <Input {...register("max_students")} type="number" />
-                      </Field.Root>
-                    </Fieldset.Content>
-                    <Button type="submit">Create Shift</Button>
-                  </Fieldset.Root>
-                </Dialog.Body>
-              </form>
-              <Dialog.CloseTrigger asChild>
-                <CloseButton />
-              </Dialog.CloseTrigger>
-            </Dialog.Content>
-          </Dialog.Positioner>
+        <Portal asChild>
+          <Theme appearance="light">
+            <Dialog.Backdrop />
+            <Dialog.Positioner>
+              <Dialog.Content>
+                <Dialog.Header>Add Shift</Dialog.Header>
+                <form onSubmit={handleSubmit(submitShift)}>
+                  <Dialog.Body>
+                    <Fieldset.Root>
+                      <Fieldset.Content>
+                        <Field.Root required>
+                          <Field.RequiredIndicator />
+                          <Field.Label>Start Time</Field.Label>
+                          <Input {...register("start_time")} type="time" />
+                        </Field.Root>
+                        <Field.Root required>
+                          <Field.RequiredIndicator />
+                          <Field.Label>End Time</Field.Label>
+                          <Input {...register("end_time")} type="time" />
+                        </Field.Root>
+                        <Field.Root required>
+                          <Field.RequiredIndicator />
+                          <Field.Label>Day of the Week</Field.Label>
+                          <Select.Root
+                            collection={weekFrameworks}
+                            value={dayValue}
+                            onValueChange={(e) => {
+                              setValue("day_of_week", e.value);
+                              setDayValue(e.value);
+                            }}
+                          >
+                            <Select.HiddenSelect />
+                            <Select.Control>
+                              <Select.Trigger>
+                                <Select.ValueText placeholder="Select a day" />
+                              </Select.Trigger>
+                              <Select.IndicatorGroup>
+                                <Select.Indicator />
+                              </Select.IndicatorGroup>
+                            </Select.Control>
+                            <Select.Positioner>
+                              <Select.Content>
+                                {weekFrameworks.items.map((day) => (
+                                  <Select.Item key={day.value} item={day.value}>
+                                    {day.label}
+                                    <Select.ItemIndicator />
+                                  </Select.Item>
+                                ))}
+                              </Select.Content>
+                            </Select.Positioner>
+                          </Select.Root>
+                        </Field.Root>
+                        <Field.Root required>
+                          <Field.RequiredIndicator />
+                          <Field.Label>Max TA</Field.Label>
+                          <Input {...register("max_ta")} type="number" />
+                        </Field.Root>
+                        <Field.Root required>
+                          <Field.RequiredIndicator />
+                          <Field.Label>Max Students</Field.Label>
+                          <Input {...register("max_students")} type="number" />
+                        </Field.Root>
+                      </Fieldset.Content>
+                      <Button type="submit">Create Shift</Button>
+                    </Fieldset.Root>
+                  </Dialog.Body>
+                </form>
+                <Dialog.CloseTrigger asChild>
+                  <CloseButton />
+                </Dialog.CloseTrigger>
+              </Dialog.Content>
+            </Dialog.Positioner>
+          </Theme>
         </Portal>
       </Dialog.Root>
     </HStack>

@@ -8,6 +8,7 @@ import {
   Fieldset,
   Field,
   Select,
+  Theme,
   CloseButton,
   createListCollection,
 } from "@chakra-ui/react";
@@ -281,97 +282,99 @@ function TACardSideBar({
           <Dialog.Trigger asChild>
             <Button>Swap Shift</Button>
           </Dialog.Trigger>
-          <Portal>
-            <Dialog.Backdrop />
-            <Dialog.Positioner>
-              <Dialog.Content>
-                <Dialog.Header>Swap Shift</Dialog.Header>
-                <form onSubmit={handleSubmit(submitShiftSwap)}>
-                  <Dialog.Body>
-                    <Fieldset.Root>
-                      <Fieldset.Content>
-                        <Field.Root required>
-                          <Field.RequiredIndicator />
-                          <Field.Label>TA to swap with</Field.Label>
-                          <Select.Root
-                            collection={inFrameWork}
-                            value={toUser}
-                            onValueChange={(e) => {
-                              setValue("to_user_id", e.value[0]);
-                              setToUser(e.value);
-                            }}
-                          >
-                            <Select.HiddenSelect />
-                            <Select.Control>
-                              <Select.Trigger>
-                                <Select.ValueText placeholder="Select TA" />
-                              </Select.Trigger>
-                              <Select.IndicatorGroup>
-                                <Select.Indicator />
-                              </Select.IndicatorGroup>
-                            </Select.Control>
-                            <Select.Positioner>
-                              <Select.Content>
-                                {inFrameWork?.items?.map((user) => (
-                                  <Select.Item
-                                    key={user.value}
-                                    item={user.value}
-                                  >
-                                    {user.label}
-                                    <Select.ItemIndicator />
-                                  </Select.Item>
-                                ))}
-                              </Select.Content>
-                            </Select.Positioner>
-                          </Select.Root>
-                        </Field.Root>
-                        <Field.Root required>
-                          <Field.RequiredIndicator />
-                          <Field.Label>Shift to swap</Field.Label>
-                          <Select.Root
-                            collection={usersShiftsFrameWork}
-                            value={fromShift}
-                            onValueChange={(e) => {
-                              setValue("from_shift_id", e.value[0]);
-                              setFromShift(e.value);
-                            }}
-                          >
-                            <Select.HiddenSelect />
-                            <Select.Control>
-                              <Select.Trigger>
-                                <Select.ValueText placeholder="Select shift" />
-                              </Select.Trigger>
-                              <Select.IndicatorGroup>
-                                <Select.Indicator />
-                              </Select.IndicatorGroup>
-                            </Select.Control>
-                            <Select.Positioner>
-                              <Select.Content>
-                                {usersShiftsFrameWork?.items?.map((shift) => (
-                                  <Select.Item
-                                    key={shift.value}
-                                    item={shift.value}
-                                  >
-                                    {shift.label}
-                                    <Select.ItemIndicator />
-                                  </Select.Item>
-                                ))}
-                              </Select.Content>
-                            </Select.Positioner>
-                          </Select.Root>
-                        </Field.Root>
-                      </Fieldset.Content>
-                    </Fieldset.Root>
-                  </Dialog.Body>
-                  <Dialog.Footer>
-                    <Button type="submit">Submit Swap Request</Button>
-                  </Dialog.Footer>
-                </form>
-                <Dialog.CloseTrigger asChild>
-                  <CloseButton />
-                </Dialog.CloseTrigger>
-              </Dialog.Content>
-            </Dialog.Positioner>
+          <Portal asChild>
+            <Theme appearance="light">
+              <Dialog.Backdrop />
+              <Dialog.Positioner>
+                <Dialog.Content>
+                  <Dialog.Header>Swap Shift</Dialog.Header>
+                  <form onSubmit={handleSubmit(submitShiftSwap)}>
+                    <Dialog.Body>
+                      <Fieldset.Root>
+                        <Fieldset.Content>
+                          <Field.Root required>
+                            <Field.RequiredIndicator />
+                            <Field.Label>TA to swap with</Field.Label>
+                            <Select.Root
+                              collection={inFrameWork}
+                              value={toUser}
+                              onValueChange={(e) => {
+                                setValue("to_user_id", e.value[0]);
+                                setToUser(e.value);
+                              }}
+                            >
+                              <Select.HiddenSelect />
+                              <Select.Control>
+                                <Select.Trigger>
+                                  <Select.ValueText placeholder="Select TA" />
+                                </Select.Trigger>
+                                <Select.IndicatorGroup>
+                                  <Select.Indicator />
+                                </Select.IndicatorGroup>
+                              </Select.Control>
+                              <Select.Positioner>
+                                <Select.Content>
+                                  {inFrameWork?.items?.map((user) => (
+                                    <Select.Item
+                                      key={user.value}
+                                      item={user.value}
+                                    >
+                                      {user.label}
+                                      <Select.ItemIndicator />
+                                    </Select.Item>
+                                  ))}
+                                </Select.Content>
+                              </Select.Positioner>
+                            </Select.Root>
+                          </Field.Root>
+                          <Field.Root required>
+                            <Field.RequiredIndicator />
+                            <Field.Label>Shift to swap</Field.Label>
+                            <Select.Root
+                              collection={usersShiftsFrameWork}
+                              value={fromShift}
+                              onValueChange={(e) => {
+                                setValue("from_shift_id", e.value[0]);
+                                setFromShift(e.value);
+                              }}
+                            >
+                              <Select.HiddenSelect />
+                              <Select.Control>
+                                <Select.Trigger>
+                                  <Select.ValueText placeholder="Select shift" />
+                                </Select.Trigger>
+                                <Select.IndicatorGroup>
+                                  <Select.Indicator />
+                                </Select.IndicatorGroup>
+                              </Select.Control>
+                              <Select.Positioner>
+                                <Select.Content>
+                                  {usersShiftsFrameWork?.items?.map((shift) => (
+                                    <Select.Item
+                                      key={shift.value}
+                                      item={shift.value}
+                                    >
+                                      {shift.label}
+                                      <Select.ItemIndicator />
+                                    </Select.Item>
+                                  ))}
+                                </Select.Content>
+                              </Select.Positioner>
+                            </Select.Root>
+                          </Field.Root>
+                        </Fieldset.Content>
+                      </Fieldset.Root>
+                    </Dialog.Body>
+                    <Dialog.Footer>
+                      <Button type="submit">Submit Swap Request</Button>
+                    </Dialog.Footer>
+                  </form>
+                  <Dialog.CloseTrigger asChild>
+                    <CloseButton />
+                  </Dialog.CloseTrigger>
+                </Dialog.Content>
+              </Dialog.Positioner>
+            </Theme>
           </Portal>
         </Dialog.Root>
       )}

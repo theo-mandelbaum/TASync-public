@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
+  Theme,
   Flex,
   Heading,
   Button,
@@ -43,7 +44,7 @@ import {
 import ScheduleCard from "./components/ScheduleCard";
 import { set, useForm } from "react-hook-form";
 import { toaster } from "./components/ui/toaster";
-import "./css/manageschedule.css"
+import "./css/manageschedule.css";
 
 const api = new DefaultApi();
 
@@ -278,69 +279,71 @@ export default function ScheduleManager() {
         <DialogTrigger asChild>
           <Button>Add Schedule</Button>
         </DialogTrigger>
-        <Portal>
-          <DialogBackdrop />
-          <DialogPositioner>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Add Schedule</DialogTitle>
-              </DialogHeader>
-              <form onSubmit={handleSubmit(addSchedule)}>
-                <FieldsetRoot>
-                  <FieldsetContent>
-                    <DialogBody>
-                      <FieldRoot required>
-                        <FieldLabel>Subject</FieldLabel>
-                        <FieldRequiredIndicator />
-                        <SelectRoot
-                          collection={subjectFramework}
-                          value={placeholder}
-                          onValueChange={(e) => {
-                            setValue("subject", e.value);
-                            setPlaceholder(e.value);
-                          }}
-                        >
-                          <SelectHiddenSelect />
-                          <SelectControl>
-                            <SelectTrigger>
-                              <SelectValueText placeholder="Select a subject" />
-                            </SelectTrigger>
-                            <SelectIndicatorGroup>
-                              <SelectIndicator />
-                            </SelectIndicatorGroup>
-                          </SelectControl>
-                          <SelectPositioner>
-                            <SelectContent>
-                              {subjectFramework?.items?.map((subject) => (
-                                <SelectItem
-                                  key={subject.id}
-                                  item={subject.value}
-                                >
-                                  {subject.label}
-                                  <SelectItemIndicator />
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </SelectPositioner>
-                        </SelectRoot>
-                      </FieldRoot>
-                    </DialogBody>
-                  </FieldsetContent>
-                  <DialogFooter>
-                    <DialogActionTrigger asChild>
-                      <Button variant="secondary">Cancel</Button>
-                    </DialogActionTrigger>
-                    <Button type="submit" variant="primary">
-                      Submit
-                    </Button>
-                  </DialogFooter>
-                </FieldsetRoot>
-              </form>
-              <DialogCloseTrigger asChild>
-                <CloseButton />
-              </DialogCloseTrigger>
-            </DialogContent>
-          </DialogPositioner>
+        <Portal asChild>
+          <Theme appearance="light">
+            <DialogBackdrop />
+            <DialogPositioner>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Add Schedule</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleSubmit(addSchedule)}>
+                  <FieldsetRoot>
+                    <FieldsetContent>
+                      <DialogBody>
+                        <FieldRoot required>
+                          <FieldLabel>Subject</FieldLabel>
+                          <FieldRequiredIndicator />
+                          <SelectRoot
+                            collection={subjectFramework}
+                            value={placeholder}
+                            onValueChange={(e) => {
+                              setValue("subject", e.value);
+                              setPlaceholder(e.value);
+                            }}
+                          >
+                            <SelectHiddenSelect />
+                            <SelectControl>
+                              <SelectTrigger>
+                                <SelectValueText placeholder="Select a subject" />
+                              </SelectTrigger>
+                              <SelectIndicatorGroup>
+                                <SelectIndicator />
+                              </SelectIndicatorGroup>
+                            </SelectControl>
+                            <SelectPositioner>
+                              <SelectContent>
+                                {subjectFramework?.items?.map((subject) => (
+                                  <SelectItem
+                                    key={subject.id}
+                                    item={subject.value}
+                                  >
+                                    {subject.label}
+                                    <SelectItemIndicator />
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </SelectPositioner>
+                          </SelectRoot>
+                        </FieldRoot>
+                      </DialogBody>
+                    </FieldsetContent>
+                    <DialogFooter>
+                      <DialogActionTrigger asChild>
+                        <Button variant="secondary">Cancel</Button>
+                      </DialogActionTrigger>
+                      <Button type="submit" variant="primary">
+                        Submit
+                      </Button>
+                    </DialogFooter>
+                  </FieldsetRoot>
+                </form>
+                <DialogCloseTrigger asChild>
+                  <CloseButton />
+                </DialogCloseTrigger>
+              </DialogContent>
+            </DialogPositioner>
+          </Theme>
         </Portal>
       </DialogRoot>
     </Container>
