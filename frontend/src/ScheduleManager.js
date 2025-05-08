@@ -245,7 +245,7 @@ export default function ScheduleManager() {
   }
 
   return (
-    <Container h="100%" className="schedule-manager">
+    <Container h="100%" maxW="100%" className="schedule-manager">
       <Heading size="lg" mb={6} textAlign="center">
         Schedule Manager
       </Heading>

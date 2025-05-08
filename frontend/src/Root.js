@@ -91,7 +91,7 @@ export default function Root() {
   return (
     <Container minH="100vh" minW="100vw" m={0} p={0} bgColor="white">
       <NavBar group={userGroup} />
-      <main style={{ height: "100%" }}>
+      <main style={{ height: "100%", width: "100%" }}>
         <Outlet />
       </main>
     </Container>
