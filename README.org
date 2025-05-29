@@ -1,4 +1,4 @@
-* This repository is a copy of my final project in Full-Stack Development at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
+*** This repository is a copy of my final project in Full-Stack Development at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
 
 ** Project Overview
 
