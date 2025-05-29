@@ -1,21 +1,47 @@
-*** This repository is a copy of my final project in Full-Stack Development at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
-
-** Project Overview
+***This repository is a copy of my final group project in Full-Stack Development at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
 
 
-** Features & Technologies
+**Project Overview
+This project is a scheduling web app for educators, teaching assistants and students. It's meant for colleges and universities who want a more convenient way for TAs to choose shifts, swap shifts, and view their overall schedule. For some university programs, TAs only work for their assigned professor. In others, such as JMU's Computer Science department, TAs are required to work in general TA hours after classes, allowing shifts to be swapped. The website was created to be flexible for programs that have contraints and programs that allow shift swapping.
 
 
-** How it works
+**Features & Technologies
+*** Techlogies Used:
+
+<b>Backend</b>:
+OpenAPI - API generator
+Django - Python backend framework
+
+<b>Frontend</b>:
+OpenAPI - API generator
+React - library
+Chakra-UI - CSS framework
+Syncfusion - Javascript scheduling library
+
+***Features Implemented:
+- Student questions
+  - Questions can be picked up and answered by TAs
+- Permission adjustments based on the user's group (educator, TA, or student)
+- TA shift requests
+- TA shift swap requests
+- TA schedule calendar view
+- Educator schedule calendar view
 
 
-** My Contributions & What I Learned
+**How it works
 
 
-** Testing and Evaluation
+
+**My Contributions & What I Learned
 
 
-** What Would I do Differently?
+
+**Testing and Evaluation
 
 
-** Setup & Usage
+
+**What Would I do Differently?
+
+
+
+**Setup & Usage
