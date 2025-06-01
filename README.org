@@ -28,8 +28,14 @@ Syncfusion - Javascript scheduling library
 - Educator schedule calendar view
 
 
-**How it works
-
+**How the app works
+- When you open the app, you are prompted to create an account. You may login and get an email for your login code.
+- Once you login, the app asks whether you are an Educator, TA, or Student
+  - Based on this selection, you will be given certain permissions
+- Students can post questions for TAs to respond to
+- TAs can make shift requests, shift swap requests, and answer questions posted by students
+- Educators can create schedules with TA shifts for TAs to join
+- All users can view the TA and Educator schedules
 
 
 **My Contributions & What I Learned
