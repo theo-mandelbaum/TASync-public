@@ -1,11 +1,11 @@
-*This repository is a copy of my final group project in my Full-Stack Development class at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
+* This repository is a copy of my final group project in my Full-Stack Development class at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
 
 
-**Project Overview
+** Project Overview
 This project is a scheduling web app for educators, teaching assistants and students. It's meant for colleges and universities who want a more convenient way for TAs to choose shifts, swap shifts, and view their overall schedule. For some university programs, TAs only work for their assigned professor. In others, such as JMU's Computer Science department, TAs are required to work in general TA hours after classes, allowing shifts to be swapped. The website was created to be flexible for programs that have contraints and programs that allow shift swapping.
 
 
-**Features & Technologies
+** Features & Technologies
 *** Techlogies Used:
 
 *Backend*:
@@ -19,7 +19,7 @@ React - Javascript library
 Chakra-UI - CSS framework
 Syncfusion - Javascript scheduling library
 
-***Features Implemented:
+*** Features Implemented:
 - Student questions
   - Questions can be picked up and answered by TAs
 - Permission adjustments based on the user's group (educator, TA, or student)
@@ -29,7 +29,7 @@ Syncfusion - Javascript scheduling library
 - Educator schedule calendar view
 
 
-**How the app works
+** How the app works
 1. When you open the app, you are prompted to create an account. You may login and get an email for your login code.
 2. Once you login, the app asks whether you are an Educator, TA, or Student
   - Based on this selection, you will be given certain permissions
@@ -42,20 +42,20 @@ Syncfusion - Javascript scheduling library
 5. From here, you are free to navigate between all the pages of the website, constrained by the functionality and permissions of your user type.
 
 
-**My Contributions & What I Learned
+** My Contributions & What I Learned
 1. In the early stages of the project, our main tasks were to plan the features, data model and technologies that we would be using. Knowing that the project design/planning phase is one of the most important parts, we spent lots of time laying out the framework for the project. As a part of the planning, my group and I agreed to use Django as a backend framework and React for the frontend. We also spent significant time organizing our backend models and fields so that the foundation for our project was sound.
 2. Once we planned the early stages, we were ready to begin developing the app. In the early development, I assisted in building Ninja APIs which we would use later and designing models to store our data. This was pretty similar to work that I've done in the past with Django, so I felt comfortable doing this.
 3.  My main tasks were to create a schedule page with a visual calendar and assist in developing the APIs as needed. I found a free open-source Javascript scheduling library called Syncfusion[[https://www.syncfusion.com]] that works with react to build a calendar interface. So, I used the free Syncfusion demo that provided me with an example of how to create a calendar. Originally, the demo had randomly generated events placed on the calendar. I knew that what I needed to do was use TA and Educator shifts to create my own events and place those onto the calendar instead. By working with Ninja API Schema, my groupmates and I were able to develop all of the necessary APIs to pull TA and Educator shift data. From there, I used the shift information to create events and display them on my calendar. As I completed these tasks, I learned a lot about APIs and how they are passed from backend to frontend. I also learned how to deliberately create and select an API based on the information that I want to use in my frontend. Most of all, I gained great experience working with a Javascript library that uses a component-based architecture. Learning React helped me better understand how modern frontend frameworks structure applications and gave me hands-on experience with the topic.
 
 
-**Testing and Evaluation
+** Testing and Evaluation
 To test this application, my group and I created several test users, including Educators, TAs and Students. On the Educator accounts we a number of subjects and schedules within those subjects. Then, we created multiple TAs to pick up shifts on the Educators' schedules. This way, we could check if our TA and Educator schedules were displaying properly on the schedule page. We also created some studetns to be apart of our classes and ask questions.
 
 
-**What Would I do Differently?
+** What Would I do Differently?
 1. Use the Canvas API — The Canvas API allows users to pull professor and student data. My group and I could've used that as a form of verification to check whether people are actually the role that they say they are
 2. Update the UI — The UI for this project is very simple and it lacks design. This could have been updated more frequently and given more attention.
 
 
-**Setup & Usage
+** Setup & Usage
 This app is not available for setup at this time.
