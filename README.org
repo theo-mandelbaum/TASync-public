@@ -1,4 +1,4 @@
-***This repository is a copy of my final group project in my Full-Stack Development class at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
+*This repository is a copy of my final group project in my Full-Stack Development class at James Madison University. Below, I will be doing a technical explanation and reflective analysis on my contributions to this project.
 
 
 **Project Overview
@@ -8,12 +8,12 @@ This project is a scheduling web app for educators, teaching assistants and stud
 **Features & Technologies
 *** Techlogies Used:
 
-<b>Backend</b>:
+*Backend*:
 OpenAPI - API generator
 Ninja - API Schema
 Django - Python backend framework
 
-<b>Frontend</b>:
+*Frontend*:
 OpenAPI - API generator
 React - Javascript library
 Chakra-UI - CSS framework
