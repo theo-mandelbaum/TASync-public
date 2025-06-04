@@ -49,11 +49,13 @@ Syncfusion - Javascript scheduling library
 
 
 **Testing and Evaluation
-
+To test this application, my group and I created several test users, including Educators, TAs and Students. On the Educator accounts we a number of subjects and schedules within those subjects. Then, we created multiple TAs to pick up shifts on the Educators' schedules. This way, we could check if our TA and Educator schedules were displaying properly on the schedule page. We also created some studetns to be apart of our classes and ask questions.
 
 
 **What Would I do Differently?
-
+1. Use the Canvas API — The Canvas API allows users to pull professor and student data. My group and I could've used that as a form of verification to check whether people are actually the role that they say they are
+2. Update the UI — The UI for this project is very simple and it lacks design. This could have been updated more frequently and given more attention.
 
 
 **Setup & Usage
+This app is not available for setup at this time.
