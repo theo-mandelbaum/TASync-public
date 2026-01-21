@@ -22,7 +22,7 @@ services:
 
   proxy:
     image: traefik:v3.0
-    container_name: proxy
+    container_name: tasync-proxy
     ports:
       - 10000:10000
     volumes:
